@@ -1,6 +1,6 @@
 # Welcome
 
-Exis is built to make networking code simple, painless, and secure. We want all networking code to look and behave like native code!
+Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code!
 
 
 # About
