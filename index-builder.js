@@ -1,7 +1,8 @@
 var fs = require('fs');
 var lunr = require('./static/lib/lunr.js/lunr.js');
 var async = require('async');
-var PAGES_PATH = './pages';
+// var PAGES_PATH = './pages';
+var PAGES_PATH = './docs';
 
 var idx = lunr(function () {
   this.ref('id');
@@ -14,6 +15,7 @@ function extractTitleFromText(body) {
 }
 
 function write() {
+  
     fs.writeFile('./lunr_index.json', JSON.stringify(idx), function (err) {
       if (err) throw err
       console.log('Successfull finished indexing.')

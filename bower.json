@@ -1,9 +1,9 @@
 {
   "name": "resin-docs",
   "version": "0.0.0",
-  "homepage": "https://github.com/resin-io/docs",
+  "homepage": "https://github.com/exis-io/exis-io.github.io",
   "authors": [
-    "Milos Janjic <milosh012@gmail.com>"
+    "Damouse <damouse007@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [

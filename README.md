@@ -1,3 +1,3 @@
-# resin.io docs
+# exis docs
 
-This repo contains our public-facing documentation.
+Public documentation for exis. 
