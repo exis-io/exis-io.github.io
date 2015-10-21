@@ -2,6 +2,8 @@
 ### [Home](/pages/general/Home.md)
 
 * [About Exis](/pages/general/Home.md)
+<!-- * [Contributer Notes](/pages/general/Home.md) -->
+
 
 ### [Tour](/pages/tour/Tour.md)
 
