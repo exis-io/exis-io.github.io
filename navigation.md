@@ -1,25 +1,36 @@
 
 ### [Home](/pages/general/Home.md)
 
-* [Welcome to Exis](/pages/general/Home.md)
 * [About Exis](/pages/general/Home.md)
 
 ### [Tour](/pages/tour/Tour.md)
 
+* [A Brief Tour](/pages/tour/Tour.md)
+
 
 ### [Fabric](/pages/fabric/Fabric.md)
+
+* [The Fabric](/pages/fabric/Fabric.md)
 
 
 ### [Riffle](/pages/riffle/Riffle.md)
 
+* [Riffle](/pages/riffle/Riffle.md)
+
 
 ### [Appliances](/pages/appliances/Appliances.md)
+
+* [Appliances](/pages/appliances/Appliances.md)
 
 
 ### [Examples](/pages/samples/Samples.md)
 
+* [Examples](/pages/samples/Samples.md)
+
 
 ### [Security](/pages/security/Security.md)
+
+* [Security](/pages/security/Security.md)
 
 
 
@@ -153,7 +164,7 @@
 
 ### [Tools](/pages/tools/cli.md)
 
-<!-- * [Supervisor API](/pages/tools/supervisor-api.md) -->
+ * [Supervisor API](/pages/tools/supervisor-api.md) 
 
 * [CLI Reference](/pages/tools/cli.md)
 * [Node.js SDK](/pages/tools/sdk.md)
@@ -165,13 +176,12 @@
 
 ### [Configuration](/pages/configuration/advanced.md)
 
-<!-- * ["Beta" features](/pages/configuration/using-resin-staging.md) -->
+
 
 * [Advanced Boot settings](/pages/configuration/advanced.md)
 * [Custom Network](/pages/configuration/custom-network.md)
 * [Custom Base Docker Images](/pages/configuration/custom-docker-base-images.md)
 
-<!-- * [Bandwidth Control](/pages/configuration/bandwidth-control.md) -->
 
 ### [Troubleshooting](/pages/troubleshooting/troubleshooting.md)
 
