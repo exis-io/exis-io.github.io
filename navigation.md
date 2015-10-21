@@ -2,7 +2,7 @@
 ### [Home](/pages/general/Home.md)
 
 * [About Exis](/pages/general/Home.md)
-<!-- * [Contributer Notes](/pages/general/Home.md) -->
+* [Contributer Notes](/pages/general/Meta.md)
 
 
 ### [Tour](/pages/tour/Tour.md)
@@ -14,6 +14,13 @@
 
 * [The Fabric](/pages/fabric/Fabric.md)
 
+* [Fabric](/pages/fabric/Fabric.md)
+* [Node](/pages/fabric/Fabric.md)
+* [Owner](/pages/fabric/Fabric.md)
+* [Tenant](/pages/fabric/Fabric.md)
+* [Core Appliances](/pages/fabric/Fabric.md)
+* [Startup](/pages/fabric/Fabric.md)
+* [Usage Monitoring](/pages/fabric/Fabric.md)
 
 ### [Riffle](/pages/riffle/Riffle.md)
 
@@ -38,25 +45,10 @@
 
 
 <!--
-[[Developer Meta Notes|Meta]]
-
-[[Implementation Samples|Samples]]
 
 #####Architecture:
 
-[[Fabric|Fabric]]
 
-[[Node|Node]]
-
-[[Owner|Owner]]
-
-[[Tenant|Tenant]]
-
-[[Core Appliances|Appliances]]
-
-[[Startup|Startup]]
-
-[[Usage Monitoring|Usage Monitoring]]
 
 #####Naming, addressing and identity:
 

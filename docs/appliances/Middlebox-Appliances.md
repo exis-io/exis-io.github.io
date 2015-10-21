@@ -1,1 +1,0 @@
-Interacts with messages on the course to their destination transparently. May or may not alter or redirect the traffic. 

@@ -1,1 +1,0 @@
-Serves content in a way similar to a web server. 
