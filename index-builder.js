@@ -1,8 +1,7 @@
 var fs = require('fs');
 var lunr = require('./static/lib/lunr.js/lunr.js');
 var async = require('async');
-// var PAGES_PATH = './pages';
-var PAGES_PATH = './docs';
+var PAGES_PATH = './pages';
 
 var idx = lunr(function () {
   this.ref('id');
