@@ -3,6 +3,7 @@
 
 * [About Exis](/pages/general/Home.md)
 * [Contributer Notes](/pages/general/Meta.md)
+* [Frequently Asked Questions](/pages/general/Faq.md)
 
 
 ### [Tour](/pages/tour/Tour.md)
