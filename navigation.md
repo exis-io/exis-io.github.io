@@ -1,28 +1,30 @@
 
-### [Home](/docs/general/Home.md)
+### [Home](/pages/general/Home.md)
+
+* [Welcome to Exis](/pages/general/Home.md)
+* [About Exis](/pages/general/Home.md)
+
+### [Tour](/pages/tour/Tour.md)
 
 
-### [Tour](/docs/tour/Tour.md)
+### [Fabric](/pages/fabric/Fabric.md)
 
 
-### [Fabric](/docs/fabric/fabric.md)
+### [Riffle](/pages/riffle/Riffle.md)
 
 
-### [Riffle](/docs/riffle/Riffle.md)
+### [Appliances](/pages/appliances/Appliances.md)
 
 
-### [Appliances](/docs/appliances/Appliances.md)
+### [Examples](/pages/samples/Samples.md)
 
 
-### [Examples](/docs/samples/Samples.md)
-
-
-### [Security](/docs/security/Security.md)
+### [Security](/pages/security/Security.md)
 
 
 
-* [About Exis](/docs/general/Home.md)
 
+<!--
 [[Developer Meta Notes|Meta]]
 
 [[Implementation Samples|Samples]]
@@ -90,7 +92,7 @@
 [[Middlebox|Middlebox-Appliances]]
 
 [[Gate|Gateway-Appliances]]
-
+-->
 
 <!-- ### [Introduction](/pages/introduction/introduction.md)
 
