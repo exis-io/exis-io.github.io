@@ -23,3 +23,16 @@ In this tour will cover a 30,000 feet overview of the exis offering. You'll unde
 
 [First, lets look at traditional distributed applications](/pages/tour/OldSchool.md)
 
+### Sample Elements
+
+A list of all the custom things the resin folks did
+
+__Warning:__ This is a warning box.
+
+__NOTE:__ this interesting, cut off note box. Is this copyright?
+
+```
+Terminal-like, white-on black code entry.
+```
+
+This is a `code snippet`, which should look red inline.
