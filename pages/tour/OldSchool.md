@@ -6,7 +6,7 @@ Before we dive into all the ways Exis makes the world a better place, lets take 
 
 When programs around the world talk to each other they generally use `TCP` and `HTTP`. These two categories of communication can also be called _internet traffic_ and  _web traffic_. All web traffic is internet traffic, but not all internet traffic is web traffic. 
 
-__Definition:__ When computers communicate with each other, there needs to be a common set of rules and instructions that each computer follows. A specific set of communication rules is called a protocol. Because of the many ways computers can communicate with each other, there are many different protocols -- too many for the average person to remember. [techterms.com](http://techterms.com/definition/protocol)
+__Note:__ When computers communicate with each other, there needs to be a common set of rules and instructions that each computer follows. A specific set of communication rules is called a protocol. Because of the many ways computers can communicate with each other, there are many different protocols -- too many for the average person to remember. [techterms.com](http://techterms.com/definition/protocol)
 
 So whats wrong with them? Clearly the world runs just fine over the internet, right? Sort of. You can get things done over the Web and/or the internet, but each type of communication has some shortcomings. 
 
@@ -26,7 +26,7 @@ IP Address: 4.4.4.4
 
 Serialization is the process by which information from one application is transmitted to another application. Generally applications rely on well known in agreed-upon formats for serialization. For web traffic the format is ususally `JSON` or `XML`. TCP traffic is a little trickier-- usually the developer has to set up their own system for transferring data.
 
-__Definition:__ serialization is the process of converting a data structure or object into a well known format so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be "resurrected" later in the same or another computer environment. [wikipedia.org](http://en.wikipedia.org/wiki/Serialization)
+__Note:__ serialization is the process of converting a data structure or object into a well known format so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be "resurrected" later in the same or another computer environment. [wikipedia.org](http://en.wikipedia.org/wiki/Serialization)
 
 Finally, validation lets developer know the data they receive is the data they want to receive. When a programmer writes a chunk of code he or she can be reasonably certain it will play nicely with their other code. Assumption doesn't hold on the Internet-- you always have to make sure the data you recieve hasn't been changed.
 
@@ -38,7 +38,7 @@ The internet is a scary place! It's a complex and wide world where malicious act
 
 *Authorization* is the process of giving someone permission to do or have something. Your bank for example gives you the authorization to view your account balances. It's very important that your neighbor is not authorized to view your account. Authorization often goes hand-in-hand with authentication.
 
-__Definition:__Encryption is the process of converting data to an unrecognizable or "encrypted" form. It is commonly used to protect sensitive information so that only authorized parties can view it. This includes files and storage devices, as well as data transferred over wireless networks and the Internet. [techterms.com](http://techterms.com/definition/encryption)
+__Note:__Encryption is the process of converting data to an unrecognizable or "encrypted" form. It is commonly used to protect sensitive information so that only authorized parties can view it. This includes files and storage devices, as well as data transferred over wireless networks and the Internet. [techterms.com](http://techterms.com/definition/encryption)
 
 Encryption is the final and very broad category of security. Although authentication and authorization rely on encryption, here we're talking about the ways in which applications protect their communications from prying eyes. Here are the three most common attacks a developer had to protect against:
 
