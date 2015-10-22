@@ -38,7 +38,7 @@ function updateAnchorHref(links, route) {
   });
 }
 
-var GITHUB_EDIT_PAGE_LINK = 'https://github.com/exis-io/docs/edit/gh-pages';
+var GITHUB_EDIT_PAGE_LINK = 'https://github.com/exis-io/docs/edit/master';
 
 angular
   .module('resinDocs', [ 'ngRoute', 'ui.bootstrap' ])

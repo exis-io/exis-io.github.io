@@ -4,6 +4,10 @@ Before we dive into all the ways Exis makes the world a better place, lets take 
 
 ## Basic Communication
 
+Application level networking traffic is usually _internet traffic_ and sometimes is _web traffic_. These are broad categories: technically the two types of traffic are TCP traffic and HTTP traffic, so named because of the name of their protocols. 
+
+Most networking code in applications (excluding media like video and images) is built over  
+
 HTTP-based
 Cant push very well
 Socket based

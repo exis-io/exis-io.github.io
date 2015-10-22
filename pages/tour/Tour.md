@@ -17,9 +17,9 @@ You could spend a whole career specializing in just one of these topics! As soft
 
 Fundamentally networking code is method calling. You as a user write code for you application that wants to execute code that lives somewhere else- all the complexity and knowledge involved in writing modern network code simply enables this process. This is our first key observation. The second is that a global and universal method for writing all networking code requires some conventions-- it is some consistent set of rules that all developers can follow. The final useful insight is that modern applications are built out of reusable, distributed services that are spread all around the internet.
 
-In order to make this happen we use three broad categories of software, the **Fabric** service, the **Riffle** protocol, and **Appliance** services. 
+In order to make this happen we use three broad categories of software, the **Fabric** platform, the **Riffle** protocol, and **Appliance** services. 
 
-In this tour will cover a high-level, 30,000 feet overview of the exis offering. You'll understand why we don't want to make network code beautiful-- we want to stop writing it entirely. Each section of the tour you'll find links to the specification of each components and at the end you can scope out our samples. Don't worry about the specifications for now, they're a little more in-depth. 
+In this tour will cover a 30,000 feet overview of the exis offering. You'll understand why we don't want to make network code beautiful-- we want to stop writing it entirely. Each section of the tour you'll find links to the specification of each components and at the end you can scope out our samples. Don't worry about the specifications for now, they're a little more in-depth. 
 
-[First, lets look at traditional distibuted applications](/pages/tour/OldSchool.md)
+[First, lets look at traditional distributed applications](/pages/tour/OldSchool.md)
 
