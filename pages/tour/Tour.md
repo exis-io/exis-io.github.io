@@ -21,4 +21,5 @@ In order to make this happen we use three broad categories of software, the **Fa
 
 In this tour will cover a high-level, 30,000 feet overview of the exis offering. You'll understand why we don't want to make network code beautiful-- we want to stop writing it entirely. Each section of the tour you'll find links to the specification of each components and at the end you can scope out our samples. Don't worry about the specifications for now, they're a little more in-depth. 
 
-[Lets check out riffle first.](/pages/tour/Riffle.md)
+[First, lets look at traditional distibuted applications](/pages/tour/OldSchool.md)
+

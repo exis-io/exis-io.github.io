@@ -9,6 +9,11 @@
 ### [Tour](/pages/tour/Tour.md)
 
 * [A Brief Tour](/pages/tour/Tour.md)
+* [Traditional Networking](/pages/tour/OldSchool.md)
+* [Some Riffle](/pages/tour/Riffle.md)
+* [A Tightly Woven Fabric](/pages/tour/Fabric.md)
+* [Appliances](/pages/tour/Appliances.md)
+* [Security is not Feature](/pages/tour/Security.md)
 
 
 ### [Fabric](/pages/fabric/Fabric.md)
