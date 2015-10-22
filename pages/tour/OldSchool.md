@@ -50,14 +50,14 @@ These problems are tackled through the `TLS` protocol, at-rest encryption, and e
 
 ## Servers
 
-The last skillset your modern programming needs is the ability to write servers. Servers are special programs that are very good at communicating with lots of other programs. Specifically, websites and mobile applications that has thousands or millions of versions in the world generally communicate with only a couple servers. Servers are separate from the application and the people who write them have to know how to write code in a very different way.
+The last skillset your modern programmer needs is the ability to write servers. Servers are special programs that are very good at communicating with lots of other programs. Specifically, websites and mobile applications that have thousands or millions of versions in the world generally communicate with only a couple servers. Servers are separate from the application and the people who write them have to know how to write code in a very different way.
 
-
-Modern servers, 1st party
-Modern containers
+As if that weren't enough, the languages mobile and desktop applications use can be wildly different for web servers. In other words, a developer or studio usually cant apply the same language to both applications and servers. Instead, they must either switch between two or more languages or recruit someone who is proficient in another language.s
 
 ## The Laundry List
 
 Well, thats quite a list. 
 
-[Next, lets check out riffle.](/pages/tour/Riffle.md)
+Topics mentioned above are not fully described here. Most of these fields have specialists that **only** do that one thing! For single developers or even organizations, the amount of knowledge required to make connected applications is as large as the chance of error.
+
+[Its time to check out riffle.](/pages/tour/Riffle.md)
