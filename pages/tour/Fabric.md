@@ -58,11 +58,19 @@ One subaction:
 ## Endpoints
 
 The last piece of the puzzle not mentioned above is the [*endpoint*][endpoint].
-Endpoints aren't anything special, they're just a domain and an action together: a verb with a noun. 
+Endpoints aren't anything special, just a domain with an action together: a verb with a noun. 
+
+Remember `thenextfacebook` app our user `joebob` made? Lets combine it with the basic action from the section above:
+
+```
+xs.joebob.thenextfacebook/hello
+```
+
+Any agent on the fabric can send a message to this endpoint. It routes to the app `thenextfacebook`. The method thats reached by this endpoint depends on the application.  
 
 ## People, Places, and Actions
 
-This section of the tour was not meant to walk you through the internal workings of the fabric. For that you should check out the [fabric][fabric] specification. Instead you should understand how things are named and found on the fabric. 
+This section of the tour was not meant to walk you through the internal workings of the fabric. For that you should check out the [fabric][fabric] specification. Instead you should understand where agents are on the fabric and how to find them. 
 
 
 
