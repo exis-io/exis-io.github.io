@@ -55,12 +55,16 @@ One subaction:
 /hello/there
 ```
 
+## Endpoints
+
+The last piece of the puzzle not mentioned above is the [*endpoint*][endpoint].
+Endpoints aren't anything special, they're just a domain and an action together: a verb with a noun. 
+
 ## People, Places, and Actions
 
 This section of the tour was not meant to walk you through the internal workings of the fabric. For that you should check out the [fabric][fabric] specification. Instead you should understand how things are named and found on the fabric. 
 
-The last piece of the puzzle not mentioned above is the [*endpoint*][endpoint].
-Endpoints aren't anything special, they're just the  
+
 
 [Onto Appliances!](/pages/tour/Appliances.md)
 
