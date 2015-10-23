@@ -3,7 +3,7 @@
 Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code!
 
 
-# About
+## About
 
 Exis is a NaaS (Network as a Service) which consists of the Riffle protocol, Fabric network, and Appliances. Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
 
@@ -15,7 +15,7 @@ The [[Fabric|Fabric]] is a collection of running programs called [[Nodes|Node]] 
 
 See table of contents to the right. 
 
-# The 10 Rules
+## The 10 Rules
 
 Beautiful is better than ugly.
 
