@@ -41,16 +41,26 @@ xs.joebob.thenextfacebook
 
 ## Actions
 
-If domains describe where agents (and thus applications) live, then [*actions*][actions] let you name different kinds of methods that a domain can receive. Actions are separated by a forward slash (`/`) and always begin with one. 
+If domains are the names of agents, then [*actions*][actions] are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
 
-## People, Names, and Places
+A basic action: 
 
- 
+```
+/hello
+```
 
-Domains
-Actions
-Endpoints
-Agents
+One subaction:
+
+```
+/hello/there
+```
+
+## People, Places, and Actions
+
+This section of the tour was not meant to walk you through the internal workings of the fabric. For that you should check out the [fabric][fabric] specification. Instead you should understand how things are named and found on the fabric. 
+
+The last piece of the puzzle not mentioned above is the [*endpoint*][endpoint].
+Endpoints aren't anything special, they're just the  
 
 [Onto Appliances!](/pages/tour/Appliances.md)
 
@@ -62,3 +72,4 @@ Agents
 [fabric]:/pages/fabric/Fabric.md
 [domain]:/pages/riffle/Domain.md
 [action]:/pages/riffle/Agent.md
+[endpoint]:/pages/riffle/Endpoint.md
