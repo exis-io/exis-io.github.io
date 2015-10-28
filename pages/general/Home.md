@@ -5,9 +5,9 @@ Exis is built to make networking code simple, painless, and secure. Writing netw
 
 ## About
 
-Exis is a NaaS (Network as a Service) which consists of the Riffle protocol, Fabric network, and Appliances. Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
+Exis is a NaaS (Network as a Service) which consists of the [Riffle](/pages/riffle/Riffle.md) protocol, [Fabric](/pages/fabric/Fabric.md) network, and [Appliances](/pages/appliances/Appliances.md). Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
 
-[Riffle](/pages/installing/gettingStarted.md) is a tentative fork of the WAMP protocol. It provides message-based communication between any two parties over the Fabric irrespective of language, underlying connection, or platform. It has two notable features: high-level usage and . Developers and applications interact directly with riffle. 
+[Riffle](/pages/installing/gettingStarted.md) is a tentative fork of the WAMP protocol. It provides message-based communication between parties over the Fabric irrespective of language, underlying connection, or platform. It has two notable features: high-level usage and . Developers and applications interact directly with riffle. 
 
 The [[Fabric|Fabric]] is a collection of running programs called [[Nodes|Node]] that route riffle traffic similar to IP routers. Like riffle, the design of the fabric takes best practices and enforces them implicitly. Riffle requires at least one node to be used in a meaningful way.
 
