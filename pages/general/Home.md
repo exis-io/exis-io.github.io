@@ -1,17 +1,19 @@
 # Welcome
 
 Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code!
+Please check out our documentation, and follow along with code from our [repos](https://github.com/exis-io).
 
+## Overview
 
-## About
+Exis is a combination of three components that make writing next-generation apps as simple as possible. It consists of the [Riffle](/pages/riffle/Riffle.md) protocol, [Fabric](/pages/fabric/Fabric.md) network, and [Appliances](/pages/appliances/Appliances.md). Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
 
-Exis is a NaaS (Network as a Service) which consists of the [Riffle](/pages/riffle/Riffle.md) protocol, [Fabric](/pages/fabric/Fabric.md) network, and [Appliances](/pages/appliances/Appliances.md). Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
+![Exis Overview](/img/exis_docs_overview.svg)
 
 [Riffle](/pages/installing/gettingStarted.md) is a tentative fork of the WAMP protocol. It provides message-based communication between parties over the Fabric irrespective of language, underlying connection, or platform. It has two notable features: high-level usage and . Developers and applications interact directly with riffle. 
 
-The [[Fabric|Fabric]] is a collection of running programs called [[Nodes|Node]] that route riffle traffic similar to IP routers. Like riffle, the design of the fabric takes best practices and enforces them implicitly. Riffle requires at least one node to be used in a meaningful way.
+The [Fabric](/pages/fabric/Fabric.md) is a collection of running programs called [Nodes](/pages/fabric/Node.md) that route riffle traffic similar to IP routers. Like riffle, the design of the fabric takes best practices and enforces them implicitly. Riffle requires at least one node to be used in a meaningful way.
 
-[[Appliances|Appliances]] are discrete software services that expose high-level functionality. They can be authored, deployed, and utilized by any developer on the fabric. [[Core Appliances|Appliances]] are used to configure the behavior of the fabric or to enable deployment administration. 
+[Appliances](/pages/appliances/Appliances.md) are discrete software services that expose high-level functionality. They can be authored, deployed, and utilized by any developer on the fabric. [Core Appliances](/pages/appliances/Core.md) are used to configure the behavior of the fabric or to enable deployment administration. 
 
 See table of contents to the right. 
 
