@@ -41,7 +41,7 @@ xs.joebob.thenextfacebook
 
 ## Actions
 
-If domains are the names of agents, then [*actions*][actions] are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
+If domains are the names of agents, then [*actions*][action] are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
 
 A basic action: 
 
@@ -66,7 +66,7 @@ Remember `thenextfacebook` app our user `joebob` made? Lets combine it with the 
 xs.joebob.thenextfacebook/hello
 ```
 
-Any agent on the fabric can send a message to this endpoint. It routes to the app `thenextfacebook`. The method thats reached by this endpoint depends on the application.  
+Any agent on the fabric can send a message to this endpoint (as long as they have the proper permissions). Exis will route the message to the app `thenextfacebook`. The method called within the app for this endpoint depends specifically on the application.
 
 ## People, Places, and Actions
 
