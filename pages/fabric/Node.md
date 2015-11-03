@@ -1,6 +1,6 @@
-A Node is a router for [[riffle|Riffle]] traffic. A set of nodes make up the [[fabric.|Fabric]] Individual nodes accept connections from agents, receive messages, and either deliver messages to their target or to another node for processing. 
+A Node is a router for [riffle][Riffle] traffic. A set of nodes make up the [fabric.][Fabric] Individual nodes accept connections from agents, receive messages, and either deliver messages to their target or to another node for processing. 
 
-Routes [[messages|Message]] along the fabric towards their intended target, holds message pattern state, authenticates new [[agents|Agent]], and checks authorization credentials for messages. 
+Routes [messages][Message] along the fabric towards their intended target, holds message pattern state, authenticates new [agents][Agent], and checks authorization credentials for messages. 
 
 Note: a *node* is different than a *router*. In our definitions the latter refers to  *Paradrop Router*, a physical hardware platform. 
 
@@ -62,3 +62,14 @@ The interested party has to know when an interesting session connects, but shoul
 **EXIS_PERMISSIONS**: Control how the node handles permissions.  By default the node enforces strong permissions through the downward-only rule and exceptions to the rule through bouncer.  Set this variable to "off" to disable permissions checking and allow agents to reach any endpoint.
 
 **EXIS_AUTHENTICATION**: Control how the node handles authentication.  By default the node enforces strong authentication via either tokens or challenge response.  Set this variable to "soft" to enable tiered authentication.  Under this mode, agents can still use tokens or challenge response, but it is not mandatory.
+
+<!-- Reference for TOC -->
+
+[message]:/pages/riffle/Message.md
+[agent]:/pages/riffle/Agent.md
+[node]:/pages/fabric/Node.md
+[fabric]:/pages/fabric/Fabric.md
+[domain]:/pages/riffle/Domain.md
+[action]:/pages/riffle/Agent.md
+[endpoint]:/pages/riffle/Endpoint.md
+[Riffle]:/pages/riffle/Riffle.md
