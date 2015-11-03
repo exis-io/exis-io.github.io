@@ -12,7 +12,7 @@ Getting information from one place in a program to one place in another program:
 
 With Riffle we want to deal only with the high level operations, or sending a [message][message] from one application to another. You can exchange messages between applications in different ways called *message patterns.* 
 
-__Note:__ In software development, a pattern (or design pattern) is a general solution to a design problem that recurs repeatedly in many projects. Software designers adapt the pattern solution to their specific project. Patterns use a formal approach to describing a design problem, its proposed solution, and any other factors that might affect the problem or the solution. A successful pattern should have established itself as leading to a good solution in three previous projects or situations.
+__Definition:__ In software development, a pattern (or design pattern) is a general solution to a design problem that recurs repeatedly in many projects. Software designers adapt the pattern solution to their specific project. Patterns use a formal approach to describing a design problem, its proposed solution, and any other factors that might affect the problem or the solution. A successful pattern should have established itself as leading to a good solution in three previous projects or situations.
 
 In order to keep all of our terms consistent and understandable we call any software that interacts on the fabric an [*agent*][agent]. Each app, user, or database-- anything that exchanges a [message][message] over the fabric is called an agent.
 
@@ -57,14 +57,14 @@ int echo(name string) {
     print(name)
 }
 
-# Expose the function to the outside world under the name "add"
+# Expose the function to the outside world under the name "echo"
 subscribe("echo", echo)
 ```
 
 ```
 # App 4:
 
-# Publish some content
+# Publish some content to "echo"
 publish("echo", "Hello!")
 
 # Apps 1, 2, and 3 print: 
