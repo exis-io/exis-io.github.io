@@ -41,7 +41,7 @@ xs.joebob.thenextfacebook
 
 ## Actions
 
-If domains are the names of agents, then [*actions*][action] are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
+If domains are the names of agents, then [*actions*](/pages/riffle/Action.md) are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
 
 A basic action: 
 
