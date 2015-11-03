@@ -32,6 +32,7 @@ Functionality and customizability is moved to appliances and owners where possib
 [domain]:/pages/riffle/Domain.md
 [action]:/pages/riffle/Agent.md
 [endpoint]:/pages/riffle/Endpoint.md
+[Riffle]:/pages/riffle/Riffle.md
 
 [appliances]:/pages/appliances/Appliances.md
 [store]:/pages/appliances/Store-Appliances.md
