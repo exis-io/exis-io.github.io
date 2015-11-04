@@ -44,10 +44,12 @@ The interested party has to know when an interesting session connects, but shoul
 * The inherent identity of an agent informs the node that the session is interesting or uninteresting and the specific endpoint to publish the meta event on. This is not flexible after deployment. 
 * An appliance is responsible for maintaining the status of sessions. It is notified of session connections, tracks their status, and performs some continuous check for tenancy. 
 
+<!-- TODO
 ### Specifications
 
 #### Meta Level Events
 
+-->
  
 
 ##### Startup

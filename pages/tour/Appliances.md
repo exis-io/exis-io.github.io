@@ -4,13 +4,13 @@
 
 ## The Usual Fare
 
-Exis created and runs a set of commonly used appliances for all developers to integrate in their applications. Any developer can write and offer access to an appliance of their own creation. Each appliance falls into a broad category. These categories don't mean much to the fabric, they're only here to help developers find what they need quickly. When a developer attaches a new appliance to their application, a set of well known endpoints are added to the application's domain, in this way [agents][agents] interact with appliances by sending [messages][message] to [endpoints][endpoint].
+Exis created and runs a set of commonly used appliances for all developers to integrate in their applications. Any developer can write and offer access to an appliance of their own creation. Each appliance falls into a broad category. These categories don't mean much to the fabric, they're only here to help developers find what they need quickly. When a developer attaches a new appliance to their application, a set of well known endpoints are added to the application's domain, in this way [agents][agent] interact with appliances by sending [messages][message] to [endpoints][endpoint].
 
 For example, a logging appliance might collect usage stats and errors that occur within applications, in this case when a user adds the `logging` appliance, they might see the following endpoints added automatically to their application:
 
 ```
-xs.joebob.thenextfacebook.log/usage - call me to save messages about how users interact with your app
-xs.joebob.thenextfacebook.log/error - call me to save errors or exceptions that app users might have come across
+xs.joebob.thenextfacebook.log/usage - save data about how users interact with your app
+xs.joebob.thenextfacebook.log/error - save errors or exceptions that app users see
 ```
 
 * [**Store**][store]: storage of data. Simple versions are just thin wrappers to popular databases, while more advanced versions provide high-level model and distributed abstractions

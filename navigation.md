@@ -31,6 +31,9 @@
 * [Action](/pages/riffle/Action.md)
 * [Endpoint](/pages/riffle/Endpoint.md)
 * [Agent](/pages/riffle/Agent.md)
+* [Message](/pages/riffle/Message.md)
+* [Pub/Sub](/pages/riffle/PubSub.md)
+* [Register/Call](/pages/riffle/RegisterCall.md)
 
 
 ### [Appliances](/pages/appliances/Appliances.md)

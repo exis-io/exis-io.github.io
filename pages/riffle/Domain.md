@@ -7,13 +7,12 @@ Domains are subtly different from names, although the name of an agent is also t
 
 ### Examples
 
-
-| Agent Type  | pdid |
+| Agent Type  | xsid |
 | ------------- | ------------- |
-| Owner  | `pd`  |
-| Developer  | `pd.damouse`  |
-| App  | `pd.damouse.toaster`  |
-| Appliance  | `pd.auth`  |
-| Developer using Appliance  | `pd.damouse.auth`  |
-| App using Appliance  | `pd.damouse.toaster.auth`  |
-| User in App  | `pd.damouse.toaster.dad`  |
+| Owner  | `xs`  |
+| Developer  | `xs.damouse`  |
+| App  | `xs.damouse.toaster`  |
+| Appliance  | `xs.auth`  |
+| Developer using Appliance  | `xs.damouse.auth`  |
+| App using Appliance  | `xs.damouse.toaster.auth`  |
+| User in App  | `xs.damouse.toaster.dad`  |

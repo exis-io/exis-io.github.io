@@ -2,7 +2,7 @@
 
 <sub>*A riffle is a short, relatively shallow and coarse-bedded length of stream over which the stream flows at slower velocity but a higher turbulence than it normally does in comparison to a pool.*</sub>
 
-Riffle is a protocol and library that makes network code look like any other local code.
+Riffle is a protocol and client-side library that makes network code look like any other local code.
 
 Its the primary way developers interact with the Fabric. Riffle helps move your data around, the fabric actually does the moving. As much as possible, it strives to reduce all networking code down to one line: something that looks much like a method call. A developer shouldn't have to deal with redundant code, code they may not understand, or complex protocols. Of course, none of this is bought at the expense of complexity! Under the hood, all the same kinds of code are running and handling the gritty details.
 
@@ -87,9 +87,9 @@ If a sender passes the wrong number of arguments or the wrong kinds of arguments
 
 ## Sessions
 
-A [*session*][session] is IN PROGRESS AAHHHH.
+Since Riffle provides a persistent connection to the Fabric, it makes sense to wrap this connection around the concept of a session. This session enables the developer to write object oriented code while being cognizant of the fact that it is actually networking code underneath the hood.
 
-Connection abstraction
+What we mean by this is that endpoints can be grouped into logical components (code related to the user versus code related to game logic) and represented as individual objects. As connections to the Fabric come and go, the code required to maintain these connections is abstracted away from the developer through the use of these sessions.
 
 [As useful as riffle is, its nothing without a fabric to run on.](/pages/tour/Fabric.md)
 
