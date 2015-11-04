@@ -40,12 +40,12 @@
 
 * [Appliances](/pages/appliances/Appliances.md)
 * [Appliance Injection](/pages/appliances/Injection.md)
-* [Core](/pages/appliances/Core.md)
-* [Store](/pages/appliances/Store.md)
-* [Container](/pages/appliances/Container.md)
-* [Map](/pages/appliances/Map.md)
-* [Middlebox](/pages/appliances/Middlebox.md)
-* [Gate](/pages/appliances/Gate.md)
+* [Core](/pages/appliances/Core-Appliances.md)
+* [Store](/pages/appliances/Store-Appliances.md)
+* [Container](/pages/appliances/Container-Appliances.md)
+* [Map](/pages/appliances/Map-Appliances.md)
+* [Middlebox](/pages/appliances/Middlebox-Appliances.md)
+* [Gate](/pages/appliances/Gate-Appliances.md)
 
 
 ### [Examples](/pages/samples/Samples.md)
