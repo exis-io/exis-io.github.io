@@ -1,4 +1,6 @@
-A collection of nodes and core appliances that is tasked with routing and delivering messages from one [*agent*][Agent] to another. 
+# Fabric
+
+A collection of nodes and core appliances that is tasked with routing and delivering messages from one [agent][Agent] to another. 
 
 The fabric is an overlay network atop TCP/IP that runs Riffle over Websockets. 
 

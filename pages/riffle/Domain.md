@@ -1,3 +1,5 @@
+# Domain
+
 A string in reverse domain name form that uniquely identifies a single agent. Domains may be nested by separating subdomains with periods. A subdomain is owned by its parent. 
 
 

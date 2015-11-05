@@ -1,3 +1,5 @@
+# Message
+
 A Remote Procedure Call (RPC) formatted as dictated by [riffle.][Riffle] Each message is passed as a single entity from one [agent][Agent] to another. 
 
 Unlike IP traffic, nodes require agents to authorize their own traffic before they will forward it. 

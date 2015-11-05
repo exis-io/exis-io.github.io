@@ -1,3 +1,5 @@
+# Riffle
+
 All [agents][Agent] on the fabric communicate using the Riffle protocol. It runs atop websockets. Applications generally rely on riffle client libraries.
 
 ## Requirements

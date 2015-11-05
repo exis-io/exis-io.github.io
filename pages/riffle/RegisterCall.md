@@ -1,3 +1,5 @@
+# Register/Call
+
 Register/Call is a form of [messaging][Message] on the Fabric. This enables a quick and easy way to perform one-to-one operations. This represents the same functionality of Remote Procedure Calls (RPC).
 
 By leveraging the Riffle libraries, the process of registering and calling functions should look identical to making local function calls - even though under the hood these function calls could actually go out and execute on other machines in the cloud!

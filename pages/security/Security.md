@@ -1,3 +1,5 @@
+# Security
+
 Exis integrates common network security patterns, including authorization, authentication, protection of live communication, protection of static data. A Public Key Infrastructure underpins the security model. 
 
 [[Domain Creation|Domain-Creation]] is the process by which new agents gain access to the fabric. It represents the creation of a new identity. 

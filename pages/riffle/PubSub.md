@@ -1,3 +1,5 @@
+# Publish/Subscribe
+
 Pub/Sub is a form of [messaging][Message] on the Fabric. This enables a quick and easy way to perform one-to-many operations.
 
 ## Example

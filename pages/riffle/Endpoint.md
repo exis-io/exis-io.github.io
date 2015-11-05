@@ -1,3 +1,5 @@
+# Endpoint
+
 Target for a message formed by combining an action and a domain. 
 
 A domain identifies an agent while an action identifies a particular scope of functionality in that domain. 

@@ -1,3 +1,5 @@
+# Security Flows
+
 A *flow* is the set of actions or events that occur between multiple parties in order to achieve some result. The security flows all result in some change in global security status, either identity or permissions. 
 
 Each flow should be protected against eavesdropping, replay attacks, and malicious parties. 

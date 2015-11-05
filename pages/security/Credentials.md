@@ -1,3 +1,5 @@
+# Credentials
+
 Credentials consist of a certificate, public key, and private key. Together all three can be used to uniquely identify an [[agent|Agent]] to the fabric and other agents. The certificate binds the name of the [[domain|Domain]] to the public key and is signed by the domain which created it. 
 
 ## Credentials Requirements

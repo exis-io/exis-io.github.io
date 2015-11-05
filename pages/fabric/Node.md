@@ -1,3 +1,5 @@
+# Node
+
 A Node is a router for [riffle][Riffle] traffic. A set of nodes make up the [fabric.][Fabric] Individual nodes accept connections from agents, receive messages, and either deliver messages to their target or to another node for processing. 
 
 Routes [messages][Message] along the fabric towards their intended target, holds message pattern state, authenticates new [agents][Agent], and checks authorization credentials for messages. 
