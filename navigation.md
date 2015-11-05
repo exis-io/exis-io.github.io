@@ -51,6 +51,7 @@
 ### [Examples](/pages/samples/Samples.md)
 
 * [Examples](/pages/samples/Samples.md)
+* [iOS Cards Against Humanity Tutorial](/pages/samples/SwiftCardsTutorial.md)
 
 
 ### [Security](/pages/security/Security.md)
