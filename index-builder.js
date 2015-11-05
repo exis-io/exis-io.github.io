@@ -14,6 +14,7 @@ function extractTitleFromText(body) {
 }
 
 function write() {
+  
     fs.writeFile('./lunr_index.json', JSON.stringify(idx), function (err) {
       if (err) throw err
       console.log('Successfull finished indexing.')

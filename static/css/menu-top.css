@@ -1,6 +1,6 @@
 .navbar {
   text-align: center;
-  margin-bottom: 11px;
+  margin-bottom: 15px;
 }
 
 .navbar-nav {
@@ -20,11 +20,15 @@
   line-height: 0.9;
 }
 .navbar .navbar-nav > li > a.btn-primary {
-  color: #474747;
+  color: #58595B;
 }
 
 .navbar-right.menu__items {
   margin-top: 15px;
+}
+
+.container-menu {
+  margin-left: 231px;
 }
 
 .navbar-left {
@@ -36,32 +40,32 @@
   left: 0;
   top: 0;
   right: 0;
-  background: #2d2d2d;
+  background: #58595B;
 }
 .menu__nav {
-  background-color: rgba(0, 0, 0, 0);
-  border-color: rgba(0, 0, 0, 0);
-  font-size: 12px;
-  font-size: 1.2rem;
+  background-color: #58595B;
+  color: #58595B;
+  font-size: 13px;
+  font-size: 1.4rem;
   text-transform: uppercase;
 }
 .menu__nav .navbar-brand {
-  color: #ffffff;
+  color: #FFF;
 }
 .menu__nav .navbar-brand:hover,
 .menu__nav .navbar-brand:focus {
-  color: #e6e6e6;
+  color: #2F8CB2;
   background-color: transparent;
 }
 .menu__nav .navbar-text {
-  color: #ffffff;
+  color: #FFF;
 }
 .menu__nav .navbar-nav > li > a {
-  color: #ffffff;
+  color: #FFF;
 }
 .menu__nav .navbar-nav > li > a:hover,
 .menu__nav .navbar-nav > li > a:focus {
-  color: #fcc100;
+  color: #2F8CB2;
   background-color: transparent;
 }
 .menu__nav .navbar-nav > .active > a,
@@ -120,12 +124,12 @@
 }
 .logo__img {
   display: inline-block;
-  height: 34px;
+  height: 35px;
 }
 .logo__text {
   display: none;
   margin-top: 5px;
-  font-size: 28px;
+  font-size: 35px;
   font-size: 2.8rem;
   text-transform: lowercase;
 }
@@ -178,9 +182,9 @@ fieldset[disabled] .menu__nav .btn-link:focus {
   font-size: 14px;
   line-height: 1.5;
   border-radius: 5px;
-  color: #474747;
-  background-color: #fcc100;
-  border-color: #fcc100;
+  color: #FFF;
+  background-color: #2F8CB2;
+  border-color: #2F8CB2;
   font-size: inherit;
 }
 .menu__item--btn-group .btn:hover,
@@ -188,9 +192,8 @@ fieldset[disabled] .menu__nav .btn-link:focus {
 .menu__item--btn-group .btn:active,
 .menu__item--btn-group .btn.active,
 .open > .dropdown-toggle.menu__item--btn-group .btn {
-  color: #474747;
-  background-color: #c99a00;
-  border-color: #bf9200;
+  background-color: #378FBF;
+  border-color: #3F8FBF;
 }
 .menu__item--btn-group .btn:active,
 .menu__item--btn-group .btn.active,

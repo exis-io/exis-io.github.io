@@ -1,9 +1,9 @@
 {
   "name": "resin-docs",
-  "version": "0.0.0",
-  "homepage": "https://github.com/resin-io/docs",
+  "version": "0.1.0",
+  "homepage": "https://github.com/exis-io/exis-io.github.io",
   "authors": [
-    "Milos Janjic <milosh012@gmail.com>"
+    "Damouse <damouse007@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.1",
-    "marked": "~0.3.2",
+    // "marked": "~0.3.2",
     "jquery": "~2.1.3",
     "angular": "~1.3.8",
     "angular-route": "~1.3.8",

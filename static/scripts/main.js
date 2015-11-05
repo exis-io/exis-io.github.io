@@ -38,10 +38,10 @@ function updateAnchorHref(links, route) {
   });
 }
 
-var GITHUB_EDIT_PAGE_LINK = 'https://github.com/resin-io/docs/edit/gh-pages';
+var GITHUB_EDIT_PAGE_LINK = 'https://github.com/exis-io/exis-io.github.io/edit/master/';
 
 angular
-  .module('resinDocs', [ 'ngRoute', 'ui.bootstrap' ])
+  .module('exisDocs', [ 'ngRoute', 'ui.bootstrap' ])
 
   .run(function($rootScope, MAIN_MENU) {
     $rootScope.mainMenu = MAIN_MENU;
@@ -50,32 +50,12 @@ angular
 
   .constant('MAIN_MENU', [
     {
-      "title": "What it's for",
-      "link": "https://resin.io/usecases"
-    },
-    {
-      "title": "How it works",
-      "link": "https://resin.io/how-it-works"
-    },
-    {
-      "title": "Talk",
-      "link": "http://talk.resin.io/"
-    },
-    {
-      "title": "Blog",
-      "link": "https://resin.io/blog/"
-    },
-    {
-      "title": "Pricing",
-      "link": "https://resin.io/pricing/"
-    },
-    {
       "title": "Team",
-      "link": "https://resin.io/team"
+      "link": "https://exis.io/team"
     },
     {
-      "title": "Contact",
-      "link": "https://resin.io/contact"
+      "title": "Contact Us",
+      "link": "https://exis.io/contact"
     }
   ])
 
@@ -102,7 +82,7 @@ angular
         }
       })
 
-      .otherwise('/pages/introduction/introduction.md');
+      .otherwise('/pages/general/Home.md');
   })
 
   // services
@@ -114,7 +94,7 @@ angular
         // add custom classess/directives
         preparedHtmlEl.find('table').addClass('table table-bordered');
         preparedHtmlEl.find('p > strong:first-child:contains("Warning")').parent().wrap('<alert type="warning"></alert>');
-        preparedHtmlEl.find('p > strong:first-child:contains("Note")').parent().wrap('<alert type="note"></alert>');
+        preparedHtmlEl.find('p > strong:first-child:contains("Definition")').parent().wrap('<alert type="note"></alert>');
         preparedHtmlEl.find('p > strong:first-child:contains("NOTE")').parent().wrap('<alert type="note"></alert>');
         preparedHtmlEl.find('img').attr('colorbox', '');
         preparedHtmlEl.find('h2,h3,h4,h5,h6').attr('anchor', '');
