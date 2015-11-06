@@ -269,7 +269,7 @@ When you drag in static content like *JSON* into Xcode it doesn't always copy th
 
 Because each room is going to be a different game of Cards Against, each room should have their own deck of cards, represented by a *Deck* object. This model is responsible for tracking cards in play, dealing cards, and shuffling them back into the deck for reuse. 
 
-Create a file for the new Deck class. It won't be passed along to the players in the game, so no need to have it subclass RiffleModel.
+Create a file for the new Deck class. It won't be passed along to the players in the game, so no need to have it subclass RiffleModel or make a copy for the iOS version. 
 
 ```
 import Foundation
@@ -307,23 +307,122 @@ print(deck.questions)
 
 If you see a listing of Card objects then the deck loaded successfully-- if not then there may be something wrong with your project's configuration. Now lets get this content to the iOS app. 
 
-Delete the deck testing code and move the deck instantiation into the Session class as an instance variable. Make a new method in the OSX's *Session* class for apps to call when they're ready to start playing. Return all the answers in the deck.
+Delete the deck testing code and move the deck instantiation into the Session class as an instance variable. Make a new method in the OSX's *Session* class for apps to call when they're ready to start playing. Return all the answers in the deck. 
+
+__Note:__ all returns from *registered* functions have to be wrapped in an array if they're returning arrays. Note the braces around `deck.answers` below.
 
 
 ```
 func play(domain: String) -> AnyObject {
-    return deck.answers
+    return [deck.answers]
 }
 ```
 
+Remember the first method we made in this class, our *Hello, World*. Making a function in a session object is not enough to expose it to the fabric-- there's no way for the session to know which of its methods should be exposed and when! You still have to register the function so the iOS app can call it. This task is left to you, reader: register the *play* function with the action `/play`.
 
+Once finished, write the code in the iOS app to call the `/play` action. Remember to substitute your own endpoint instead of the one listed in the example below.
 
+```
+session!.call("xs.demo.damouse.exagainst.container/play", session!.domain) { (cards: [Card]) in
+        print("\(cards) Got \(cards.count) cards")
+    }
+```
 
-TODO: this content belongs in the rest of the docs, not here. 
-Traditional network communication requires you to *serialize* objects, or convert them to a format that any programming language can understand. Usually mobile apps use a format called *JSON* to do this. A RiffleModel can be sent to another agent on the fabric without explicit 
+## Back and Forth
 
-TODO: Find a home for me. 
-Go ahead and make a new class for the Room object now. This class should belong in the container, not the app. 
+We can pass cards back and forth but can't show them off to the user yet. In this section you'll create a table to list all the cards and wire up the table to alert the container when a card is touched. This is the last section of part 1.
 
-TODO: If the auth content isn't finished here skip the bit on creating the user role-- You can try and test your app out, but sadly you won't get very far for now. In order for you to call to the container, you'll need *permission* from the container. 
+Create a new view controller.
 
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/1.png)
+
+Name it `GameViewController`
+
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/2.png)
+
+Drag a new ViewController onto your storyboard.
+
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/3.png)
+
+Set the controller to subclass GameViewController.
+
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/4.png)
+
+Add a UITableView to the controller. Resize it so it takes up the whole space. Select the controller and click the *Identity Inspector* button on the top of the right pane as shown in the image below. Set the *Storyboard ID* of the controller to *game*. This allows our starting ViewController class to find the *GameViewController* at runtime easily.
+
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/5.png)
+
+Right click on the TableView and drag up to the yellow icon that represents the current view controller. Assign the viewcontroller to be the *delegate* and *datasource* of the tableview. Also create an outlet for the table called `tableCards`.
+
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/7.png)
+
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/8.png)
+
+Now that the table is looking to our new view controller for information, we have to make sure we have that information at hand! Change the GameViewController so that it looks like this:
+
+```
+import UIKit
+import Riffle
+
+class GameViewController: UIViewController {
+    @IBOutlet weak var tableCards: UITableView!
+    var cards: [Card] = []
+    var session: RiffleSession!
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        tableCards.registerClass(UITableViewCell.self, forCellReuseIdentifier: "card")
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("card")!
+        cell.textLabel!.text = cards[indexPath.row].text
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cards.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+}
+```
+
+These are the UITableView *delegate* and *datasource* methods. They're called when the table configures itself. By changing the values returned in these methods, we can change the behavior of the tableview. 
+
+Inside *ViewController* change the `/play` call to match the code below. Now, instead of printing all the cards we receive from the container, we load the *GameViewController* from the storyboard, give it the cards we just loaded, and present it. 
+
+```
+    session!.call("xs.demo.damouse.exagainst.container/play", session!.domain) { (cards: [Card]) in
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("game") as! GameViewController
+        
+        controller.session = self.session
+        controller.cards = cards
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+        
+        print("\(cards) Got \(cards.count) cards")
+    }
+```
+
+Run the app, enter a username, and press *go*. You should see a scrollable list of cards.
+
+The final step in part 1 is informing the container of touch events on cards. Once we start building more of the app, this is how the user will "play" cards.
+
+At this point you've performed two registrations on the container and two calls in the app, so you've got to figure out this last one on your own! Register a method in the container that accepts two strings and prints them to the console. 
+
+In the app call the endpoint you registered previously. Pass your name as the first argument with  `session.domain` and the text of the card (see `cellForRowAtIndexPath` for hints on how to get the touched card's text.) 
+
+```
+func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+}
+```
+
+Once the two are wired up restart the container and the app and make sure you can see the text of the card in the container's log. 
+
+## Conclusion
+
+If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In part 2 we'll set up the game logic clean up the interface.
