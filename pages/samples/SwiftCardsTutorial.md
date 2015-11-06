@@ -11,7 +11,7 @@ Cards Against Humanity can't be played peer to peer. Any player with the app cou
 
 Create a new empty iOS project. Select `Single View Application`. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.PNG)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.png)
 
 Enter `ExAgainst` as the name for your new application. Remember the folder where you save the project, you'll need to find it again soon! Here we've saved it into the directory `~/Documents/ios/`.
 
