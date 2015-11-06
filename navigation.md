@@ -13,7 +13,7 @@
 * [Some Riffle](/pages/tour/Riffle.md)
 * [A Tightly Woven Fabric](/pages/tour/Fabric.md)
 * [Appliances](/pages/tour/Appliances.md)
-* [Security is not Feature](/pages/tour/Security.md)
+* [Security is not a Feature](/pages/tour/Security.md)
 
 
 ### [Fabric](/pages/fabric/Fabric.md)

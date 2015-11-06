@@ -13,9 +13,7 @@ Create a new empty iOS project. Select `Single View Application`.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.png)
 
-Enter a name for your new application. You don't have to enter the same name as shown in the image here. Remember the folder where you save the project, you'll need to find it again soon!
-
-In this tutorial we've named the project `ExiAgainst` and saved it into the directory `~/Documents/ios/`.
+Enter `ExAgainst` as the name for your new application. Remember the folder where you save the project, you'll need to find it again soon! Here we've saved it into the directory `~/Documents/ios/`.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/2.png)
 
@@ -23,7 +21,7 @@ The riffle libraries are distributed as `pods` through cocoapods. Check out more
 
 If you don't have cocoapods installed, now would be a good time. Follow the instructions on the home page from the link above. Cocoapods relies on `RubyGems`, a dependency manager for the ruby language. You'll need that too. 
 
-In order to install riffle you'll first have to make a `Podfile`. You can either use your favorite text editor for this or the built in TextEdit app available in OSX. The example below shows TextEdit-- you'll need to save it as plaintext if you use this!
+In order to install riffle you'll first have to create a `Podfile`. This is a simple text file that lists dependencies in Ruby. You can either use your favorite text editor for this or the built in TextEdit app available in OSX. The example below shows TextEdit. Be cafeul-- if you use TextEdit you'll need to convet it to *plaintext* before saving it.
 
 Enter this into the `Podfile`: 
 
@@ -41,7 +39,7 @@ pod 'Riffle'
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/4.png)
 
-Save the file as `Podfile` (with no extension!) in the same directory that you made your project.
+Save the file as `Podfile` (with no *.txt* extension!) in the same directory that you made your project.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/5.png)
 
@@ -71,6 +69,8 @@ impot Riffle
 
 Run the project and make sure it builds.
 
+__Note:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear. 
+
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/7.png)
 
 __Note:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found. 
@@ -94,18 +94,18 @@ use_frameworks!
 pod 'Riffle'
 ```
 
-Once the dependencies are installed and you have the workspace open go ahead and run the project. You should see `Hello, World!` appear in the console log. You should ignore the error warnings that appear above it. Unfortunately, Swift libraries and OSX applications don't play nicely just yet. Its still a very new language, and there are some kinks to work out!
+Once the dependencies are installed and you have the workspace open go the project. Add `import Riffle` to the top of *main.swift* and run the project. You should see `Hello, World!` appear in the console log. Don't worry about the error warnings that appear above it. Unfortunately, Swift libraries and OSX applications don't play nicely just yet. Its still a very new language, and there are some kinks to work out!
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/9.png)
 
-## Website Setup
+<!-- ## Website Setup
 
 You control the way you interact with Exis through a web interface. This includes creating applications, setting security details, and adding appliances to your applications. 
 
 We have to perform some basic setup before we can make our Hello, World exis application. Head over to [dev.exis.io](http://my-dev.exis.io).
 
 This section is deferred in the hope I'll have time to do UI work. 
-
+ -->
 <!-- ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.png)
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/2.png)
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.png)
@@ -120,22 +120,29 @@ The projects should be set up and ready to run, but lets take a quick break for 
 
 Remember that the OSX project will eventually run persistently in the cloud. For now, you can test with the app running locally. Because the OSX app will run in a container, we'll refer to it as the *backend* or *container* interchangeably from here on out. 
 
-Add the following code to `main.swift` in the OSX app. You should enter your app's domain in the Session constructor. 
+Add the following code to `main.swift` in the OSX app. The `app` instance variable is a `RiffleAgent`. It accepts the domain of your app, make sure to substitute your own user domain instead of the one listed below!
 
-TODO: replace the domain asked for with the user's domain or app domain. 
+For example, if your username is `joebob`, replace 
+
+```
+let app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
+```
+
+with 
+
+```
+let app = RiffleAgent(domain: "xs.demo.joebob.exagainst")
+```
+
 
 ```
 import Foundation
 import Riffle
 
-let token = "Wu0e09SPA2mTEh9MJu3BggX/6H8YxV8EJFxZrqhlF/oD6g15UtJoDoDclGdCC8p8V4T4RxDCWiWJ7QJ+UWni+OXMSUWYxNOAj/UkpzeBhUXrg8qAPyLdVXjzb+HdR6+lHSO60DJbhlhI0jOuR76iW141RjMlr6ggIUuBxTR+A1o="
-
-class Session: RiffleSession {
+class ContainerAgent: RiffleAgent {
     override func onJoin() {
-        print("Session joined")
-        
-        register(self.domain + "/hello", sayHi)
-        
+        print("Agent joined")
+        register("hello", sayHi)
     }
     
     func sayHi(name: String) -> AnyObject {
@@ -144,9 +151,13 @@ class Session: RiffleSession {
     }
 }
 
-let session = Session(domain: "xs.demo.damouse.exagainst.container")
-session.token = token
-session.connect()
+rifflog.DEBUG = true
+
+// Replace "damouse" with your own username!
+let app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
+let container = ContainerAgent(name: "container", superdomain: app)
+container.join()
+
 NSRunLoop.currentRunLoop().run()
 ```
 
@@ -154,23 +165,32 @@ In the iOS app add a button to the empty view controller created when you made t
 
 ![Missing Image!](/img/ios-cards-tutorial/app/2-hello/1.png)
 
-Add the following code to your view controller. Again, be sure to change all the domains written out here to match your domain. 
+Add the following code to your view controller. Again, replace the username listed in the domain with your own. 
 
 ```
-class ViewController: UIViewController, RiffleDelegate {
-    var session: RiffleSession?
-    
-    @IBAction func go(sender: AnyObject) {
-        session = RiffleSession(domain: "xs.demo.damouse.exagainst.userone")
-        session!.delegate = self
-        session!.connect()
-    }
+import UIKit
+import Riffle
 
+class ViewController: UIViewController, RiffleDelegate {
+    var app: RiffleAgent?
+    var me: RiffleAgent?
+    var container: RiffleAgent?
+    
+     @IBAction func go(sender: AnyObject) {
+        
+        app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
+        me = RiffleAgent(name: "user", superdomain: app!)
+        me!.delegate = self
+        me!.join()
+    }
+    
     func onJoin() {
         print("Session joined!")
         print("Sending a greeting to the backend!")
         
-        session!.call("xs.demo.damouse.exagainst/hello", self.session!.domain) { (greeting: String) -> () in
+        container = RiffleAgent(name: "container", superdomain: app!)
+        
+        container!.call("hello", me!.domain) { (greeting: String) -> () in
             print("The backend replied with \(greeting)")
         }
     }
@@ -179,7 +199,6 @@ class ViewController: UIViewController, RiffleDelegate {
         print("Session left!")
     }
 }
-
 ```
 
 Run both your apps. Watch the output of the container-- once you see that its session has connected with `Session Joined!` touch the button you added to your app. If you see the name of the app passed to the container and back, celebrate-- you've successfully written your first exis enabled application!
@@ -201,16 +220,17 @@ The user needs a way to input their name. Add a textfield to your view controlle
 Now change the `go` method you created as an action for the button: 
 
 ```
-    @IBAction func go(sender: AnyObject) { 
-        // Make the keyboard go away       
-        textfieldUsername.resignFirstResponder()
-        let name = textfieldUsername.text!
-        
-        // Create the domain for this user based on the name they've submitted
-        session = RiffleSession(domain: "xs.demo.damouse.exagainst." + name)
-        session!.delegate = self
-        session!.connect()
-    }
+@IBAction func go(sender: AnyObject) { 
+    // Make the keyboard go away       
+    textfieldUsername.resignFirstResponder()
+    let name = textfieldUsername.text!
+    
+    // Create the domain for this user based on the name they've submitted
+    app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
+    me = RiffleAgent(name: name, superdomain: app!)
+    me!.delegate = self
+    me!.join()
+}
 ```
 
 Lets give the app the ability to start playing. Remember that the container is going to run all the Cards Against rounds as the game goes on. In this app we're going to call each group of players in play a `Room.` The room is going to keep track of the cards and players in play at once and handle the actual gameplay. The container is responsible for creating rooms and assigning users to them. 
@@ -220,10 +240,10 @@ Lets give the app the ability to start playing. Remember that the container is g
 TODO: move this to the general docs and link to it. 
 Thankfully the node will provide. When an agent disconnects from the fabric, the node they were connected to publishes a special message *in its parent domain.* This message is published to the action `/sessionLeft`.
 
-In the container `Session` object you previously made, add the following line to `onJoin`, where *domain* is the domain of your app. 
+In the container `Agent` object you previously made, add the following line to `onJoin`, where *domain* is the domain of your app. 
 
 ```
-session.subscribe(domain + "/sessionLeft", sessionLeft)
+app.subscribe("sessionLeft", sessionLeft)
 ```
 
 The `sessionLeft` argument passed as the last argument to the subscribe method is a pointer to a function. You'll also need to implement the function:
@@ -323,7 +343,7 @@ Remember the first method we made in this class, our *Hello, World*. Making a fu
 Once finished, write the code in the iOS app to call the `/play` action. Remember to substitute your own endpoint instead of the one listed in the example below.
 
 ```
-session!.call("xs.demo.damouse.exagainst.container/play", session!.domain) { (cards: [Card]) in
+container!.call("play", me!.domain) { (cards: [Card]) in
         print("\(cards) Got \(cards.count) cards")
     }
 ```
@@ -367,7 +387,7 @@ import Riffle
 class GameViewController: UIViewController {
     @IBOutlet weak var tableCards: UITableView!
     var cards: [Card] = []
-    var session: RiffleSession!
+    var container: RiffleAgent!
     
     
     override func viewWillAppear(animated: Bool) {
@@ -398,7 +418,7 @@ Inside *ViewController* change the `/play` call to match the code below. Now, in
     session!.call("xs.demo.damouse.exagainst.container/play", session!.domain) { (cards: [Card]) in
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("game") as! GameViewController
         
-        controller.session = self.session
+        controller.container = self.container
         controller.cards = cards
         
         self.presentViewController(controller, animated: true, completion: nil)
