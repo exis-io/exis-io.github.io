@@ -11,7 +11,7 @@ Cards Against Humanity can't be played peer to peer. Any player with the app cou
 
 Create a new empty iOS project. Select `Single View Application`. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.PNG)
 
 Enter `ExAgainst` as the name for your new application. Remember the folder where you save the project, you'll need to find it again soon! Here we've saved it into the directory `~/Documents/ios/`.
 
@@ -98,20 +98,50 @@ Once the dependencies are installed and you have the workspace open go the proje
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/9.PNG)
 
-<!-- ## Website Setup
+## Website Setup
 
 You control the way you interact with Exis through a web interface. This includes creating applications, setting security details, and adding appliances to your applications. 
 
-We have to perform some basic setup before we can make our Hello, World exis application. Head over to [dev.exis.io](http://my-dev.exis.io).
+We have to perform some basic setup before we can make our Hello, World exis application. Head over to [my.exis.io](http://my.exis.io).
 
-This section is deferred in the hope I'll have time to do UI work. 
- -->
-<!-- ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
+Sign up for an account. For the *Signup Token* field enter `existest`. This will set you up for a 407 testing account.
+
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
+
+Navigate to the dashboard.
+
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/2.PNG)
+
+Create a new application. The name you choose here will become part of your domain. Make sure to spell *exagainst* correctly. Be sure to check the *Auth* and *Osxcontainer* checkboxes!
+
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.PNG)
+
+Once the app is created you should see the two appliances, *Auth* and *Osxcontainer* started up and running. 
+
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.PNG)
+
+All messages over the fabric have to have *Permissions*. For our *Hello, World!* we'll add a static permission that allows your app to call `hello` on the container. 
+
+Click *Create Static Role*.
+
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/5.PNG)
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.PNG) -->
+
+The endpoint is the destination of the function call, the container in our case. The agent is a hardcoded domain. 
+
+Make sure to replace `damouse` in the domains below with your username! If your username is `joebob` your endpoint should read: 
+
+```
+xs.demo.joebob.exagainst.container/hello
+```
+
+And agent:
+
+```
+xs.demo.joebob.exagainst.userone
+```
+
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.PNG)
+
 
 
 ## Hello, Riffle
