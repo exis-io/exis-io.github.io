@@ -1,9 +1,12 @@
 # iOS Tutorial- Cards Against Humanity 
 
-__NOTE:__ Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you're using this version you may have to do some of these steps differently.  Check your version of xcode: ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
+__Definition:__Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. The game is available as a free download that players can print to create their own cards, and also available to purchase in published hardcopy. Its development originated from a successful Kickstarter campaign and has received acclaim for its simple concept backed up by its satirical, mature content. The game is available under a non-free Creative Commons license BY-NC-SA https://en.wikipedia.org/wiki/Cards_Against_Humanity
 
+In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. 
 
-Cards Against Humanity can't be played peer to peer. Any player with the app could change the code and lie about the cards they have or the cards they're going to play! 
+Cards Against is played between a set of peers, so it seems like the game should be able to run peer to peer, or each player communicating directly with other players. Like all cards games, however, we have to watch out for cheaters! In order to maintain the state of the game and make sure play is fair we'll rely on a *container*, or a program running in the cloud. This container will fufill the role traditionally filled by web servers. 
+
+Lets get going!
 
 ## Creating a new iOS App with Riffle
 
@@ -15,9 +18,11 @@ Enter `ExAgainst` as the name for your new application. Remember the folder wher
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/2.PNG)
 
-The riffle libraries are distributed as `pods` through cocoapods. Check out more information about cocoapods at their [website](https://cocoapods.org/). 
+The riffle libraries are distributed as `pods` through cocoapods. Check out more information about cocoapods at their [website](https://cocoapods.org/). To check if you have cocoapods installed, open the *Terminal* application and type `pod`. If you see something like this (the colors may not match) then you're ready to go with cocoapods.
 
-If you don't have cocoapods installed, now would be a good time. Follow the instructions on the home page from the link above. Cocoapods relies on `RubyGems`, a dependency manager for the ruby language. You'll need that too. 
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/10.PNG)
+
+If you don't have cocoapods installed, now would be a good time. Follow the instructions on the home page from the link above. Cocoapods relies on [RubyGems](https://rubygems.org/pages/download), a dependency manager for the ruby language. You'll need that too. 
 
 In order to install riffle you'll first have to create a `Podfile`. This is a simple text file that lists dependencies in Ruby. You can either use your favorite text editor for this or the built in TextEdit app available in OSX. The example below shows TextEdit. Be cafeul-- if you use TextEdit you'll need to convet it to *plaintext* before saving it.
 
@@ -62,16 +67,20 @@ Close any open Xcode windows you may have open. Cocoapods doesn't just copy code
 Here's what the newly created project looks like. Note the `Pods` project below your project in the file navigator. Import riffle by adding the import to the top of the view controller: 
 
 ```
-impot Riffle
+import Riffle
 ```
 
 Run the project and make sure it builds.
 
-__Warning:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear. 
+__Warning:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear.
+
+__NOTE:__ Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you see errors relating to `import of non-modular header...` you will have to delete the `Pods/Headers/Private` folder from your project directory. Check your version of xcode: ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
+
+ 
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/7.PNG)
 
-__Warning:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found. 
+<!-- __Warning:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found.  -->
 
 __NOTE:__ if you see an error on build and you have Xcode 7.1 you'll need to setup a quick workaround. Open the finder and navigate to the project folder. Delete the directory `Pods/Headers/Private` and rebuild. 
 
@@ -96,6 +105,20 @@ Once the dependencies are installed and you have the workspace open go the proje
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/9.PNG)
 
+The last step in setting up the OSX app is to let Xcode know the *Riffle* libraries contain swift code. If you ever see errors like this:
+
+![Missing Image!](/img/ios-cards-tutorial/app/2-hello/3.PNG)
+
+Then you forgot to do this step. 
+
+1. In the left-side pane, or the *Project Navigator*, click on the *Pods* project with the blue icon. 
+2. Select the `Riffle` target on the left side of the newly opened options pane. It has a yellow toolbox next to it.
+3. Go to `Build Settings` 
+4. Type in *"contains swift"* in the search bar on the options pane
+5. Find the setting `Embedded Content Contains Swift Code` and set it to `Yes`
+
+![Missing Image!](/img/ios-cards-tutorial/app/2-hello/4.PNG)
+
 ## Website Setup
 
 You control the way you interact with Exis through a web interface. This includes creating applications, setting security details, and adding appliances to your applications. 
@@ -118,9 +141,9 @@ Once the app is created you should see the two appliances, *Auth* and *Osxcontai
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.PNG)
 
-All messages over the fabric have to have *Permissions*. For our *Hello, World!* we'll add a static permission that allows your app to call `hello` on the container. 
+All messages over the fabric have to have [*Permissions*][perm]. This allows agents to send messages. For our *Hello, World!* we'll add a static permission that allows your app to call `hello` on the container. 
 
-Click *Create Static Role*.
+From the dashboard click on the blue *Permissions* button. Once on the permissions page, click *Create Static Role*.
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/5.PNG)
 
@@ -140,7 +163,7 @@ xs.demo.joebob.exagainst.userone
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.PNG)
 
-
+Once you're finished, click on *Create Role*.
 
 ## Hello, Riffle
 
@@ -167,6 +190,9 @@ let app = RiffleAgent(domain: "xs.demo.joebob.exagainst")
 import Foundation
 import Riffle
 
+// Replace "damouse" with your own username!
+let app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
+
 class ContainerAgent: RiffleAgent {
     override func onJoin() {
         print("Agent joined")
@@ -179,10 +205,6 @@ class ContainerAgent: RiffleAgent {
     }
 }
 
-rifflog.DEBUG = true
-
-// Replace "damouse" with your own username!
-let app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
 let container = ContainerAgent(name: "container", superdomain: app)
 container.join()
 
@@ -207,13 +229,13 @@ class ViewController: UIViewController, RiffleDelegate {
      @IBAction func go(sender: AnyObject) {
         
         app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
-        me = RiffleAgent(name: "user", superdomain: app!)
+        me = RiffleAgent(name: "userone", superdomain: app!)
         me!.delegate = self
         me!.join()
     }
     
     func onJoin() {
-        print("Session joined!")
+        print("Agent joined!")
         print("Sending a greeting to the backend!")
         
         container = RiffleAgent(name: "container", superdomain: app!)
@@ -261,6 +283,21 @@ Now change the `go` method you created as an action for the button:
 }
 ```
 
+We have a bit of a problem. Every message on the fabric needs a permission, and each permissions is the agent sending the message and the endpoint the message is headed for. Lets examine our *Hello, World!* permission: 
+
+```
+Agent:       xs.demo.damouse.exagainst.userone
+Endpoint:    xs.demo.damouse.exagainst.container/hello
+```
+
+Because user domains always include their name, how can you give permissions to *all* users? Enter the `Role`. Roles are a set of permissions that can be assigned to all agents. In order to give all users access to the `/hello` function you're going to edit the *User* role. The *User* role holds permissions given to every user.
+
+Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update Role* in the *User Role* section. Add the endpoint below, substiting your own username for `damouse`. 
+
+![Missing Image!](/img/ios-cards-tutorial/web/2-perms/3.PNG)
+
+### Playing
+
 Lets give the app the ability to start playing. Remember that the container is going to run all the Cards Against rounds as the game goes on. In this app we're going to call each group of players in play a `Room.` The room is going to keep track of the cards and players in play at once and handle the actual gameplay. The container is responsible for creating rooms and assigning users to them. 
 
 `Rooms` need to know when players leave the app or their room-- they have to remove them from play. Ideally the player should let their rooms know when they leave the game, but we still have to check for silent disconnections from the user. 
@@ -269,17 +306,17 @@ Lets give the app the ability to start playing. Remember that the container is g
 
 Thankfully the node will provide. When an agent disconnects from the fabric, the node they were connected to publishes a special message *in its parent domain.* This message is published to the action `/sessionLeft`. In order for the container to receive this message we have to give it the appropriate permission.
 
-Create a new static permission to match the image shown below. Again, remember to substitue your own username for `damouse` in both domains.
+Create a new static permission to match the image shown below. Again, remember to substitue your own username for `damouse` in both domains. Note the `:s` at the end of the endpoint! This gives the agent permission to *subscribe*.
 
 ![Missing Image!](/img/ios-cards-tutorial/web/2-perms/1.PNG)
 
-In the container `Agent` object you previously made, add the following line to `onJoin`, where *domain* is the domain of your app. 
+In the container `Agent` object you previously made, add the following line to `onJoin`. 
 
 ```
 app.subscribe("sessionLeft", sessionLeft)
 ```
 
-The `sessionLeft` argument passed as the last argument to the subscribe method is a pointer to a function. You'll also need to implement the function:
+The `sessionLeft` argument passed as the last argument to the subscribe method is a pointer to a function. You'll also need to implement the function inside the *ContainerAgent* class.
 
 ```
 func sessionLeft(domain: String) {
@@ -287,7 +324,7 @@ func sessionLeft(domain: String) {
 }
 ```
 
-As the name implies, we should see this method get called when any user leaves the app. Go ahead and try it out. Once the app is connected and authenticated terminate the app and watch the console output for the container. 
+As the name implies, we should see this method get called when any user leaves the app. Go ahead and try it out-- run the container and the app again. Once the app is connected and authenticated terminate the app and watch the console output for the container. 
 
 ![Missing Image!](/img/ios-cards-tutorial/app/3-auth/2.PNG)
 
@@ -297,13 +334,19 @@ We're missing the actual cards in our card game! Time to fix that. In this secti
 
 Riffle provides a useful wrapper model named *RiffleModel*. These classes are special-- you don't have to manually serialize them to send them to other agents. 
 
-TODO: check the multi target config again, or try the multiple project config here. If it fails, explain the shared code. 
-
-Unfortunatly, there's an important limitation to keep in mind when working with RiffleModels in Xcode. Sadly, the process of working with two targets, or apps, in the same Xcode project is a little buggy right now. When an agent receives a RiffleModel it has to have the definition of the class in the same project. This means you'll need to create the Class twice, once for the container and once for the app. 
+Unfortunatly, there's an important limitation to keep in mind when working with RiffleModels in Xcode. Sadly, the process of working with two targets, or apps, in the same Xcode project is currently unstable. When an agent receives a RiffleModel it has to have the definition of the class in the same project. This means you'll need to create the Class twice, once for the container and once for the app. 
 
 Create a new class in both projects. Name it *Card*, make sure it inherits from RiffleModel, and give it one property: a string called *text.*
 
-![Missing Image!](/img/ios-cards-tutorial/app/4-data/1.PNG)
+```
+import Foundation
+import Riffle
+
+class Card: RiffleModel {
+    var id = -1
+    var text = ""
+}
+```
 
 The object represents the data, but we still have to build the data. Download the data for the cards [here](/img/pg13.zip). Unzip the file and drag it into your project. Make sure to select *Copy items if needed* and make sure *Add to targets* is checked for your project. 
 
@@ -360,7 +403,7 @@ print(deck.questions)
 
 If you see a listing of Card objects then the deck loaded successfully-- if not then there may be something wrong with your project's configuration. Now lets get this content to the iOS app. 
 
-Delete the deck testing code and move the deck instantiation into the Session class as an instance variable. Make a new method in the OSX's *Session* class for apps to call when they're ready to start playing. Return all the answers in the deck. 
+Delete the deck testing code and move the deck instantiation into the Session class as an instance variable. Make a new method in the OSX's *Agent* class for apps to call when they're ready to start playing. Return all the answers in the deck. 
 
 __NOTE:__ all returns from *registered* functions have to be wrapped in an array if they're returning arrays. Note the braces around `deck.answers` below.
 
@@ -371,34 +414,18 @@ func play(domain: String) -> AnyObject {
 }
 ```
 
-Remember the first method we made in this class, our *Hello, World*. Making a function in a session object is not enough to expose it to the fabric-- there's no way for the session to know which of its methods should be exposed and when! You still have to register the function so the iOS app can call it. This task is left to you, reader: register the *play* function with the action `/play`.
+Remember the first method we made in this class, our *Hello, World*. Making a function in a session object is not enough to expose it to the fabric-- there's no way for the session to know which of its methods should be exposed and when! You still have to register the function so the iOS app can call it. This task is left to you, reader: register the *play* function with the action `/play`. Be careful to call `register` on the *container* object, not *app*!
 
-We have a bit of a problem. Every message on the fabric needs a permission, and each permissions is the agent sending the message and the endpoint the message is headed for. Lets examine our *Hello, World!* permission: 
+We want all players to be able to access this function! You'll need to automatically give all players permission to call the `/play` action. Go back to the *Hello, World!* example and review Roles, then add a new endpoint to the role. 
 
-```
-Agent:       xs.demo.damouse.exagainst.userone
-Endpoint:    xs.demo.damouse.exagainst.container/hello
-```
+Write the code in the iOS app to call the `/play` action. Remember to substitute your own endpoint instead of the one listed in the example below.
 
-Because user domains always include their name, how can you give permissions to *all* users? Enter the `Role`. Roles are a set of permissions that can be assigned to all agents. In order to give all users access to the `/play` function you're going to edit the *User* role. The *User* role holds permissions given to every user.
-
-Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update Role* in the *User Role* section. Add the endpoints below, substiting your own username for `damouse`.
-
-![Missing Image!](/img/ios-cards-tutorial/web/2-perms/2.PNG)
-
-Once finished, write the code in the iOS app to call the `/play` action. Remember to substitute your own endpoint instead of the one listed in the example below.
-
-```
-container!.call("play", me!.domain) { (cards: [Card]) in
-        print("\(cards) Got \(cards.count) cards")
-    }
-```
 
 ## Back and Forth
 
-We can pass cards back and forth but can't show them off to the user yet. In this section you'll create a table to list all the cards and wire up the table to alert the container when a card is touched. This is the last section of part 1.
+We can pass cards back and forth, but we cant tell the container when the user picks a card. In this section you'll create a table to list all the cards and wire up the table to alert the container when a card is touched. This is the last section of part 1.
 
-Create a new view controller.
+Create a new view controller in the iOS app.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/5-ui/1.PNG)
 
@@ -414,7 +441,7 @@ Set the controller to subclass GameViewController.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/5-ui/4.PNG)
 
-Add a UITableView to the controller. Resize it so it takes up the whole space. Select the controller and click the *Identity Inspector* button on the top of the right pane as shown in the image below. Set the *Storyboard ID* of the controller to *game*. This allows our starting ViewController class to find the *GameViewController* at runtime easily.
+Add a UITableView to the controller. Resize it so it takes up the whole space. Select the controller and click the *Identity Inspector* button on the top of the right pane as shown in the image below. Set the *Storyboard ID* of the controller to `game`. This allows our starting ViewController class to find the *GameViewController* at runtime easily.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/5-ui/5.PNG)
 
@@ -434,6 +461,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var tableCards: UITableView!
     var cards: [Card] = []
     var container: RiffleAgent!
+    var me: RiffleAgent!
     
     
     override func viewWillAppear(animated: Bool) {
@@ -461,10 +489,11 @@ These are the UITableView *delegate* and *datasource* methods. They're called wh
 Inside *ViewController* change the `/play` call to match the code below. Now, instead of printing all the cards we receive from the container, we load the *GameViewController* from the storyboard, give it the cards we just loaded, and present it. 
 
 ```
-    session!.call("xs.demo.damouse.exagainst.container/play", session!.domain) { (cards: [Card]) in
+    container!.call("play", me!.domain) { (cards: [Card]) in
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("game") as! GameViewController
         
         controller.container = self.container
+        controller.me = self.me!
         controller.cards = cards
         
         self.presentViewController(controller, animated: true, completion: nil)
@@ -475,11 +504,13 @@ Inside *ViewController* change the `/play` call to match the code below. Now, in
 
 Run the app, enter a username, and press *go*. You should see a scrollable list of cards.
 
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/9.PNG)
+
 The final step in part 1 is informing the container of touch events on cards. Once we start building more of the app, this is how the user will "play" cards.
 
-At this point you've performed two registrations on the container and two calls in the app, so you've got to figure out this last one on your own! Register a method in the container that accepts two strings and prints them to the console. 
+At this point you've performed two registrations on the container and two calls in the app, so you've got to figure out this last one on your own! Register a method on the container that accepts two strings and prints them to the console. The name of this method is up to you. Remember to add it to the *Users* role!
 
-In the app call the endpoint you registered previously. Pass your name as the first argument with  `session.domain` and the text of the card (see `cellForRowAtIndexPath` for hints on how to get the touched card's text.) 
+From the iOS app call this new endpoint in the *GameViewController*'s `didSelectRowAtIndexPath` method. Pass your domain with `me.domain` and the text of the selected card (see `cellForRowAtIndexPath` for hints on how to get the touched card's text.)
 
 ```
 func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -487,8 +518,29 @@ func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSInde
 }
 ```
 
-Once the two are wired up restart the container and the app and make sure you can see the text of the card in the container's log. 
+Once the two are wired up restart the container and the app. When you touch a card in the app, you should see the container report the event:
+
+```
+[xs.demo.damouse.exagainst.userthree] touched the card: "The ghost of Marlon Brando"
+```
 
 ## Conclusion
 
 If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In part 2 we'll set up the game logic clean up the interface.
+
+
+
+<!-- Reference for TOC -->
+
+[message]:/pages/riffle/Message.md
+[agent]:/pages/riffle/Agent.md
+[node]:/pages/fabric/Node.md
+[fabric]:/pages/fabric/Fabric.md
+[domain]:/pages/riffle/Domain.md
+[action]:/pages/riffle/Agent.md
+[endpoint]:/pages/riffle/Endpoint.md
+[samples]:/pages/samples/Samples.md
+
+[auth]:/pages/appliances/Auth-Appliance.md
+
+[perm]:/pages/security/Permission.md

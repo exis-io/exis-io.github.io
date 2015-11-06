@@ -3,6 +3,8 @@
 Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code!
 Please check out our documentation, and follow along with code from our [repos](https://github.com/exis-io).
 
+Want to learn about Exis quickly? Run through the [Tour.](/pages/tour/Tour.md)
+
 Check out the [**iOS Cards Against Humanity Tutorial!**](/pages/samples/SwiftCardsTutorial.md)
 
 ## Overview
