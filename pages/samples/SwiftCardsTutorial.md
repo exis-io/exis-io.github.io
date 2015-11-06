@@ -1,8 +1,6 @@
 # iOS Tutorial- Cards Against Humanity 
 
-Note: Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you're using this version you may have to do some of these steps differently.  Check your version of xcode: 
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
+__NOTE:__ Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you're using this version you may have to do some of these steps differently.  Check your version of xcode: ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
 
 
 Cards Against Humanity can't be played peer to peer. Any player with the app could change the code and lie about the cards they have or the cards they're going to play! 
@@ -69,13 +67,13 @@ impot Riffle
 
 Run the project and make sure it builds.
 
-__Note:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear. 
+__Warning:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear. 
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/7.PNG)
 
-__Note:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found. 
+__Warning:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found. 
 
-__Note:__ if you see an error on build and you have Xcode 7.1 you'll need to setup a quick workaround. Open the finder and navigate to the project folder. Delete the directory `Pods/Headers/Private` and rebuild. 
+__NOTE:__ if you see an error on build and you have Xcode 7.1 you'll need to setup a quick workaround. Open the finder and navigate to the project folder. Delete the directory `Pods/Headers/Private` and rebuild. 
 
 
 ## Setting up OSX App
@@ -322,7 +320,7 @@ When you drag in static content like *JSON* into Xcode it doesn't always copy th
 5. Make sure the *subpath* textfield is empty
 6. Uncheck *Copy only when isntalling*
 
-Because each room is going to be a different game of Cards Against, each room should have their own deck of cards, represented by a *Deck* object. This model is responsible for tracking cards in play, dealing cards, and shuffling them back into the deck for reuse. 
+Because each room is going to be a different game of *Cards Against*, each room should have their own deck of cards, represented by a *Deck* object. This model is responsible for tracking cards in play, dealing cards, and shuffling them back into the deck for reuse. 
 
 Create a file for the new Deck class. It won't be passed along to the players in the game, so no need to have it subclass RiffleModel or make a copy for the iOS version. 
 
@@ -364,7 +362,7 @@ If you see a listing of Card objects then the deck loaded successfully-- if not 
 
 Delete the deck testing code and move the deck instantiation into the Session class as an instance variable. Make a new method in the OSX's *Session* class for apps to call when they're ready to start playing. Return all the answers in the deck. 
 
-__Note:__ all returns from *registered* functions have to be wrapped in an array if they're returning arrays. Note the braces around `deck.answers` below.
+__NOTE:__ all returns from *registered* functions have to be wrapped in an array if they're returning arrays. Note the braces around `deck.answers` below.
 
 
 ```
