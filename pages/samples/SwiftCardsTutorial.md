@@ -267,8 +267,13 @@ Lets give the app the ability to start playing. Remember that the container is g
 
 `Rooms` need to know when players leave the app or their room-- they have to remove them from play. Ideally the player should let their rooms know when they leave the game, but we still have to check for silent disconnections from the user. 
 
-TODO: move this to the general docs and link to it. 
-Thankfully the node will provide. When an agent disconnects from the fabric, the node they were connected to publishes a special message *in its parent domain.* This message is published to the action `/sessionLeft`.
+<!-- TODO: move this to the general docs and link to it.  -->
+
+Thankfully the node will provide. When an agent disconnects from the fabric, the node they were connected to publishes a special message *in its parent domain.* This message is published to the action `/sessionLeft`. In order for the container to receive this message we have to give it the appropriate permission.
+
+Create a new static permission to match the image shown below. Again, remember to substitue your own username for `damouse` in both domains.
+
+![Missing Image!](/img/ios-cards-tutorial/web/2-perms/1.PNG)
 
 In the container `Agent` object you previously made, add the following line to `onJoin`, where *domain* is the domain of your app. 
 
@@ -369,6 +374,19 @@ func play(domain: String) -> AnyObject {
 ```
 
 Remember the first method we made in this class, our *Hello, World*. Making a function in a session object is not enough to expose it to the fabric-- there's no way for the session to know which of its methods should be exposed and when! You still have to register the function so the iOS app can call it. This task is left to you, reader: register the *play* function with the action `/play`.
+
+We have a bit of a problem. Every message on the fabric needs a permission, and each permissions is the agent sending the message and the endpoint the message is headed for. Lets examine our *Hello, World!* permission: 
+
+```
+Agent:       xs.demo.damouse.exagainst.userone
+Endpoint:    xs.demo.damouse.exagainst.container/hello
+```
+
+Because user domains always include their name, how can you give permissions to *all* users? Enter the `Role`. Roles are a set of permissions that can be assigned to all agents. In order to give all users access to the `/play` function you're going to edit the *User* role. The *User* role holds permissions given to every user.
+
+Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update Role* in the *User Role* section. Add the endpoints below, substiting your own username for `damouse`.
+
+![Missing Image!](/img/ios-cards-tutorial/web/2-perms/2.PNG)
 
 Once finished, write the code in the iOS app to call the `/play` action. Remember to substitute your own endpoint instead of the one listed in the example below.
 
