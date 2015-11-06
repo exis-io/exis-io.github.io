@@ -20,17 +20,17 @@
 
 * [The Fabric](/pages/fabric/Fabric.md)
 * [Node](/pages/fabric/Node.md)
-* [Owner](/pages/fabric/Owner.md)
-* [Tenant](/pages/fabric/Tenant.md)
+<!-- * [Owner](/pages/fabric/Owner.md) -->
+<!-- * [Tenant](/pages/fabric/Tenant.md) -->
+* [Domain](/pages/riffle/Domain.md)
+* [Action](/pages/riffle/Action.md)
+* [Endpoint](/pages/riffle/Endpoint.md)
+* [Agent](/pages/riffle/Agent.md)
 
 
 ### [Riffle](/pages/riffle/Riffle.md)
 
 * [Riffle](/pages/riffle/Riffle.md)
-* [Domain](/pages/riffle/Domain.md)
-* [Action](/pages/riffle/Action.md)
-* [Endpoint](/pages/riffle/Endpoint.md)
-* [Agent](/pages/riffle/Agent.md)
 * [Message](/pages/riffle/Message.md)
 * [Pub/Sub](/pages/riffle/PubSub.md)
 * [Register/Call](/pages/riffle/RegisterCall.md)
@@ -48,17 +48,20 @@
 * [Gate](/pages/appliances/Gate-Appliances.md)
 
 
-### [Examples](/pages/samples/Samples.md)
+<!-- ### [Examples](/pages/samples/Samples.md)
 
 * [Examples](/pages/samples/Samples.md)
 * [iOS Cards Against Humanity Tutorial](/pages/samples/SwiftCardsTutorial.md)
-
+ -->
 
 ### [Security](/pages/security/Security.md)
 
 * [Security](/pages/security/Security.md)
-* [Credentials](/pages/security/Credentials.md)
-* [Security Flows](/pages/security/Security-Flows.md)
+* [Permissions](/pages/security/Permission.md)
+* [Authentication](/pages/security/Authentication.md)
+
+<!-- * [Credentials](/pages/security/Credentials.md)
+* [Security Flows](/pages/security/Security-Flows.md) -->
 
 
 

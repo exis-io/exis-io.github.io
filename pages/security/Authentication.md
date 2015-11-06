@@ -1,7 +1,6 @@
-Sample code demonstrating sample exis usage.
+# Authentication
 
-**Python**
-* Bare-bones CLI [chat client][pychat]
+The process by which new domains are created. A new [domain][domain] must ask another domain to become a subdomain by passing it credentials.
 
 
 <!-- Reference for TOC -->
@@ -18,6 +17,3 @@ Sample code demonstrating sample exis usage.
 [auth]:/pages/appliances/Auth-Appliance.md
 
 [perm]:/pages/security/Permission.md
-
-[pychat]:/pages/samples/Python-Sample-Chat.md
-[pychat]:/pages/samples/Python-Sample-Chat.md

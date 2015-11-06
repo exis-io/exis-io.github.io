@@ -10,17 +10,18 @@ One of the key tenants of Exis is its decentralized nature. While many existing 
 
 Unlike the internet, access to the Fabric is controlled. This enables developers to know they can only talk to things that have been authenticated to the network, thus simplifying their verification requirements. A secondary aspect is the idea that any agent communicating on the fabric has an associated identification, making it easier to target endpoints while writing apps (ie. every time you log onto the internet your IP address can change, but every time you access the fabric your ID will always be `xs.joebob`).
 
-<!-- TODO
+[Agents][agent] all have to be authenticated by an application before they can use the fabric. They exchanve credentials, which can be usernames, passwords, or any other identifying information, with an [**Auth**][auth] appliance. Out of the box, *Auth* appliances handle the base cases for user authentication. They can also be customized by the developer to handle any odd cases. 
+
 ## Permissions
 
-## Protecting Data: End to End
+A permission is the declaration that a user or application is allowed to make a call. This functionality is something the internet sorely lacks-- the ability for receivers to reject traffic!
 
-## Protecting Data: At Rest
--->
+<!-- ## Protecting Data: End to End
 
-Thats the end of the tour. From here you should check out our [samples][samples] or get a better look at the details of our documentation.
+## Protecting Data: At Res -->
+
+## Where's the Gift Shop?
+
+Thats the end of the tour. Check out the [samples][samples] and pick up some souvenirs. 
 
 
-<!-- Reference for TOC -->
-
-[samples]:/pages/samples/Samples.md

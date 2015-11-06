@@ -3,6 +3,8 @@
 Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code!
 Please check out our documentation, and follow along with code from our [repos](https://github.com/exis-io).
 
+Check out the [**iOS Cards Against Humanity Tutorial!**](/pages/samples/SwiftCardsTutorial.md)
+
 ## Overview
 
 Exis is a combination of three components that make writing next-generation apps as simple as possible. It consists of the [Riffle](/pages/riffle/Riffle.md) protocol, [Fabric](/pages/fabric/Fabric.md) network, and [Appliances](/pages/appliances/Appliances.md). Together these standardize networking best practices and simplify the design and implementation of distributed applications. 

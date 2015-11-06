@@ -1,11 +1,14 @@
 # Domain
 
-A string in reverse domain name form that uniquely identifies a single agent. Domains may be nested by separating subdomains with periods. A subdomain is owned by its parent. 
-
+The name of an [agent][agent]. A set of strings seperated by peroids. Domains can not change.
 
 ## General
 
-Domains are subtly different from names, although the name of an agent is also the name of its domain. A domain is a realm of influence and administration and provides implicit permissions management. 
+Every agent on the fabric has a name, a domain, and an owner. 
+
+For example, the agent `sarah` owns a domain `delilah`. Delilah's domain is `sarah.delilah`. Sarah is the `superdomain` of `delilah` while `delilah` is the subdomain of `sarah`.
+
+Superdomains have absolute control over subdomains. They can destroy or create subdomains at will and do not require [permissions][perm] to send actions.
 
 ### Examples
 
@@ -18,3 +21,20 @@ Domains are subtly different from names, although the name of an agent is also t
 | Developer using Appliance  | `xs.damouse.auth`  |
 | App using Appliance  | `xs.damouse.toaster.auth`  |
 | User in App  | `xs.damouse.toaster.dad`  |
+
+
+
+<!-- Reference for TOC -->
+
+[message]:/pages/riffle/Message.md
+[agent]:/pages/riffle/Agent.md
+[node]:/pages/fabric/Node.md
+[fabric]:/pages/fabric/Fabric.md
+[domain]:/pages/riffle/Domain.md
+[action]:/pages/riffle/Agent.md
+[endpoint]:/pages/riffle/Endpoint.md
+[samples]:/pages/samples/Samples.md
+
+[auth]:/pages/appliances/Auth-Appliance.md
+
+[perm]:/pages/security/Permission.md
