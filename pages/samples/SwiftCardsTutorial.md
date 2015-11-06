@@ -2,7 +2,7 @@
 
 Note: Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you're using this version you may have to do some of these steps differently.  Check your version of xcode: 
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
 
 
 Cards Against Humanity can't be played peer to peer. Any player with the app could change the code and lie about the cards they have or the cards they're going to play! 
@@ -11,11 +11,11 @@ Cards Against Humanity can't be played peer to peer. Any player with the app cou
 
 Create a new empty iOS project. Select `Single View Application`. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.PNG)
 
 Enter `ExAgainst` as the name for your new application. Remember the folder where you save the project, you'll need to find it again soon! Here we've saved it into the directory `~/Documents/ios/`.
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/2.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/2.PNG)
 
 The riffle libraries are distributed as `pods` through cocoapods. Check out more information about cocoapods at their [website](https://cocoapods.org/). 
 
@@ -37,11 +37,11 @@ pod 'Riffle'
 ```
 
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/4.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/4.PNG)
 
 Save the file as `Podfile` (with no *.txt* extension!) in the same directory that you made your project.
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/5.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/5.PNG)
 
 Cocoapods is used through the command line, or `Terminal` application in OSX. Find it in the application window or spotlight. Once open, you'll need to navigate to the directory where you saved the project. 
 
@@ -57,7 +57,7 @@ Once in the directory instruct cocoapods to fetch all dependencies. This will lo
 pod install
 ```
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/6.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/6.PNG)
 
 Close any open Xcode windows you may have open. Cocoapods doesn't just copy code into your project, it creates new projects for each component and combines them into a `workspace`. Don't worry, everything should look the same! Navigate to the folder you saved the project in and open the `.xcworkspace` file-- not the `.xcproject`!
 
@@ -71,7 +71,7 @@ Run the project and make sure it builds.
 
 __Note:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/7.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/7.PNG)
 
 __Note:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found. 
 
@@ -82,7 +82,7 @@ __Note:__ if you see an error on build and you have Xcode 7.1 you'll need to set
 
 The process for setting up an OSX application is the same as for the iOS version. Make sure to choose `OSX Application` on the left pane in the new project wizard and `Command Line Tool` in the right pane.
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/8.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/8.PNG)
 
 Repeat the same steps as for the iOS application. You'll need to tweak the `Podfile` to tell cocoapods about our platform: 
 
@@ -96,7 +96,7 @@ pod 'Riffle'
 
 Once the dependencies are installed and you have the workspace open go the project. Add `import Riffle` to the top of *main.swift* and run the project. You should see `Hello, World!` appear in the console log. Don't worry about the error warnings that appear above it. Unfortunately, Swift libraries and OSX applications don't play nicely just yet. Its still a very new language, and there are some kinks to work out!
 
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/9.png)
+![Missing Image!](/img/ios-cards-tutorial/app/1-setup/9.PNG)
 
 <!-- ## Website Setup
 
@@ -106,12 +106,12 @@ We have to perform some basic setup before we can make our Hello, World exis app
 
 This section is deferred in the hope I'll have time to do UI work. 
  -->
-<!-- ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.png)
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/2.png)
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.png)
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.png)
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/5.png)
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.png) -->
+<!-- ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/2.PNG)
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.PNG)
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.PNG)
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/5.PNG)
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.PNG) -->
 
 
 ## Hello, Riffle
@@ -163,7 +163,7 @@ NSRunLoop.currentRunLoop().run()
 
 In the iOS app add a button to the empty view controller created when you made the project. Create an action for the button to its parent view controller. In the example below the action is called *go*, but you can name it whatever you'd like. Dont worry if you have more code in your view controller than is shown in this image. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/2-hello/1.png)
+![Missing Image!](/img/ios-cards-tutorial/app/2-hello/1.PNG)
 
 Add the following code to your view controller. Again, replace the username listed in the domain with your own. 
 
@@ -205,7 +205,7 @@ Run both your apps. Watch the output of the container-- once you see that its se
 
 Here's some sample output from an app on the left and a container on the right. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/2-hello/2.png)
+![Missing Image!](/img/ios-cards-tutorial/app/2-hello/2.PNG)
 
 ## User Login
 
@@ -215,7 +215,7 @@ There are a few levels of authentication, each based on how secure the developer
 
 The user needs a way to input their name. Add a textfield to your view controller and create an `Outlet` for the textfield. Call this outlet `textfieldUsername`.
 
-![Missing Image!](/img/ios-cards-tutorial/app/3-auth/1.png)
+![Missing Image!](/img/ios-cards-tutorial/app/3-auth/1.PNG)
 
 Now change the `go` method you created as an action for the button: 
 
@@ -256,7 +256,7 @@ func sessionLeft(domain: String) {
 
 As the name implies, we should see this method get called when any user leaves the app. Go ahead and try it out. Once the app is connected and authenticated terminate the app and watch the console output for the container. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/3-auth/2.png)
+![Missing Image!](/img/ios-cards-tutorial/app/3-auth/2.PNG)
 
 ## Passing Data
 
@@ -270,13 +270,13 @@ Unfortunatly, there's an important limitation to keep in mind when working with 
 
 Create a new class in both projects. Name it *Card*, make sure it inherits from RiffleModel, and give it one property: a string called *text.*
 
-![Missing Image!](/img/ios-cards-tutorial/app/4-data/1.png)
+![Missing Image!](/img/ios-cards-tutorial/app/4-data/1.PNG)
 
 The object represents the data, but we still have to build the data. Download the data for the cards [here](/img/pg13.zip). Unzip the file and drag it into your project. Make sure to select *Copy items if needed* and make sure *Add to targets* is checked for your project. 
 
-![Missing Image!](/img/ios-cards-tutorial/app/4-data/2.png)
+![Missing Image!](/img/ios-cards-tutorial/app/4-data/2.PNG)
 
-![Missing Image!](/img/ios-cards-tutorial/app/4-data/3.png)
+![Missing Image!](/img/ios-cards-tutorial/app/4-data/3.PNG)
 
 When you drag in static content like *JSON* into Xcode it doesn't always copy the content over with your project. In order to make sure your app can see the cards data you'll have to make sure it is correctly copied over 
 
@@ -354,29 +354,29 @@ We can pass cards back and forth but can't show them off to the user yet. In thi
 
 Create a new view controller.
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/1.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/1.PNG)
 
 Name it `GameViewController`
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/2.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/2.PNG)
 
 Drag a new ViewController onto your storyboard.
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/3.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/3.PNG)
 
 Set the controller to subclass GameViewController.
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/4.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/4.PNG)
 
 Add a UITableView to the controller. Resize it so it takes up the whole space. Select the controller and click the *Identity Inspector* button on the top of the right pane as shown in the image below. Set the *Storyboard ID* of the controller to *game*. This allows our starting ViewController class to find the *GameViewController* at runtime easily.
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/5.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/5.PNG)
 
 Right click on the TableView and drag up to the yellow icon that represents the current view controller. Assign the viewcontroller to be the *delegate* and *datasource* of the tableview. Also create an outlet for the table called `tableCards`.
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/7.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/7.PNG)
 
-![Missing Image!](/img/ios-cards-tutorial/app/5-ui/8.png)
+![Missing Image!](/img/ios-cards-tutorial/app/5-ui/8.PNG)
 
 Now that the table is looking to our new view controller for information, we have to make sure we have that information at hand! Change the GameViewController so that it looks like this:
 
