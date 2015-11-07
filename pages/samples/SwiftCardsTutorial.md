@@ -87,7 +87,7 @@ __NOTE:__ if you see an error on build and you have Xcode 7.1 you'll need to set
 
 ## Setting up OSX App
 
-The process for setting up an OSX application is the same as for the iOS version. Make sure to choose `OSX Application` on the left pane in the new project wizard and `Command Line Tool` in the right pane.
+The process for setting up an OSX application is the same as for the iOS version. Make sure to choose `OSX Application` on the left pane in the new project wizard and `Command Line Tool` in the right pane. **NOTE: `Command Line Tool, not Cocoa Application**.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/8.PNG)
 
