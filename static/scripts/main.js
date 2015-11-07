@@ -215,6 +215,13 @@ angular
       }
     }
   })
+  .directive('cookbook', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      template: '<h3>Hello World!!</h3>'
+    };
+  })
   .directive('mobileNav', function($rootScope, $location) {
     return {
       restrict: 'E',
