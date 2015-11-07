@@ -1,4 +1,10 @@
-Sample code demonstrating sample exis usage.
+# Cookbook
+
+Recipies for exis development. 
+
+Head to [getting started](/pages/samples/Getting-Started.md) to get up and running with a project. 
+
+[Cards Against Humanity](/pages/sampels/SwiftCardsTutorial.md) tutorial demonstrates how to build an iOS app with Swift backend. 
 
 **Python**
 * Bare-bones CLI [chat client][pychat]

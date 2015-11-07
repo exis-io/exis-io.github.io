@@ -48,11 +48,11 @@
 * [Gate](/pages/appliances/Gate-Appliances.md)
 
 
-<!-- ### [Examples](/pages/samples/Samples.md)
+### [Cookbook](/pages/samples/Samples.md)
 
-* [Examples](/pages/samples/Samples.md)
+* [All Recipies](/pages/samples/Samples.md)
+* [Getting Started](/pages/samples/Getting-Started.md)
 * [iOS Cards Against Humanity Tutorial](/pages/samples/SwiftCardsTutorial.md)
- -->
 
 ### [Security](/pages/security/Security.md)
 
