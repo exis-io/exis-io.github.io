@@ -197,11 +197,19 @@ article .sticky {
   color: white;
   border: none;
   padding: 15px;
+  margin: 30px;
 }
 
 .page-content pre code {
   color: inherit;
   background: transparent;
+}
+
+.page-content img {
+    max-width: 65%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-height: 600px;
 }
 
 .alert {

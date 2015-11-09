@@ -2,7 +2,7 @@
 
 This is the second part of the Cards Against Humanity. In this section we'll implement game logic. 
 
-iOS applications that go to the App Store take a lot of work in all aspects of app design, especially in regard to view code. We want to explore the benefits of designing applications to run over the fabric, so all of the view code has been completed for you. You can download a checkpoint of the project with the view code here. TODO.
+iOS applications that go to the App Store take a lot of work in all aspects of app design, especially in regard to view code. We want to explore the benefits of designing applications to run over the fabric, so all of the view code has been completed for you. Download a [zip](https://github.com/exis-io/CardsAgainstPart1/archive/master.zip) or clone the [repository](https://github.com/exis-io/CardsAgainstPart1).
 
 ## Game Flow
 Before we get started, a brief overview of Cards Against Humanity gameplay from wikipedia: 
@@ -25,15 +25,27 @@ Here's the game logic, distilled:
 
 Remember our app has two parts: iOS and OSX apps. The iOS app is what user directly interact with when they play the game, while the OSX app runs as a *container*, or a program wrapped in some magic that lets it run in the cloud. This container maintains the global state of the game, deals cards to players, and makes sure players dont cheat. By the end of part 1 the app said "Hello!" to the container and the container offered some cards for the user. 
 
+## Permissions 
+
+Before we catch up with the project, lets create all the permissions we'll need for the rest of this part. Go to [my.exis.io](https://my.exis.io) and either create a new app or use the app you created in part 1. (If you're creating a new application, make sure *Auth* and *Osxcontainer* are checked in the creation dialog!) Under the permissions tab make sure you have a static permission for the container on `sessionLeft`:
+
+![Missing Image!](/img/ios-cards-tutorial/web/3-perms/1.png)
+
+Add the following endpoints to the user role. These are all the calls the app and container will use.
+
+![Missing Image!](/img/ios-cards-tutorial/web/3-perms/2.png)
+
+As before, make sure you substitute the name of your application and your username to replace `cardsagainst` and `damouse`, respectively. 
+
 ## Getting up to Speed
 
-Lets see whats changed since the last time you saw the project. Open the workspace-- not the project.
+Lets see whats changed since the last time you saw the project. Open the workspace-- not the project. The first thing you should do is change the name of your application and your username when the app agent is instantiated-- the `login` method in `LandingViewController` in the app and line 20 in `main.swift` for the backend. 
 
 The iOS app and the container share the same project. This allows them to share code between them, in our case the *User* object. You can run both of them by changing the active target before running.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/6-part2/1.png)
 
-Go ahead and run the *Backend* target. You won't be able to build the iOS app while the container is building. Run the iOS app once it completes.
+Go ahead and run the *Backend* target. You won't be able to build the iOS app while the container is building. Wait for it to finish building, then build the iOS target.
 
 To switch between active console logs, click on the *Debug Navigator* and select the desired target. Make sure you see output from both.
 
@@ -53,7 +65,7 @@ Instead of touching cells to select cards, you now swipe on the card. Open the c
 
 ![Missing Image!](/img/ios-cards-tutorial/app/6-part2/4.png)
 
-TODO: go over the code changes. 
+<!-- TODO: go over the code changes.  -->
 
 ## Building Game Development
 
@@ -73,6 +85,8 @@ for i in 0...2 {
 
 Start the round. Check to make sure our new friends show up in the collection view on the bottom of the screen. Note that the demo players get their own hands, but aren't going to be backed by real world players. 
 
+__NOTE:__ You don't have to restart the app and the container if you've only made changes to one of them. If restarting the app everything will work right away. If its the container, make sure to hit the back button on the app, then play again. 
+
 But what are these players doing? Anyone in the game can submit a card, what are we supposed to do with the card in the container? Add the following methods to the container. 
 
 ```
@@ -87,7 +101,7 @@ func startPicking() {
     print("STATE: Picking")
     state = "Picking"
     
-    startTimer(CHOOSE_TIME, selector: "startScoring:")
+    startTimer(PICK_TIME, selector: "startScoring:")
 }
 
 func startScoring(timer: NSTimer) {
@@ -124,7 +138,7 @@ The `startTimer` function will call the given method in as many given seconds. T
 `startAnswering` is the easiest. When we start a new round, pick a new question and assign a new czar.
 
 ```
-let question = questions.randomElement()
+let question = questions.randomElements(1, remove: false)
 setNextCzar()
 ```
 
@@ -149,12 +163,9 @@ var winner: Player?
 
 if let domain = timer.userInfo as? String {
     winner = players.filter { $0.domain == domain }[0]
-}
-
-// if nil, no player was choosen. Autochoose one.
-if winner == nil {
+} else {
     print("No players picked cards! Choosing one at random")
-    player = pickers.randomElements(1, remove: false)[0]
+    winner = pickers.randomElements(1, remove: false)[0]
 }
 
 winner!.score += 1
@@ -166,36 +177,73 @@ for p in pickers {
         p.hand.removeObject(c)
     }
     
+    let newAnswer = answers.randomElements(1, remove: true)
+    p.hand += newAnswer
     p.pick = nil
 }
 ```
 
+
+The bit of code on the container deals with user picks. Enter the following code into the `pick` method on the container:
+
+```
+let player = players.filter { $0.domain == player.domain }[0]
+        
+if state == "Answering" && player.pick == nil {
+    player.pick = card
+    player.hand.removeObject(card)
+    
+} else if state == "Choosing" && player.czar {
+    let winner = players.filter { $0.pick == card }[0]
+    startTimer(0.0, selector: "startScoring:", info: winner.domain)
+    
+} else {
+    print("Player pick in wrong round!")
+}
+```
 
 ### App Receivers
 
 The soundest backend logic in the universe is useless without the frontend code to display it. Lets implement the methods for the app to be notified of changes in the game state. In `GameViewController`:
 
 ```
-func answering(player: Player, card: Card, time: Double) {
+func answering(newCzar: Player, question: String, time: Double) {
+    print("Answering. New czar: \(newCzar.domain)")
     state = "Answering"
-    labelActiveCard.text = card.text
-    _ = players.map { $0.chooser = $0 == player }
-    tableDelegate!.setTableCards(player.domain == me.domain ? [] : currentPlayer.hand)
+
+    labelActiveCard.text = question
+    _ = players.map { $0.czar = $0 == newCzar }
+    collectionDelegate.setCzar(newCzar)
+    tableDelegate.refreshCards(newCzar == me ? [] : currentPlayer.hand)
     viewProgress.countdown(time)
 }
 
-func picking(choices: [Card], time: Double) {
+func picking(answers: [String], time: Double) {
+    print("Picking")
     state = "Picking"
-    tableDelegate?.setTableCards(choices)
-    tableCard.reloadData()
+    
+    for answer in answers {
+        if currentPlayer.hand.contains(answer) {
+            currentPlayer.hand.removeObject(answer)
+        }
+    }
+    
+    tableDelegate.refreshCards(answers)
     viewProgress.countdown(time)
 }
 
 func scoring(player: Player, time: Double) {
+    print("Scoring. Player: \(player.domain) won")
     state = "Scoring"
-    player.score += 1
-    flashCell(player, model: players, collection: collectionPlayers)
-    collectionPlayers.reloadData()
+
+    for p in players {
+        if p == player {
+            p.score += 1
+        }
+    }
+    
+    collectionDelegate.refreshPlayers(players)
+    collectionDelegate.flashCell(player)
     viewProgress.countdown(time)
 }
 ```
@@ -204,16 +252,15 @@ And then wire up the methods in `viewDidLoad`:
 
 ```
 container.subscribe("answering", answering)
-container.subscribe("choosing", choosing)
+container.subscribe("choosing", picking)
 container.subscribe("scoring", scoring)
-me.register("draw", draw)
 ```
 
 
 Finally, set up the calls in the container. Set the publishes as the last line of the following methods. In `startAnswering`:
 
 ```
-publish("answering", czar!, questions.randomElements(1, remove: false), PICK_TIME)
+publish("answering", czar!, questions.randomElements(1, remove: false)[0], PICK_TIME)
 ```
 
 `startPicking`:
@@ -228,11 +275,20 @@ publish("picking", pickers.map({ $0.pick! }), PICK_TIME)
 publish("scoring", winner!, SCORE_TIME)
 ```
 
+Run the container and then the app. Swipe on the cells and observe the logs in both container and app. See what happens when you swipe a lot, or out of turn. 
 
+## Beat your Friends!
 
-#### Ideas
+This is the end of the directed tutorial. Here lie the challenges. 
 
-Tour through existing code. Examine the User model. 
+First, find a friend. Change the account name in the in the iOS app's agent in either yours or their app so you connect to the same container. Make sure things work!
+
+Now onto the tricky bits. In the first section of this part of the tutorial you added permissions to the user role. There was one endpoint that we never used, however: `draw`.
+
+The user calls `draw` on the container to get new cards-- during a Scoring round and *only* if the user was not the czar this last turn. Without it the user will quickly run out of cards. You have to implement this call in order for the game to go smoothly. 
+
+The last missing piece is also related to the user's hand of cards. What happens when the user does not pick a card? We're relying on the container to perform an automatic pick for the player if they haven't answered, but the *iOS application is not notified one of the cards in its hand is no longer valid*. When the container picks for a player *in abstentia* it must also alert the player.
+
 
 
 
