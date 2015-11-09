@@ -47,7 +47,6 @@
 * [Middlebox](/pages/appliances/Middlebox-Appliances.md)
 * [Gate](/pages/appliances/Gate-Appliances.md)
 
-
 ### [Cookbook](/pages/samples/Samples.md)
 
 * [All Recipies](/pages/samples/Samples.md)
