@@ -1,6 +1,6 @@
-# iOS Tutorial- Cards Against Humanity 
+# iOS Tutorial- Cards Against Humanity (Part 1)
 
-__Definition:__Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. The game is available as a free download that players can print to create their own cards, and also available to purchase in published hardcopy. Its development originated from a successful Kickstarter campaign and has received acclaim for its simple concept backed up by its satirical, mature content. The game is available under a non-free Creative Commons license. https://en.wikipedia.org/wiki/Cards_Against_Humanity
+__Definition:__ Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. The game is available as a free download that players can print to create their own cards, and also available to purchase in published hardcopy. Its development originated from a successful Kickstarter campaign and has received acclaim for its simple concept backed up by its satirical, mature content. The game is available under a non-free Creative Commons license. https://en.wikipedia.org/wiki/Cards_Against_Humanity
 
 In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. 
 
@@ -415,7 +415,7 @@ Once the two are wired up restart the container and the app. When you touch a ca
 
 ## Conclusion
 
-If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In part 2 we'll set up the game logic clean up the interface.
+If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In [part 2](/pages/samples/SwiftCardsTutorial2.md) we'll set up the game logic clean up the interface.
 
 
 

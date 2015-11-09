@@ -5,7 +5,7 @@ Please check out our documentation, and follow along with code from our [repos](
 
 Want to learn about Exis quickly? Run through the [Tour.](/pages/tour/Tour.md)
 
-Check out the [**iOS Cards Against Humanity Tutorial!**](/pages/samples/SwiftCardsTutorial.md)
+Check out the iOS Cards Against Humanity Tutorial! [**Part 1**](/pages/samples/SwiftCardsTutorial.md) and [**Part 2**](/pages/samples/SwiftCardsTutorial.md).
 
 ## Overview
 
