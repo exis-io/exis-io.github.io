@@ -52,7 +52,8 @@
 
 * [All Recipies](/pages/samples/Samples.md)
 * [Getting Started](/pages/samples/Getting-Started.md)
-* [iOS Cards Against Humanity Tutorial](/pages/samples/SwiftCardsTutorial.md)
+* [Cards Against Tutorial 1](/pages/samples/SwiftCardsTutorial.md)
+* [Cards Against Tutorial 2](/pages/samples/SwiftCardsTutorial2.md)
 
 ### [Security](/pages/security/Security.md)
 
