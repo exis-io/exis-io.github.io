@@ -61,9 +61,30 @@ So whats changed?
 
 The TableView in the middle of the screen picked up some styling. On the top of the screen is a Label displaying the current question, and on the bottom is a list of the current players in the game. 
 
-Instead of touching cells to select cards, you now swipe on the card. Open the container's debug console and swipe a cell on the app. Make sure you see the picked card logged. 
+Instead of touching cells to select cards, you now swipe on the card. Open the container's debug console and swipe a cell on the app. Ensure sure you see the picked card logged in the container. 
 
 ![Missing Image!](/img/ios-cards-tutorial/app/6-part2/4.png)
+
+Most of the changes in the project we're not going to cover between parts 1 and 2 relate to UI. `Views.swift` contains mostly boilerplate Swift code that enables the `GameViewController` to display its content. Its more common to TableView and CollectionView delegate methods implemented in a controller and the model code elsewhere, but for our purposes we want to focus on the model code. 
+
+Our container, implemented in `Container/main.swift`, hasn't seen too many changes. 
+
+* Hello, World is gone. Instead of loading the card inline and returning them immediately, they're now stored in instance variables
+* `startTimer` and the associated instance variable `timer` seem a little mysterious. Check out the implmenetation here. The method calls a function after a given timer period, very useful for our time-sensitive game.
+
+![Missing Image!](/img/ios-cards-tutorial/app/6-part2/5.png)
+
+`LandingViewController` seems a little more noisy, but really just picked up a handful of Outlets and UI code. 
+
+![Missing Image!](/img/ios-cards-tutorial/app/6-part2/6.png)
+
+The real meaty method is `startPlaying`. This is the return from the call issued in `login`. Its called directly from the container with all the informaiton needed to start playing: our playing hand and the other players in the room.
+
+![Missing Image!](/img/ios-cards-tutorial/app/6-part2/7.png)
+
+`GameViewController` picked up quite a few instance variable. The first two blocks of variables at the top of the class are *Outlets*, *Agents*, and our UI delegates. The only fabric call is in `playerSwiped`. Callbacks come in here from the TableView when a user swipes a card. 
+
+![Missing Image!](/img/ios-cards-tutorial/app/6-part2/8.png)
 
 <!-- TODO: go over the code changes.  -->
 
@@ -110,7 +131,19 @@ func startScoring(timer: NSTimer) {
     
     startTimer(SCORE_TIME, selector: "startAnswering")
 }
+```
 
+In `addPlayer` in the container add the following immediately before the return statement.
+
+```
+startTimer(EMPTY_TIME, selector: "startAnswering")
+```
+
+The `startTimer` function will call the given method in as many given seconds. These methods are *state transition* methods-- they specify how the round proceeds. Before you go on, run the container, connect the app to it, and watch the container's debugging log. Make sure you understand how and why the rounds transition. Play with the constants at the top of `main.swift` and see how the debugging log changes. 
+
+Before we go further on state transitions, toss in a quick utility method. `setNextCzar` will rotate the czar around the current players in the room.
+
+```
 func setNextCzar() {
     if czar == nil {
         czar = players[0]
@@ -127,22 +160,18 @@ func setNextCzar() {
 }
 ```
 
-In `addPlayer` in the container add the following immediately before the return statement.
+## State Transitions
 
-```
-startTimer(EMPTY_TIME, selector: "startAnswering")
-```
+Brass tacks. Lets define the how phases rotate.
 
-The `startTimer` function will call the given method in as many given seconds. These methods are *state transition* methods-- they specify how the round proceeds. Lets define the transitions between the rounds.
-
-`startAnswering` is the easiest. When we start a new round, pick a new question and assign a new czar.
+`startAnswering` is the easiest. When we start a new round, pick a new question and assign a new czar. Don't deal cards here-- this is the first state. 
 
 ```
 let question = questions.randomElements(1, remove: false)
 setNextCzar()
 ```
 
-`startPicking` is a little more tricky. Players who haven't answered should autoplay their answers.
+`startPicking` is a little more tricky. In order to step around the issue of players not picking cards, we're going to autopick cards for silent players. 
 
 ```
 var pickers = players.filter { !$0.czar }
@@ -183,8 +212,7 @@ for p in pickers {
 }
 ```
 
-
-The bit of code on the container deals with user picks. Enter the following code into the `pick` method on the container:
+User picks arrive here. Enter the following code into the `pick` method on the container. Note how we handle picks based on the current state, and consider what happens if players pick multiple times, pick out of turn, or lie about their picks. Is the container stable in light of these actions?
 
 ```
 let player = players.filter { $0.domain == player.domain }[0]
@@ -248,7 +276,11 @@ func scoring(player: Player, time: Double) {
 }
 ```
 
-And then wire up the methods in `viewDidLoad`:
+Although the container and the app can exchange model objets over the fabric freely, note how we have to compare them to the local models before altering them. In scoring, for example, we have to explicitly iterate over our local `players` array to increment the score. 
+
+## Weave it Together
+
+Wire up the methods in `viewDidLoad`. Remember that this exposes them to the fabric. 
 
 ```
 container.subscribe("answering", answering)
@@ -256,14 +288,13 @@ container.subscribe("choosing", picking)
 container.subscribe("scoring", scoring)
 ```
 
-
 Finally, set up the calls in the container. Set the publishes as the last line of the following methods. In `startAnswering`:
 
 ```
 publish("answering", czar!, questions.randomElements(1, remove: false)[0], PICK_TIME)
 ```
 
-`startPicking`:
+`startPicking`. Why publish all the picks?
 
 ```
 publish("picking", pickers.map({ $0.pick! }), PICK_TIME)
@@ -287,7 +318,7 @@ Now onto the tricky bits. In the first section of this part of the tutorial you 
 
 The user calls `draw` on the container to get new cards-- during a Scoring round and *only* if the user was not the czar this last turn. Without it the user will quickly run out of cards. You have to implement this call in order for the game to go smoothly. 
 
-The last missing piece is also related to the user's hand of cards. What happens when the user does not pick a card? We're relying on the container to perform an automatic pick for the player if they haven't answered, but the *iOS application is not notified one of the cards in its hand is no longer valid*. When the container picks for a player *in abstentia* it must also alert the player.
+The last missing piece is also related to the user's hand of cards. What happens when the user does not pick a card? We're relying on the container to perform an automatic pick for the player if they haven't answered, but the *iOS application is not notified one of the cards in its hand is no longer valid*. When the container picks for a player *in abstentia* it must also alert the player, without this functionality the application is sorely incomplete.
 
 
 
