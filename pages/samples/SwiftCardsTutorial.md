@@ -1,123 +1,12 @@
-# iOS Tutorial- Cards Against Humanity 
+# iOS Tutorial- Cards Against Humanity (Part 1)
 
-__Definition:__Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. The game is available as a free download that players can print to create their own cards, and also available to purchase in published hardcopy. Its development originated from a successful Kickstarter campaign and has received acclaim for its simple concept backed up by its satirical, mature content. The game is available under a non-free Creative Commons license BY-NC-SA https://en.wikipedia.org/wiki/Cards_Against_Humanity
+__Definition:__ Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. The game is available as a free download that players can print to create their own cards, and also available to purchase in published hardcopy. Its development originated from a successful Kickstarter campaign and has received acclaim for its simple concept backed up by its satirical, mature content. The game is available under a non-free Creative Commons license. https://en.wikipedia.org/wiki/Cards_Against_Humanity
 
 In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. 
 
 Cards Against is played between a set of peers, so it seems like the game should be able to run peer to peer, or each player communicating directly with other players. Like all cards games, however, we have to watch out for cheaters! In order to maintain the state of the game and make sure play is fair we'll rely on a *container*, or a program running in the cloud. This container will fufill the role traditionally filled by web servers. 
 
-Lets get going!
-
-## Creating a new iOS App with Riffle
-
-Create a new empty iOS project. Select `Single View Application`. 
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.PNG)
-
-Enter `ExAgainst` as the name for your new application. Remember the folder where you save the project, you'll need to find it again soon! Here we've saved it into the directory `~/Documents/ios/`.
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/2.PNG)
-
-The riffle libraries are distributed as `pods` through cocoapods. Check out more information about cocoapods at their [website](https://cocoapods.org/). To check if you have cocoapods installed, open the *Terminal* application and type `pod`. If you see something like this (the colors may not match) then you're ready to go with cocoapods.
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/10.PNG)
-
-If you don't have cocoapods installed, now would be a good time. Follow the instructions on the home page from the link above. Cocoapods relies on [RubyGems](https://rubygems.org/pages/download), a dependency manager for the ruby language. You'll need that too. 
-
-In order to install riffle you'll first have to create a `Podfile`. This is a simple text file that lists dependencies in Ruby. You can either use your favorite text editor for this or the built in TextEdit app available in OSX. The example below shows TextEdit. Be cafeul-- if you use TextEdit you'll need to convet it to *plaintext* before saving it.
-
-Enter this into the `Podfile`: 
-
-```
-# Tell cocoapods what kind of application we're making
-platform :ios, '9.0'
-
-# Required when libraries have swift code in them 
-use_frameworks!
-
-# The dependency we want to use. You can add more here if you'd like!
-pod 'Riffle'
-```
-
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/4.PNG)
-
-Save the file as `Podfile` (with no *.txt* extension!) in the same directory that you made your project.
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/5.PNG)
-
-Cocoapods is used through the command line, or `Terminal` application in OSX. Find it in the application window or spotlight. Once open, you'll need to navigate to the directory where you saved the project. 
-
-Change directory to the save location of the project. The second part of the command may be different for you if you saved the project to a different directory!
-
-```
-cd ~/Documents/ios/ExAgainst
-```
-
-Once in the directory instruct cocoapods to fetch all dependencies. This will load all the libraries you'll need to use for this project. 
-
-```
-pod install
-```
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/6.PNG)
-
-Close any open Xcode windows you may have open. Cocoapods doesn't just copy code into your project, it creates new projects for each component and combines them into a `workspace`. Don't worry, everything should look the same! Navigate to the folder you saved the project in and open the `.xcworkspace` file-- not the `.xcproject`!
-
-Here's what the newly created project looks like. Note the `Pods` project below your project in the file navigator. Import riffle by adding the import to the top of the view controller: 
-
-```
-import Riffle
-```
-
-Run the project and make sure it builds.
-
-__Warning:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear.
-
-__NOTE:__ Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you see errors relating to `import of non-modular header...` you will have to delete the `Pods/Headers/Private` folder from your project directory. Check your version of xcode: ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
-
- 
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/7.PNG)
-
-<!-- __Warning:__ May have to set `embedded swift code` to `Yes` in the pods target if riffle can't be found.  -->
-
-__NOTE:__ if you see an error on build and you have Xcode 7.1 you'll need to setup a quick workaround. Open the finder and navigate to the project folder. Delete the directory `Pods/Headers/Private` and rebuild. 
-
-
-## Setting up OSX App
-
-The process for setting up an OSX application is the same as for the iOS version. Make sure to choose `OSX Application` on the left pane in the new project wizard and `Command Line Tool` in the right pane. **NOTE: `Command Line Tool, not Cocoa Application**.
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/8.PNG)
-
-Repeat the same steps as for the iOS application. You'll need to tweak the `Podfile` to tell cocoapods about our platform: 
-
-```
-platform :osx, '10.10'
-
-use_frameworks!
-
-pod 'Riffle'
-```
-
-Once the dependencies are installed and you have the workspace open go the project. Add `import Riffle` to the top of *main.swift* and run the project. You should see `Hello, World!` appear in the console log. Don't worry about the error warnings that appear above it. Unfortunately, Swift libraries and OSX applications don't play nicely just yet. Its still a very new language, and there are some kinks to work out!
-
-![Missing Image!](/img/ios-cards-tutorial/app/1-setup/9.PNG)
-
-The last step in setting up the OSX app is to let Xcode know the *Riffle* libraries contain swift code. If you ever see errors like this:
-
-![Missing Image!](/img/ios-cards-tutorial/app/2-hello/3.PNG)
-
-Then you forgot to do this step. 
-
-1. In the left-side pane, or the *Project Navigator*, click on the *Pods* project with the blue icon. 
-2. Select the `Riffle` target on the left side of the newly opened options pane. It has a yellow toolbox next to it.
-3. Go to `Build Settings` 
-4. Type in *"contains swift"* in the search bar on the options pane
-5. Find the setting `Embedded Content Contains Swift Code` and set it to `Yes`
-
-![Missing Image!](/img/ios-cards-tutorial/app/2-hello/4.PNG)
+See [getting started](/pages/samples/Getting-Started.md) to set up an iOS project for development with a fabric. For this tutorial you will need the *iOS and Backend* project. If you're just getting started don't worry about setup, download the preconfigured projects. 
 
 ## Website Setup
 
@@ -526,7 +415,7 @@ Once the two are wired up restart the container and the app. When you touch a ca
 
 ## Conclusion
 
-If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In part 2 we'll set up the game logic clean up the interface.
+If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In [part 2](/pages/samples/SwiftCardsTutorial2.md) we'll set up the game logic clean up the interface.
 
 
 

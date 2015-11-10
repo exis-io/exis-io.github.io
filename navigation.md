@@ -47,12 +47,12 @@
 * [Middlebox](/pages/appliances/Middlebox-Appliances.md)
 * [Gate](/pages/appliances/Gate-Appliances.md)
 
+### [Cookbook](/pages/samples/Samples.md)
 
-<!-- ### [Examples](/pages/samples/Samples.md)
-
-* [Examples](/pages/samples/Samples.md)
-* [iOS Cards Against Humanity Tutorial](/pages/samples/SwiftCardsTutorial.md)
- -->
+* [All Recipies](/pages/samples/Samples.md)
+* [Getting Started](/pages/samples/Getting-Started.md)
+* [Cards Against Tutorial 1](/pages/samples/SwiftCardsTutorial.md)
+* [Cards Against Tutorial 2](/pages/samples/SwiftCardsTutorial2.md)
 
 ### [Security](/pages/security/Security.md)
 
