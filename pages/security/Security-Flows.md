@@ -4,31 +4,56 @@ A *flow* is the set of actions or events that occur between multiple parties in 
 
 Each flow should be protected against eavesdropping, replay attacks, and malicious parties. 
 
-### Authentication (Identity)
+While flows below refer to "Messages", they should not all be construed as Riffle messages. At what point some of these things should be moved into Riffle is a rigid filter. 
+
+This is an abbreviated list of flows:
+
+* Creation- creation of new domains
+* ShowNtell- requesting and presenting certificates. 
+
+## Authentication (Identity)
 
 Flows which relate to the identity of agents on the fabric.
 
-#### Domain Creation Flow
+### Domain Creation Flow
 
-The process by which a new domain (and thus agent) is created.
+How domains are created.
 
-* Agent without identity connects to node attempting to gain identity xs.a.b
-* Node assigns agent to null domain
-** Node rejects all messages not of type REGISTER or AUTHENTICATE
-** Node disconnects agent after 3 messages of any kind
-* Agent sends message: *xs.a.auth/register([information], CSR)*
-** *Information* is a set of knowledge known out of band and required by xs.a.auth
-** *CSR* is a certificate signing request. The agent generates a keypair.
-* Auth checks information and decides to create domain for agent. 
-* Auth accepts CSR and returns signed certificate to agent
+* Application connects to fabric xs.a.b
+* Node sends **WELCOME**. Contains a nonce. 
+** Node rejects all messages not **REQUEST** or **HELLO**. 
+* Agent generates keypair and *CSR*. Sends (*CSR*, [*credentials*]).
+* Checks local domain storage. If domain is already registered, return **DENY**
+* If client override methods are registered, calls *bool createDomain(domain, [credentials])*. If method returns *false* then return **DENY**.
+* If not level 3, application replaces keys in CSR with locally generated keys.
+* Save (*domain*, *certificate*). Optionally save keys. 
+* Encrypt keys and certificate with private key used in **REQUEST** message.
+* Return **ACCEPT**. 
 
-#### Presentation Flow
+#### Notes:
+
+**REQUEST** messages are not assigned to endpoints. 
+
+**WELCOME** contains a nonce such that **HELLO** is protected from replays. 
+
+Null domain either should be severly rate limited (.5 messages/s) or disconnected after a certain number of messages. 
+
+*Credentials* is some set of identifying information an auth judges when creating new domains. The number and type of credentials are known out of band. 
+
+Problem: how does the client library negotiate a level 2/3 auth?
+
+#### Show N Tell Flow
 
 The process by which an agent identifies itself to another agent.
 
+* Domain sends **SHOW** containing certificate. 
+* Reeiver replies with **TELL** containing certificate. 
+
+
+
 ### Authorization (Permissions)
 
-Flows which relate to the ability of agents to make calls.
+Flows which relate to the ability of agents to make calls. 
 
 #### Challenge Flow
 
@@ -41,10 +66,6 @@ The process by which an agent requests permission for a given endpoint.
 #### Push Flow
 
 The process by which a domain offers an agent permissions.
-
-### Request
-
-Flows which relate to the secure exchange of information or identity between a set of agents.
 
 #### Certificate Flow 
 

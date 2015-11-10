@@ -2,6 +2,21 @@
 
 The process by which new domains are created. A new [domain][domain] must ask another domain to become a subdomain by passing it credentials.
 
+This is a work in progress.
+
+**Credentials**- a set of identifying information provided by a domain when it attempts to auth. 
+
+Certificates contain at least the following information:
+
+1. Domain
+2. Superdomain
+3. Expiration
+4. Public Key
+5. Signature
+
+Certificates should be passed around with their supers, since it removes the need for a lookup mechanism. 
+
+See [security flows][flows] for information on security operation. 
 
 <!-- Reference for TOC -->
 
@@ -17,3 +32,4 @@ The process by which new domains are created. A new [domain][domain] must ask an
 [auth]:/pages/appliances/Auth-Appliance.md
 
 [perm]:/pages/security/Permission.md
+[flows]:/pages/security/Security-Flows.md
