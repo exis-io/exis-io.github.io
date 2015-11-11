@@ -5,7 +5,6 @@
 * [Contributer Notes](/pages/general/Meta.md)
 * [Frequently Asked Questions](/pages/general/Faq.md)
 
-
 ### [Tour](/pages/tour/Tour.md)
 
 * [A Brief Tour](/pages/tour/Tour.md)
@@ -14,7 +13,6 @@
 * [A Tightly Woven Fabric](/pages/tour/Fabric.md)
 * [Appliances](/pages/tour/Appliances.md)
 * [Security is not a Feature](/pages/tour/Security.md)
-
 
 ### [Fabric](/pages/fabric/Fabric.md)
 
@@ -27,14 +25,12 @@
 * [Endpoint](/pages/riffle/Endpoint.md)
 * [Agent](/pages/riffle/Agent.md)
 
-
 ### [Riffle](/pages/riffle/Riffle.md)
 
 * [Riffle](/pages/riffle/Riffle.md)
 * [Message](/pages/riffle/Message.md)
 * [Pub/Sub](/pages/riffle/PubSub.md)
 * [Register/Call](/pages/riffle/RegisterCall.md)
-
 
 ### [Appliances](/pages/appliances/Appliances.md)
 
@@ -59,20 +55,5 @@
 * [Security](/pages/security/Security.md)
 * [Permissions](/pages/security/Permission.md)
 * [Authentication](/pages/security/Authentication.md)
-
-<!-- * [Credentials](/pages/security/Credentials.md)
-* [Security Flows](/pages/security/Security-Flows.md) -->
-
-
-
-<!--
-
-#####Messaging:
-
-[[Message|Message]]
-
-[[Register/Call|RegisterCall]]
-
-[[PubSub|PubSub]]
-
-#####Appliances:-->
+* [Credentials](/pages/security/Credentials.md)
+* [Security Flows](/pages/security/Security-Flows.md)

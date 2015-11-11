@@ -20,7 +20,7 @@ Flows which relate to the identity of agents on the fabric.
 How domains are created.
 
 * Application connects to fabric xs.a.b
-* Node sends **WELCOME**. Contains a nonce. 
+* Node sends **WELCOME**.  
 ** Node rejects all messages not **REQUEST** or **HELLO**. 
 * Agent generates keypair and *CSR*. Sends (*CSR*, [*credentials*]).
 * Checks local domain storage. If domain is already registered, return **DENY**
@@ -29,8 +29,6 @@ How domains are created.
 * Save (*domain*, *certificate*). Optionally save keys. 
 * Encrypt keys and certificate with private key used in **REQUEST** message.
 * Return **ACCEPT**. 
-
-#### Notes:
 
 **REQUEST** messages are not assigned to endpoints. 
 
@@ -49,8 +47,6 @@ The process by which an agent identifies itself to another agent.
 * Domain sends **SHOW** containing certificate. 
 * Reeiver replies with **TELL** containing certificate. 
 
-
-
 ### Authorization (Permissions)
 
 Flows which relate to the ability of agents to make calls. 
@@ -58,6 +54,17 @@ Flows which relate to the ability of agents to make calls.
 #### Challenge Flow
 
 The process by which a sender proves to intermediate nodes that the given message is expected by a set of receivers. 
+
+* Domain *xs.a* sends message to unowned domain *xs.b*
+* Node holds message and replies with **CHALLENGE**
+* Client returns **RESPONSE**
+* Node holds public key of permissions object. 
+
+Is a set of held messages a vulurability?
+
+**CHALLENGE** contains a nonce. 
+
+**RESPONSE** is a permissions certificate: ([*endpointset*], *certificate*).
 
 #### Pull Flow
 
