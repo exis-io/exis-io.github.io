@@ -29,13 +29,18 @@ This section describes how Riffle looks and behaves. For now, the interface is d
 
 Riffle configuration is handled through static methods on the riffle library. 
 
-```
-# Set the url to connect to. Defaults to *node.exis.io*
-setFabric(string url)
 
-# Prints internal logging messages
-setDebugging()
+```go
+// Set the url to connect to. Defaults to *node.exis.io*
+func setFabric(string, url)
+
+// Prints internal logging messages
+func setDebugging()
+
+print('asdf')
 ```
+
+
 
 ### Domain
 
@@ -43,12 +48,23 @@ setDebugging()
 
 
 *Interface*
+
+
 ```
-# Handler alerted when changes in this domain's state occur
-delegate
+// Set the url to connect to. Defaults to *node.exis.io*
+func setFabric(string, url)
 ```
 
-```python
+
+
+```
+// Set the url to connect to. Defaults to *node.exis.io*
+func setDebugging() {}
+```
+
+
+
+```text
 # Create a new domain as a root domain. This is usually the app.
 init(string name) 
 
@@ -73,11 +89,6 @@ onLeave()
 onError(string endpoint)
 ```
 
-```java
-public static void main(String args[]) {
-
-}
-```
 #### Messaging Patterns
 
 Every messaging call returns a deferred. The deferred succeeds or fails appropriately. Deferreds can be ignored, in which case subsequent calls to the following methods proceed concurrently. If the deferred does not have an error handler the domain automatically logs the error in onError.

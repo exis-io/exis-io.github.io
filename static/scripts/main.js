@@ -8,16 +8,12 @@ window.onload = function () {
     }
 
     marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false
-});
+      renderer: new marked.Renderer(),
+      highlight: function (code) {
 
+        return hljs.highlightAuto(code).value;
+      }
+    });
 }
 
 var CurrentScroll = 0;
