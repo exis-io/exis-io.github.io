@@ -8,9 +8,14 @@ Playing around with the cookbook idea.
 
 This replaces the content with a directive. I'd like to transform a list of cookbook content into a [tabbed list menu.](https://codyhouse.co/gem/responsive-tabbed-navigation/)
 
-<!--directive:cookbook-->
-<div cookbook>
-* iOS
-* Java
-* Python
-</cookbook>
+<div polyglot-tab>
+```swift
+asda
+```
+```java
+asdfasdf
+```
+```python
+print "asdf"
+```
+</div>
