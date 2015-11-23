@@ -1,6 +1,6 @@
 # Permission
 
-*Permission* is the ability for an [*agent*][agent] to send a message to an [*endpoint*][endpoint]. Explicit permission is the combination of an agent and an endpoint. Implicit permission is permission automatically granted to domains that send messages to their own subdomains. 
+A *permission* is the ability for an [*agent*][agent] to send a message to an [*endpoint*][endpoint]. Explicit permission is the combination of an agent and an endpoint. Implicit permission is permission automatically granted to domains that send messages to their own subdomains. 
 
 A [domain][domain] has to give an agent explicit permission (if the agent doesn't have implicit permission) before the agent can send the domain messages. 
 

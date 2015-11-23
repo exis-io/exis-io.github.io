@@ -45,7 +45,12 @@ The process by which an agent identifies itself to another agent.
 
 * Domain sends **SHOW** containing certificate. 
 * Reeiver replies with **TELL** containing certificate. 
-* 
+
+
+#### Desctruction
+
+The process by which domains are destroyed. 
+
 <!-- Reference for TOC -->
 
 [message]:/pages/riffle/Message.md
