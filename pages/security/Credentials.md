@@ -2,6 +2,8 @@
 
 Credentials consist of a certificate, public key, and private key. Together all three can be used to uniquely identify an [[agent|Agent]] to the fabric and other agents. The certificate binds the name of the [[domain|Domain]] to the public key and is signed by the domain which created it. 
 
+After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
+
 ## Credentials Requirements
 
 Agents generally must have access to their credentials to operate on the fabric, except in the case of delegated authentication. **TODO**
@@ -31,17 +33,6 @@ The process by which a set of agents establish a secure end-to-end channel for p
 > Meta: this could be merged into the Endy Flow if the end-to-end keys are symmetrical.  
 
 ### Revocation 
-
-Flows relating to the destruction of cryptographic roles produced by the other flows.
-
-#### Domain Revocation Flow
-
-The process by which a domain is destroyed.
-
-#### Permission Revocation Flow
-
-The process by which a permission or set of permissions is removed from an agent. 
-
 
 
 

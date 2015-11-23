@@ -1,16 +1,18 @@
 # Security
 
-Exis integrates common network security patterns, including authorization, authentication, protection of live communication, protection of static data. A Public Key Infrastructure underpins the security model. 
+Exis integrates common network security patterns, including authorization, authentication, protection of live communication, and protection of static data. A Public Key Infrastructure underpins the security model. 
 
-After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
 
-A [permission][perm] is required when sending any message to any [endpoint][endpoint] and generally represents the receiver's willingness to receive the given message. 
+
+<!-- After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
+
+A [permission][perm] is required when sending any message to any [endpoint][endpoint] and generally represents the receiver's willingness to receive the given message.  -->
 
 <!-- A domain may destroy its immediate subdomain or created permissions through [[revocation.|Revocation]] All subdomains of the given domain are also then invalid. -->
 
 <!-- The presentation of credentials is defined by the distribution [[distribution|Distribution]] flows. Each of these flows defines the rules on how agents exchange or obtain keys. -->
 
-> V2: end to end encryption for pub/sub and reg/call requires different key distribution methods and management. These requirements should be considered but are not detailed here. 
+<!-- > V2: end to end encryption for pub/sub and reg/call requires different key distribution methods and management. These requirements should be considered but are not detailed here.  -->
 
 
 ## Requirements 

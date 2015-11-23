@@ -46,10 +46,9 @@ The process by which an agent identifies itself to another agent.
 * Domain sends **SHOW** containing certificate. 
 * Reeiver replies with **TELL** containing certificate. 
 
-
 #### Desctruction
 
-The process by which domains are destroyed. 
+The process by which domains are destroyed. This is a work in progress, but can either be implemented through revocation lists, OCSP, or user handled queries. 
 
 <!-- Reference for TOC -->
 
