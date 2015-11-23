@@ -16,8 +16,44 @@ Certificates have well-defined expiration dates.
 
 Each certificate contains the certificate of its superdomain, or the [[owner's|Owner]] public key is the only thing required to verify a certificate is authentic. 
 
+### Certificate Flows 
 
-### Authentication Flow Requirements 
+Flows relating to the secure transfer of keys, certificates, etc. 
 
-This is the process by which the holder of a set of credentials opens a session with the fabric. 
+#### Endy Flow
 
+The process by which two agents establish a secure end-to-end channel.
+
+#### Pub Endy Flow
+
+The process by which a set of agents establish a secure end-to-end channel for publish.
+
+> Meta: this could be merged into the Endy Flow if the end-to-end keys are symmetrical.  
+
+### Revocation 
+
+Flows relating to the destruction of cryptographic roles produced by the other flows.
+
+#### Domain Revocation Flow
+
+The process by which a domain is destroyed.
+
+#### Permission Revocation Flow
+
+The process by which a permission or set of permissions is removed from an agent. 
+
+
+
+
+[message]:/pages/riffle/Message.md
+[agent]:/pages/riffle/Agent.md
+[node]:/pages/fabric/Node.md
+[fabric]:/pages/fabric/Fabric.md
+[domain]:/pages/riffle/Domain.md
+[action]:/pages/riffle/Agent.md
+[endpoint]:/pages/riffle/Endpoint.md
+[samples]:/pages/samples/Samples.md
+
+[auth]:/pages/appliances/Auth-Appliance.md
+
+[perm]:/pages/security/Permission.md

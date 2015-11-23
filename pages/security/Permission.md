@@ -18,7 +18,32 @@ Endpoint:   xs.damouse.app/hello
 Agent:      xs.anna
 ```
 
+### Permission Flows
 
+Flows which relate to the ability of agents to make calls. 
+
+#### Challenge Flow
+
+The process by which a sender proves to intermediate nodes that the given message is expected by a set of receivers. 
+
+* Domain *xs.a* sends message to unowned domain *xs.b*
+* Node holds message and replies with **CHALLENGE**
+* Client returns **RESPONSE**
+* Node holds public key of permissions object. 
+
+Is a set of held messages a vulurability?
+
+**CHALLENGE** contains a nonce. 
+
+**RESPONSE** is a permissions certificate: ([*endpointset*], *certificate*).
+
+#### Pull Flow
+
+The process by which an agent requests permission for a given endpoint. 
+
+#### Push Flow
+
+The process by which a domain offers an agent permissions.
 
 
 <!-- A certificate, public key, and private key that tie the name of the allowed party to an endpoint. Certificate that consists of an [[endpoint|Endpoint]], the public key of its holder, and a signature by the issuing party. A permission object is only required for *horizontal* and *upward* endpoints. -->
