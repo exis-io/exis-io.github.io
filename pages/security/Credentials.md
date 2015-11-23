@@ -14,25 +14,22 @@ The process by which certificates are presented is protected from replay or man-
 
 Certificates have well-defined expiration dates. 
 
-> V2: this is not available out of the box using X.509s, may not be possible unless we roll our own system. 
-
 Each certificate contains the certificate of its superdomain, or the [[owner's|Owner]] public key is the only thing required to verify a certificate is authentic. 
 
 ### Certificate Flows 
 
 Flows relating to the secure transfer of keys, certificates, etc. 
 
-#### Endy Flow
+#### End to End Flow
 
 The process by which two agents establish a secure end-to-end channel.
 
-#### Pub Endy Flow
+#### Multi End to End Flow
 
 The process by which a set of agents establish a secure end-to-end channel for publish.
 
 > Meta: this could be merged into the Endy Flow if the end-to-end keys are symmetrical.  
 
-### Revocation 
 
 
 
