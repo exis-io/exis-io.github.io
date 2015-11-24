@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OSX Container &mdash; Exis 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Exis 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Appliances" href="appliances.html"/>
+        <link rel="next" title="Replay" href="replay.html"/>
+        <link rel="prev" title="Container" href="container.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Exis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="appliances.html">Appliances</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bouncer.html">Bouncer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">OSX Container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-osxcontainer.osxcontainer.osxcontainer">Service Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-osxcontainer.osxcontainer.containerops">Container Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="replay.html">Replay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage.html">Storage</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Exis</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="appliances.html">Appliances</a> &raquo;</li>
+      
+    <li>OSX Container</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="osx-container">
+<h1>OSX Container<a class="headerlink" href="#osx-container" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-osxcontainer.osxcontainer.osxcontainer">
+<span id="service-operations"></span><h2>Service Operations<a class="headerlink" href="#module-osxcontainer.osxcontainer.osxcontainer" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.osxcontainer.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>imageName</em>, <em>projectName</em>, <em>projectUrl</em>, <em>branch='master'</em>, <em>scheme=None</em><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.osxcontainer.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a container image.  An image is a package of executable code
+along with its dependencies that can be run as one or more instances in
+containers.</p>
+<p>Currently, we support building an XCode project from a public git
+repository.  Pass the URL to the repository (http or https) along with
+some details about the project.</p>
+<p>There can be multiple workspaces, projects, and/or schemes in a
+repository.  For example, you can have frontend, backend, and shared
+code together in your repository.  Use the projectName and scheme
+arguments to tell Osxcontainer what code to run.</p>
+<p>If you specify a scheme, you must also configure that scheme as shared in
+XCode.  Check the Shared box in Product-&gt;Scheme-&gt;Manage Schemes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>imageName</strong> &#8211; name of resulting container image</li>
+<li><strong>projectName</strong> &#8211; name of the project in XCode</li>
+<li><strong>projectUrl</strong> &#8211; URL for git repository, must start with http or https</li>
+<li><strong>branch</strong> &#8211; branch to checkout from repository, defaults to master</li>
+<li><strong>scheme</strong> &#8211; scheme to build, defaults to projectName</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.osxcontainer.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>imageName</em>, <em>containerName</em><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.osxcontainer.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a container from an image.  It is possible to have multiple
+containers running the same image if you want to scale up your backend,
+for example.</p>
+<p>Create does not start running the container automatically; it only sets
+up a secure environment and reserves a domain for the container.  After
+a container has been created, you may call container operation methods
+on it to start and stop it.</p>
+<p>For example, suppose you have an image &#8220;gamebackendv3&#8221;.  Then to start
+it you may call the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">create</span><span class="p">(</span><span class="s">&#39;gamebackendv3&#39;</span><span class="p">,</span> <span class="s">&#39;prodbackend&#39;</span><span class="p">)</span>
+<span class="n">prodbackend</span><span class="o">/</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>imageName</strong> &#8211; name of image to use</li>
+<li><strong>containerName</strong> &#8211; name of new container</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.osxcontainer.images">
+<code class="descname">images</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.osxcontainer.images" title="Permalink to this definition">¶</a></dt>
+<dd><p>List images.</p>
+<p>Returns a list of dicts with the Name field set as well as some fields
+pertaining to the repository and code version that was used for the
+image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.osxcontainer.list">
+<code class="descname">list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.osxcontainer.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List containers.</p>
+<p>Returns a list of dicts with fields Name, Image, and State set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.osxcontainer.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>containerName</em><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.osxcontainer.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a container.  It will be stopped if it was running.  After
+removal the container methods will no longer be available, e.g. you
+cannot start a removed container.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>containerName</strong> &#8211; name of the container to remove</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.osxcontainer.removeImage">
+<code class="descname">removeImage</code><span class="sig-paren">(</span><em>imageName</em><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.osxcontainer.removeImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an image.  All containers based on the image must be removed
+before removeImage is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>removeImage</strong> &#8211; name of image to remove</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-osxcontainer.osxcontainer.containerops">
+<span id="container-operations"></span><h2>Container Operations<a class="headerlink" href="#module-osxcontainer.osxcontainer.containerops" title="Permalink to this headline">¶</a></h2>
+<p>These methods operate on OSX containers.  You must have created a container
+before these operations can be use.</p>
+<p>Endpoints are all registered under the name of the container as a prefix.
+For example, the following call will return detailed information about the
+container named &#8216;gamebackend&#8217;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">gamebackend</span><span class="o">/</span><span class="n">inspect</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.containerops.inspect">
+<code class="descname">inspect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.containerops.inspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return detailed information about the status and configuration of the
+container.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.containerops.logs">
+<code class="descname">logs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.containerops.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return log messages (stdout and stderr) from the container.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict with keys &#8216;stdout&#8217; and &#8216;stderr&#8217;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.containerops.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.containerops.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the container.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="osxcontainer.osxcontainer.containerops.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osxcontainer.osxcontainer.containerops.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the container.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="replay.html" class="btn btn-neutral float-right" title="Replay" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="container.html" class="btn btn-neutral" title="Container" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Paradrop Labs.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

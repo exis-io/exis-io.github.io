@@ -56,4 +56,3 @@
 * [Permissions](/pages/security/Permission.md)
 * [Authentication](/pages/security/Authentication.md)
 * [Credentials](/pages/security/Credentials.md)
-* [Security Flows](/pages/security/Security-Flows.md)
