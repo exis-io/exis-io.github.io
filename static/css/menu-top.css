@@ -61,7 +61,8 @@
   color: #FFF;
 }
 .menu__nav .navbar-nav > li > a {
-  color: #FFF;
+  color: #A9A9A9 !important;
+  text-transform: lowercase;
 }
 .menu__nav .navbar-nav > li > a:hover,
 .menu__nav .navbar-nav > li > a:focus {
