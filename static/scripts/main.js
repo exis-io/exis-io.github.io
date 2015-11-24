@@ -73,6 +73,14 @@ angular
     {
       "title": "Contact Us",
       "link": "https://exis.io/contact"
+    },
+    {
+      "title": "About Us",
+      "link": "https://exis.io/about.html"
+    },
+    {
+      "title": "Crash Course",
+      "link": "https://exis.io/crashcourse.html"
     }
   ])
 
@@ -196,7 +204,7 @@ angular
     $timeout(function() {
       if (!$location.hash()) {
         window.scrollTo(0,0);
-      } 
+      }
 
       $scope.$emit('page-rendered', pageContent);
       angular.element('.colorbox-img-wrappper').colorbox({
@@ -219,7 +227,7 @@ angular
         var url = location.href;
         url = url.replace(/#\w.+/, '')
         url += '#' + el.attr('id')
-        
+
         el.append(' <a class="hash" href="' + url + '">#</a>')
       }
     }
