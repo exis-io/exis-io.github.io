@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="exisDocs">
+<html>
 <head>
     <title>Exis Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,18 @@
     <link rel="stylesheet" type="text/css" href="/static/css/menu-top.css">
     <link rel="stylesheet" type="text/css" href="/static/lib/highlightjs/styles/monokai_sublime.css">
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50974315-4');
+      ga('send', 'pageview');
+
+    </script>
 </head>
-<body>
+<body ng-app="exisDocs">
     <noscript>
         This website requires Javascript to be enabled. Please turn on Javascript
         and reload the page.
@@ -86,16 +96,6 @@
     <script type="text/javascript" src="/static/lib/lunr.js/lunr.min.js"></script>
 
     <script type="text/javascript" src="/static/scripts/main.js"></script>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
-      { (i[r].q=i[r].q||[]).push(arguments)}
-      ,i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-50974315-4', 'auto');
-      ga('send', 'pageview');
-    </script>
 
 </body>
 </html>

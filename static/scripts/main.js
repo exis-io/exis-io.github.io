@@ -56,6 +56,15 @@ angular
     $rootScope.improveDocsLink = null;
   })
 
+  .run(function($rootScope, $window, $location){
+    var track = function() {
+      console.log($window.ga);
+      $window.ga('send', 'pageview', { page: $location.path() });
+    };
+    $rootScope.$on('$viewContentLoaded', track);
+
+  })
+
   .constant('MAIN_MENU', [
     {
       "title": "Team",
