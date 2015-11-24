@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bouncer &mdash; Exis 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Exis 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Appliances" href="appliances.html"/>
+        <link rel="next" title="Container" href="container.html"/>
+        <link rel="prev" title="Auth" href="auth.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Exis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="appliances.html">Appliances</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Auth</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Bouncer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osxcontainer.html">OSX Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replay.html">Replay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage.html">Storage</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Exis</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="appliances.html">Appliances</a> &raquo;</li>
+      
+    <li>Bouncer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-bouncer.bouncer.bouncer">
+<span id="bouncer"></span><h1>Bouncer<a class="headerlink" href="#module-bouncer.bouncer.bouncer" title="Permalink to this headline">¶</a></h1>
+<p>Bouncer is a core appliance that manages permissions and roles across the
+fabric and responds to queries regarding authorization to perform an
+action.</p>
+<p>Users may make calls to Bouncer to grant and revoke permissions for
+endpoints which they control.</p>
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.addDynamicRole">
+<code class="descname">addDynamicRole</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em>, <em>perms=None</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.addDynamicRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a dynamic role.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>perms</strong> &#8211; a list of dicts with fully qualified targets in &#8216;target&#8217; with $ syntax
+and an optional verb associated with it in &#8216;verb&#8217; which can be
+called by members of the role i.e. {&#8216;target&#8217;:
+xs.demo.nick.app/room/$/join, &#8216;verb&#8217;: &#8216;c&#8217;} will add the rule
+with the $ replaced by the id of dynamicRole when instantiated</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.addSpecialAgent">
+<code class="descname">addSpecialAgent</code><span class="sig-paren">(</span><em>domain</em>, <em>agent</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.addSpecialAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give special agent privilege to an agent under an entire domain.  The
+agent will be able to call, register, publish, and subscribe to all
+endpoints at or below the given domain.</p>
+<p>Use this feature carefully, as special agents may be able to perform
+destructive operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain</strong> &#8211; domain under which agent can access any endpoint</li>
+<li><strong>agent</strong> &#8211; domain of special agent</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.addStaticRole">
+<code class="descname">addStaticRole</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em>, <em>perms=None</em>, <em>agents=None</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.addStaticRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a static role into the database.  A role holds a list of permissions
+that can then be assigned to agents.</p>
+<p>Using roles instead of individual permissions is both intuitive and
+good practice.  Example: all users can call x(); Nick and Mike are
+users.  Later on, you can add a function y(), add it to the user role,
+and it will automatically apply to Nick and Mike.</p>
+<p>Returns: True if role was created</p>
+<p>Raises: Exception describing failure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>perms</strong> &#8211; a list of dicts with fully qualified targets in &#8216;target&#8217;,
+and a verb associated with it in &#8216;verb&#8217;
+which can be called by members of the role</li>
+<li><strong>agents</strong> &#8211; a list of agents to assign the role to</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.assignDynamicRole">
+<code class="descname">assignDynamicRole</code><span class="sig-paren">(</span><em>Id</em>, <em>role</em>, <em>appname</em>, <em>agents</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.assignDynamicRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign a dynamic role to an agent.</p>
+<p>Returns: True if role was assigned to any users false otherwise</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Id</strong> &#8211; the id of the dynamic role instance</li>
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>agent</strong> &#8211; the list of agents you are assigning the role to or a string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.assignRole">
+<code class="descname">assignRole</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em>, <em>agents</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.assignRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign a static role to a particular agent.</p>
+<p>Returns: True if role was found and assigned to any of the agents false otherwise</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>agents</strong> &#8211; a list of a string of the domains of the agents you&#8217;d like to assign the role to</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.checkPerm">
+<code class="descname">checkPerm</code><span class="sig-paren">(</span><em>agent</em>, <em>endpoint</em>, <em>verb='c'</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.checkPerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the agent has permission to access the given endpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>agent</strong> &#8211; agent performing the action</li>
+<li><strong>endpoint</strong> &#8211; target endpoint that agent is trying to reach</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.delDynamicRole">
+<code class="descname">delDynamicRole</code><span class="sig-paren">(</span><em>Id</em>, <em>role</em>, <em>appname</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.delDynamicRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an instance of a dynamic role.</p>
+<p>Returns: True if role instance was found and deleted false otherwise</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Id</strong> &#8211; the id of the role instance being deleted</li>
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.destroyRole">
+<code class="descname">destroyRole</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em>, <em>dynamic=False</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.destroyRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a role and unassign any agents who were members of the role.</p>
+<p>Returns: True if role was found and destroyed false otherwise</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>dynamic</strong> &#8211; True if the role you want to destroy is a dynamic role defaults to static role</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.listMembers">
+<code class="descname">listMembers</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.listMembers" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the members of a particular static role.</p>
+<p>Returns: a list of the members for that role or false if not allowed or role doesn&#8217;t exist</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.listRoles">
+<code class="descname">listRoles</code><span class="sig-paren">(</span><em>appname</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.listRoles" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the static roles for a particular app domain.</p>
+<p>Return a list of roles or False if not authorized.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appname</strong> &#8211; the domain of the appname for the roles you want listed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.listSpecialAgents">
+<code class="descname">listSpecialAgents</code><span class="sig-paren">(</span><em>domain</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.listSpecialAgents" title="Permalink to this definition">¶</a></dt>
+<dd><p>List special agents under a domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain</strong> &#8211; domain to check</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.newDynamicRole">
+<code class="descname">newDynamicRole</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em>, <em>agents=None</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.newDynamicRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new instance of an existing dynamic role.</p>
+<p>Returns: the Id of the new role or False upon failure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>agents</strong> &#8211; an optional list of agents to assign this role to immediately</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.removeApp">
+<code class="descname">removeApp</code><span class="sig-paren">(</span><em>appname</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.removeApp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all permissions and roles associated with an app.</p>
+<p>Returns: True if all data found was deleted false otherwise</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appname</strong> &#8211; the domain of the app to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.removeSpecialAgent">
+<code class="descname">removeSpecialAgent</code><span class="sig-paren">(</span><em>domain</em>, <em>agent</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.removeSpecialAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove special agent privilege from an agent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain</strong> &#8211; domain under which agent can access any endpoint</li>
+<li><strong>agent</strong> &#8211; domain of special agent</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.revokeDynamicRole">
+<code class="descname">revokeDynamicRole</code><span class="sig-paren">(</span><em>Id</em>, <em>role</em>, <em>appname</em>, <em>agents</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.revokeDynamicRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a dynamic role from an agent or list of agents.</p>
+<p>Returns: True if role was successfully removed from any of the
+specified agents false otherwise.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Id</strong> &#8211; the id of the dynamic role instance</li>
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>agents</strong> &#8211; the list of agents you are removing the role from</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.revokePerm">
+<code class="descname">revokePerm</code><span class="sig-paren">(</span><em>agent</em>, <em>perms</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.revokePerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revoke permissions from an agent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>agent</strong> &#8211; agent to remove permissions from</li>
+<li><strong>perms</strong> &#8211; list of permissions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.revokeRole">
+<code class="descname">revokeRole</code><span class="sig-paren">(</span><em>role</em>, <em>appname</em>, <em>agents</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.revokeRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a static role from an agent or list of agents.</p>
+<p>Returns: True if role was found and revoked for any of the agents false otherwise</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>role</strong> &#8211; the unique identifier for the role within the domain appname</li>
+<li><strong>appname</strong> &#8211; the domain of the appname associated with the role</li>
+<li><strong>agents</strong> &#8211; the list of domains of the agents you&#8217;d like to remove the role from</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bouncer.bouncer.bouncer.setPerm">
+<code class="descname">setPerm</code><span class="sig-paren">(</span><em>agent</em>, <em>perms</em>, <em>verb='c'</em><span class="sig-paren">)</span><a class="headerlink" href="#bouncer.bouncer.bouncer.setPerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a permission into the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>agent</strong> &#8211; the agent which can call a specific endpoint (can be NULL)</li>
+<li><strong>perms</strong> &#8211; a list of fully qualified endpoints which can be called by the agent</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="container.html" class="btn btn-neutral float-right" title="Container" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="auth.html" class="btn btn-neutral" title="Auth" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Paradrop Labs.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
