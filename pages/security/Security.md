@@ -2,6 +2,24 @@
 
 Exis integrates common network security patterns, including authorization, authentication, protection of live communication, and protection of static data. A Public Key Infrastructure underpins the security model. 
 
+## Credentials
+
+Credentials consist of a certificate, public key, and private key. Together all three can be used to uniquely identify an [[agent|Agent]] to the fabric and other agents. The certificate binds the name of the [[domain|Domain]] to the public key and is signed by the domain which created it. 
+
+After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
+
+### Certificate Flows 
+
+Flows relating to the secure transfer of keys, certificates, etc. 
+
+#### End to End Flow
+
+The process by which two agents establish a secure end-to-end channel.
+
+#### Multi End to End Flow
+
+The process by which a set of agents establish a secure end-to-end channel for publish.
+
 
 
 <!-- After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
@@ -15,23 +33,6 @@ A [permission][perm] is required when sending any message to any [endpoint][endp
 <!-- > V2: end to end encryption for pub/sub and reg/call requires different key distribution methods and management. These requirements should be considered but are not detailed here.  -->
 
 
-## Requirements 
-
-End to end- messages can only be read by their intended recipients.
-
-Data at rest- data stored by components of the fabric can only be read by the owner of that data.
-
-Authenticity- the identity of [[agents|Agent]] can be determined with high confidence.
-
-Authorization- traffic is only allowed on the fabric where the recipient of that traffic agreed to receive it.
-
-Attribution- the receiver of a message can conclusively determine its source.
-
-Decentralized- the security model does not require centralized components to function.
-
-Incorruptible- security guarantees hold if the [[owner|Owner]] is compromised by malicious third parties or nation-states.
-
-Identity Protection- the identity of all agents, but especially [[users|Users]] and [[developers|Developers]] is protected as rigorously as possible.  
 
 # Security
 

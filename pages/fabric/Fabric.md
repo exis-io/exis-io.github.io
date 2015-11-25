@@ -1,47 +1,29 @@
 # Fabric
 
-A collection of nodes and core appliances that is tasked with routing and delivering messages from one [agent][Agent] to another. 
+A platform for handling riffle traffic. It connects all [domains][domain] together, exchanging [messages][message] between them.  
 
-The fabric is an overlay network atop TCP/IP that runs Riffle over Websockets. 
+Plainly speaking, the fabric gets messages from one place to another.
 
-The rough network stack:
-
-* Application 
-* Riffle
-* Websockets
-* TCP/TLS
-* IP
-
-[Nodes][Node] are routers for [riffle][Riffle] traffic. They route [messages][Message] from two [agents:][Agent] the sender and the receiver. 
+[Nodes][Node] are routers for [riffle][Riffle] traffic. They route [messages][Message] from two [domains:][domain] the sender and the receiver. 
 
 [Appliances][Appliances] are discrete programs that expose some important functionality to developers and users on the fabric. The core appliances together with the routers make up the fabric itself. 
 
-## Requirements
+## General
 
-Malicious traffic is not served the fabric. 
+### The Node
 
-Fabric should be highly tolerant to fragmentation. 
+[*Nodes*][node] make up most of the fabric. They are pieces of software that coordinate between all domains and enforce the rules of the fabric. You don't have to worry about nodes too much unless you're going to develop core infrastructure. Just know that at the end of the day, nodes do the heavy lifting for you.
 
-Functionality and customizability is moved to appliances and owners where possible. 
+All domains connect to a node when they begin interacting with the fabric. There's always at least one node at ```node.exis.io```.
 
-# Fabric
+### Domains
 
-The [fabric][fabric] is a platform for handling riffle traffic. It connects all [agents][agent] together, exchanging [messages][message] between them. Unlike the internet, only approved traffic is accepted. 
-
-## The Node
-
-[*Nodes*][node] make up most of the fabric. They are pieces of software that coordinate between all agents and enforce the rules of the fabric. You don't have to worry about nodes too much unless you're going to develop core infrastructure. Just know that at the end of the day, nodes do the heavy lifting for you.
-
-All agents connect to a node when they begin interacting with the fabric. While we don't want to keep using internet terminology and protocols, this is the only place where a URL is required. There's always at least one node at ```node.exis.io```.
-
-## Domains
-
-The most important part of working with the fabric is understanding where things are and how to reach them. Remember that each piece of software, each application that communicates over the fabric is called an [agent][agent]. Each of those agents has a [*domain*][domain], or a name that anyone can use to find that agent. 
+The most important part of working with the fabric is understanding where things are and how to reach them. Remember that each piece of software, each application that communicates over the fabric is called an [domain][domain]. Each of those domains has a [*domain*][domain], or a name that anyone can use to find that domain. 
 
 Here are some quick and simple rules for dealing with domains:
 
 * Each domain is unique
-* Each domain refers to an agent on the fabric
+* Each domain refers to an domain on the fabric
 * A domain can belong to another domain. The owner is called a *superdomain* and the owned is called a *subdomain.*
 * Domains are seperated from their subdomains with a dot
 * The top level domain is the owner of the fabric
@@ -67,7 +49,7 @@ xs.joebob.thenextfacebook
 
 ## Actions
 
-If domains are the names of agents, then [*actions*](/pages/riffle/Action.md) are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
+If domains are the names of domains, then [*actions*](/pages/riffle/Action.md) are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
 
 A basic action: 
 
@@ -92,14 +74,13 @@ Remember `thenextfacebook` app our user `joebob` made? Lets combine it with the 
 xs.joebob.thenextfacebook/hello
 ```
 
-Any agent on the fabric can send a message to this endpoint (as long as they have the proper permissions). Exis will route the message to the app `thenextfacebook`. The method called within the app for this endpoint depends specifically on the application.
+Any domain on the fabric can send a message to this endpoint (as long as they have the proper permissions). Exis will route the message to the app `thenextfacebook`. The method called within the app for this endpoint depends specifically on the application.
 
 
 
 <!-- Reference for TOC -->
 
 [message]:/pages/riffle/Message.md
-[agent]:/pages/riffle/Agent.md
 [node]:/pages/fabric/Node.md
 [fabric]:/pages/fabric/Fabric.md
 [domain]:/pages/riffle/Domain.md

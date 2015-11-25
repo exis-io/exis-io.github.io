@@ -1,8 +1,6 @@
 # iOS Tutorial- Cards Against Humanity (Part 1)
 
-__Definition:__ Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. The game is available as a free download that players can print to create their own cards, and also available to purchase in published hardcopy. Its development originated from a successful Kickstarter campaign and has received acclaim for its simple concept backed up by its satirical, mature content. The game is available under a non-free Creative Commons license. https://en.wikipedia.org/wiki/Cards_Against_Humanity
-
-In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. 
+Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. Part 2 can be found [here](/pages/samples/SwiftCardsTutorial2.md).
 
 Cards Against is played between a set of peers, so it seems like the game should be able to run peer to peer, or each player communicating directly with other players. Like all cards games, however, we have to watch out for cheaters! In order to maintain the state of the game and make sure play is fair we'll rely on a *container*, or a program running in the cloud. This container will fufill the role traditionally filled by web servers. 
 
@@ -12,9 +10,7 @@ See [getting started](/pages/samples/Getting-Started.md) to set up an iOS projec
 
 You control the way you interact with Exis through a web interface. This includes creating applications, setting security details, and adding appliances to your applications. 
 
-We have to perform some basic setup before we can make our Hello, World exis application. Head over to [my.exis.io](http://my.exis.io).
-
-Sign up for an account. For the *Signup Token* field enter `existest`. This will set you up for a 407 testing account.
+We have to perform some basic setup before we can make our Hello, World exis application. Head over to [my.exis.io](http://my.exis.io) and sign up for an account.
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
 

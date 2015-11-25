@@ -58,7 +58,7 @@ angular
 
   .run(function($rootScope, $window, $location){
     var track = function() {
-      console.log($window.ga);
+      //console.log($window.ga);
       $window.ga('send', 'pageview', { page: $location.path() });
     };
     $rootScope.$on('$viewContentLoaded', track);

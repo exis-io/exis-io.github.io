@@ -1,14 +1,10 @@
+# Core
+
 Appliances which fundamentally alter the behavior of the fabric. Deployed and administrated by the owner of the fabric.
 
 #### Map
 
 Handles routing within the fabric. 
-
-> TODO: list API
-
-> TODO: detail node default routing behavior
-
-* [[Map (1)|Map-Appliance]]- reference map implementation.
 
 ##### Authorization
 
@@ -59,14 +55,3 @@ One of the core functions the launcher performs is suspending unused appliances:
 * When the edge node receives a message for a suspended appliance it should inform the launcher. The launcher wakes the appliance and alerts the node. Message is then delivered. 
 * Agents cannot timeout within the time it takes to wake an appliance.
 ** Agents may have to receive a WAIT command. 
-
-##### Requirements
-Holds a list of all launchable appliances: their names and whatever is needed to execute the appliance. 
-
-Some heavily authenticated party can edit this list (owner.) Agents can request this list. 
-
-An agent can [[inject|Injection]] an appliance through an endpoint exposed by the launcher. 
-
-Can put instances of appliances to sleep. 
-
-Can kill instances of appliances. 
