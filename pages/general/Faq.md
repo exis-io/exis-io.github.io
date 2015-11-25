@@ -1,3 +1,3 @@
-# FAQ
+# Frequently Asked Questions
 
-In progress.
+Work in progress.
