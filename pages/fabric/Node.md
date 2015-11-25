@@ -7,13 +7,6 @@ Routes [messages][Message] along the fabric towards their intended target, holds
 
 #### Meta Level Events
 
-*Story: Stateful container*
-> 1. Developer creates peer to peer and peer to container application
-> 2. Developer creates stateful backend container 
-> 3. User uses application to connect to container
-> 4. Container registers ongoing state of user application
-> 5. Container is notified when application session disconnects
-
 Interested domains need to be notified when certain sessions:
 
 * Connect
@@ -26,8 +19,7 @@ The interested party has to know when an interesting session connects, but shoul
 * Every session meta event is published by its edge node. There is some well known endpoint these publishes arrive (i.e. superdomain)
 * The inherent identity of an domain informs the node that the session is interesting or uninteresting and the specific endpoint to publish the meta event on. This is not flexible after deployment. 
 * An appliance is responsible for maintaining the status of sessions. It is notified of session connections, tracks their status, and performs some continuous check for tenancy. 
-
-*Startup* is the process by which a fabric is bought online. An [[owner|Owner]] is the actor that initiates and oversees this process. 
+ 
 
 #### Startup procedure:
 

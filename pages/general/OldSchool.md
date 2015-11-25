@@ -1,8 +1,10 @@
 # Traditional Networking Architectures
 
 Before we dive into all the ways Exis makes the world a better place, let's take a look at the current state of affairs.
+
 A vast majority of mobile apps written today rely on remote servers, either created by the developer of the application or produced by third parties.
-Web pages used to be delivered once by a server as one bulk response, this led to the static webpages of the past.
+Web pages used to be delivered once by a server as one bulk response, which led us to the web we know and love today.
+
 Today, this is no longer the case - with the use of Ajax, pages frequently send small requests for additional data to the server, resulting in responsive and dynamic websites.
 
 ## Basic Communication

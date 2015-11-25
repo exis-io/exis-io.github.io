@@ -1,4 +1,4 @@
-# Core
+# Core Appliances
 
 Appliances which fundamentally alter the behavior of the fabric. Deployed and administrated by the owner of the fabric.
 
@@ -9,8 +9,6 @@ Handles routing within the fabric.
 ##### Authorization
 
 Allows or denies messages from agents when the reach a node. 
-
-> V2: may be rolled into authentication
 
 * [[Bouncer (1)|Bouncer-Appliance]]- base authorization implementation. Implments centralized access control 
 
@@ -55,3 +53,9 @@ One of the core functions the launcher performs is suspending unused appliances:
 * When the edge node receives a message for a suspended appliance it should inform the launcher. The launcher wakes the appliance and alerts the node. Message is then delivered. 
 * Agents cannot timeout within the time it takes to wake an appliance.
 ** Agents may have to receive a WAIT command. 
+
+
+<!-- Reference for TOC -->
+
+[auth]:/pages/appliances/Auth-Appliances.md
+[auth]:/pages/appliances/Auth-Appliances.md
