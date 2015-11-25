@@ -56,3 +56,12 @@
 * [Permissions](/pages/security/Permission.md)
 * [Authentication](/pages/security/Authentication.md)
 * [Credentials](/pages/security/Credentials.md)
+
+### [Appliance API](/pages/appliance_api/Auth.md)
+
+* [Auth](/pages/appliance_api/Auth.md)
+* [Bouncer](/pages/appliance_api/Bouncer.md)
+* [Container](/pages/appliance_api/Container.md)
+* [Osxcontainer](/pages/appliance_api/Osxcontainer.md)
+* [Replay](/pages/appliance_api/Replay.md)
+* [Storage](/pages/appliance_api/Storage.md)
