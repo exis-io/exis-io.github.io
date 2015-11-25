@@ -26,17 +26,26 @@
 * [Core](/pages/appliances/Core-Appliances.md)
 * [Store](/pages/appliances/Store-Appliances.md)
 * [Container](/pages/appliances/Container-Appliances.md)
-* [Middlebox](/pages/appliances/Middlebox-Appliances.md)
-* [Gate](/pages/appliances/Gateway-Appliances.md)
+<!-- * [Middlebox](/pages/appliances/Middlebox-Appliances.md) -->
+<!-- * [Gate](/pages/appliances/Gateway-Appliances.md) -->
 
 ### [Security](/pages/security/Security.md)
 
 * [Security](/pages/security/Security.md)
 * [Permissions](/pages/security/Permission.md)
 * [Authentication](/pages/security/Authentication.md)
-* [Credentials](/pages/security/Credentials.md)
 
 ### [Tutorials](/pages/samples/Samples.md)
 
 * [Getting Started](/pages/samples/Samples.md)
 * [Cards Against Humanity](/pages/samples/SwiftCardsTutorial.md)
+
+### [Appliance API](/pages/appliance_api/Auth.md)
+
+* [Auth](/pages/appliance_api/Auth.md)
+* [Bouncer](/pages/appliance_api/Bouncer.md)
+* [Container](/pages/appliance_api/Container.md)
+* [Osxcontainer](/pages/appliance_api/Osxcontainer.md)
+* [Replay](/pages/appliance_api/Replay.md)
+* [Storage](/pages/appliance_api/Storage.md)
+

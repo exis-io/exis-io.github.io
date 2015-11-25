@@ -2,10 +2,6 @@
 
 Recipies for exis development. 
 
-Head to [getting started](/pages/samples/Getting-Started.md) to get up and running with a project. 
-
-[Cards Against Humanity](/pages/sampels/SwiftCardsTutorial.md) tutorial demonstrates how to build an iOS app with Swift backend. 
-
 ## Getting Started
 
 Learn how to set up a project to communicate over the fabric. You can also download preconfigured projects. 

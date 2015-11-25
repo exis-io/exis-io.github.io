@@ -2,19 +2,19 @@
 
 Appliances which fundamentally alter the behavior of the fabric. Deployed and administrated by the owner of the fabric.
 
-#### Map
+### Map
 
 Handles routing within the fabric. 
 
-##### Authorization
+### Authorization
 
 Allows or denies messages from agents when the reach a node. 
 
-* [[Bouncer (1)|Bouncer-Appliance]]- base authorization implementation. Implments centralized access control 
+[Bouncer][bouncer] implments centralized access control.
 
-##### Authentication 
+### Authentication 
 
-Implements the [[Public Key Infrastructure|PKI]] in some capacity. Holds some domain-relative root keypair and certificate. Creates subdomains by creating or signing new certificates. Different levels of Authentication appliance provide different levels of security for users. 
+[Auth][auth] implements the Public Key Infrastructure in some capacity. Holds some domain-relative root keypair and certificate. Creates subdomains by creating or signing new certificates. Different levels of Authentication appliance provide different levels of security for users. 
 
 Every domain that can have subdomains must have an auth appliance. 
 
@@ -27,21 +27,16 @@ Levels:
 2. Same as level 1, but returns the certificate and keypair on demand. 
 3. Same as level 2, but never holds the certificate and keypair. 
 
-* [[Auth (0)|Auth-Appliance-Start]]
-* [[Auth (1)|Auth-Appliance]]
 
-#### Registrar
+### Registrar
 
 HTTP Server which allows registration, token acquisition, and email verification to be performed off-fabric.
-* [[Registrar|Registrar-Appliance]]
 
-#### AppManager
+### AppManager
 
 Top level appliance which user calls to create applications.
-* [[AppManager|AppManager-Appliance]]
 
-
-#### Launcher
+### Launcher
 
 The launcher is tasked with managing appliances. It is closely tied to the underlying sandbox/container service. 
 
@@ -57,5 +52,6 @@ One of the core functions the launcher performs is suspending unused appliances:
 
 <!-- Reference for TOC -->
 
-[auth]:/pages/appliances/Auth-Appliances.md
-[auth]:/pages/appliances/Auth-Appliances.md
+[auth]:/pages/appliances/Auth-Appliance.md
+[bouncer]:/pages/appliances/Bouncer-Appliance.md
+[map]:/pages/appliances/Map-Appliance.md
