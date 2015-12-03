@@ -10,8 +10,7 @@
 * [The Fabric](/pages/fabric/Fabric.md)
 * [Domain](/pages/riffle/Domain.md)
 * [Node](/pages/fabric/Node.md)
-* [Action](/pages/riffle/Action.md)
-* [Endpoint](/pages/riffle/Endpoint.md)
+* [Action and Endpoint](/pages/riffle/Action.md)
 
 ### [Riffle](/pages/riffle/Riffle.md)
 

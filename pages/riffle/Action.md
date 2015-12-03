@@ -1,6 +1,8 @@
-# Action
+# Action and Endpoint
 
 An action is a string that identifies a unique location for message verbs to associate with. It does not imply a receiver, only how the receiver should handle and route an incoming request.
+
+Endpoints are the combination of a domain and an action. Each endpoint specifies who gets messages and where they end up. 
 
 
 ## General
@@ -18,3 +20,19 @@ One subaction:
 ```
 /hello/there
 ```
+
+
+## Endpoint example
+
+The user _damouse_ may wish to greet authorized agents with a string indicating his mood. _damouse_'s domain is: 
+
+    xs.damouse
+
+He may choose to expose this functionality under the action:
+
+    /mood
+
+The corresponding endpoint is:
+
+    xs.damouse/mood
+

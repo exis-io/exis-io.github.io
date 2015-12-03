@@ -1,3 +1,15 @@
+/*li{
+  background-color: #282b35;
+}
+
+.sidebar h3 a{
+  background-color: #fff !important;
+  margin-top: 0px !important;
+}
+.navbar-submenu{
+  background-color: #282b35 !important;
+}*/
+
 body {
   margin-top: 61px;
   font-family: "Open Sans", Arial, sans-serif;
@@ -61,8 +73,8 @@ article .sticky {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #e6e8eb;
   height: 0;
+  border-bottom: 1px solid #fff;
   overflow: hidden;
 }
 
@@ -94,11 +106,10 @@ article .sticky {
 }
 
 .sidebar form {
-  border-bottom: 1px solid #e6e8eb;
-  border-right: 1px solid #e6e8eb;
   padding: 10px;
   padding-bottom: 9px;
   background: #282B35;
+  border-bottom: 1px solid #fff;
 }
 
 .sidebar form.sticky {
