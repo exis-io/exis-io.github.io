@@ -13,6 +13,8 @@ Applications that communicate over the fabric require the Riffle client librarie
 
 Each of the links above include instructions on how to install riffle into your own projects. For platforms that are a little more complicated you can download preconfigured projects.
 
+## Creating a new App
+
 <!-- # iOS
 
 Download preconfigured projects here. 

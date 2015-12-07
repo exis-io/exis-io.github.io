@@ -4,6 +4,17 @@ This is the second part of the Cards Against Humanity. In this section we'll imp
 
 iOS applications that go to the App Store take a lot of work in all aspects of app design, especially in regard to view code. We want to explore the benefits of designing applications to run over the fabric, so all of the view code has been completed for you. Download a [zip](https://github.com/exis-io/CardsAgainstPart1/archive/master.zip) or clone the [repository](https://github.com/exis-io/CardsAgainstPart1).
 
+
+* [Part 1](/pages/samples/SwiftCardsTutorial.md)
+* [Game Flow](/pages/samples/SwiftCardsTutorial2.md#game-flow)
+* [Room setup](/pages/samples/SwiftCardsTutorial2.md#room-setup)
+* [State Transitions ](/pages/samples/SwiftCardsTutorial2.md#statetransitions )
+* [App transitions](/pages/samples/SwiftCardsTutorial2.md#app-transitions)
+* [User Role ](/pages/samples/SwiftCardsTutorial2.md#user-role )
+* [Last Calls](/pages/samples/SwiftCardsTutorial2.md#last-calls)
+* [Launching the Container ](/pages/samples/SwiftCardsTutorial2.md#launching-the-container )
+
+
 ## Game Flow
 Before we get started, a brief overview of Cards Against Humanity gameplay from wikipedia: 
 
@@ -24,6 +35,7 @@ Here's the game logic, distilled:
   3. **Scoring**: whoever played the picked card wins and gets a point
 
 Remember our app has two parts: iOS and OSX apps. The iOS app is what user directly interact with when they play the game, while the OSX app runs as a *container*, or a program wrapped in some magic that lets it run in the cloud. This container maintains the global state of the game, deals cards to players, and makes sure players dont cheat. By the end of part 1 the app said "Hello!" to the container and the container offered some cards for the user. 
+
 
 ## Permissions 
 

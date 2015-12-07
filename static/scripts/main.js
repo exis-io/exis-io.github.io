@@ -3,6 +3,8 @@ window.onload = function () {
     var url = window.location.hash;
     var divid = url.split('#');
     var hash = document.getElementById(divid[2]);
+
+    // console.log("Scrolling to hash: ", url);
     if(hash) {
       hash.scrollIntoView()
     }
@@ -227,7 +229,7 @@ angular
         var url = location.href;
         url = url.replace(/#\w.+/, '')
         url += '#' + el.attr('id')
-
+        // console.log("Altering a link: ", url)
         el.append(' <a class="hash" href="' + url + '">#</a>')
       }
     }
