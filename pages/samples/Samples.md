@@ -4,11 +4,18 @@ Recipies for exis development.
 
 ## Getting Started
 
-Learn how to set up a project to communicate over the fabric. You can also download preconfigured projects. 
+Applications that communicate over the fabric require the Riffle client libraries. They're all hosted together on [github](https://github.com/exis-io/Exis). You can also head straight to the language of your choice:
 
-# iOS
+* [iOS](https://github.com/exis-io/Exis/tree/master/ios)
+* [Python](https://github.com/exis-io/pyRiffle)
+* [Javascript](https://github.com/exis-io/Exis/tree/master/js)
+* [Go](https://github.com/exis-io/goRiffle)
 
-Download preconfigured projects here. If you publish the app you will have to change the name.
+Each of the links above include instructions on how to install riffle into your own projects. For platforms that are a little more complicated you can download preconfigured projects.
+
+<!-- # iOS
+
+Download preconfigured projects here. 
 
 __Warning:__ Xcode versions below 7.0 are not supported. Additionally, Xcode 7.1 has some conflicts with cocoapods 0.38. If you run into errors with `importing modular import in non modular framework` delete the directory `Pods/Headers/Private`.
 
@@ -105,7 +112,7 @@ In *ViewController.swift* add *import Riffle*. Run the project-- even if it has 
 **Container:** Change the current target to the OSX console app. Add the import to *main.swift* add run again. Ignore the error messages that appear before *Hello, World!*. They're warnings that arise when using Swift libraries in an OSX application. 
 
 ![Missing Image!](/img/setup/ios/9.png)
-
+ -->
 
 
 <!-- 
@@ -231,5 +238,9 @@ Then you forgot to do this step.
 
 [perm]:/pages/security/Permission.md
 
-[pychat]:/pages/samples/Python-Sample-Chat.md
-[pychat]:/pages/samples/Python-Sample-Chat.md
+[cards1]:/pages/samples/SwiftCardsTutorial.md
+[cards2]:/pages/samples/SwiftCardsTutorial2.md
+
+[cards2]:/pages/samples/SwiftCardsTutorial2.md
+
+
