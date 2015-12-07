@@ -29,7 +29,7 @@ Tasks- discrete operations that have to be documented
 
 
 App 1
-    - Website Setup #TASK
+    - Website Setup
         + Just Auth #TASK
     - Hello, Riffle 
         + RegCall

@@ -19,33 +19,23 @@ Head to [github](https://github.com/exis-io/Exis/tree/master/ios) to set up an i
 
 ## Website Setup 
 
-<!-- LINK: App Creation -->
+Applications built with Exis are managed through the web interface at [my.exis.io](https://my.exis.io). 
 
-<!-- 
-[How to make a new app on exis.io](/pages/samples/Samples.md#creating-a-new-app). -->
+**1.** Check out the instructions on [how to make a new app on exis.io](/pages/samples/Samples.md#creating-a-new-app). Before you start writing any code you'll need to get set up on the website.
 
+**2.** Create a new account and remember your username. 
 
-You control the way you interact with Exis through a web interface. This includes creating applications, setting security details, and adding appliances to your applications. 
+**3.** Create an app called `cardsagainst`. 
 
-We have to perform some basic setup before we can make our Hello, World exis application. Head over to [my.exis.io](http://my.exis.io), sign up for an account, and log in. 
+**4.** Attach an *Auth Appliance*
 
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
-
-Navigate to the dashboard and create a new application. The name you choose here will become part of your domain. Make sure to spell *cardsagainst* correctly. 
-
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.PNG)
-
-Once the app is created, we're going to attach *appliances*: *Auth* and *Osxcontainer*. Auth helps your application keep track of users, while the container runs your code in the cloud. 
-
-![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.PNG)
-
-All messages over the fabric have to have [*Permissions*][perm]. This allows agents to send messages. For our *Hello, World!* we'll add a static permission that allows your app to call `hello` on the container. 
+<!-- All messages over the fabric have to have [*Permissions*][perm]. This allows agents to send messages. For our *Hello, World!* we'll add a static permission that allows your app to call `hello` on the container. 
 
 From the dashboard click on the blue *Permissions* button. On the permissions page click on the *User* accordion at the top of the page. Enter `.gamelogic/hello` into the field and click add.
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.PNG)
 
-The `User Role` is a set of permissions thats given to all domains representing users of your application.
+The `User Role` is a set of permissions thats given to all domains representing users of your application. -->
 
 
 ## Hello Riffle
@@ -70,38 +60,26 @@ class Container: RiffleDomain {
     override func onJoin() {
         print("Domain joined")
         
-        register("hello", sayHi)
+        register("play", play)
     }
     
-    func sayHi(name: String) -> AnyObject {
-        print("\(name) says hello!")
-        return "Hi, \(name)!"
+    func play(player: String) -> AnyObject {
+        print("\(player) says hello!")
+        return "Hi, \(player)!"
     }
 }
 
 let container = Container(name: "gamelogic", superdomain: app)
 container.join()
 NSRunLoop.currentRunLoop().run()
+
 ```
 
 **2.** Enter your username in place of *USERNAME* on the 4th line above. 
 
-<!-- The `app` instance variable is a `RiffleAgent`. It accepts the domain of your app, make sure to substitute your own user domain instead of the one listed below!
+**3.** Create a button and an IBAction on the iOS app. Name the action `login` 
 
-For example, if your username is `joebob`, replace 
-
-```
-let app = RiffleAgent(domain: "xs.demo.exis.cardsagainst")
-```
-
-with 
-
-```
-let app = RiffleAgent(domain: "xs.demo.joebob.cardsagainst")
-```
- -->
-
-**3.** Create a button and an IBAction on the iOS app. Name the action `login` **4.** Replace the code in `ViewController.swift` with the following. Again, substitute your username for *USERNAME*.
+**4.** Replace the code in `ViewController.swift` with the following. Again, substitute your own username in place of *USERNAME*.
 
 ```swift
 import UIKit
@@ -126,7 +104,7 @@ class ViewController: UIViewController, RiffleDelegate {
         
         backend = RiffleDomain(name: "gamelogic", superdomain: app)
         
-        backend.call("hello", me!.domain) { (greeting: String) -> () in
+        backend.call("play", me.domain) { (greeting: String) -> () in
             print("The backend replied with \(greeting)")
         }
     }
@@ -137,11 +115,20 @@ class ViewController: UIViewController, RiffleDelegate {
 }
 ```
 
+Don't run the app just yet! The app won't be allowed to call the function you just made. Everything that talks over the fabric needs to have [permission][perm] to do so.
+
+### Edit the user role 
+
+**1.** Click the blue *Permissions Management* button on the dashboard at [my.exis.io](https://my.exis.io).
+
+**2.** Expand the user role. Enter `.gamelogic/play` as the endpoint for your role.
+
+![Missing Image!](/img/ios-cards-tutorial/web/2-perms/2.PNG)
+
+**3.** Click the add button.
+
 <!-- In the iOS app add a button to the empty view controller created when you made the project. Create an action for the button to its parent view controller. In the example below the action is called *go*, but you can name it whatever you'd like. Dont worry if you have more code in your view controller than is shown in this image.  -->
 
-<!-- ![Missing Image!](/img/ios-cards-tutorial/app/2-hello/1.PNG) -->
-
-<!-- TODO: link to permissions here. Describe permissions -->
 
 Run the backend, then the app. When you run two targets, or programs, in one Xcode project, Xcode will always display output from the last target run. To switch between outputs change the active target in the debug console.
 
@@ -157,17 +144,16 @@ Here's some sample output from an app on the left and a container on the right.
 
 ## Auth 
 
-Anyone should be able to play our Cards Against Humanity app, but we're going to have to keep track of the players in the game. This falls under the purview of *Authentication*.
-
-<!-- TODO: Link to auth page and provide docs.  -->
+Anyone should be able to play our Cards Against Humanity app, but we're going to have to keep track of the players in the game. This falls under the purview of [*Authentication*][auth].
 
 Look at the app code carefully. Notice something a little strange? Domains are the names of applications on the fabric, but we're setting ours manually. Since domains have to be exclusive, only one copy of the app can be running at one time.
 
-<!-- There are a few levels of authentication, each based on how secure the developer wants the app to be. For this app we will only require a user's name for registration and keep it around only as long as the user stays on the app.  -->
+There are a few levels of authentication, each based on how secure the developer wants the app to be. For this app we will only require a user's name for registration and keep it around only as long as the user stays on the app. 
 
 ### Get a username
 
 **1.** Add a `UITextField` to `ViewController` using the storyboard. 
+
 **2.** Connect an outlet from the text field to the conntroller. Call it `textfieldUsername`.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/3-auth/1.PNG)
@@ -188,7 +174,7 @@ Look at the app code carefully. Notice something a little strange? Domains are t
 }
 ```
 
-Users will now be created dynamically as they enter their names into the app.
+Users will now be created dynamically as they enter their names into the app. As configured, the app will allow anyone to play as long as the name they choose is not currently in use. This is the least strict form of authentication-- email and password is a lot more secure and commonly used. 
 
 <!-- 
 Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update Role* in the *User Role* section. Add the endpoint below, substiting your own username for `damouse`. 
@@ -197,11 +183,9 @@ Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update 
 
 ## Meta Calls
 
-The container hosts a set of `Rooms`, or games currently in progress. They'll need to know when players join or leave the game to add or remove them from play, respectively.
+The container has to know when players join or leave the game to add or remove them from play, respectively.
 
-Ideally the player should let their rooms know when they leave the game, but we still have to check for silent disconnections from the user. 
-
-TODO: meta call, session left
+Ideally the player should let the container know when they leave the game, but if that user suspends the app or their device crashes, the container will never remove them from play.
 
 Thankfully the node will provide. When an agent disconnects from the fabric, the node they were connected to publishes a special message *in its parent domain.* This message is published to the action `/sessionLeft`. In order for the container to receive this message we have to give it the appropriate permission.
 
@@ -210,7 +194,9 @@ Thankfully the node will provide. When an agent disconnects from the fabric, the
 <!-- TODO: task- document this on the permissions page and link here -->
 
 **1.** Create a new role named `container` .
+
 **2.** Set the sessionLeft endpoint as a static permission.
+
 **3.** Add the container as a member of the role.
 
 
@@ -227,7 +213,7 @@ The container will now be allowed to subscribe to `sessionLeft`.
 
 ```
 func sessionLeft(domain: String) {
-    print("Session left: \(domain)")
+    print("Domain left: \(domain)")
 }
 ```
 
@@ -239,37 +225,6 @@ app.subscribe("sessionLeft", sessionLeft)
 
 As the name implies, we should see this method get called when any user leaves the app. Go ahead and try it out-- run the container and the app again. Once the app is connected and authenticated terminate the app and watch the console output for the container. 
 
-### Create rooms for each game
-
-Each game of Cards Against Humanity can only host a limited number of players. We need a way of keeping the games seperate from one another.
-
-**1.** Create a new file called `Room.swift`. Only add it to the Backend target, not the app.
-**2.** Create a subclass of `RiffleDomain` called `Room`
-
-```
-class Room: RiffleDomain {
-
-    override func onJoin() {
-        print("Room joined!")
-    }
-}
-```
-
-**3.** Make a method in `Room.swift` called `addPlayer`.
-
-```swift
-func addPlayer(domain: String) -> AnyObject {
-
-}
-```
-
-<!-- TODO: have players call play. This affects the next section-->
-
-<!-- Remember the first method we made in this class, our *Hello, World*. Making a function in a session object is not enough to expose it to the fabric- there's no way for the session to know which of its methods should be exposed and when! You still have to register the function so the iOS app can call it. This task is left to you, reader: register the *play* function with the action `/play`. Be careful to call `register` on the *container* object, not *app*! -->
-
-
-<!-- ![Missing Image!](/img/ios-cards-tutorial/app/3-auth/2.PNG) -->
-
 ## Passing Data
 
 We're missing the actual cards in our card game! Time to fix that. In this section you'll load cards from static files on the container and send them across to the user. 
@@ -277,6 +232,7 @@ We're missing the actual cards in our card game! Time to fix that. In this secti
 ### Import cards data into Xcode
 
 **1.** Download the data for the cards [here](/img/pg13.zip)
+
 **2.** Unzip the file and drag it into your project. Make sure to select *Copy items if needed* and make sure *Add to targets* is checked for your project. 
 
 ![Missing Image!](/img/ios-cards-tutorial/app/4-data/2.PNG)
@@ -286,18 +242,25 @@ We're missing the actual cards in our card game! Time to fix that. In this secti
 When you drag in static content like *JSON* into Xcode it doesn't always copy the content over with your project. In order to make sure your app can see the cards data you'll have to make sure it is correctly copied over 
 
 **3.** Go to your project's settings by clicking the blue icon in the top left of the project navigation
+
 **4.** Enter the *Build Phases* Section
+
 **5.** Open the *Copy Items* section
+
 **6.** Set *Destination* to *Resources*
+
 **7.** Make sure the *subpath* textfield is empty
+
 **8.** Uncheck *Copy only when installing*
+
 
 ### Load cards into backend
 
 Load the cards from the data files and send them across to the user.
 
 **1.** Create a new swift file `Models.swift`. Make sure its a member of both targets.
-**2.** Write a method that loads the cards from their files
+
+**2.** Add a function that loads the cards from their files
 
 ```swift
 // Load the json file with the given name and return the strings
@@ -311,7 +274,7 @@ func loadCards(name: String) -> [String] {
 }
 ```
 
-**3.** Load both sets of cards at the top of `Room.swift` the *Deck* in *main.swift* and check its contents.
+**3.** Load both sets of cards at the top of `main.swift`, before any of the other code
 
 ```
 var baseQuestions = loadCards("q13")
@@ -321,24 +284,40 @@ print(baseQuestions)
 
 If you see a listing of Cards as strings then the deck loaded successfully-- if not then there may be something wrong with your project's configuration. Make sure the data files have been added to both targets. 
 
-<!-- Delete the deck testing code and move the deck instantiation into the Session class as an instance variable. Make a new method in the OSX's *Domain* subclass for apps to call when they're ready to start playing. Return all the answers in the deck.  -->
+### Return the cards
 
-<!-- __NOTE:__ all returns from *registered* functions have to be wrapped in an array if they're returning arrays. Note the braces around `deck.answers` below. -->
+Instead of printint the cards out to the console, lets return them to the player that called `play`.
 
+**1.** Remove the print statement in the last line above.
 
-```
-func play(domain: String) -> AnyObject {
-    return [deck.answers]
+**2.** Change the play function in `main.swift` to return the list of all answers
+
+```swift
+func play(player: String) -> AnyObject {
+    print("\(player) says hello!")
+    return [baseQuestions]
 }
 ```
 
-<!-- TODO: update user role -->
+<!-- TODO: talk about cumin? -->
 
-We want all players to be able to access this function! You'll need to automatically give all players permission to call the `/play` action. Go back to the *Hello, World!* example and review Roles, then add a new endpoint to the role. 
+**3.** Change the call to `gamelogic/play` so it prints the list of cards
 
-<!-- TODO: code to call the play function -->
+```swift
+backend.call("play", me.domain) { (cards: [String]) -> () in
+    print("\(cards) Got \(cards.count) cards")
+}
+```
 
-Write the code in the iOS app to call the `/play` action. Remember to substitute your own endpoint instead of the one listed in the example below.
+<!-- __NOTE:__ all returns from *registered* functions have to be wrapped in an array if they're returning arrays. Note the braces around `deck.answers` below. -->
+
+<!-- ```
+func play(domain: String) -> AnyObject {
+    return [deck.answers]
+}
+``` -->
+
+Run the app. Make sure you can see the cards logged out to the console.
 
 ## Picking Cards
 
@@ -435,27 +414,19 @@ override func viewWillAppear(animated: Bool) {
 
 ```
 
-<!-- These are the UITableView *delegate* and *datasource* methods. They're called when the table configures itself. By changing the values returned in these methods, we can change the behavior of the tableview.  -->
-
 ### Call the room with player picks
-
-<!-- TODO: Instantiate and push game controller before this -->
-
-<!-- TODO: explain and replace the #details calls -->
 
 Inside *ViewController* change the `/play` call to match the code below. Now, instead of printing all the cards we receive from the container, we load the *GameViewController* from the storyboard, give it the cards we just loaded, and present it. 
 
 ```
-    container!.call("play", me!.domain) { (cards: [Card]) in
+    backend.call("play", me.domain) { (cards: [Card]) in
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("game") as! GameViewController
         
-        controller.container = self.container
-        controller.me = self.me!
+        controller.backend = self.backend
+        controller.me = self.me
         controller.cards = cards
         
         self.presentViewController(controller, animated: true, completion: nil)
-        
-        print("\(cards) Got \(cards.count) cards")
     }
 ```
 
@@ -480,6 +451,8 @@ Once the two are wired up restart the container and the app. When you touch a ca
 ```
 [xs.demo.damouse.cardsagainst.userthree] touched the card: "The ghost of Marlon Brando"
 ```
+
+<!-- TODO: explain and replace the #details calls -->
 
 ## Part 2
 

@@ -15,6 +15,20 @@ Each of the links above include instructions on how to install riffle into your 
 
 ## Creating a new App
 
+You control the way you interact with Exis through a web interface. This includes creating applications, setting security details, and adding appliances to your applications. 
+
+Head over to [my.exis.io](http://my.exis.io), sign up for an account, and log in. 
+
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
+
+Navigate to the dashboard and create a new application. The name you choose here will become part of your [domain][domain]. These screenshots show how to make an app for the Cards Against Humanity tutorial-- channge the app name as needed. 
+
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.PNG)
+
+Once the app is created, you can attach *appliances*, or cloud services. You'll almost always need the *Auth* appliance, since it keeps track of your users. 
+
+![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.PNG)
+
 <!-- # iOS
 
 Download preconfigured projects here. 
