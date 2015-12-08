@@ -12,15 +12,23 @@ A message contains some sort of information the sending agent wishes to transmit
 
 [Register/Call][RegisterCall] enables RPC-like functionality. 
 
-### Requirements
+## Examples 
 
-Messages are routable: indicates **TO** and **FROM**.
+Every messaging call returns a deferred. The deferred succeeds or fails appropriately. Deferreds can be ignored, in which case subsequent calls to the following methods proceed concurrently. If the deferred does not have an error handler the domain automatically logs the error in onError.
 
-Granularly authorizable. Routers will not forward or process messages unless presented with a pemissions object. 
+```none
+deferred register(string domain, function handler)
+deferred subscribe(string domain, function handler)
+deferred publish(string domain, any... arguments)
+deferred call(string domain, any... arguments, function handler)
 
-Contains the [action][Action] as well as the receiving domain. 
+deferred unregister(string domain)
+deferred unsubscribe(string domain)
+```
 
-Can travel across arbitrarily many nodes. Agents on either end of the communication are not made aware of the paths their messages take. 
+Every messaging pattern call except publish accepts a pointer to a function. This function must have arguments and return types that are *Cuminicable*, see section below. 
+
+*Call* and *subscribe* function handlers cannot return values. *Register* may return values.
 
 <!-- Reference for TOC -->
 

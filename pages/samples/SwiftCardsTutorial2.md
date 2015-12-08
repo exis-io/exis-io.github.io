@@ -4,6 +4,17 @@ This is the second part of the Cards Against Humanity. In this section we'll imp
 
 iOS applications that go to the App Store take a lot of work in all aspects of app design, especially in regard to view code. We want to explore the benefits of designing applications to run over the fabric, so all of the view code has been completed for you. Download a [zip](https://github.com/exis-io/CardsAgainstPart1/archive/master.zip) or clone the [repository](https://github.com/exis-io/CardsAgainstPart1).
 
+
+* [Part 1](/pages/samples/SwiftCardsTutorial.md)
+* [Game Flow](/pages/samples/SwiftCardsTutorial2.md#game-flow)
+* [Room setup](/pages/samples/SwiftCardsTutorial2.md#room-setup)
+* [State Transitions ](/pages/samples/SwiftCardsTutorial2.md#statetransitions )
+* [App transitions](/pages/samples/SwiftCardsTutorial2.md#app-transitions)
+* [User Role ](/pages/samples/SwiftCardsTutorial2.md#user-role )
+* [Last Calls](/pages/samples/SwiftCardsTutorial2.md#last-calls)
+* [Launching the Container ](/pages/samples/SwiftCardsTutorial2.md#launching-the-container )
+
+
 ## Game Flow
 Before we get started, a brief overview of Cards Against Humanity gameplay from wikipedia: 
 
@@ -24,6 +35,7 @@ Here's the game logic, distilled:
   3. **Scoring**: whoever played the picked card wins and gets a point
 
 Remember our app has two parts: iOS and OSX apps. The iOS app is what user directly interact with when they play the game, while the OSX app runs as a *container*, or a program wrapped in some magic that lets it run in the cloud. This container maintains the global state of the game, deals cards to players, and makes sure players dont cheat. By the end of part 1 the app said "Hello!" to the container and the container offered some cards for the user. 
+
 
 ## Permissions 
 
@@ -322,6 +334,186 @@ The last missing piece is also related to the user's hand of cards. What happens
 
 
 
+<!-- 
+
+Code pulls directly from CAH so we can use them directly in the tutorial 
+
+ - Backend 
+
+Dynamic Roles
+
+// Create a dynamic role to give to players later
+        app.call("xs.demo.Bouncer/addDynamicRole", "player", self.domain, [
+            ["target": "\(domain)/$/pick", "verb":"c"],
+            ["target": "\(domain)/$/leave", "verb":"c"],
+            ["target": "\(domain)/$/answering", "verb":"s"],
+            ["target": "\(domain)/$/picking", "verb":"s"],
+            ["target": "\(domain)/$/scoring", "verb":"s"],
+            ["target": "\(domain)/$/left", "verb":"s"],
+            ["target": "\(domain)/$/joined", "verb":"s"]
+        ], handler: nil)
+
+Czar chooser and demo players
+        // If there aren't enough players to play a full
+        while players.count < 3 {
+            let player = Player()
+            player.domain = app.domain + ".demo\(randomStringWithLength(4))"
+            player.hand = answers.randomElements(10, remove: true)
+            player.demo = true
+            players.append(player)
+            
+            if state != "Empty" {
+                publish("joined", player)
+            }
+        }
+        
+        // Set the next czar round-robin, or randomly if no player is currently the czar
+        if czar == nil {
+            czar = players.randomElements(1)[0]
+            czar!.czar = true
+        } else {
+            let i = players.indexOf(czar!)!
+            let newCzar = players[(i + 1) % (players.count)]
+            czar!.czar = false
+            newCzar.czar = true
+            czar = newCzar
+        }
+        
+        print("New Czar: \(czar!.domain)")
+
+
+Room Transitions
+    // MARK: Round Transitions
+    func startAnswering() {
+        // Close the room if there are only demo players left
+        if players.reduce(0, combine: { $0 + ($1.demo ? 0 : 1) }) == 0 {
+            container.rooms.removeObject(self)
+            players = []
+            timer.cancel()
+            return
+        }
+        
+        print("    Answering -- ")
+        state = "Answering"
+        roomMaintenance()
+
+        publish("answering", czar!, questions.randomElements(1, remove: false)[0], PICK_TIME)
+        timer.startTimer(PICK_TIME, selector: "startPicking")
+    }
+    
+    func startPicking() {
+        print("    Picking -- ")
+        state = "Picking"
+        let pickers = players.filter { !$0.czar }
+        
+        // Autopick for players that didnt pick
+        for player in pickers {
+            if player.pick == nil {
+                player.pick = player.hand.randomElements(1, remove: true)[0]
+            }
+        }
+        
+        publish("picking", pickers.map({ $0.pick! }), PICK_TIME)
+        timer.startTimer(PICK_TIME, selector: "startScoring:")
+    }
+    
+    func startScoring(t: NSTimer) {
+        print("    Scoring -- ")
+        state = "Scoring"
+        
+        // Choose a winner at random if the czar didn't choose one
+        var pickers = players.filter { !$0.czar }
+        var winner = pickers.randomElements(1, remove: false)[0]
+        
+        if let domain = t.userInfo as? String {
+            if let p = getPlayer(players, domain: domain) {
+                winner = p
+            }
+        }
+        
+        winner.score += 1
+        publish("scoring", winner, winner.pick!, SCORE_TIME)
+        
+        // draw cards for all players, nil their picks
+        for p in pickers {
+            if let c = p.pick {
+                answers.append(c)
+                p.hand.removeObject(c)
+            }
+            
+            let newAnswer = answers.randomElements(1, remove: true)
+            p.hand += newAnswer
+            p.pick = nil
+            
+            // If this isn't a demo player deal them a new card
+            if !p.demo {
+                call(p.domain + "/draw", newAnswer, handler: nil)
+            }
+        }
+        
+        timer.startTimer(SCORE_TIME, selector: "startAnswering")
+    }
+
+Room Pick
+
+    func pick(domain: String, card: String) {
+        guard let player = getPlayer(players, domain: domain) else { return }
+        
+        if state == "Answering" && player.pick == nil && !player.czar {
+            guard let pick = player.hand.removeObject(card) else { return }
+            player.pick = pick
+            print("Player: \(player.domain) answered: \(card)")
+            
+        } else if state == "Picking" && player.czar {
+            let winner = players.filter { $0.pick == card }[0]
+            timer.startTimer(0.0, selector: "startScoring:", info: winner.domain)
+        }
+    }
+
+Room Add Player
+
+    func addPlayer(domain: String) -> AnyObject {
+        // Add the new player and draw them a hand. Let everyone else in the room know theres a new player
+        print("Adding Player \(domain)")
+        
+        let newPlayer = Player()
+        newPlayer.domain = domain
+        newPlayer.demo = false
+        newPlayer.hand = answers.randomElements(4, remove: true)
+        
+        players.append(newPlayer)
+        publish("joined", newPlayer)
+
+        // Add dynamic role
+        app.call("xs.demo.Bouncer/assignDynamicRole", self.dynamicRoleId, "player", container.domain, [domain], handler: nil)
+        
+        if state == "Empty" {
+            timer.startTimer(EMPTY_TIME, selector: "startAnswering")
+            roomMaintenance()
+        }
+        
+        return [newPlayer.hand, players, state, self.name!]
+    }
+
+
+Remove Player
+
+    func removePlayer(domain: String) {
+        if let player = getPlayer(players, domain: domain) {
+            print("Player marked as zombie: \(domain)")
+            player.zombie = true
+            player.demo = true
+        } else {
+            print("WARN-- asked to remove player \(domain), not found in players!")
+        }
+    }
+    
+
+
+App
+Give Draw Perm
+self.app.call("xs.demo.Bouncer/setPerm", self.container.domain, self.me.domain + "/draw", handler: nil)
+-->
 
 
 

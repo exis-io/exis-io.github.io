@@ -1,21 +1,18 @@
 {
-  "name": "resin-docs",
+  "name": "exis-docs",
   "version": "0.0.0",
-  "description": "This repo contains our public-facing documentation.",
+  "description": "Public-facing documentation.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/resin-io/docs.git"
+    "url": "git://github.com/exis-io/exis-io.github.io.git"
   },
   "author": "",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/resin-io/docs/issues"
-  },
-  "homepage": "https://github.com/resin-io/docs",
+  "license": "MIT",
+  "homepage": "https://docs.exis.io",
   "dependencies": {
     "express": "~4.11.0",
     "async": "~0.9.0"

@@ -1,3 +1,5 @@
+# Container
+
 A processing node running developer code. Formerly called "Mind."
 
 ## Example commands
