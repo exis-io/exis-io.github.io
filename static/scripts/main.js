@@ -70,19 +70,19 @@ angular
   .constant('MAIN_MENU', [
     {
       "title": "Team",
-      "link": "https://exis.io/team"
+      "link": "http://exis.io/team"
     },
     {
       "title": "Contact Us",
-      "link": "https://exis.io/contact"
+      "link": "http://exis.io/contact"
     },
     {
       "title": "About Us",
-      "link": "https://exis.io/about.html"
+      "link": "http://exis.io/about.html"
     },
     {
       "title": "Crash Course",
-      "link": "https://exis.io/crashcourse.html"
+      "link": "http://exis.io/crashcourse.html"
     }
   ])
 
