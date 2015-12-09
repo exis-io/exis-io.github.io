@@ -6,9 +6,9 @@ Recipies for exis development.
 
 Applications that communicate over the fabric require the Riffle client libraries. They're all hosted together on [github](https://github.com/exis-io/Exis). You can also head straight to the language of your choice:
 
-* [iOS](https://github.com/exis-io/Exis/tree/master/ios)
+* [iOS](https://github.com/exis-io/Exis/ios)
 * [Python](https://github.com/exis-io/pyRiffle)
-* [Javascript](https://github.com/exis-io/Exis/tree/master/js)
+* [Javascript](https://github.com/exis-io/Exis/js)
 * [Go](https://github.com/exis-io/goRiffle)
 
 Each of the links above include instructions on how to install riffle into your own projects. For platforms that are a little more complicated you can download preconfigured projects.
@@ -255,8 +255,6 @@ Then you forgot to do this step.
 [perm]:/pages/security/Permission.md
 
 [cards1]:/pages/samples/SwiftCardsTutorial.md
-[cards2]:/pages/samples/SwiftCardsTutorial2.md
-
 [cards2]:/pages/samples/SwiftCardsTutorial2.md
 
 
