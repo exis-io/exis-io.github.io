@@ -6,10 +6,10 @@ Recipies for exis development.
 
 Applications that communicate over the fabric require the Riffle client libraries. They're all hosted together on [github](https://github.com/exis-io/Exis). You can also head straight to the language of your choice:
 
-* [iOS](https://github.com/exis-io/Exis/ios)
+* [iOS](https://github.com/exis-io/Exis/tree/master/ios)
 * [Python](https://github.com/exis-io/pyRiffle)
-* [Javascript](https://github.com/exis-io/Exis/js)
-* [Go](https://github.com/exis-io/goRiffle)
+* [Javascript](https://github.com/exis-io/Exis/tree/master/js)
+* [Go](https://github.com/exis-io/core)
 
 Each of the links above include instructions on how to install riffle into your own projects. For platforms that are a little more complicated you can download preconfigured projects.
 
@@ -29,27 +29,10 @@ Once the app is created, you can attach *appliances*, or cloud services. You'll 
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/4.PNG)
 
-<!-- # iOS
+## iOS Manual Configuration
 
-Download preconfigured projects here. 
+Download preconfigured projects [here](https://github.com/exis-io/Exis/tree/master/ios). 
 
-__Warning:__ Xcode versions below 7.0 are not supported. Additionally, Xcode 7.1 has some conflicts with cocoapods 0.38. If you run into errors with `importing modular import in non modular framework` delete the directory `Pods/Headers/Private`.
-
-iOS app only: download [zip](https://github.com/exis-io/SwiftStarterIOS/archive/master.zip) or clone using git:
-
-```
-git clone git@github.com:exis-io/SwiftStarterIOS.git
-```
-
-iOS and Backend Container: download [zip](https://github.com/exis-io/SwiftStarterIOSBackend/archive/master.zip) or clone using git: 
-
-```
-git clone git@github.com:exis-io/SwiftStarterIOSBackend.git
-```
-
-## Manual Configuration
-
-__Warning:__ this section is slightly out of date. Download one of the sample projects provided above. 
 
 Set up an Xcode project as an iOS app frontend and Swift container running as a backend. To create the project without the backend, skip the steps marked *Container*.
 
@@ -95,7 +78,6 @@ target :Backend, :exclusive => true do
 end
 
 ```
-
 ![Missing Image!](/img/setup/ios/5.png)
 
 Close the Xcode project. Open a terminal and navigate to the directory you saved your project using the `cd` command. Install the pods with `pod install`.
@@ -128,10 +110,9 @@ In *ViewController.swift* add *import Riffle*. Run the project-- even if it has 
 **Container:** Change the current target to the OSX console app. Add the import to *main.swift* add run again. Ignore the error messages that appear before *Hello, World!*. They're warnings that arise when using Swift libraries in an OSX application. 
 
 ![Missing Image!](/img/setup/ios/9.png)
- -->
 
 
-<!-- 
+
 
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.PNG)
 
@@ -236,10 +217,10 @@ Then you forgot to do this step.
 4. Type in *"contains swift"* in the search bar on the options pane
 5. Find the setting `Embedded Content Contains Swift Code` and set it to `Yes`
 
-![Missing Image!](/img/ios-cards-tutorial/app/2-hello/4.PNG) -->
+![Missing Image!](/img/ios-cards-tutorial/app/2-hello/4.PNG)
 
 
-<!-- Reference for TOC -->
+<!-- Reference for TOC
 
 [message]:/pages/riffle/Message.md
 [agent]:/pages/riffle/Agent.md
