@@ -112,8 +112,6 @@ In *ViewController.swift* add *import Riffle*. Run the project-- even if it has 
 ![Missing Image!](/img/setup/ios/9.png)
 
 
-
-
 ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/1.PNG)
 
 Enter an app name. The examples use `ExAgainst` as the name. Remember the folder where you save the project, you'll need to find it again soon! Here we've saved it into the directory `~/Documents/ios/`.
@@ -220,8 +218,6 @@ Then you forgot to do this step.
 ![Missing Image!](/img/ios-cards-tutorial/app/2-hello/4.PNG)
 
 
-<!-- Reference for TOC
-
 [message]:/pages/riffle/Message.md
 [agent]:/pages/riffle/Agent.md
 [node]:/pages/fabric/Node.md
@@ -232,7 +228,6 @@ Then you forgot to do this step.
 [samples]:/pages/samples/Samples.md
 
 [auth]:/pages/appliances/Auth-Appliance.md
-
 [perm]:/pages/security/Permission.md
 
 [cards1]:/pages/samples/SwiftCardsTutorial.md
