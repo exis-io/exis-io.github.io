@@ -70,11 +70,11 @@ angular
   .constant('MAIN_MENU', [
     {
       "title": "Team",
-      "link": "http://exis.io/team"
+      "link": "http://exis.io/about.html"
     },
     {
       "title": "Contact Us",
-      "link": "http://exis.io/contact"
+      "link": "http://exis.io/about.html"
     },
     {
       "title": "About Us",
