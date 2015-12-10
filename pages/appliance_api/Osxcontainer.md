@@ -20,11 +20,11 @@ If you specify a scheme, you must also configure that scheme as shared in
 XCode.  Check the Shared box in Product->Scheme->Manage Schemes.
 
 #### Parameters:
- -- imageName (string) â name of resulting container image
- -- projectName (string) â name of the project in XCode
- -- projectUrl (string) â URL for git repository, must start with http or https
- -- branch (string) â branch to checkout from repository, defaults to master [default: 'master']
- -- scheme (string) â scheme to build, defaults to projectName [default: None]
+ - imageName (string) -- name of resulting container image
+ - projectName (string) -- name of the project in XCode
+ - projectUrl (string) -- URL for git repository, must start with http or https
+ - branch (string) -- branch to checkout from repository, defaults to master [default: 'master']
+ - scheme (string) -- scheme to build, defaults to projectName [default: None]
 
 **Return type:** dictionary
 
@@ -46,8 +46,8 @@ create('gamebackendv3', 'prodbackend')
 prodbackend/start()
 
 #### Parameters:
- -- imageName (string) â name of image to use
- -- containerName (string) â name of new container
+ - imageName (string) -- name of image to use
+ - containerName (string) -- name of new container
 
 **Return type:** dictionary
 
@@ -76,7 +76,7 @@ removal the container methods will no longer be available, e.g. you
 cannot start a removed container.
 
 #### Parameters:
- -- containerName (string) â name of the container to remove
+ - containerName (string) -- name of the container to remove
 
 ### removeImage(imageName)
 
@@ -84,7 +84,7 @@ Remove an image.  All containers based on the image must be removed
 before removeImage is called.
 
 #### Parameters:
- -- imageName (string) â name of image to remove
+ - imageName (string) -- name of image to remove
 
 
 * * *

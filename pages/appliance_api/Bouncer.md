@@ -13,9 +13,9 @@ endpoints which they control.
 Add a dynamic role.
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- perms (list of dictionaries) â a list of dicts with fully qualified targets in 'target' with $ syntax and an optional verb associated with it in 'verb' which can be called by members of the role i.e. {'target': xs.demo.nick.app/room/$/join, 'verb': 'c'} will add the rule with the $ replaced by the id of dynamicRole when instantiated [default: None]
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - perms (list of dictionaries) -- a list of dicts with fully qualified targets in 'target' with $ syntax and an optional verb associated with it in 'verb' which can be called by members of the role i.e. {'target': xs.demo.nick.app/room/$/join, 'verb': 'c'} will add the rule with the $ replaced by the id of dynamicRole when instantiated [default: None]
 
 **Return type:** boolean
 
@@ -29,8 +29,8 @@ Use this feature carefully, as special agents may be able to perform
 destructive operations.
 
 #### Parameters:
- -- domain (string) â domain under which agent can access any endpoint
- -- agent (string) â domain of special agent
+ - domain (string) -- domain under which agent can access any endpoint
+ - agent (string) -- domain of special agent
 
 **Return type:** boolean
 
@@ -49,10 +49,10 @@ Returns: True if role was created
 Raises: Exception describing failure
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- perms (list of dictionaries) â a list of dicts with fully qualified targets in 'target', and a verb associated with it in 'verb' which can be called by members of the role [default: None]
- -- agents (list of strings) â a list of agents to assign the role to [default: None]
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - perms (list of dictionaries) -- a list of dicts with fully qualified targets in 'target', and a verb associated with it in 'verb' which can be called by members of the role [default: None]
+ - agents (list of strings) -- a list of agents to assign the role to [default: None]
 
 **Return type:** boolean
 
@@ -63,10 +63,10 @@ Assign a dynamic role to an agent.
 Returns: True if role was assigned to any users false otherwise
 
 #### Parameters:
- -- Id (string) â the id of the dynamic role instance
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- agents (list of strings) â the list of agents you are assigning the role to or a string
+ - Id (string) -- the id of the dynamic role instance
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - agents (list of strings) -- the list of agents you are assigning the role to or a string
 
 **Return type:** boolean
 
@@ -77,9 +77,9 @@ Assign a static role to a particular agent.
 Returns: True if role was found and assigned to any of the agents false otherwise
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- agents (list of strings) â a list of a string of the domains of the agents you'd like to assign the role to
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - agents (list of strings) -- a list of a string of the domains of the agents you'd like to assign the role to
 
 **Return type:** boolean
 
@@ -88,9 +88,9 @@ Returns: True if role was found and assigned to any of the agents false otherwis
 Check if the agent has permission to access the given endpoint.
 
 #### Parameters:
- -- agent (string) â agent performing the action
- -- endpoint (string) â target endpoint that agent is trying to reach
- -- verb (string) â verb associated with action on the endpoint [default: 'c']
+ - agent (string) -- agent performing the action
+ - endpoint (string) -- target endpoint that agent is trying to reach
+ - verb (string) -- verb associated with action on the endpoint [default: 'c']
 
 **Return type:** boolean
 
@@ -101,9 +101,9 @@ Delete an instance of a dynamic role.
 Returns: True if role instance was found and deleted raises an exception otherwise
 
 #### Parameters:
- -- Id (string) â the id of the role instance being deleted
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
+ - Id (string) -- the id of the role instance being deleted
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
 
 **Return type:** boolean
 
@@ -114,9 +114,9 @@ Delete a role and unassign any agents who were members of the role.
 Returns: True if role was found and destroyed false otherwise
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- dynamic (boolean) â True if the role you want to destroy is a dynamic role defaults to static role [default: False]
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - dynamic (boolean) -- True if the role you want to destroy is a dynamic role defaults to static role [default: False]
 
 **Return type:** boolean
 
@@ -127,8 +127,8 @@ List the members of a particular static role.
 Returns: a list of the members for that role or false if not allowed or role doesn't exist
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
 
 **Return type:** list of strings
 
@@ -139,7 +139,7 @@ List the static roles for a particular app domain.
 Returns a dictionary containing lists of static and dynamic roles.
 
 #### Parameters:
- -- appname (string) â the domain of the appname for the roles you want listed
+ - appname (string) -- the domain of the appname for the roles you want listed
 
 **Return type:** dictionary
 
@@ -148,7 +148,7 @@ Returns a dictionary containing lists of static and dynamic roles.
 List special agents under a domain.
 
 #### Parameters:
- -- domain (string) â domain to check
+ - domain (string) -- domain to check
 
 **Return type:** list of strings
 
@@ -159,9 +159,9 @@ Create a new instance of an existing dynamic role.
 Returns: the Id of the new role or raises an exception upon failure
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- agents (list of strings) â an optional list of agents to assign this role to immediately [default: None]
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - agents (list of strings) -- an optional list of agents to assign this role to immediately [default: None]
 
 **Return type:** string
 
@@ -172,7 +172,7 @@ Remove all permissions and roles associated with an app.
 Returns: True if all data found was deleted false otherwise
 
 #### Parameters:
- -- appname (string) â the domain of the app to delete
+ - appname (string) -- the domain of the app to delete
 
 **Return type:** boolean
 
@@ -181,8 +181,8 @@ Returns: True if all data found was deleted false otherwise
 Remove special agent privilege from an agent.
 
 #### Parameters:
- -- domain (string) â domain under which agent can access any endpoint
- -- agent (string) â domain of special agent
+ - domain (string) -- domain under which agent can access any endpoint
+ - agent (string) -- domain of special agent
 
 **Return type:** boolean
 
@@ -194,10 +194,10 @@ Returns: True if role was successfully removed from any of the
 specified agents raises an exception otherwise.
 
 #### Parameters:
- -- Id (string) â the id of the dynamic role instance
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- agents (list of strings) â the list of agents you are removing the role from
+ - Id (string) -- the id of the dynamic role instance
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - agents (list of strings) -- the list of agents you are removing the role from
 
 **Return type:** boolean
 
@@ -206,8 +206,8 @@ specified agents raises an exception otherwise.
 Revoke permissions from an agent.
 
 #### Parameters:
- -- agent (string) â agent to remove permissions from
- -- perms (list of strings) â list of permissions
+ - agent (string) -- agent to remove permissions from
+ - perms (list of strings) -- list of permissions
 
 **Return type:** boolean
 
@@ -218,9 +218,9 @@ Remove a static role from an agent or list of agents.
 Returns: True if role was found and revoked for any of the agents false otherwise
 
 #### Parameters:
- -- role (string) â the unique identifier for the role within the domain appname
- -- appname (string) â the domain of the appname associated with the role
- -- agents (list of strings) â the list of domains of the agents you'd like to remove the role from
+ - role (string) -- the unique identifier for the role within the domain appname
+ - appname (string) -- the domain of the appname associated with the role
+ - agents (list of strings) -- the list of domains of the agents you'd like to remove the role from
 
 **Return type:** boolean
 
@@ -229,9 +229,9 @@ Returns: True if role was found and revoked for any of the agents false otherwis
 Add a permission into the database.
 
 #### Parameters:
- -- agent (string) â the agent which can call a specific endpoint (can be NULL)
- -- perms (list of strings) â a list of fully qualified endpoints which can be called by the agent
- -- verb (string) â verb associated with endpoint(s) [default: 'c']
+ - agent (string) -- the agent which can call a specific endpoint (can be NULL)
+ - perms (list of strings) -- a list of fully qualified endpoints which can be called by the agent
+ - verb (string) -- verb associated with endpoint(s) [default: 'c']
 
 **Return type:** boolean
 

@@ -20,8 +20,8 @@ Command: python -m mybackend
 buildImage supports returning progressive results.
 
 #### Parameters:
- -- name (string) â name of the image to build
- -- url (string) â URL of git repository
+ - name (string) -- name of the image to build
+ - url (string) -- URL of git repository
 
 **Return type:** list of strings
 
@@ -43,9 +43,9 @@ create('gamebackendv3', 'prodbackend')
 prodbackend/start()
 
 #### Parameters:
- -- image (string) â name of the image to use
- -- name (string) â name of the container to create
- -- environment (dictionary) â optional dictionary containing environment variables to pass to the container [default: {}]
+ - image (string) -- name of the image to use
+ - name (string) -- name of the container to create
+ - environment (dictionary) -- optional dictionary containing environment variables to pass to the container [default: {}]
 
 **Return type:** dictionary
 
@@ -68,7 +68,7 @@ the container methods will no longer be available, e.g. you cannot
 start a removed container.
 
 #### Parameters:
- -- name (string) â name of container to remove
+ - name (string) -- name of container to remove
 
 **Return type:** dictionary
 
@@ -78,7 +78,7 @@ Remove an image.  All containers using the image must be stopped and
 removed before calling removeImage.
 
 #### Parameters:
- -- imageName (string) â name of the image to remove
+ - imageName (string) -- name of the image to remove
 
 
 * * *

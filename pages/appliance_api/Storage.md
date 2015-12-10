@@ -17,7 +17,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** integer
 
@@ -26,7 +26,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -35,7 +35,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -44,7 +44,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -53,7 +53,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** integer
 
@@ -62,28 +62,28 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 ### drop_index(collection, ...)
 
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 ### drop_indexes(collection)
 
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 ### find(collection, ...)
 
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** list of dictionaries
 
@@ -92,7 +92,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -101,7 +101,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -110,7 +110,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -119,7 +119,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -128,7 +128,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -137,7 +137,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -146,7 +146,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** list of dictionaries
 
@@ -155,14 +155,14 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 ### replace_one(collection, ...)
 
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -171,7 +171,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 
@@ -180,7 +180,7 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 #### Parameters:
- -- collection (string) â name of the collection
+ - collection (string) -- name of the collection
 
 **Return type:** dictionary
 

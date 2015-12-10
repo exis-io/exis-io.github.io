@@ -14,8 +14,8 @@ connect your code to the fabric while developing on your local machine.
 Delete a custom token by name.
 
 #### Parameters:
- -- tokenname (string) â name given to the token
- -- fulldomain (string) â login domain for the token
+ - tokenname (string) -- name given to the token
+ - fulldomain (string) -- login domain for the token
 
 **Return type:** boolean
 
@@ -25,8 +25,8 @@ Generate a custom token which can be used to log in as the given
 domain.  The new token can be retrieved with get_custom_token.
 
 #### Parameters:
- -- tokenname (string) â name of the token for later reference
- -- fulldomain (string) â domain to grant with the token
+ - tokenname (string) -- name of the token for later reference
+ - fulldomain (string) -- domain to grant with the token
 
 **Return type:** boolean
 
@@ -36,8 +36,8 @@ Return the token for a domain/name pair.  This is a private key, so its
 contents should be kept secure.
 
 #### Parameters:
- -- tokenname (string) â name given to the token
- -- fulldomain (string) â login domain for the token
+ - tokenname (string) -- name given to the token
+ - fulldomain (string) -- login domain for the token
 
 **Return type:** string
 
@@ -48,7 +48,7 @@ the list only contains the names.  You can retrieve a token by name
 with get_custom_token.
 
 #### Parameters:
- -- appdomain (string) â app domain under which the tokens were made
+ - appdomain (string) -- app domain under which the tokens were made
 
 **Return type:** dictionary
 
