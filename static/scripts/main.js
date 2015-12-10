@@ -164,9 +164,23 @@ angular
       searchResults.forEach(function(result) {
         var el = angular.element('.site-navigation a[href$="/pages/' + result.ref + '"]').first();
 
+        var title;
+        var elText = el.text();
+        // for parsing the article title if nec.
+        // expects something like `will/be/ignored/My-Article-Title.md`
+        var rgx = /\/([\w-]+).md$/;
+
+        if (elText) {
+          title = elText;
+        } else {
+          // parse the title from the ref, replacing hyphens with spaces
+          // so, using the example above, the result will be `My Article Title`
+          title = result.ref.match(rgx)[1].split('-').join(' ');
+        }
+
         $scope.searchResults.push({
           id: result.ref,
-          title: el.text(),
+          title: title,
           link: '/#/pages/' + result.ref
         });
       });
