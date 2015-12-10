@@ -19,12 +19,14 @@ arguments to tell Osxcontainer what code to run.
 If you specify a scheme, you must also configure that scheme as shared in
 XCode.  Check the Shared box in Product->Scheme->Manage Schemes.
 
-#### Arguments:
- - imageName -- name of resulting container image
- - projectName -- name of the project in XCode
- - projectUrl -- URL for git repository, must start with http or https
- - branch -- branch to checkout from repository, defaults to master [default: 'master']
- - scheme -- scheme to build, defaults to projectName [default: None]
+#### Parameters:
+ -- imageName (string) â name of resulting container image
+ -- projectName (string) â name of the project in XCode
+ -- projectUrl (string) â URL for git repository, must start with http or https
+ -- branch (string) â branch to checkout from repository, defaults to master [default: 'master']
+ -- scheme (string) â scheme to build, defaults to projectName [default: None]
+
+**Return type:** dictionary
 
 ### create(imageName, containerName)
 
@@ -43,9 +45,11 @@ it you may call the following::
 create('gamebackendv3', 'prodbackend')
 prodbackend/start()
 
-#### Arguments:
- - imageName -- name of image to use
- - containerName -- name of new container
+#### Parameters:
+ -- imageName (string) â name of image to use
+ -- containerName (string) â name of new container
+
+**Return type:** dictionary
 
 ### images()
 
@@ -55,6 +59,7 @@ Returns a list of dicts with the Name field set as well as some fields
 pertaining to the repository and code version that was used for the
 image.
 
+**Return type:** list of dictionaries
 
 ### list()
 
@@ -62,6 +67,7 @@ List containers.
 
 Returns a list of dicts with fields Name, Image, and State set.
 
+**Return type:** list of dictionaries
 
 ### remove(containerName)
 
@@ -69,16 +75,16 @@ Remove a container.  It will be stopped if it was running.  After
 removal the container methods will no longer be available, e.g. you
 cannot start a removed container.
 
-#### Arguments:
- - containerName -- name of the container to remove
+#### Parameters:
+ -- containerName (string) â name of the container to remove
 
 ### removeImage(imageName)
 
 Remove an image.  All containers based on the image must be removed
 before removeImage is called.
 
-#### Arguments:
- - imageName
+#### Parameters:
+ -- imageName (string) â name of image to remove
 
 
 * * *
@@ -97,19 +103,20 @@ gamebackend/inspect()
 Return detailed information about the status and configuration of the
 container.
 
+**Return type:** dictionary
 
 ### logs()
 
-Return log messages (stdout and stderr) from the container.
+Return log messages (stdout and stderr) from the container in a
+dictionary with keys 'stdout' and 'stderr'.
 
+**Return type:** dictionary
 
 ### start()
 
 Start the container.
 
-
 ### stop()
 
 Stop the container.
-
 

@@ -10,12 +10,20 @@ containers.  The container can run code in any language in interpreted
 
 Currently, we support building an image from a public git repository.
 Pass the URL to the repository (http or https).  The repository must
-contain a Dockerfile (a file named Dockerfile).  See
-https://docs.docker.com/v1.8/reference/builder/ for more information.
+container a run file named "Run.yaml" that specifies how Container
+should run the code.
 
-#### Arguments:
- - name -- name of the image to build
- - url -- URL of git repository
+Example Run.yaml for a Python project:
+Base: exis-python
+Command: python -m mybackend
+
+buildImage supports returning progressive results.
+
+#### Parameters:
+ -- name (string) â name of the image to build
+ -- url (string) â URL of git repository
+
+**Return type:** list of strings
 
 ### create(image, name, environment={})
 
@@ -34,22 +42,24 @@ it you may call the following::
 create('gamebackendv3', 'prodbackend')
 prodbackend/start()
 
-variables to pass to the container
+#### Parameters:
+ -- image (string) â name of the image to use
+ -- name (string) â name of the container to create
+ -- environment (dictionary) â optional dictionary containing environment variables to pass to the container [default: {}]
 
-#### Arguments:
- - image -- name of the image to use
- - name -- name of the container to create
- - environment -- optional dictionary containing environment [default: {}]
+**Return type:** dictionary
 
 ### list()
 
 Return a list of containers.
 
+**Return type:** list of dictionaries
 
 ### images()
 
 Return a list of images.
 
+**Return type:** list of dictionaries
 
 ### remove(name)
 
@@ -57,8 +67,18 @@ Remove a container. It will be stopped if it was running. After removal
 the container methods will no longer be available, e.g. you cannot
 start a removed container.
 
-#### Arguments:
- - name -- name of container to remove
+#### Parameters:
+ -- name (string) â name of container to remove
+
+**Return type:** dictionary
+
+### removeImage(imageName)
+
+Remove an image.  All containers using the image must be stopped and
+removed before calling removeImage.
+
+#### Parameters:
+ -- imageName (string) â name of the image to remove
 
 
 * * *
@@ -72,38 +92,39 @@ container named 'gamebackend'::
 
 gamebackend/inspect()
 
-### diff()
+### image()
 
-Return filesystem changes made by the container.
+Return information about the image used for this container.
 
+**Return type:** dictionary
 
 ### inspect()
 
 Return detailed information about the container configuration.
 
+**Return type:** dictionary
 
 ### logs()
 
 Return log messages from the container.
 
+**Return type:** string
 
 ### restart()
 
 Restart the container.
 
-
 ### start()
 
 Start the container.
-
 
 ### stop()
 
 Stop the container.
 
-
 ### top()
 
 Returns information about container resource (CPU, memory) usage.
 
+**Return type:** dictionary
 
