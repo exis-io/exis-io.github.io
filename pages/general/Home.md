@@ -1,6 +1,6 @@
 # Welcome
 
-Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code, and managing deployements should be a breeze!
+Exis is built to make networking code simple, painless, and secure. Writing networking code should be as easy as writing local code, and managing deployments should be a breeze!
 Please check out our documentation, and follow along with code from our [repos](https://github.com/exis-io).
 
 ## Overview
