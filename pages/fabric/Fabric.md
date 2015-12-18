@@ -25,7 +25,7 @@ Here are some quick and simple rules for dealing with domains:
 * Each domain is unique
 * Each domain refers to an domain on the fabric
 * A domain can belong to another domain. The owner is called a *superdomain* and the owned is called a *subdomain.*
-* Domains are seperated from their subdomains with a dot
+* Domains are separated from their subdomains with a dot
 * The top level domain is the owner of the fabric
 * A domain owns and generally has control over everything in their subdomains
 

@@ -1,6 +1,6 @@
 # Tutorials
 
-Recipies for exis development. 
+Recipes for Exis development. 
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ Head over to [my.exis.io](http://my.exis.io), sign up for an account, and log in
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/1.PNG)
 
-Navigate to the dashboard and create a new application. The name you choose here will become part of your [domain][domain]. These screenshots show how to make an app for the Cards Against Humanity tutorial-- channge the app name as needed. 
+Navigate to the dashboard and create a new application. The name you choose here will become part of your [domain][domain]. These screenshots show how to make an app for the Cards Against Humanity tutorial-- change the app name as needed. 
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/3.PNG)
 
@@ -124,7 +124,7 @@ The riffle libraries are distributed as `pods` through cocoapods. Check out more
 
 If you don't have cocoapods installed, now would be a good time. Follow the instructions on the home page from the link above. Cocoapods relies on [RubyGems](https://rubygems.org/pages/download), a dependency manager for the ruby language. You'll need that too. 
 
-In order to install riffle you'll first have to create a `Podfile`. This is a simple text file that lists dependencies in Ruby. You can either use your favorite text editor for this or the built in TextEdit app available in OSX. The example below shows TextEdit. Be cafeul-- if you use TextEdit you'll need to convet it to *plaintext* before saving it.
+In order to install riffle you'll first have to create a `Podfile`. This is a simple text file that lists dependencies in Ruby. You can either use your favorite text editor for this or the built in TextEdit app available in OSX. The example below shows TextEdit. Be careful-- if you use TextEdit you'll need to convert it to *plaintext* before saving it.
 
 Enter this into the `Podfile`: 
 
@@ -172,9 +172,9 @@ import Riffle
 
 Run the project and make sure it builds.
 
-__Warning:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an eror appears. Once it goes through the process of building the libraries the errors may dissapear.
+__Warning:__ Xcode sometimes gets a little lost and reports errors when none exist. Try building even if an error appears. Once it goes through the process of building the libraries the errors may disappear.
 
-__NOTE:__ Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you see errors relating to `import of non-modular header...` you will have to delete the `Pods/Headers/Private` folder from your project directory. Check your version of xcode: ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
+__NOTE:__ Xcode `7.1` introduces some issues with Cocoapods, the dependency manager. If you see errors relating to `import of non-modular header...` you will have to delete the `Pods/Headers/Private` folder from your project directory. Check your version of Xcode: ![Missing Image!](/img/ios-cards-tutorial/app/1-setup/3.PNG)
 
  
 

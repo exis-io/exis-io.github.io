@@ -2,7 +2,7 @@
 
 Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. Part 2 can be found [here](/pages/samples/SwiftCardsTutorial2.md).
 
-Cards Against is played between a set of peers, so it seems like the game should be able to run peer to peer, or each player communicating directly with other players. Like all cards games, however, we have to watch out for cheaters! In order to maintain the state of the game and make sure play is fair we'll rely on a *container*, or a program running in the cloud. This container will fufill the role traditionally filled by web servers. 
+Cards Against is played between a set of peers, so it seems like the game should be able to run peer to peer, or each player communicating directly with other players. Like all cards games, however, we have to watch out for cheaters! In order to maintain the state of the game and make sure play is fair we'll rely on a *container*, or a program running in the cloud. This container will fulfill the role traditionally filled by web servers. 
 
 Head to [github](https://github.com/exis-io/Exis/tree/master/ios) to set up an iOS project for development with a fabric. For this tutorial you will need the *iOS and Backend* project.
 
@@ -35,7 +35,7 @@ From the dashboard click on the blue *Permissions* button. On the permissions pa
 
 ![Missing Image!](/img/ios-cards-tutorial/web/1-setup/6.PNG)
 
-The `User Role` is a set of permissions thats given to all domains representing users of your application. -->
+The `User Role` is a set of permissions that's given to all domains representing users of your application. -->
 
 
 ## Hello Riffle
@@ -127,14 +127,14 @@ Don't run the app just yet! The app won't be allowed to call the function you ju
 
 **3.** Click the add button.
 
-<!-- In the iOS app add a button to the empty view controller created when you made the project. Create an action for the button to its parent view controller. In the example below the action is called *go*, but you can name it whatever you'd like. Dont worry if you have more code in your view controller than is shown in this image.  -->
+<!-- In the iOS app add a button to the empty view controller created when you made the project. Create an action for the button to its parent view controller. In the example below the action is called *go*, but you can name it whatever you'd like. Don't worry if you have more code in your view controller than is shown in this image.  -->
 
 
 Run the backend, then the app. When you run two targets, or programs, in one Xcode project, Xcode will always display output from the last target run. To switch between outputs change the active target in the debug console.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/2-hello/6.PNG)
 
-Watch the output of the backend-- once you see that its session has connected with `Domain Joined!` touch the button you added to your app. If you see the name of the app passed to the container and back, celebrate-- you've successfully written your first exis enabled application!
+Watch the output of the backend-- once you see that its session has connected with `Domain Joined!` touch the button you added to your app. If you see the name of the app passed to the container and back, celebrate-- you've successfully written your first Exis enabled application!
 
 Here's some sample output from an app on the left and a container on the right. 
 
@@ -154,7 +154,7 @@ There are a few levels of authentication, each based on how secure the developer
 
 **1.** Add a `UITextField` to `ViewController` using the storyboard. 
 
-**2.** Connect an outlet from the text field to the conntroller. Call it `textfieldUsername`.
+**2.** Connect an outlet from the text field to the controller. Call it `textfieldUsername`.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/3-auth/1.PNG)
 
@@ -177,7 +177,7 @@ There are a few levels of authentication, each based on how secure the developer
 Users will now be created dynamically as they enter their names into the app. As configured, the app will allow anyone to play as long as the name they choose is not currently in use. This is the least strict form of authentication-- email and password is a lot more secure and commonly used. 
 
 <!-- 
-Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update Role* in the *User Role* section. Add the endpoint below, substiting your own username for `damouse`. 
+Head back to the permissions page on [my.exis.io](my.exis.io). Click on *Update Role* in the *User Role* section. Add the endpoint below, substituting your own username for `damouse`. 
 
 ![Missing Image!](/img/ios-cards-tutorial/web/2-perms/3.PNG) -->
 
@@ -200,7 +200,7 @@ Thankfully the node will provide. When an agent disconnects from the fabric, the
 **3.** Add the container as a member of the role.
 
 
-<!-- to match the image shown below. Again, remember to substitue your own username for `damouse` in both domains. 
+<!-- to match the image shown below. Again, remember to substitute your own username for `damouse` in both domains. 
  -->
 
 ![Missing Image!](/img/ios-cards-tutorial/web/2-perms/1.PNG)
@@ -321,7 +321,7 @@ Run the app. Make sure you can see the cards logged out to the console.
 
 ## Picking Cards
 
-The single fundemental action a player performs in Cards Against Humanity is *picking* a card. In this section you'll create a table to list all the cards and wire up the table to alert the container when a card is touched. 
+The single fundamental action a player performs in Cards Against Humanity is *picking* a card. In this section you'll create a table to list all the cards and wire up the table to alert the container when a card is touched. 
 
 ### Create GameViewController
 

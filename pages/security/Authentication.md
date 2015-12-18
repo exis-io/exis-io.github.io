@@ -33,7 +33,7 @@ How domains are created.
 
 **WELCOME** contains a nonce such that **HELLO** is protected from replays. 
 
-Null domain either should be severly rate limited (.5 messages/s) or disconnected after a certain number of messages. 
+Null domain either should be severely rate limited (.5 messages/s) or disconnected after a certain number of messages. 
 
 *Credentials* is some set of identifying information an auth judges when creating new domains. The number and type of credentials are known out of band. 
 
@@ -44,9 +44,9 @@ Problem: how does the client library negotiate a level 2/3 auth?
 The process by which an agent identifies itself to another agent.
 
 * Domain sends **SHOW** containing certificate. 
-* Reeiver replies with **TELL** containing certificate. 
+* Receiver replies with **TELL** containing certificate. 
 
-#### Desctruction
+#### Destruction
 
 The process by which domains are destroyed. This is a work in progress, but can either be implemented through revocation lists, OCSP, or user handled queries. 
 

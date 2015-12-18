@@ -10,7 +10,7 @@ Handles routing within the fabric.
 
 Allows or denies messages from agents when the reach a node. 
 
-[Bouncer][bouncer] implments centralized access control.
+[Bouncer][bouncer] implements centralized access control.
 
 ### Authentication 
 

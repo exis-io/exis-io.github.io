@@ -8,7 +8,7 @@ List of steps
 
 ### User Registration
 1. User loads exis.io securely through an HTTPS connection
-2. Exis.io delivers client side javascript which connects to the exis fabric
+2. Exis.io delivers client side JavaScript which connects to the Exis fabric
     - this is a TLS connection, but client is unauthenticated
 3. This connection allows client to register
      - client makes a call to register(domain, password)
@@ -16,7 +16,7 @@ List of steps
     
 TODO 
 - figure out the TLS mechanics!!!
-- unauthenticated exis sessions must be rate limited
+- unauthenticated Exis sessions must be rate limited
 - exis.io needs a valid certificate
 
 ### Connection to Exis

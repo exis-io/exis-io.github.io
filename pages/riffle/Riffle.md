@@ -95,7 +95,7 @@ To be fair to all the smart developers who came before us and tried to solve thi
 
 1. The number of arguments passed at the sender matches the number of arguments expected at the receiver. 
 2. Argument types are the same on both ends
-3. Objects are transfered across the gap between the programs seamlessly and magically (as long as they adhere to some simple rules.)
+3. Objects are transferred across the gap between the programs seamlessly and magically (as long as they adhere to some simple rules.)
 
 If a sender passes the wrong number of arguments or the wrong kinds of arguments they'll get an exception, much the same as if they called a local method with incorrect parameters. 
 

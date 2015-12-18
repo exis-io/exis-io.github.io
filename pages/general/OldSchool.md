@@ -37,7 +37,7 @@ Keep in mind this process doesn't even cover other data types like binary, which
 
 __Definition:__ serialization is the process of converting a data structure or object into a well known format so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be "resurrected" later in the same or another computer environment. [wikipedia.org](http://en.wikipedia.org/wiki/Serialization)
 
-Finally, **validation** lets the developer know the data they receive is the data they want to receive. When a programmer writes a chunk of code he or she can be reasonably certain it will play nicely with their other code. This assumption doesn't hold on the internet-- you always have to make sure the data you recieve hasn't been changed.
+Finally, **validation** lets the developer know the data they receive is the data they want to receive. When a programmer writes a chunk of code he or she can be reasonably certain it will play nicely with their other code. This assumption doesn't hold on the internet-- you always have to make sure the data you receive hasn't been changed.
 
 ## Security
 
@@ -72,7 +72,7 @@ As if that weren't enough, the languages mobile and desktop applications use can
 
 ## The Laundry List
 
-Well, thats quite a list. 
+Well, that's quite a list. 
 
 Topics mentioned above are not fully described here. Most of these fields have specialists that **only** do that one thing!
 For single developers or even organizations, the amount of knowledge required to make connected applications means the chance of introducing bugs or security vulnerabilities is huge!

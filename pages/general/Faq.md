@@ -72,7 +72,7 @@ Questions
     - When and how are we mentioning deferreds?
     - Should have domain documentation somewhere
 
-ToDo, Tasks
+TODO, Tasks
     - App Creation
     - Authentication, Levels
     - Auth for a container, how tokens work
@@ -91,7 +91,7 @@ Formatting for tutorials and docs:
 
 # Page About Dogs
 
-Dogs are mammels. They live in houses (usually.) Aren't dogs cool? Good thing you read this extremely brief snippet about dogs. 
+Dogs are mammals. They live in houses (usually.) Aren't dogs cool? Good thing you read this extremely brief snippet about dogs. 
 
 ## Training your Dog
 
@@ -103,7 +103,7 @@ Why are you doing this? Why do you care? What other high-level components are af
 * Wait
 * Give the dog a treat
 
-Summary and deliverables- Try throwing a ball again. Did the dog bring the ball back? See, isn't exis great?
+Summary and deliverables- Try throwing a ball again. Did the dog bring the ball back? See, isn't Exis great?
 
 -->
 

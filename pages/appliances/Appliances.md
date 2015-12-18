@@ -1,9 +1,9 @@
 # Appliances
 
-A software service accessible as a service through common [messaging patterns][Message] to developers creating applications that use exis. 
+A software service accessible as a service through common [messaging patterns][Message] to developers creating applications that use Exis. 
 
 
-[*Applicances*][appliances] are like software libraries in a traditional software project. They're small services that solve common problems you can add to your fabric-aware applications. *Appliances* are very similiar to modern day *cloud services*. This means the owner of the fabric runs and manages the appliance software. Developers don't have to know how to run or maintain these complicated services, they just have to understand how to use them.
+[*Appliances*][appliances] are like software libraries in a traditional software project. They're small services that solve common problems you can add to your fabric-aware applications. *Appliances* are very similar to modern day *cloud services*. This means the owner of the fabric runs and manages the appliance software. Developers don't have to know how to run or maintain these complicated services, they just have to understand how to use them.
 
 Appliances have to be [injected][Injection] to a developer's [domain][Domain]. The developer does not gain access to the code of the underlying appliance. Each appliance has specific publicized endpoints that developers may used to interact with the appliance. 
 

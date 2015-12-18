@@ -1,3 +1,3 @@
-# exis docs
+# Exis docs
 
-Public documentation for exis. 
+Public documentation for Exis. 

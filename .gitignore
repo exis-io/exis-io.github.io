@@ -6,6 +6,7 @@
 # Ignore local scripts.
 run.sh
 
+*.bak
 
 node_modules/
 npm-debug.log

@@ -40,7 +40,7 @@ The process by which a sender proves to intermediate nodes that the given messag
 * Client returns **RESPONSE**
 * Node holds public key of permissions object. 
 
-Is a set of held messages a vulurability?
+Is a set of held messages a vulnerability?
 
 **CHALLENGE** contains a nonce. 
 

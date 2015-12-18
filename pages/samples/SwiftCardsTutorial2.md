@@ -16,7 +16,7 @@ iOS applications that go to the App Store take a lot of work in all aspects of a
 
 
 ## Game Flow
-Before we get started, a brief overview of Cards Against Humanity gameplay from wikipedia: 
+Before we get started, a brief overview of Cards Against Humanity gameplay from Wikipedia: 
 
 __Definition:__ To start the game, each player draws ten White Cards.
 The person who most recently pooped begins as the Card Czar and plays a Black Card. The Card Czar reads the question or fill-in-the-blank phrase on the Black Card out loud.
@@ -27,14 +27,14 @@ After the round, a new player becomes the Card Czar, and everyone draws back up 
 Here's the game logic, distilled:
 
 1. Play proceeds in rounds.
-2. Each round, one player is choosen as the **Czar** and one random **Question** card is played.
+2. Each round, one player is chosen as the **Czar** and one random **Question** card is played.
 2. Each player gets 10 **Answer** cards. 
 3. Play proceeds in three phases. Each phase lasts a handful of seconds.
   1. **Answering**: every player except the czar plays an answer anonymously
   2. **Picking**: the czar chooses the best answer
   3. **Scoring**: whoever played the picked card wins and gets a point
 
-Remember our app has two parts: iOS and OSX apps. The iOS app is what user directly interact with when they play the game, while the OSX app runs as a *container*, or a program wrapped in some magic that lets it run in the cloud. This container maintains the global state of the game, deals cards to players, and makes sure players dont cheat. By the end of part 1 the app said "Hello!" to the container and the container offered some cards for the user. 
+Remember our app has two parts: iOS and OSX apps. The iOS app is what user directly interact with when they play the game, while the OSX app runs as a *container*, or a program wrapped in some magic that lets it run in the cloud. This container maintains the global state of the game, deals cards to players, and makes sure players don't cheat. By the end of part 1 the app said "Hello!" to the container and the container offered some cards for the user. 
 
 
 ## Permissions 
@@ -82,7 +82,7 @@ Most of the changes in the project we're not going to cover between parts 1 and 
 Our container, implemented in `Container/main.swift`, hasn't seen too many changes. 
 
 * Hello, World is gone. Instead of loading the card inline and returning them immediately, they're now stored in instance variables
-* `startTimer` and the associated instance variable `timer` seem a little mysterious. Check out the implmenetation here. The method calls a function after a given timer period, very useful for our time-sensitive game.
+* `startTimer` and the associated instance variable `timer` seem a little mysterious. Check out the implementation here. The method calls a function after a given timer period, very useful for our time-sensitive game.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/6-part2/5.png)
 
@@ -90,7 +90,7 @@ Our container, implemented in `Container/main.swift`, hasn't seen too many chang
 
 ![Missing Image!](/img/ios-cards-tutorial/app/6-part2/6.png)
 
-The real meaty method is `startPlaying`. This is the return from the call issued in `login`. Its called directly from the container with all the informaiton needed to start playing: our playing hand and the other players in the room.
+The real meaty method is `startPlaying`. This is the return from the call issued in `login`. Its called directly from the container with all the information needed to start playing: our playing hand and the other players in the room.
 
 ![Missing Image!](/img/ios-cards-tutorial/app/6-part2/7.png)
 
@@ -102,7 +102,7 @@ The real meaty method is `startPlaying`. This is the return from the call issued
 
 ## Building Game Development
 
-Since we're making a multiplayer game on our own, it would be nice to have some way of testing the app without conscripting any friends. The *Player* object representes players in the room. We're going to add some dummy players to play against while the app comes together. 
+Since we're making a multiplayer game on our own, it would be nice to have some way of testing the app without conscripting any friends. The *Player* object represents players in the room. We're going to add some dummy players to play against while the app comes together. 
 
 In the `addPlayer` method inside `main.swift`  add the following code right before the return.  
 
@@ -188,7 +188,7 @@ setNextCzar()
 ```
 var pickers = players.filter { !$0.czar }
 
-// Autopick for players that didnt pick
+// Autopick for players that didn't pick
 for player in pickers {
     if player.pick == nil {
         player.pick = player.hand.randomElements(1, remove: true)[0]
@@ -196,7 +196,7 @@ for player in pickers {
 }
 ```
 
-Finally, `startScoring`. Here, we choose a winner if the czar hasn't picked one, incrememnt the winner's score, and draw cards for all players.
+Finally, `startScoring`. Here, we choose a winner if the czar hasn't picked one, increment the winner's score, and draw cards for all players.
 
 ```
 var pickers = players.filter { !$0.czar }
@@ -288,7 +288,7 @@ func scoring(player: Player, time: Double) {
 }
 ```
 
-Although the container and the app can exchange model objets over the fabric freely, note how we have to compare them to the local models before altering them. In scoring, for example, we have to explicitly iterate over our local `players` array to increment the score. 
+Although the container and the app can exchange model objects over the fabric freely, note how we have to compare them to the local models before altering them. In scoring, for example, we have to explicitly iterate over our local `players` array to increment the score. 
 
 ## Weave it Together
 
@@ -406,7 +406,7 @@ Room Transitions
         state = "Picking"
         let pickers = players.filter { !$0.czar }
         
-        // Autopick for players that didnt pick
+        // Autopick for players that didn't pick
         for player in pickers {
             if player.pick == nil {
                 player.pick = player.hand.randomElements(1, remove: true)[0]
@@ -473,7 +473,7 @@ Room Pick
 Room Add Player
 
     func addPlayer(domain: String) -> AnyObject {
-        // Add the new player and draw them a hand. Let everyone else in the room know theres a new player
+        // Add the new player and draw them a hand. Let everyone else in the room know there's a new player
         print("Adding Player \(domain)")
         
         let newPlayer = Player()

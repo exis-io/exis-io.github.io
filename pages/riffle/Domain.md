@@ -1,6 +1,6 @@
 # Domain
 
-Any software connected to the [fabric][fabric]. Domains have names, which are a set of strings seperated by peroids. Domains can not change.
+Any software connected to the [fabric][fabric]. Domains have names, which are a set of strings separated by periods. Domains can not change.
 
 ## General
 
