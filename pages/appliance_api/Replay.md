@@ -8,35 +8,43 @@ they can be replayed on request.
 
 Begin logging events from an endpoint.
 
-#### Arguments:
+#### Parameters:
  - issuer
- - event -- endpoint that replay will subscribe to
+ - event (string) -- endpoint that replay will subscribe to
+
+**Return type:** boolean
 
 ### getReplay(issuer, event, start=0, stop=inf, count=0, latest=True)
 
 Retrieve log of events from an endpoint.
 
-#### Arguments:
+#### Parameters:
  - issuer
- - event -- endpoint to retrieve messages from
- - start [default: 0]
- - stop [default: inf]
- - count [default: 0]
- - latest [default: True]
+ - event (string) -- endpoint to retrieve messages from
+ - start (numeric) -- starting timestamp of history to retrieve [default: 0]
+ - stop (numeric) -- ending timestamp of history to retrieve [default: inf]
+ - count (maximum number of entries to retrieve) -- integer [default: 0]
+ - latest (boolean) -- retrieve the latest or earliest entries if count is specified [default: True]
+
+**Return type:** list of dictionaries
 
 ### pauseReplay(issuer, event)
 
 Stop logging events from an endpoint but preserve history.
 
-#### Arguments:
+#### Parameters:
  - issuer
- - event -- endpoint to stop recording
+ - event (string) -- endpoint to stop recording
+
+**Return type:** boolean
 
 ### removeReplay(issuer, event)
 
 Stop logging events from an endpoint and discard any stored messages.
 
-#### Arguments:
+#### Parameters:
  - issuer
- - event -- endpoint to unsubscribe from
+ - event (string) -- endpoint to unsubscribe from
+
+**Return type:** boolean
 

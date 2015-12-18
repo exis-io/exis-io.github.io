@@ -16,139 +16,171 @@ collection/insert_one('fruits', {'name': 'apple', 'color': 'red'}).
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** integer
 
 ### create_index(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### delete_many(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### delete_one(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### distinct(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** integer
 
 ### drop(collection)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
 
 ### drop_index(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
 
 ### drop_indexes(collection)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
 
 ### find(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** list of dictionaries
 
 ### find_one(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### find_one_and_delete(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### find_one_and_replace(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### find_one_and_update(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### insert_many(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### insert_one(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### list_indexes(collection)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** list of dictionaries
 
 ### rename(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
 
 ### replace_one(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### update_many(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
 ### update_one(collection, ...)
 
 
 
-#### Arguments:
- - collection (str) -- name of the collection
+#### Parameters:
+ - collection (string) -- name of the collection
+
+**Return type:** dictionary
 
