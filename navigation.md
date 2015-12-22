@@ -4,7 +4,7 @@
 * [Welcome](/pages/general/Home.md)
 * [Traditional Networking](/pages/general/OldSchool.md)
 * [Exis Architecture](/pages/general/ExisArch.md)
-* [Security](/pages/security/Security.md)
+<!-- * [Security](/pages/security/Security.md) -->
 
 ### [Components](/pages/riffle/Riffle.md)
 

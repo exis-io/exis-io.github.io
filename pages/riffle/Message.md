@@ -1,20 +1,16 @@
 # Message
 
-A Remote Procedure Call (RPC) formatted as dictated by [riffle.][Riffle] Each message is passed as a single entity from one [agent][Agent] to another. 
+A Remote Procedure Call (RPC) formatted as dictated by [riffle.][Riffle] Each message is passed as a single entity from one [domain][Domain] to another. 
 
-Unlike IP traffic, nodes require agents to authorize their own traffic before they will forward it. 
+Unlike IP traffic, nodes require agents to authorize their own traffic before they will forward it. This comes in the form of [permissions][perm].
 
-### Message Patterns
+## Message Patterns
 
 A message contains some sort of information the sending agent wishes to transmit to the receiving agent. *Message Patterns* are simple sub-protocols that describe how messages are to be passed around in order to realize communication. Messages can not be sent outside of a message pattern.
 
-[Pub/Sub][PubSub] is also known as *publish/subscribe* enables one agent to communicate with many other agents. 
+## Publish/Subscribe
 
-[Register/Call][RegisterCall] enables RPC-like functionality. 
-
-# Publish/Subscribe
-
-Pub/Sub is a form of [messaging][Message] on the Fabric. This enables a quick and easy way to perform one-to-many operations.
+Publish/Subscribe, or Pub/Sub, is a pattern where one domain sends a message to many other domains. This enables a quick and easy way to perform one-to-many operations.
 
 ## Example
 
@@ -34,13 +30,13 @@ session.publish("/chat", "this is so cool!");
 
 [Message]:/pages/riffle/Message.md
 
-# Register/Call
+## Register/Call
 
 Register/Call is a form of [messaging][Message] on the Fabric. This enables a quick and easy way to perform one-to-one operations. This represents the same functionality of Remote Procedure Calls (RPC).
 
 By leveraging the Riffle libraries, the process of registering and calling functions should look identical to making local function calls - even though under the hood these function calls could actually go out and execute on other machines in the cloud!
 
-## Example
+### Example
 
 A very simple example of this would perform the task of multiplying a very large number on a separate machine with more resources than the smartphone or browser a user may have.
 
@@ -61,7 +57,7 @@ thePrime = session.call("/computePrime", 99999999);
 [Message]:/pages/riffle/Message.md
 
 
-## Examples 
+## Asynchronous Programming 
 
 Every messaging call returns a deferred. The deferred succeeds or fails appropriately. Deferreds can be ignored, in which case subsequent calls to the following methods proceed concurrently. If the deferred does not have an error handler the domain automatically logs the error in onError.
 
@@ -81,8 +77,14 @@ Every messaging pattern call except publish accepts a pointer to a function. Thi
 
 <!-- Reference for TOC -->
 
-[Riffle]:/pages/riffle/Riffle.md
-[Agent]:/pages/riffle/Agent.md
-[Action]:/pages/riffle/Action.md
-[PubSub]:/pages/riffle/PubSub.md
-[RegisterCall]:/pages/riffle/RegisterCall.md
+[message]:/pages/riffle/Message.md
+[agent]:/pages/riffle/Agent.md
+[node]:/pages/fabric/Node.md
+[fabric]:/pages/fabric/Fabric.md
+[domain]:/pages/riffle/Domain.md
+[action]:/pages/riffle/Agent.md
+[endpoint]:/pages/riffle/Endpoint.md
+[samples]:/pages/samples/Samples.md
+
+[auth]:/pages/appliances/Auth-Appliance.md
+[perm]:/pages/security/Permission.md

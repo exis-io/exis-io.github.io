@@ -20,11 +20,11 @@ Unlike the internet, access to the Fabric is controlled. This enables developers
 
 A permission is the declaration that a user or application is allowed to make a call. This functionality is something the internet sorely lacks-- the ability for receivers to reject traffic!
 
-### Credentials
+<!-- ### Credentials
 
 Credentials consist of a certificate, public key, and private key. Together all three can be used to uniquely identify an [[agent|Agent]] to the fabric and other agents. The certificate binds the name of the [[domain|Domain]] to the public key and is signed by the domain which created it. 
 
-After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
+After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications.  -->
 
 <!-- ### Certificate Flows 
 

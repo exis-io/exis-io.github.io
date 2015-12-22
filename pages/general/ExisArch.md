@@ -1,16 +1,12 @@
 # Exis Architecture
 
-# Fabric
+A brief description of all the components that make up the Exis platform. 
 
-A platform for handling riffle traffic. It connects all [domains][domain] together, exchanging [messages][message] between them.  
+## Fabric
+
+A collection of [nodes][Node] and [appliances][Appliances] that act as a software platform for developing applciations. All programs connected to the fabric are called [domains][domain], which exchange [messages][message] between them through a protocol called [riffle][riffle]. Programs are said to *connect* to the fabric. 
 
 Plainly speaking, the fabric gets messages from one place to another.
-
-The fabric is built from [nodes][Node]. They route messages from two [domains:][domain] the sender and the receiver. 
-
-[Appliances][Appliances] are discrete programs that expose some important functionality to developers and users on the fabric. The core appliances together with the routers make up the fabric itself. 
-
-## General
 
 ### The Node
 
@@ -25,7 +21,7 @@ The most important part of working with the fabric is understanding where things
 Here are some quick and simple rules for dealing with domains:
 
 * Each domain is unique
-* Each domain refers to an domain on the fabric
+* Each domain refers to a program on the fabric
 * A domain can belong to another domain. The owner is called a *superdomain* and the owned is called a *subdomain.*
 * Domains are separated from their subdomains with a dot
 * The top level domain is the owner of the fabric
@@ -49,7 +45,7 @@ Go ahead and create a new app *thenextfacebook* and you'll get the name:
 xs.joebob.thenextfacebook
 ```
 
-## Actions
+### Actions
 
 If domains are the names of domains, then [*actions*](/pages/riffle/Action.md) are what they can do. You can think of domains as nouns and actions as verbs. An action always begins with a forward slash. Actions can have subactions similar to subdomains but without the concept of ownership. Subactions are separated by a forward slash (`/`). 
 
@@ -65,7 +61,7 @@ One subaction:
 /hello/there
 ```
 
-## Endpoints
+### Endpoints
 
 The last piece of the puzzle not mentioned above is the [*endpoint*][endpoint].
 Endpoints aren't anything special, just a domain with an action together: a verb with a noun. 
@@ -79,13 +75,13 @@ xs.joebob.thenextfacebook/hello
 Any domain on the fabric can send a message to this endpoint (as long as they have the proper permissions). Exis will route the message to the app `thenextfacebook`. The method called within the app for this endpoint depends specifically on the application.
 
 
-# Riffle
+## Riffle
 
 <sub>*A riffle is a short, relatively shallow and coarse-bedded length of stream over which the stream flows at slower velocity but a higher turbulence than it normally does in comparison to a pool.*</sub>
 
 Riffle is the protocol all [domains][domain] use to communicate with one another. Every program adds riffle code, or the *client libraries*, to their projects. It runs atop [websockets](http://www.html5rocks.com/en/tutorials/websockets/basics/). 
 
-## General
+### General
 
 Riffle is a protocol and client-side library that makes network code look like any other local code.
 
@@ -100,7 +96,7 @@ Riffle provides an interface for interacting with all software on the [fabric][f
 5. Addressing
 
 
-## Message Patterns
+### Message Patterns
 
 Getting information from one place in a program to one place in another program: that's what networking code does. The rest of the code enables or protects that process. 
 
@@ -168,9 +164,9 @@ publish("echo", "Hello!")
 ```
 
 
-## Cumin
+### Cumin
 
-Cumin is a library that provides type safety from any data passed into riffle domains. It guarantees that any function always received the types it expects. 
+Cumin is a communication pattern and library that provides type safety from any data passed into riffle domains. It guarantees that functions are only called with the right number and type of arguments, even if those arguments are objects. 
 
 To be fair to all the smart developers who came before us and tried to solve this problem, the messaging patterns are not novel, or new. Many other software libraries and platforms the focus on *RPC*, or remote procedure call, implement similar patterns. One of the interesting things riffle does give you is *type safety.* This means the following conditions hold for all messages passed over the fabric: 
 
@@ -194,43 +190,47 @@ Collections and Objects must be composed of the primitives above. These are:
 * Array
 * Dictionary
 
-<!-- ## Sessions
-Since Riffle provides a persistent connection to the Fabric, it makes sense to wrap this connection around the concept of a session. This session enables the developer to write object oriented code while being cognizant of the fact that it is actually networking code underneath the hood.
 
-What we mean by this is that endpoints can be grouped into logical components (code related to the user versus code related to game logic) and represented as individual objects. As connections to the Fabric come and go, the code required to maintain these connections is abstracted away from the developer through the use of these sessions.
- -->
+## Appliances
 
-## Examples
+[Appliances][appliances] are like software libraries in a traditional software project. They're small services that solve common problems you can add to your fabric-aware applications. *Appliances* are very similar to modern day *cloud services*. This means the owner of the fabric runs and manages the appliance software. Developers don't have to know how to run or maintain these complicated services, they just have to understand how to use them.
 
-#### Installation
+Appliances have to be **injected** to a developer's [domain][Domain]. The developer does not gain access to the code of the underlying appliance. Each appliance has specific publicized endpoints that developers may used to interact with the appliance. 
 
-*Abstract*: use your favorite package manager.
+An appliance should belong to the developer using it without giving that developer control of the appliance itself. Similarly, the creator of the appliance should not be able to access the developer's data in the appliance. 
 
-* *Python*: pip
-* *Swift*: cocoapods 
+Creators of an appliance should be able to charge for usage using a predetermined payment structure. The creators should not have to implement the payment scheme themselves. 
 
-#### Configuration
+Developers should be able to add appliances to their domain.
 
-Riffle configuration is handled through static methods on the riffle library. 
+## Security
+
+Exis integrates common network security patterns, including authorization, authentication, protection of live communication, and protection of static data. A Public Key Infrastructure underpins the security model. 
+
+If you saw [the 10 rules](/pages/general/Home.md#the-10-rules) on the home page you may have noticed `security is not a feature`. Security is a tricky topic. On one hand, networked applications can't get by without implmenting security these days. On the other hand security topics tend to be complicated to understand and code. 
+
+### Decentralized 
+
+One of the key tenants of Exis is its decentralized nature. While many existing platforms enable security like we do, our focus is on the scalability of this security. This means there is no centralized point of access (read: point of failure) for the Fabric.
+
+### Authentication
+
+Unlike the internet, access to the Fabric is controlled. This enables developers to know they can only talk to things that have been authenticated to the network, thus simplifying their verification requirements. A secondary aspect is the idea that any agent communicating on the fabric has an associated identification, making it easier to target endpoints while writing apps (ie. every time you log onto the internet your IP address can change, but every time you access the fabric your ID will always be `xs.joebob`).
+
+[Domains][domain] all have to be authenticated by an application before they can use the fabric. They exchanve credentials, which can be usernames, passwords, or any other identifying information, with an [**Auth**][auth] appliance. Out of the box, *Auth* appliances handle the base cases for user authentication. They can also be customized by the developer to handle any odd cases. 
+
+### Permissions
+
+A permission is the declaration that a user or application is allowed to make a call. This functionality is something the internet sorely lacks-- the ability for receivers to reject traffic!
 
 
-```go
-// Set the url to connect to. Defaults to *node.exis.io*
-func setFabric(string, url)
 
-// Prints internal logging messages
-func setDebugging()
-
-print('asdf')
-```
-
-
-#### Riffle Model
+<!-- ### Riffle Model
 
 A base class for models that allows them to be transmitted. It does not expose an obvious public interface except for the following:
 
 * autogenerated `riffleId` 
-* `toString` override 
+* `toString` override  -->
 
 
 

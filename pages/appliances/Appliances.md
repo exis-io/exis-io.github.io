@@ -2,17 +2,6 @@
 
 A software service accessible as a service through common [messaging patterns][Message] to developers creating applications that use Exis. 
 
-
-[*Appliances*][appliances] are like software libraries in a traditional software project. They're small services that solve common problems you can add to your fabric-aware applications. *Appliances* are very similar to modern day *cloud services*. This means the owner of the fabric runs and manages the appliance software. Developers don't have to know how to run or maintain these complicated services, they just have to understand how to use them.
-
-Appliances have to be [injected][Injection] to a developer's [domain][Domain]. The developer does not gain access to the code of the underlying appliance. Each appliance has specific publicized endpoints that developers may used to interact with the appliance. 
-
-An appliance should belong to the developer using it without giving that developer control of the appliance itself. Similarly, the creator of the appliance should not be able to access the developer's data in the appliance. 
-
-Creators of an appliance should be able to charge for usage using a predetermined payment structure. The creators should not have to implement the payment scheme themselves. 
-
-Developers should be able to add appliances to their domain.
-
 ## General
 
 Exis created and runs a set of commonly used appliances for all developers to integrate in their applications. Any developer can write and offer access to an appliance of their own creation. Each appliance falls into a broad category. These categories don't mean much to the fabric, they're only here to help developers find what they need quickly. When a developer attaches a new appliance to their application, a set of well known endpoints are added to the application's domain, in this way [agents][agent] interact with appliances by sending [messages][message] to [endpoints][endpoint].
@@ -29,7 +18,7 @@ xs.joebob.thenextfacebook.log/error - save errors or exceptions that app users s
 * [**Container**][container]: take some code you'd like to run all the time and push it to the cloud. 
 * [**Gateway**][gateway]: connect the web to the fabric in simple ways: serve web pages, translate between web traffic and riffle traffic, and send email, among other things. 
 
-So why do you care, why are appliances useful? Appliances are here to solve problems that many other apps have dealt with before. Saving data, sending emails, storing images, user registration/authentication-- these features take time to set up and configure, time that isn't spent creating new features. Existing cloud providers and services already offer some of these services. On the fabric, however, interacting with appliances is much easier. 
+Appliances are here to solve problems that many other apps have dealt with before. Saving data, sending emails, storing images, user registration/authentication-- these features take time to set up and configure, time that isn't spent creating new features. Existing cloud providers and services already offer some of these services. On the fabric, however, interacting with appliances is much easier. 
 
 
 <!-- Reference for TOC -->
