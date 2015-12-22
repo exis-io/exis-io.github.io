@@ -16,7 +16,7 @@ xs.joebob.thenextfacebook.log/error - save errors or exceptions that app users s
 * [**Store**][store]: storage of data. Simple versions are just thin wrappers to popular databases, while more advanced versions provide high-level model and distributed abstractions
 * [**Core**][core]: core appliances are special appliances that change the way the fabric functions. These include management, authentication, and performance. 
 * [**Container**][container]: take some code you'd like to run all the time and push it to the cloud. 
-* [**Gateway**][gateway]: connect the web to the fabric in simple ways: serve web pages, translate between web traffic and riffle traffic, and send email, among other things. 
+<!-- * [**Gateway**][gateway]: connect the web to the fabric in simple ways: serve web pages, translate between web traffic and riffle traffic, and send email, among other things.  -->
 
 Appliances are here to solve problems that many other apps have dealt with before. Saving data, sending emails, storing images, user registration/authentication-- these features take time to set up and configure, time that isn't spent creating new features. Existing cloud providers and services already offer some of these services. On the fabric, however, interacting with appliances is much easier. 
 

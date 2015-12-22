@@ -2,11 +2,11 @@
 
 A Remote Procedure Call (RPC) formatted as dictated by [riffle.][Riffle] Each message is passed as a single entity from one [domain][Domain] to another. 
 
-Unlike IP traffic, nodes require agents to authorize their own traffic before they will forward it. This comes in the form of [permissions][perm].
+Unlike IP traffic, nodes require domains to authorize their own traffic before they will forward it. This comes in the form of [permissions][perm].
 
 ## Message Patterns
 
-A message contains some sort of information the sending agent wishes to transmit to the receiving agent. *Message Patterns* are simple sub-protocols that describe how messages are to be passed around in order to realize communication. Messages can not be sent outside of a message pattern.
+A message contains some sort of information the sending domain wishes to transmit to the receiving domain. *Message Patterns* are simple sub-protocols that describe how messages are to be passed around in order to realize communication. Messages can not be sent outside of a message pattern.
 
 ## Publish/Subscribe
 
@@ -78,11 +78,11 @@ Every messaging pattern call except publish accepts a pointer to a function. Thi
 <!-- Reference for TOC -->
 
 [message]:/pages/riffle/Message.md
-[agent]:/pages/riffle/Agent.md
+[domain]:/pages/riffle/domain.md
 [node]:/pages/fabric/Node.md
 [fabric]:/pages/fabric/Fabric.md
 [domain]:/pages/riffle/Domain.md
-[action]:/pages/riffle/Agent.md
+[action]:/pages/riffle/domain.md
 [endpoint]:/pages/riffle/Endpoint.md
 [samples]:/pages/samples/Samples.md
 

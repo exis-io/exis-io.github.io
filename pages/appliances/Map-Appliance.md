@@ -1,4 +1,4 @@
-[[Core appliance|Core-Appliances]] that provides routing information to nodes. Functionality provided by maps can either be provided by a single instance or multiple instances. Fabric topology should be absolutely configurable through maps
+An appliance that provides routing information to nodes. Functionality provided by maps can either be provided by a single instance or multiple instances. Fabric topology should be absolutely configurable through maps
 
 Most likely attempts to maintain some view of the global node topology and the list of tenants present at each node. 
 

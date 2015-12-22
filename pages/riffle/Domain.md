@@ -1,12 +1,14 @@
 # Domain
 
-Any software connected to the [fabric][fabric]. Domains have names, which are a set of strings separated by periods. Domains can not change.
+Domains are representations of programs connected to the [fabric][fabric]. Domains have names, which are a set of strings separated by periods. Domains cant change their names.
+
+A native class, also called a domain, is used to represent remote software. 
 
 ## General
 
-Every agent on the fabric has a name, a domain, and an owner. 
+Every domain on the fabric has a name and an owner. The term *domain* may be used interchangeably with an entity on the fabric, the name of the entity, and the object used to represent that entity. 
 
-For example, the agent `sarah` owns a domain `delilah`. Delilah's domain is `sarah.delilah`. Sarah is the `superdomain` of `delilah` while `delilah` is the subdomain of `sarah`.
+For example, the user `sarah` owns a domain `delilah`. Delilah's domain is `sarah.delilah`. Sarah is the `superdomain` of `delilah` while `delilah` is the subdomain of `sarah`.
 
 Superdomains have absolute control over subdomains. They can destroy or create subdomains at will and do not require [permissions][perm] to send actions.
 
