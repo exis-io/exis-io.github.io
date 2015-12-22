@@ -12,6 +12,55 @@ A message contains some sort of information the sending agent wishes to transmit
 
 [Register/Call][RegisterCall] enables RPC-like functionality. 
 
+# Publish/Subscribe
+
+Pub/Sub is a form of [messaging][Message] on the Fabric. This enables a quick and easy way to perform one-to-many operations.
+
+## Example
+
+The simplest example of pub/sub is through the use of a chatroom application.
+
+A developer can write the following lines of code, and instantly have a chat room feature added to her application:
+
+```
+session.subscribe("/chat", function sub(line) {
+    chatLog.html += line;
+});
+
+session.publish("/chat", "this is so cool!");
+```
+
+<!-- Reference for TOC -->
+
+[Message]:/pages/riffle/Message.md
+
+# Register/Call
+
+Register/Call is a form of [messaging][Message] on the Fabric. This enables a quick and easy way to perform one-to-one operations. This represents the same functionality of Remote Procedure Calls (RPC).
+
+By leveraging the Riffle libraries, the process of registering and calling functions should look identical to making local function calls - even though under the hood these function calls could actually go out and execute on other machines in the cloud!
+
+## Example
+
+A very simple example of this would perform the task of multiplying a very large number on a separate machine with more resources than the smartphone or browser a user may have.
+
+```
+// Somewhere on a server:
+session.register("/computePrime", function findThePrime(primeRequested) {
+    // This function finds and returns the prime number requested
+    // a very computationally complex task!
+    return 42;
+}
+
+// Somewhere on a smartphone:
+thePrime = session.call("/computePrime", 99999999);
+```
+
+<!-- Reference for TOC -->
+
+[Message]:/pages/riffle/Message.md
+
+
 ## Examples 
 
 Every messaging call returns a deferred. The deferred succeeds or fails appropriately. Deferreds can be ignored, in which case subsequent calls to the following methods proceed concurrently. If the deferred does not have an error handler the domain automatically logs the error in onError.

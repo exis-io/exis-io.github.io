@@ -4,7 +4,7 @@ A platform for handling riffle traffic. It connects all [domains][domain] togeth
 
 Plainly speaking, the fabric gets messages from one place to another.
 
-The fabric is built from [nodes][Node]. They route [messages][Message] from two [domains:][domain] the sender and the receiver. 
+The fabric is built from [nodes][Node]. They route messages from two [domains:][domain] the sender and the receiver. 
 
 [Appliances][Appliances] are discrete programs that expose some important functionality to developers and users on the fabric. The core appliances together with the routers make up the fabric itself. 
 

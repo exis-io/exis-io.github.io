@@ -1,10 +1,10 @@
+
 window.onload = function () {
     // fix first page load anchor issue
     var url = window.location.hash;
     var divid = url.split('#');
     var hash = document.getElementById(divid[2]);
 
-    // console.log("Scrolling to hash: ", url);
     if(hash) {
       hash.scrollIntoView()
     }

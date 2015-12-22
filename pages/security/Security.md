@@ -26,7 +26,7 @@ Credentials consist of a certificate, public key, and private key. Together all 
 
 After creation, an agent must obtain some set of [credentials][creds] in order to access the fabric. Credentials are some set of data which the agent can use to prove its identity and protect its communications. 
 
-### Certificate Flows 
+<!-- ### Certificate Flows 
 
 Flows relating to the secure transfer of keys, certificates, etc. 
 
@@ -38,7 +38,7 @@ The process by which two agents establish a secure end-to-end channel.
 
 The process by which a set of agents establish a secure end-to-end channel for publish.
 
-
+ -->
 
 [message]:/pages/riffle/Message.md
 [agent]:/pages/riffle/Agent.md
