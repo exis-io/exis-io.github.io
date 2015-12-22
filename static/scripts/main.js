@@ -256,11 +256,17 @@ angular
       }
     }
   })
-  .directive('cookbook', function() {
+  .directive('recipe', function() {
   return {
       restrict: 'AE',
       replace: 'true',
       template: '<h3>Hello World!!</h3>'
+      // restrict: 'E',
+      // transclude: true,
+      // compile: function(elem) {
+      //   elem.replaceWith('<h3>Hello World!!</h3>');
+      //   console.log(elem);
+      // },
     };
   })
   .directive('mobileNav', function($rootScope, $location) {
