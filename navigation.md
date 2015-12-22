@@ -4,7 +4,6 @@
 * [Welcome](/pages/general/Home.md)
 * [Traditional Networking](/pages/general/OldSchool.md)
 * [Exis Architecture](/pages/general/ExisArch.md)
-<!-- * [Security](/pages/security/Security.md) -->
 
 ### [Components](/pages/riffle/Riffle.md)
 
@@ -22,8 +21,6 @@
 * [Core](/pages/appliances/Core-Appliances.md)
 * [Store](/pages/appliances/Store-Appliances.md)
 * [Container](/pages/appliances/Container-Appliances.md)
-<!-- * [Middlebox](/pages/appliances/Middlebox-Appliances.md) -->
-<!-- * [Gate](/pages/appliances/Gateway-Appliances.md) -->
 
 ### [Tutorials](/pages/samples/Samples.md)
 
