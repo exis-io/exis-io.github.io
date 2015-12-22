@@ -1,11 +1,12 @@
 # iOS Tutorial- Cards Against Humanity (Part 1)
 
-Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. Part 2 can be found [here](/pages/samples/SwiftCardsTutorial2.md).
+Cards Against Humanity is a party game in which players complete fill-in-the-blank statements using mature-content phrases printed on playing cards. In this tutorial you'll be building an iOS version of Cards Against Humanity that runs over the fabric with a backend written entirely in Swift. 
+
+<!-- Part 2 can be found [here](/pages/samples/SwiftCardsTutorial2.md). -->
 
 Cards Against is played between a set of peers, so it seems like the game should be able to run peer to peer, or each player communicating directly with other players. Like all cards games, however, we have to watch out for cheaters! In order to maintain the state of the game and make sure play is fair we'll rely on a *container*, or a program running in the cloud. This container will fulfill the role traditionally filled by web servers. 
 
 Head to [github](https://github.com/exis-io/Exis/tree/master/ios) to set up an iOS project for development with a fabric. For this tutorial you will need the *iOS and Backend* project.
-
 
 *Table of Contents*
 
@@ -454,10 +455,10 @@ Once the two are wired up restart the container and the app. When you touch a ca
 
 <!-- TODO: explain and replace the #details calls -->
 
-## Part 2
+<!-- ## Part 2
 
 If it doesn't seem like you wrote much of a game so far, don't worry. The components you made in part 1 are almost all the bits needed to make the working game. In [part 2](/pages/samples/SwiftCardsTutorial2.md) we'll set up the game logic clean up the interface.
-
+ -->
 
 
 <!-- Reference for TOC -->
