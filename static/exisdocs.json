@@ -1,0 +1,223 @@
+{
+    "Pub/Sub Basic": {
+        "python": {
+            "publish": {
+                "code": [
+                    "        self.publish(\"basicSub\", \"Hello\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/send-pub.py",
+                "lineEnd": 11,
+                "lineStart": 9
+            },
+            "subscribe": {
+                "code": [
+                    "        @want(str)",
+                    "        def basicSub(s):",
+                    "            print s # Expects a string, like \"Hello\"",
+                    "        self.subscribe(\"basicSub\", basicSub)"
+                ],
+                "expectType": "string",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/recv-sub.py",
+                "lineEnd": 15,
+                "lineStart": 10
+            }
+        },
+        "swift": {
+            "publish": {
+                "code": [
+                    "        publish(\"xs.demo.test.alpha/basicSub\", \"Hello\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../swift/example/sender.swift",
+                "lineEnd": 10,
+                "lineStart": 8
+            },
+            "subscribe": {
+                "code": [
+                    "        subscribe(\"basicSub\") { (args: Any) in       // Expects a String, like \"Hello\"",
+                    "            print(\"\\(args)\")",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../swift/example/receiver.swift",
+                "lineEnd": 12,
+                "lineStart": 8
+            }
+        }
+    },
+    "Pub/Sub OOO Corrected": {
+        "python": {
+            "publish": {
+                "code": [
+                    "        # TODO: these aren't in order yet b/c the core is highly parallelized, we need to look into this",
+                    "        for i in range(0, 20):",
+                    "            self.publish(\"oooCorrectSub\", i).wait()"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/send-pub.py",
+                "lineEnd": 29,
+                "lineStart": 25
+            },
+            "subscribe": {
+                "code": [
+                    "        def oooCorrectSub(i):",
+                    "            print(\"[oooCorrectSub] Got: {}\".format(i))",
+                    "        self.subscribe(\"oooCorrectSub\", oooCorrectSub)"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/recv-sub.py",
+                "lineEnd": 36,
+                "lineStart": 32
+            }
+        }
+    },
+    "Pub/Sub OOO Racey": {
+        "python": {
+            "publish": {
+                "code": [
+                    "        for i in range(0, 20):",
+                    "            self.publish(\"oooRaceSub\", i)"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/send-pub.py",
+                "lineEnd": 23,
+                "lineStart": 20
+            },
+            "subscribe": {
+                "code": [
+                    "        def oooRaceSub(i):",
+                    "            print(\"[oooRaceSub] Got: {}\".format(i))",
+                    "        self.subscribe(\"oooRaceSub\", oooRaceSub)"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/recv-sub.py",
+                "lineEnd": 30,
+                "lineStart": 26
+            }
+        }
+    },
+    "Pub/Sub Objects": {
+        "python": {
+            "publish": {
+                "code": [
+                    "        class Stuff(riffle.Model):",
+                    "            name = \"This guy\"",
+                    "        s = Stuff()",
+                    "        self.publish(\"objectSub\", s)"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/send-pub.py",
+                "lineEnd": 18,
+                "lineStart": 13
+            },
+            "subscribe": {
+                "code": [
+                    "        class Stuff(riffle.Model):",
+                    "            name = \"\"",
+                    "        @want(Stuff)",
+                    "        def objectSub(o):",
+                    "            print \"[objectSub] Got: {}\".format(repr(o)) # Expects an object, like Stuff",
+                    "        self.subscribe(\"objectSub\", objectSub)"
+                ],
+                "expectType": "object",
+                "expectVal": "Stuff",
+                "file": "../python/example/recv-sub.py",
+                "lineEnd": 24,
+                "lineStart": 17
+            }
+        }
+    },
+    "Reg/Call": {
+        "python": {
+            "call": {
+                "code": [
+                    "        self.call(\"reg\", \"Hi\").wait()"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/send-call.py",
+                "lineEnd": 12,
+                "lineStart": 10
+            },
+            "register": {
+                "code": [
+                    "        @want(str)",
+                    "        def reg(s):",
+                    "            print(s) # Expects a string, like \"Hi\"",
+                    "        self.register(\"reg\", reg)"
+                ],
+                "expectType": "string",
+                "expectVal": "\"Hi\"",
+                "file": "../python/example/recv-reg.py",
+                "lineEnd": 15,
+                "lineStart": 10
+            }
+        }
+    },
+    "Reg/Call Basic 1": {
+        "python": {
+            "call": {
+                "code": [
+                    "        # Make the call",
+                    "        s = self.call(\"basicReg1\", \"Hello\").wait(str)",
+                    "        print(s) # Expects a string, like \"Hello World\""
+                ],
+                "expectType": "string",
+                "expectVal": "\"Hello World\"",
+                "file": "../python/example/send-call.py",
+                "lineEnd": 18,
+                "lineStart": 14
+            },
+            "register": {
+                "code": [
+                    "        def basicReg1(s):",
+                    "            print(s) # Expects a string, like \"Hello\"",
+                    "            return \"{} World\".format(s)",
+                    "        self.register(\"basicReg1\", basicReg1)"
+                ],
+                "expectType": "string",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/recv-reg.py",
+                "lineEnd": 22,
+                "lineStart": 17
+            }
+        }
+    },
+    "Reg/Call Basic 2": {
+        "python": {
+            "call": {
+                "code": [
+                    "        print(self.call(\"basicReg2\", \"Hello\").wait(str, int)) # Expects a string, like \"Hello World\""
+                ],
+                "expectType": "string",
+                "expectVal": "\"Hello World\"",
+                "file": "../python/example/send-call.py",
+                "lineEnd": 22,
+                "lineStart": 20
+            },
+            "register": {
+                "code": [
+                    "        def basicReg2(s):",
+                    "            print(s) # Expects a string, like \"Hello\"",
+                    "            return \"{} World\".format(s)",
+                    "        self.register(\"basicReg2\", basicReg2)"
+                ],
+                "expectType": "string",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/recv-reg.py",
+                "lineEnd": 29,
+                "lineStart": 24
+            }
+        }
+    }
+}

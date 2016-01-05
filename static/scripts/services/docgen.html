@@ -1,0 +1,39 @@
+<alert type="warning" ng-if="alert.length > 0">{{alert}}</alert>
+
+<div ng-show="alert.length == 0">
+  <!-- side by side -->
+  <div class="row" ng-if="sideBySide">
+    <div class="col-sm-6">
+        <ul class="xsTabBox nav nav-tabs" ng-if="lang === undefined">
+          <li class="xsTab" ng-repeat="d in thedoc.left" ng-class="{active: activeDocLeft === d}">
+            <a ng-click="setActiveTab(d, 'left')">{{formatLang(d.lang)}}</a>
+          </li>
+        </ul>
+        <div class="row">
+          <pre class="xsCode">{{activeDocLeft.code}}</pre>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <ul class="xsTabBox nav nav-tabs" ng-if="lang === undefined">
+          <li class="xsTab" ng-repeat="d in thedoc.right" ng-class="{active: activeDocRight === d}">
+            <a ng-click="setActiveTab(d, 'right')">{{formatLang(d.lang)}}</a>
+          </li>
+        </ul>
+        <div class="row">
+          <pre class="xsCode">{{activeDocRight.code}}</pre>
+        </div>
+    </div>
+  </div>
+  <!-- else just one -->
+  <div class="row" ng-if="!sideBySide">
+    <ul class="xsTabBox nav nav-tabs" ng-if="lang === undefined">
+      <li class="xsTab" ng-repeat="d in thedoc" ng-class="{active: activeDoc === d}">
+        <a ng-click="setActiveTab(d)">{{formatLang(d.lang)}}</a>
+      </li>
+    </ul>
+    <div class="row">
+      <pre class="xsCode">{{activeDoc.code}}</pre>
+    </div>
+  </div>
+</div>
+

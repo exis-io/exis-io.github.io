@@ -1,0 +1,12 @@
+.xsTab {
+    cursor: pointer;
+}
+
+.xsTabBox {
+    height: 43px;
+    padding-bottom: 0;
+}
+
+.xsCode {
+    word-wrap: normal;
+}
