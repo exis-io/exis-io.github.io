@@ -1,6 +1,6 @@
 # Riffle
 
-Riffle is the protocol and supporting client-side libraries that enable [domains][domain] to communicate on the Exis [fabric](fabric).
+Riffle is the protocol and supporting client-side libraries that enable [domains][domain] to communicate on the Exis [fabric][fabric].
 
 Riffle helps move your data and requests around, the fabric actually does the moving. As much as possible, riffle strives to reduce all networking code down to one line: something that looks much like a method call in your native language.
 
