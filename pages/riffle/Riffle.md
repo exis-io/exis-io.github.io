@@ -18,6 +18,18 @@ Riffle provides an interface for interacting with all software on the [fabric][f
 4. Authentication
 5. Addressing
 
+## Cumin
+
+Cumin is our way of helping to remove boilerplate code from view. Essentially we provide this by providing the enforcement of types that your functions expect to receive.
+
+### Receiving data:
+<exis-code name="Want Definitions Recv" action="defs"></exis-code>
+
+### Sending data:
+<exis-code name="Want Definitions Send" action="defs"></exis-code>
+
+### Working with objects
+<exis-code name="Want Definitions Models" action="defs"></exis-code>
 
 [message]:/pages/riffle/Message.md
 [agent]:/pages/riffle/Agent.md

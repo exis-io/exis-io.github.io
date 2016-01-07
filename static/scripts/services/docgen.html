@@ -10,7 +10,7 @@
           </li>
         </ul>
         <div class="row">
-          <pre class="xsCode">{{activeDocLeft.code}}</pre>
+          <pre class="xsCode" ng-bind-html="highlight(activeDocLeft.lang, activeDocLeft.code)"></pre>
         </div>
     </div>
     <div class="col-sm-6">
@@ -20,7 +20,7 @@
           </li>
         </ul>
         <div class="row">
-          <pre class="xsCode">{{activeDocRight.code}}</pre>
+          <pre class="xsCode" ng-bind-html="highlight(activeDocRight.lang, activeDocRight.code)"></pre>
         </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
       </li>
     </ul>
     <div class="row">
-      <pre class="xsCode">{{activeDoc.code}}</pre>
+      <pre class="xsCode" ng-bind-html="highlight(activeDoc.lang, activeDoc.code)"></pre>
     </div>
   </div>
 </div>

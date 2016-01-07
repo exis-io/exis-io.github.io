@@ -1,5 +1,50 @@
 # Exis Architecture
 
+Exis is a combination of three components that make writing next-generation apps incredibly simple. Together, these components should simplify *all* aspects of your application, not just backend logic, not just database access - all of it.
+
+
+The three components are:
+* A protocol for communication called [Riffle](/pages/riffle/Riffle.md)
+* A network [Fabric](/pages/fabric/Fabric.md) to route communication 
+* [Appliances](/pages/appliances/Appliances.md) to host developer's code.
+
+Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
+
+![Exis Overview](/img/exis_docs_overview.svg)
+
+
+Modern apps are highly interwoven - between not only backend components like databases and authentication, but even between      users of the app.
+
+Any app written today contains two parts: the code you are interested and excited to write, and the boilerplate code that is required to make your app function. The interesting thing is that often times this boilerplate code can be more difficult and error-prone then your actual app itself! We take difficult, error-prone, and boilerplate code and   completely strip it away leaving only the application logic behind. This is possible by combining the best aspects of modern communication frameworks into one all-powerful solution that we call Exis.
+
+
+
+## The 10 Rules
+
+1. Beautiful is better than ugly.
+
+2. There should be one-- and preferably only one --obvious way to do it.
+
+3. Require less [lines of code, complexity, required knowledge].
+
+4. Security is not a feature. 
+
+5. Choice of language doesn't affect functionality.
+
+6. Be decentralized.
+
+7. Be scalable. 
+
+8. Explicit is better than implicit.
+
+9. Simple is better than complex.
+
+10. Special cases aren't special enough to break the rules. 
+
+
+[riffle]:/pages/installing/gettingStarted.md
+
+
 A brief description of all the components that make up the Exis platform. 
 
 ## Fabric

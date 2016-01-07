@@ -11,8 +11,11 @@ angular.module('exisDocs')
   .service('DocGen',['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
 
     this.docs = {};
-    this.buildJson = function() {
+    this.highlight = null;
+    this.buildJson = function(highlight) {
         var self = this;
+        this.highlight = highlight;
+        
         $http.get($rootScope.DOC_JSON).then(function(resp) {
             self.docs = resp.data;
         });
@@ -27,7 +30,7 @@ angular.module('exisDocs')
         var minWs = 100;
         for(var i = 0; i < code.length; i++) {
             var ws = code[i].match(/^\s*[^\s]?/)[0].length - 1;
-            if(ws < minWs) {
+            if(ws < minWs && ws >= 0) {
                 minWs = ws;
             }
         }
@@ -120,6 +123,10 @@ angular.module('exisDocs')
             var res = [];
             for(var i = 0; i < langs.length; i++) {
                 var t = langs[i][action];
+                // Can't find the action they requested
+                if(t === undefined) {
+                    return undefined;
+                }
                 var tmp = {
                     code: this.renderCode(t.code),
                     rawCode: t.code,
@@ -227,7 +234,8 @@ angular.module('exisDocs')
         restrict: 'E',
         templateUrl: "/static/scripts/services/docgen.html",
         scope: {
-            /* These are required to isolate the scope between multiple directives */
+            /* These are required to isolate the scope between multiple directives 
+             * that exist in the same controller (on the same page) */
             name: '@',
             action: '@',
             lang: '@',
@@ -237,9 +245,10 @@ angular.module('exisDocs')
             alert: '@',
             activeDoc: '@',
             activeDocLeft: '@',
-            activeDocRight: '@'
+            activeDocRight: '@',
+            highlight: '@'
         },
-        controller: function($scope) {
+        controller: function($scope, $sce) {
             $scope.setActiveTab = function(doc, side) {
                 if(side === undefined) {
                     $scope.activeDoc = doc;
@@ -249,6 +258,20 @@ angular.module('exisDocs')
                 }
                 else if(side.indexOf("right") >= 0) {
                     $scope.activeDocRight = doc;
+                }
+            }
+
+            $scope.highlight = function(lang, code) {
+                if(code === undefined) {
+                    return code;
+                } else {
+                    if(lang === undefined) {
+                        // We don't know the language, let them deal with it
+                        return $sce.trustAsHtml(DocGen.highlight.highlightAuto(code).value);
+                    } else {
+                        // We know the language, specify it
+                        return $sce.trustAsHtml(DocGen.highlight.highlight(lang, code).value);
+                    }
                 }
             }
 

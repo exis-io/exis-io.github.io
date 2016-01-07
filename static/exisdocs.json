@@ -9,7 +9,7 @@
                 "expectVal": null,
                 "file": "../python/example/send-pub.py",
                 "lineEnd": 11,
-                "lineStart": 9
+                "lineStart": 10
             },
             "subscribe": {
                 "code": [
@@ -22,19 +22,19 @@
                 "expectVal": "\"Hello\"",
                 "file": "../python/example/recv-sub.py",
                 "lineEnd": 15,
-                "lineStart": 10
+                "lineStart": 11
             }
         },
         "swift": {
             "publish": {
                 "code": [
-                    "        publish(\"xs.demo.test.alpha/basicSub\", \"Hello\")"
+                    "        publish(\"xs.demo.test.example/basicSub\", \"Hello\")"
                 ],
                 "expectType": null,
                 "expectVal": null,
                 "file": "../swift/example/sender.swift",
                 "lineEnd": 10,
-                "lineStart": 8
+                "lineStart": 9
             },
             "subscribe": {
                 "code": [
@@ -46,7 +46,7 @@
                 "expectVal": "\"Hello\"",
                 "file": "../swift/example/receiver.swift",
                 "lineEnd": 12,
-                "lineStart": 8
+                "lineStart": 9
             }
         }
     },
@@ -62,7 +62,7 @@
                 "expectVal": null,
                 "file": "../python/example/send-pub.py",
                 "lineEnd": 29,
-                "lineStart": 25
+                "lineStart": 26
             },
             "subscribe": {
                 "code": [
@@ -74,7 +74,7 @@
                 "expectVal": null,
                 "file": "../python/example/recv-sub.py",
                 "lineEnd": 36,
-                "lineStart": 32
+                "lineStart": 33
             }
         }
     },
@@ -89,7 +89,7 @@
                 "expectVal": null,
                 "file": "../python/example/send-pub.py",
                 "lineEnd": 23,
-                "lineStart": 20
+                "lineStart": 21
             },
             "subscribe": {
                 "code": [
@@ -101,7 +101,7 @@
                 "expectVal": null,
                 "file": "../python/example/recv-sub.py",
                 "lineEnd": 30,
-                "lineStart": 26
+                "lineStart": 27
             }
         }
     },
@@ -118,7 +118,7 @@
                 "expectVal": null,
                 "file": "../python/example/send-pub.py",
                 "lineEnd": 18,
-                "lineStart": 13
+                "lineStart": 14
             },
             "subscribe": {
                 "code": [
@@ -133,7 +133,7 @@
                 "expectVal": "Stuff",
                 "file": "../python/example/recv-sub.py",
                 "lineEnd": 24,
-                "lineStart": 17
+                "lineStart": 18
             }
         }
     },
@@ -147,7 +147,7 @@
                 "expectVal": null,
                 "file": "../python/example/send-call.py",
                 "lineEnd": 12,
-                "lineStart": 10
+                "lineStart": 11
             },
             "register": {
                 "code": [
@@ -160,7 +160,7 @@
                 "expectVal": "\"Hi\"",
                 "file": "../python/example/recv-reg.py",
                 "lineEnd": 15,
-                "lineStart": 10
+                "lineStart": 11
             }
         }
     },
@@ -176,7 +176,7 @@
                 "expectVal": "\"Hello World\"",
                 "file": "../python/example/send-call.py",
                 "lineEnd": 18,
-                "lineStart": 14
+                "lineStart": 15
             },
             "register": {
                 "code": [
@@ -189,7 +189,34 @@
                 "expectVal": "\"Hello\"",
                 "file": "../python/example/recv-reg.py",
                 "lineEnd": 22,
-                "lineStart": 17
+                "lineStart": 18
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"xs.demo.test.example/basicReg\", \"Hello\") { args in",
+                    "            print(\"\\(args)\") // Expects a String, like \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello World\"",
+                "file": "../swift/example/sender.swift",
+                "lineEnd": 16,
+                "lineStart": 13
+            },
+            "register": {
+                "code": [
+                    "        register(\"basicReg\") { (args: Any) -> Any? in",
+                    "            print(\"\\(args)\") // Expects a String, like \"Hello\"",
+                    "            return \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../swift/example/receiver.swift",
+                "lineEnd": 19,
+                "lineStart": 15
             }
         }
     },
@@ -203,7 +230,7 @@
                 "expectVal": "\"Hello World\"",
                 "file": "../python/example/send-call.py",
                 "lineEnd": 22,
-                "lineStart": 20
+                "lineStart": 21
             },
             "register": {
                 "code": [
@@ -216,7 +243,178 @@
                 "expectVal": "\"Hello\"",
                 "file": "../python/example/recv-reg.py",
                 "lineEnd": 29,
-                "lineStart": 24
+                "lineStart": 25
+            }
+        }
+    },
+    "Want Definitions Models": {
+        "python": {
+            "defs": {
+                "code": [
+                    "# In Python you must import:",
+                    "import riffle",
+                    "from riffle import want",
+                    "",
+                    "# Declare a User class",
+                    "class User(riffle.Model):",
+                    "    name = \"default\"",
+                    "# define a function that is only called",
+                    "# if a User is passed:",
+                    "@want(User)",
+                    "def myFunction(u):",
+                    "    print(u.name) # User class",
+                    "# call a function and expect the result to be",
+                    "# a User class",
+                    "u = example.call(\"get_user\").wait(User)",
+                    "",
+                    "# NOTE: each @want must decorate a function",
+                    "# below, we removed them for clarity",
+                    "",
+                    "# A basic model of a Student",
+                    "class Student(riffle.Model):",
+                    "    first = \"firstName\"",
+                    "    last = \"lastName\"",
+                    "    grade = 0",
+                    "@want(Student) # Decorate expecting a Student class",
+                    "# Require a Student class is returned",
+                    "s = example.call(\"get_student\").wait(Student)",
+                    "",
+                    "# A model that contains a collection of models",
+                    "class Student(riffle.Model):",
+                    "    first = \"firstName\"",
+                    "    last = \"lastName\"",
+                    "    grade = 0",
+                    "class Classroom(riffle.Model):",
+                    "    students = list(Student)",
+                    "    roomNumber = 0",
+                    "@want(Classroom) # Decorate expecting a Classroom class",
+                    "# Require a Classroom class is returned",
+                    "c = example.call(\"get_classroom\").wait(Classroom)",
+                    "",
+                    "# You could also define the object directly, but it",
+                    "# wouldn't contain any functions defined in the class",
+                    "class User(riffle.Model):",
+                    "    first = \"firstName\"",
+                    "    def setFirst(self, name):",
+                    "        self.first = name",
+                    "# The result here enables u.setFirst('a')",
+                    "@want(User) # Decorate to get a User",
+                    "# Require a User so u.setFirst() can be called",
+                    "u = example.call(\"get_user\").wait(User)",
+                    "# The result here won't have a u.setFirst() function",
+                    "# because it is a dict not a User class",
+                    "@want({\"first\": str})",
+                    "u = example.call(\"get_user\").wait({\"first\": str})",
+                    ""
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/definitions-models.py",
+                "lineEnd": 58,
+                "lineStart": 3
+            }
+        }
+    },
+    "Want Definitions Recv": {
+        "python": {
+            "defs": {
+                "code": [
+                    "",
+                    "# In Python you must import want to use as",
+                    "# a decorator",
+                    "from riffle import want",
+                    "",
+                    "# After importing want, you simply decorate",
+                    "# any function with it.",
+                    "@want(str)",
+                    "def myFunction(aString):",
+                    "    print(aString) # Guaranteed str",
+                    "# resulting function will only be called with",
+                    "# the args if they are of the type specified",
+                    "",
+                    "# NOTE: each @want must decorate a function",
+                    "# below, we removed them for clarity",
+                    "",
+                    "# Nothing is returned",
+                    "@want()",
+                    "",
+                    "# The primitives",
+                    "@want(str)",
+                    "@want(int)",
+                    "@want(float)",
+                    "@want(bool)",
+                    "",
+                    "# Collections",
+                    "@want(list) # A list of anything",
+                    "@want(dict) # A dict containing anything",
+                    "",
+                    "# None is returned",
+                    "@want(None)",
+                    "",
+                    "# Many arguments",
+                    "@want(str, int, float) # 3 args: str, int, float",
+                    "@want(str, [int]) # 2 args: str, list of many int's",
+                    ""
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/definitions-recv.py",
+                "lineEnd": 39,
+                "lineStart": 3
+            }
+        }
+    },
+    "Want Definitions Send": {
+        "python": {
+            "defs": {
+                "code": [
+                    "",
+                    "# In Python you must import riffle",
+                    "import riffle",
+                    "",
+                    "# First setup your domain",
+                    "app = riffle.Domain(\"xs.demo.test\")",
+                    "me = riffle.Domain(\"me\", superdomain=app)",
+                    "me.join() # Make the connection as me",
+                    "# Create a domain reference to who you want to",
+                    "# communicate with",
+                    "ex = riffle.Domain(\"example\", superdomain=app)",
+                    "",
+                    "# Since any call function can return values,",
+                    "# you can specify type arguments.",
+                    "myStr = ex.call(\"hello\", \"arg\").wait(str)",
+                    "# myStr is guaranteed to be a str, if the",
+                    "# registered function (hello) returns anything",
+                    "# else it will not return properly.",
+                    "",
+                    "# You expect nothing as a return",
+                    "arg = ex.call(\"hello\").wait()",
+                    "",
+                    "# You can pass any primitive",
+                    "arg = ex.call(\"hello\").wait(str)",
+                    "arg = ex.call(\"hello\").wait(int)",
+                    "arg = ex.call(\"hello\").wait(float)",
+                    "arg = ex.call(\"hello\").wait(bool)",
+                    "",
+                    "# Collections",
+                    "arg = ex.call(\"hello\").wait(list)",
+                    "arg = ex.call(\"hello\").wait(dict)",
+                    "",
+                    "# None is returned",
+                    "arg = ex.call(\"hello\").wait(None)",
+                    "",
+                    "# Many arguments",
+                    "# a is str, b is int, c is float",
+                    "a, b, c = ex.call(\"hello\").wait(str, int, float)",
+                    "# d is str, e is a list of int's",
+                    "d, e = ex.call(\"hello\").wait(str, [int])",
+                    ""
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/definitions-send.py",
+                "lineEnd": 44,
+                "lineStart": 3
             }
         }
     }

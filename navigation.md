@@ -2,7 +2,8 @@
 ### [Overview](/pages/general/Home.md)
 
 * [Welcome](/pages/general/Home.md)
-* [Traditional Networking](/pages/general/OldSchool.md)
+* [Benefits](/pages/general/Benefits.md)
+<!--* [Traditional Networking](/pages/general/OldSchool.md)-->
 * [Exis Architecture](/pages/general/ExisArch.md)
 
 ### [Components](/pages/riffle/Riffle.md)

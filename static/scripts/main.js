@@ -57,7 +57,7 @@ angular
     $rootScope.mainMenu = MAIN_MENU;
     $rootScope.improveDocsLink = null;
     $rootScope.DOC_JSON = "/static/exisdocs.json";
-    DocGen.buildJson();
+    DocGen.buildJson(hljs);
   })
 
   .run(function($rootScope, $window, $location){
