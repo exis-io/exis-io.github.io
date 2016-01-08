@@ -2,11 +2,11 @@
 
 There are several ways to use the exis-code tagging system.
 
-Here is a missing code name
-<exis-code lang="python" name="Missing" action="publish"></exis-code>
-
 Here is how Python looks for a simple publish call:
 <exis-code lang="python" name="Pub/Sub Basic" action="publish"></exis-code>
+
+Here is a missing code name
+<exis-code lang="python" name="Missing" action="publish"></exis-code>
 
 What basic pub/sub looks like for all languages
 <exis-code name="Pub/Sub Basic"></exis-code>

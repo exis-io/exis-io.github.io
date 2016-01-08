@@ -53,10 +53,11 @@ var GITHUB_EDIT_PAGE_LINK = 'https://github.com/exis-io/exis-io.github.io/edit/m
 angular
   .module('exisDocs', [ 'ngRoute', 'ui.bootstrap' ])
 
-  .run(function($rootScope, MAIN_MENU, DocGen) {
+  .run(function($rootScope, MAIN_MENU, DocGen, Repl) {
     $rootScope.mainMenu = MAIN_MENU;
     $rootScope.improveDocsLink = null;
     $rootScope.DOC_JSON = "/static/exisdocs.json";
+    Repl.init();
     DocGen.buildJson(hljs);
   })
 

@@ -25,13 +25,16 @@ angular.module('exisDocs')
      * Helps strip out extra white space so the code shows up properly
      * and returns as a string rather than a list.
      */
-    this.renderCode = function(code) {
-        // How much whitespace is there?
-        var minWs = 100;
-        for(var i = 0; i < code.length; i++) {
-            var ws = code[i].match(/^\s*[^\s]?/)[0].length - 1;
-            if(ws < minWs && ws >= 0) {
-                minWs = ws;
+    this.renderCode = function(code, leaveWhitespace) {
+        var minWs = 0;
+        if(leaveWhitespace !== true) {
+            minWs = 100;
+            // How much whitespace is there?
+            for(var i = 0; i < code.length; i++) {
+                var ws = code[i].match(/^\s*[^\s]?/)[0].length - 1;
+                if(ws < minWs && ws >= 0) {
+                    minWs = ws;
+                }
             }
         }
         var c = "";
@@ -67,8 +70,10 @@ angular.module('exisDocs')
         if(action === undefined) {
             var left = [];
             var leftNames = [];
+            var leftActions = [];
             var right = [];
             var rightNames = [];
+            var rightActions = [];
             
             // Build up the action for the left vs right side
             for(var i = 0; i < langs.length; i++) {
@@ -76,10 +81,12 @@ angular.module('exisDocs')
                     if(a.indexOf("publish") >= 0 || a.indexOf("call") >= 0) {
                         left[left.length] = langs[i][a];
                         leftNames[leftNames.length] = langNames[i];
+                        leftActions[leftActions.length] = a;
                     }
                     else if(a.indexOf("subscribe") >= 0 || a.indexOf("register") >= 0) {
                         right[right.length] = langs[i][a];
                         rightNames[rightNames.length] = langNames[i];
+                        rightActions[rightActions.length] = a;
                     }
                 }
             }
@@ -98,7 +105,10 @@ angular.module('exisDocs')
                     expectType: left[i].expectType,
                     expectVal: left[i].expectVal,
                     file: left[i].file,
-                    lang: leftNames[i]
+                    lang: leftNames[i],
+                    action: leftActions[i],
+                    replResults: null,
+                    rawResults: ""
                 };
                 res.left[res.left.length] = tmp;
             }
@@ -112,7 +122,10 @@ angular.module('exisDocs')
                     expectType: right[i].expectType,
                     expectVal: right[i].expectVal,
                     file: right[i].file,
-                    lang: rightNames[i]
+                    lang: rightNames[i],
+                    action: rightActions[i],
+                    replResults: null,
+                    rawResults: ""
                 };
                 res.right[res.right.length] = tmp;
             }
@@ -135,7 +148,10 @@ angular.module('exisDocs')
                     expectType: t.expectType,
                     expectVal: t.expectVal,
                     file: t.file,
-                    lang: langNames[i]
+                    lang: langNames[i],
+                    action: action,
+                    replResults: null,
+                    rawResults: ""
                 };
                 res[res.length] = tmp;
             }
@@ -191,7 +207,7 @@ angular.module('exisDocs')
         });
     }
   }])
-  .directive('exisCode', ['DocGen', function(DocGen) {
+  .directive('exisCode', ['DocGen', '$compile', '$sce', 'Repl', function(DocGen, $compile, $sce, Repl) {
     /*
      * Directive exisCode (exis-code tags)
      *  This takes <exis-code> tags and turns it into actual code that was
@@ -202,15 +218,16 @@ angular.module('exisDocs')
      *      [lang] - The language, if none then create tabs with all langs
      *    [action] - Expected unless style="side-by-side" which means put the 
      *               corresponding actions next to each other.
-     *     [style]
-     *         - side-by-side: if you want to show how a pub/sub works in each language
+     *      [repl] - If the code is allowed to execute, true by default.
      */
     var linkFunc = function(scope, element, attributes) {
         // First strip out all attrs and add them to scope for easy access
-        for(var a in attributes) {
-            if(a.indexOf('$') < 0) {
-                scope[a] = attributes[a];
-            }
+        // repl is on by default
+        if(scope.repl === undefined) {
+            scope.repl = false; // TODO switch back to true;
+        } else {
+            scope.repl = (scope.repl === "true");
+            console.log(scope.repl);
         }
 
         // Does the requested name exist?
@@ -229,26 +246,25 @@ angular.module('exisDocs')
             scope.activeDocRight = scope.thedoc.right[0];
         }
         scope.alert = "";
-    }
+    };
     return {
         restrict: 'E',
         templateUrl: "/static/scripts/services/docgen.html",
         scope: {
-            /* These are required to isolate the scope between multiple directives 
-             * that exist in the same controller (on the same page) */
-            name: '@',
-            action: '@',
-            lang: '@',
-            style: '@',
-            thedoc: '@',
-            sideBySide: '@',
-            alert: '@',
-            activeDoc: '@',
-            activeDocLeft: '@',
-            activeDocRight: '@',
-            highlight: '@'
+            name: '@name',
+            repl: '@repl',
+            action: '@action',
+            lang: '@lang'
         },
-        controller: function($scope, $sce) {
+        controller: ['$scope', '$sce', function($scope, $sce) {
+            $scope.showRepl = function(c) {
+                if(c === true || c === false) {
+                    return c;
+                } else {
+                    return (c === "true");
+                }
+            }
+            
             $scope.setActiveTab = function(doc, side) {
                 if(side === undefined) {
                     $scope.activeDoc = doc;
@@ -279,7 +295,26 @@ angular.module('exisDocs')
             $scope.formatLang = function(lang) {
                 return lang.charAt(0).toUpperCase() + lang.slice(1);
             }
-        },
+            
+            /* Execute the repl code provided */
+            $scope.replClick = function(doc) {
+                doc.rawResults = "";
+                doc.replResults = "";
+                function printResults(prog) {
+                    // Strip out known stuff that shouldn't get displayed
+                    if(prog.indexOf("___BUILDCOMPLETE___") >= 0) {
+                        prog = "Build complete...";
+                    }
+                    console.log(prog);
+                    $scope.$apply(function () {
+                        doc.rawResults += prog + "\n";
+                        doc.replResults = $scope.highlight(doc.lang, doc.rawResults);
+                    });
+                }
+                Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults);
+            }
+
+        }],
         link: linkFunc
     };
   }]);

@@ -3,24 +3,42 @@
 <div ng-show="alert.length == 0">
   <!-- side by side -->
   <div class="row" ng-if="sideBySide">
+    <!-- Left side -->
     <div class="col-sm-6">
         <ul class="xsTabBox nav nav-tabs" ng-if="lang === undefined">
           <li class="xsTab" ng-repeat="d in thedoc.left" ng-class="{active: activeDocLeft === d}">
             <a ng-click="setActiveTab(d, 'left')">{{formatLang(d.lang)}}</a>
           </li>
         </ul>
-        <div class="row">
+        <div class="row xsCodeBlock">
+          <div class="xsReplBox" ng-if="showRepl(repl)">
+            <div class="xsReplCtls">
+                <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDocLeft)"></span>
+            </div>
+          </div>
           <pre class="xsCode" ng-bind-html="highlight(activeDocLeft.lang, activeDocLeft.code)"></pre>
+          <div ng-if='activeDocLeft.replResults !== null'>
+            <pre class="xsCode" ng-bind-html="activeDocLeft.replResults"></pre>
+          </div>
         </div>
     </div>
+    <!-- Right side -->
     <div class="col-sm-6">
         <ul class="xsTabBox nav nav-tabs" ng-if="lang === undefined">
           <li class="xsTab" ng-repeat="d in thedoc.right" ng-class="{active: activeDocRight === d}">
             <a ng-click="setActiveTab(d, 'right')">{{formatLang(d.lang)}}</a>
           </li>
         </ul>
-        <div class="row">
+        <div class="row xsCodeBlock">
+          <div class="xsReplBox" ng-if="showRepl(repl)">
+            <div class="xsReplCtls">
+                <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDocRight)"></span>
+            </div>
+          </div>
           <pre class="xsCode" ng-bind-html="highlight(activeDocRight.lang, activeDocRight.code)"></pre>
+          <div ng-if='activeDocRight.replResults !== null'>
+            <pre class="xsCode" ng-bind-html="activeDocRight.replResults"></pre>
+          </div>
         </div>
     </div>
   </div>
@@ -31,8 +49,16 @@
         <a ng-click="setActiveTab(d)">{{formatLang(d.lang)}}</a>
       </li>
     </ul>
-    <div class="row">
+    <div class="row xsCodeBlock">
+      <div class="xsReplBox" ng-if="showRepl(repl)">
+        <div class="xsReplCtls">
+            <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDoc)"></span>
+        </div>
+      </div>
       <pre class="xsCode" ng-bind-html="highlight(activeDoc.lang, activeDoc.code)"></pre>
+      <div ng-if='activeDoc.replResults !== null'>
+        <pre class="xsCode" ng-bind-html="activeDoc.replResults"></pre>
+      </div>
     </div>
   </div>
 </div>

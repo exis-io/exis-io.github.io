@@ -7,7 +7,33 @@
     padding-bottom: 0;
 }
 
+/* Required so the xsRepl can be abs pos on top of xsCode */
+.xsCodeBlock {
+    position: relative;
+}
+
 .xsCode {
     word-wrap: normal;
     margin: 0;
+    padding: 0;
+}
+
+.xsReplBox {
+    position: absolute;
+    background: #e6e8eb;
+    color: #29292C;
+    margin: 10px;
+    height: 25px;
+    top: 0;
+    right: 0;
+    border-radius: 4px;
+}
+
+.xsReplCtls {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.xsReplCtl {
+    cursor: pointer;
 }
