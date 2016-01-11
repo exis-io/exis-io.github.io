@@ -9,6 +9,7 @@
 ### [Tour](/pages/tour/regcall-lesson1.md)
 * [Registers and Calls](/pages/tour/regcall-lesson1.md)
     * [Lesson 1](/pages/tour/regcall-lesson1.md)
+    * [Lesson 2](/pages/tour/regcall-lesson2.md)
 
 ### [Components](/pages/riffle/Riffle.md)
 

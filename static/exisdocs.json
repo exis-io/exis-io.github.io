@@ -424,6 +424,267 @@
             }
         }
     },
+    "Tour Reg/Call Lesson 1": {
+        "js": {
+            "call": {
+                "code": [
+                    "    backend.Call(\"myFirstCall\", \"Hello\").then(riffle.wait(function (s) {",
+                    "        console.log(s); // Expects a String, like \"Hello World\"",
+                    "    }, String),",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello World\"",
+                "file": "../js/example/tour-reg-client.js",
+                "lineEnd": 18,
+                "lineStart": 12
+            },
+            "register": {
+                "code": [
+                    "    this.Register(\"myFirstCall\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hello\"",
+                    "        return s + \" World\";",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../js/example/tour-reg-backend.js",
+                "lineEnd": 16,
+                "lineStart": 12
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        s = backend.call(\"myFirstCall\", \"Hello\").wait(str)",
+                    "        print s # Expects a str, like \"Hello World\""
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello World\"",
+                "file": "../python/example/tour-reg-client.py",
+                "lineEnd": 16,
+                "lineStart": 14
+            },
+            "register": {
+                "code": [
+                    "        @want(str)",
+                    "        def regStrStr(s):",
+                    "            print(s)  # Expects a str, like \"Hello\"",
+                    "            return \"{} World\".format(s)",
+                    "        self.register(\"myFirstCall\", regStrStr)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/tour-reg-backend.py",
+                "lineEnd": 18,
+                "lineStart": 13
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"myFirstCall\", \"Hello\").then { (s: String) in",
+                    "            print(s) // Expects a String, like \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello World\"",
+                "file": "../swift/example/tour-reg-client.swift",
+                "lineEnd": 10,
+                "lineStart": 7
+            },
+            "register": {
+                "code": [
+                    "        register(\"myFirstCall\") { (s: String) -> String in",
+                    "            print(s) // Expects a String, like \"Hello\"",
+                    "            return \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../swift/example/tour-reg-backend.swift",
+                "lineEnd": 11,
+                "lineStart": 7
+            }
+        }
+    },
+    "Tour Reg/Call Lesson 2 Fails": {
+        "js": {
+            "call": {
+                "code": [
+                    "    backend.Call(\"iWantInts\", \"Hi\").then(riffle.wait(function (s) {",
+                    "        console.log(s); // Expects a String, like \"Thanks for saying Hi\"",
+                    "    }, String),",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err); // Errors with \"Cumin: expecting primitive float, got string\"",
+                    "    });"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Thanks for saying Hi\"",
+                "file": "../js/example/tour-reg-client.js",
+                "lineEnd": 36,
+                "lineStart": 30
+            },
+            "register": {
+                "code": [
+                    "    this.Register(\"iWantInts\", riffle.want(function(i) {",
+                    "        console.log(i); // Expects a Number, like 42",
+                    "        return \"Thanks for sending int \" + i;",
+                    "    }, Number));"
+                ],
+                "expectType": "Number",
+                "expectVal": "42",
+                "file": "../js/example/tour-reg-backend.js",
+                "lineEnd": 30,
+                "lineStart": 26
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        try:",
+                    "            s = backend.call(\"iWantInts\", \"Hi\").wait(str)",
+                    "            print s # Expects a str, like \"Thanks for sending int 42\"",
+                    "        except riffle.Error as e:",
+                    "            print e # Errors with \"Cumin: expecting primitive int, got string\""
+                ],
+                "expectType": "str",
+                "expectVal": "\"Thanks for sending int 42\"",
+                "file": "../python/example/tour-reg-client.py",
+                "lineEnd": 29,
+                "lineStart": 24
+            },
+            "register": {
+                "code": [
+                    "        @want(int)",
+                    "        def iWantInts(i):",
+                    "            print(i)  # Expects an int, like 42",
+                    "            return \"Thanks for sending int {}\".format(i)",
+                    "        self.register(\"iWantInts\", iWantInts)"
+                ],
+                "expectType": "int",
+                "expectVal": "42",
+                "file": "../python/example/tour-reg-backend.py",
+                "lineEnd": 34,
+                "lineStart": 29
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"iWantInts\", \"Hi\").then { (s: String) in",
+                    "            print(s) // Expects a String, like \"Thanks for sending int 42\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Thanks for sending int 42\"",
+                "file": "../swift/example/tour-reg-client.swift",
+                "lineEnd": 22,
+                "lineStart": 19
+            },
+            "register": {
+                "code": [
+                    "        register(\"iWantInts\") { (i: Int) -> String in",
+                    "            print(i) // Expects an Int, like 42",
+                    "            return \"Thanks for sending int \\(i)\"",
+                    "        }"
+                ],
+                "expectType": "Int",
+                "expectVal": "42",
+                "file": "../swift/example/tour-reg-backend.swift",
+                "lineEnd": 25,
+                "lineStart": 21
+            }
+        }
+    },
+    "Tour Reg/Call Lesson 2 Works": {
+        "js": {
+            "call": {
+                "code": [
+                    "    backend.Call(\"iWantStrings\", \"Hi\").then(riffle.wait(function (s) {",
+                    "        console.log(s); // Expects a String, like \"Thanks for saying Hi\"",
+                    "    }, String),",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Thanks for saying Hi\"",
+                "file": "../js/example/tour-reg-client.js",
+                "lineEnd": 27,
+                "lineStart": 21
+            },
+            "register": {
+                "code": [
+                    "    this.Register(\"iWantStrings\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hi\"",
+                    "        return \"Thanks for saying \" + s;",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hi\"",
+                "file": "../js/example/tour-reg-backend.js",
+                "lineEnd": 23,
+                "lineStart": 19
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        s = backend.call(\"iWantStrings\", \"Hi\").wait(str)",
+                    "        print s # Expects a str, like \"Thanks for saying Hi\""
+                ],
+                "expectType": "str",
+                "expectVal": "\"Thanks for saying Hi\"",
+                "file": "../python/example/tour-reg-client.py",
+                "lineEnd": 21,
+                "lineStart": 19
+            },
+            "register": {
+                "code": [
+                    "        @want(str)",
+                    "        def iWantStrings(s):",
+                    "            print(s)  # Expects a str, like \"Hi\"",
+                    "            return \"Thanks for saying {}\".format(s)",
+                    "        self.register(\"iWantStrings\", iWantStrings)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hi\"",
+                "file": "../python/example/tour-reg-backend.py",
+                "lineEnd": 26,
+                "lineStart": 21
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"iWantStrings\", \"Hi\").then { (s: String) in",
+                    "            print(s) // Expects a String, like \"Thanks for saying Hi\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Thanks for saying Hi\"",
+                "file": "../swift/example/tour-reg-client.swift",
+                "lineEnd": 16,
+                "lineStart": 13
+            },
+            "register": {
+                "code": [
+                    "        register(\"iWantStrings\") { (s: String) -> String in",
+                    "            print(s) // Expects a String, like \"Hi\"",
+                    "            return \"Thanks for saying \" + s",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hi\"",
+                "file": "../swift/example/tour-reg-backend.swift",
+                "lineEnd": 18,
+                "lineStart": 14
+            }
+        }
+    },
     "Want Definitions Models": {
         "python": {
             "defs": {
