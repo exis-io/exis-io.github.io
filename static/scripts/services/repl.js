@@ -8,7 +8,7 @@
  * Service in the exis*
  */
 angular.module('exisDocs')
-  .service('Repl',['$http', '$q', function ($http, $q) {
+  .service('Repl',[ function () {
     this.DOMAIN = "xs.demo";
     this.myid = null;
     this.session = undefined;

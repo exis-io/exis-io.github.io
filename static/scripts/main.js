@@ -327,7 +327,9 @@ angular
 
           if ($(window).width() >= 767) {
             var expandEl = activeEl.parents('ul');
+            var liParents = activeEl.parents('li');
             expandEl.addClass('expand');
+            liParents.removeClass('active');
           }
 
           el.find('.active').removeClass('active');
