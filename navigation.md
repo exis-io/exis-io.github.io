@@ -6,6 +6,9 @@
 <!--* [Traditional Networking](/pages/general/OldSchool.md)-->
 * [Exis Architecture](/pages/general/ExisArch.md)
 
+### [Tour](/pages/tour/regcall-lesson1.md)
+* [Reg/Calls Lesson 1](/pages/tour/regcall-lesson1.md)
+
 ### [Components](/pages/riffle/Riffle.md)
 
 * [Riffle](/pages/riffle/Riffle.md)
@@ -15,9 +18,6 @@
 * [Permissions](/pages/security/Permission.md)
 * [Authentication](/pages/security/Authentication.md)
 * [Node](/pages/fabric/Node.md)
-
-### [Appliances](/pages/appliances/Appliances.md)
-
 * [Appliances](/pages/appliances/Appliances.md)
 * [Core](/pages/appliances/Core-Appliances.md)
 * [Store](/pages/appliances/Store-Appliances.md)
