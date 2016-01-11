@@ -227,7 +227,6 @@ angular.module('exisDocs')
             scope.repl = false; // TODO switch back to true;
         } else {
             scope.repl = (scope.repl === "true");
-            console.log(scope.repl);
         }
 
         // Does the requested name exist?

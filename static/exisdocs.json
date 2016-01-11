@@ -1,5 +1,29 @@
 {
     "Pub/Sub Basic": {
+        "js": {
+            "publish": {
+                "code": [
+                    "    backend.Publish(\"basicSub\", \"Hello\");"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/sub-client.js",
+                "lineEnd": 14,
+                "lineStart": 13
+            },
+            "subscribe": {
+                "code": [
+                    "    this.Subscribe(\"basicSub\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hello\"",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../js/example/sub-backend.js",
+                "lineEnd": 26,
+                "lineStart": 23
+            }
+        },
         "python": {
             "publish": {
                 "code": [
@@ -7,101 +31,76 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "../python/example/send-pub.py",
-                "lineEnd": 11,
-                "lineStart": 10
+                "file": "../python/example/sub-client.py",
+                "lineEnd": 14,
+                "lineStart": 13
             },
             "subscribe": {
                 "code": [
                     "        @want(str)",
                     "        def basicSub(s):",
-                    "            print s # Expects a string, like \"Hello\"",
+                    "            print s  # Expects a str, like \"Hello\"",
                     "        self.subscribe(\"basicSub\", basicSub)"
                 ],
-                "expectType": "string",
+                "expectType": "str",
                 "expectVal": "\"Hello\"",
-                "file": "../python/example/recv-sub.py",
-                "lineEnd": 15,
-                "lineStart": 11
+                "file": "../python/example/sub-backend.py",
+                "lineEnd": 18,
+                "lineStart": 14
             }
         },
         "swift": {
             "publish": {
                 "code": [
-                    "        publish(\"xs.demo.test.example/basicSub\", \"Hello\")"
+                    "        publish(\"xs.test.example/basicSub\", \"Hello\")"
                 ],
                 "expectType": null,
                 "expectVal": null,
                 "file": "../swift/example/sender.swift",
-                "lineEnd": 10,
-                "lineStart": 9
+                "lineEnd": 11,
+                "lineStart": 10
             },
             "subscribe": {
                 "code": [
-                    "        subscribe(\"basicSub\") { (args: Any) in       // Expects a String, like \"Hello\"",
-                    "            print(\"\\(args)\")",
+                    "        subscribe(\"sub\") { (a: Int, b: [String], c: Dog) in",
+                    "            print(\"Received publish: \\(a), with list: \\(b), and pup: \\(c.description)\")",
+                    "        }.then {",
+                    "            print(\"Subscription succeeded\")",
+                    "        }.error { reason in",
+                    "            print(\"An error occured\", reason)",
                     "        }"
                 ],
-                "expectType": "String",
-                "expectVal": "\"Hello\"",
+                "expectType": null,
+                "expectVal": null,
                 "file": "../swift/example/receiver.swift",
-                "lineEnd": 12,
-                "lineStart": 9
+                "lineEnd": 31,
+                "lineStart": 24
             }
         }
     },
-    "Pub/Sub OOO Corrected": {
-        "python": {
+    "Pub/Sub Basic Two": {
+        "js": {
             "publish": {
                 "code": [
-                    "        # TODO: these aren't in order yet b/c the core is highly parallelized, we need to look into this",
-                    "        for i in range(0, 20):",
-                    "            self.publish(\"oooCorrectSub\", i).wait()"
+                    "    backend.Publish(\"basicSubTwo\", \"Hello\", 3);"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "../python/example/send-pub.py",
-                "lineEnd": 29,
-                "lineStart": 26
+                "file": "../js/example/sub-client.js",
+                "lineEnd": 18,
+                "lineStart": 17
             },
             "subscribe": {
                 "code": [
-                    "        def oooCorrectSub(i):",
-                    "            print(\"[oooCorrectSub] Got: {}\".format(i))",
-                    "        self.subscribe(\"oooCorrectSub\", oooCorrectSub)"
+                    "    this.Subscribe(\"basicSubTwo\", riffle.want(function(s, i) {",
+                    "        console.log(s, i); // Expects a String, Number, like \"Hello\", 3.0",
+                    "    }, String, Number));"
                 ],
-                "expectType": null,
-                "expectVal": null,
-                "file": "../python/example/recv-sub.py",
-                "lineEnd": 36,
-                "lineStart": 33
-            }
-        }
-    },
-    "Pub/Sub OOO Racey": {
-        "python": {
-            "publish": {
-                "code": [
-                    "        for i in range(0, 20):",
-                    "            self.publish(\"oooRaceSub\", i)"
-                ],
-                "expectType": null,
-                "expectVal": null,
-                "file": "../python/example/send-pub.py",
-                "lineEnd": 23,
-                "lineStart": 21
-            },
-            "subscribe": {
-                "code": [
-                    "        def oooRaceSub(i):",
-                    "            print(\"[oooRaceSub] Got: {}\".format(i))",
-                    "        self.subscribe(\"oooRaceSub\", oooRaceSub)"
-                ],
-                "expectType": null,
-                "expectVal": null,
-                "file": "../python/example/recv-sub.py",
-                "lineEnd": 30,
-                "lineStart": 27
+                "expectType": "String, Number",
+                "expectVal": "\"Hello\", 3.0",
+                "file": "../js/example/sub-backend.js",
+                "lineEnd": 32,
+                "lineStart": 29
             }
         }
     },
@@ -116,9 +115,9 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "../python/example/send-pub.py",
-                "lineEnd": 18,
-                "lineStart": 14
+                "file": "../python/example/sub-client.py",
+                "lineEnd": 21,
+                "lineStart": 17
             },
             "subscribe": {
                 "code": [
@@ -126,88 +125,35 @@
                     "            name = \"\"",
                     "        @want(Stuff)",
                     "        def objectSub(o):",
-                    "            print \"[objectSub] Got: {}\".format(repr(o)) # Expects an object, like Stuff",
+                    "            print o  # Expects an object, like Stuff",
+                    "",
                     "        self.subscribe(\"objectSub\", objectSub)"
                 ],
                 "expectType": "object",
                 "expectVal": "Stuff",
-                "file": "../python/example/recv-sub.py",
-                "lineEnd": 24,
-                "lineStart": 18
-            }
-        }
-    },
-    "Reg/Call": {
-        "python": {
-            "call": {
-                "code": [
-                    "        self.call(\"reg\", \"Hi\").wait()"
-                ],
-                "expectType": null,
-                "expectVal": null,
-                "file": "../python/example/send-call.py",
-                "lineEnd": 12,
-                "lineStart": 11
-            },
-            "register": {
-                "code": [
-                    "        @want(str)",
-                    "        def reg(s):",
-                    "            print(s) # Expects a string, like \"Hi\"",
-                    "        self.register(\"reg\", reg)"
-                ],
-                "expectType": "string",
-                "expectVal": "\"Hi\"",
-                "file": "../python/example/recv-reg.py",
-                "lineEnd": 15,
-                "lineStart": 11
+                "file": "../python/example/sub-backend.py",
+                "lineEnd": 28,
+                "lineStart": 21
             }
         }
     },
     "Reg/Call Basic 1": {
-        "python": {
-            "call": {
-                "code": [
-                    "        # Make the call",
-                    "        s = self.call(\"basicReg1\", \"Hello\").wait(str)",
-                    "        print(s) # Expects a string, like \"Hello World\""
-                ],
-                "expectType": "string",
-                "expectVal": "\"Hello World\"",
-                "file": "../python/example/send-call.py",
-                "lineEnd": 18,
-                "lineStart": 15
-            },
-            "register": {
-                "code": [
-                    "        def basicReg1(s):",
-                    "            print(s) # Expects a string, like \"Hello\"",
-                    "            return \"{} World\".format(s)",
-                    "        self.register(\"basicReg1\", basicReg1)"
-                ],
-                "expectType": "string",
-                "expectVal": "\"Hello\"",
-                "file": "../python/example/recv-reg.py",
-                "lineEnd": 22,
-                "lineStart": 18
-            }
-        },
         "swift": {
             "call": {
                 "code": [
-                    "        call(\"xs.demo.test.example/basicReg\", \"Hello\") { args in",
-                    "            print(\"\\(args)\") // Expects a String, like \"Hello World\"",
+                    "        call(\"xs.test.example/basicReg\", \"Hello\").then { (a: String) in",
+                    "            print(\"\\(a)\") // Expects a String, like \"Hello World\"",
                     "        }"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
                 "file": "../swift/example/sender.swift",
-                "lineEnd": 16,
-                "lineStart": 13
+                "lineEnd": 17,
+                "lineStart": 14
             },
             "register": {
                 "code": [
-                    "        register(\"basicReg\") { (args: Any) -> Any? in",
+                    "        register(\"basicReg\") { (args: String) -> String in",
                     "            print(\"\\(args)\") // Expects a String, like \"Hello\"",
                     "            return \"Hello World\"",
                     "        }"
@@ -215,35 +161,266 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../swift/example/receiver.swift",
-                "lineEnd": 19,
-                "lineStart": 15
+                "lineEnd": 38,
+                "lineStart": 34
             }
         }
     },
-    "Reg/Call Basic 2": {
-        "python": {
+    "Reg/Call int str": {
+        "js": {
             "call": {
                 "code": [
-                    "        print(self.call(\"basicReg2\", \"Hello\").wait(str, int)) # Expects a string, like \"Hello World\""
+                    "    backend.Call(\"regIntStr\", 42).then(riffle.wait(function (s) {",
+                    "        console.log(s); // Expects a str, like \"Hello World\"",
+                    "    }, String),",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
                 ],
-                "expectType": "string",
+                "expectType": "str",
                 "expectVal": "\"Hello World\"",
-                "file": "../python/example/send-call.py",
-                "lineEnd": 22,
-                "lineStart": 21
+                "file": "../js/example/reg-client.js",
+                "lineEnd": 37,
+                "lineStart": 31
             },
             "register": {
                 "code": [
-                    "        def basicReg2(s):",
-                    "            print(s) # Expects a string, like \"Hello\"",
-                    "            return \"{} World\".format(s)",
-                    "        self.register(\"basicReg2\", basicReg2)"
+                    "    this.Register(\"regIntStr\", riffle.want(function(i) {",
+                    "        console.log(i); // Expects a Number, like 42",
+                    "        return \"Hello World\";",
+                    "    }, Number));"
                 ],
-                "expectType": "string",
+                "expectType": "Number",
+                "expectVal": "42",
+                "file": "../js/example/reg-backend.js",
+                "lineEnd": 30,
+                "lineStart": 26
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        s = backend.call(\"regIntStr\", 42).wait(str)",
+                    "        print s # Expects a str, like \"Hello World\""
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello World\"",
+                "file": "../python/example/reg-client.py",
+                "lineEnd": 26,
+                "lineStart": 24
+            },
+            "register": {
+                "code": [
+                    "        @want(int)",
+                    "        def regIntStr(i):",
+                    "            print(i)  # Expects an int, like 42",
+                    "            return \"Hello World\"",
+                    "        self.register(\"regIntStr\", regIntStr)"
+                ],
+                "expectType": "int",
+                "expectVal": "42",
+                "file": "../python/example/reg-backend.py",
+                "lineEnd": 34,
+                "lineStart": 29
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"regIntStr\", 42).then { (s: String) in",
+                    "            print(s) // Expects a String, like \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello World\"",
+                "file": "../swift/example/reg-client.swift",
+                "lineEnd": 22,
+                "lineStart": 19
+            },
+            "register": {
+                "code": [
+                    "        register(\"regIntStr\") { (i: Int) -> String in",
+                    "            print(i) // Expects an Int, like 42",
+                    "            return \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "Int",
+                "expectVal": "42",
+                "file": "../swift/example/reg-backend.swift",
+                "lineEnd": 25,
+                "lineStart": 21
+            }
+        }
+    },
+    "Reg/Call str int": {
+        "js": {
+            "call": {
+                "code": [
+                    "    backend.Call(\"regStrInt\", \"Hello\").then(riffle.wait(function (i) {",
+                    "        console.log(i); // Expects an int, like 42",
+                    "    }, String),",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": "int",
+                "expectVal": "42",
+                "file": "../js/example/reg-client.js",
+                "lineEnd": 28,
+                "lineStart": 22
+            },
+            "register": {
+                "code": [
+                    "    this.Register(\"regStrInt\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hello\"",
+                    "        return 42;",
+                    "    }, String));"
+                ],
+                "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "../python/example/recv-reg.py",
-                "lineEnd": 29,
-                "lineStart": 25
+                "file": "../js/example/reg-backend.js",
+                "lineEnd": 23,
+                "lineStart": 19
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        i = backend.call(\"regStrInt\", \"Hello\").wait(int)",
+                    "        print i # Expects an int, like 42"
+                ],
+                "expectType": "int",
+                "expectVal": "42",
+                "file": "../python/example/reg-client.py",
+                "lineEnd": 21,
+                "lineStart": 19
+            },
+            "register": {
+                "code": [
+                    "        @want(str)",
+                    "        def regStrInt(s):",
+                    "            print(s)  # Expects a str, like \"Hello\"",
+                    "            return 42",
+                    "        self.register(\"regStrInt\", regStrInt)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/reg-backend.py",
+                "lineEnd": 26,
+                "lineStart": 21
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"regStrInt\", \"Hello\").then { (i: Int) in",
+                    "            print(\"\\(i)\") // Expects an Int, like 42",
+                    "        }"
+                ],
+                "expectType": "Int",
+                "expectVal": "42",
+                "file": "../swift/example/reg-client.swift",
+                "lineEnd": 16,
+                "lineStart": 13
+            },
+            "register": {
+                "code": [
+                    "        register(\"regStrInt\") { (s: String) -> Int in",
+                    "            print(s) // Expects a String, like \"Hello\"",
+                    "            return 42",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../swift/example/reg-backend.swift",
+                "lineEnd": 18,
+                "lineStart": 14
+            }
+        }
+    },
+    "Reg/Call str str": {
+        "js": {
+            "call": {
+                "code": [
+                    "    backend.Call(\"regStrStr\", \"Hello\").then(riffle.wait(function (s) {",
+                    "        console.log(s); // Expects a str, like \"Hello World\"",
+                    "    }, String),",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello World\"",
+                "file": "../js/example/reg-client.js",
+                "lineEnd": 19,
+                "lineStart": 13
+            },
+            "register": {
+                "code": [
+                    "    this.Register(\"regStrStr\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hello\"",
+                    "        return \"Hello World\";",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../js/example/reg-backend.js",
+                "lineEnd": 16,
+                "lineStart": 12
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        s = backend.call(\"regStrStr\", \"Hello\").wait(str)",
+                    "        print s # Expects a str, like \"Hello World\""
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello World\"",
+                "file": "../python/example/reg-client.py",
+                "lineEnd": 16,
+                "lineStart": 14
+            },
+            "register": {
+                "code": [
+                    "        @want(str)",
+                    "        def regStrStr(s):",
+                    "            print(s)  # Expects a str, like \"Hello\"",
+                    "            return \"Hello World\"",
+                    "        self.register(\"regStrStr\", regStrStr)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/reg-backend.py",
+                "lineEnd": 18,
+                "lineStart": 13
+            }
+        },
+        "swift": {
+            "call": {
+                "code": [
+                    "        call(\"regStrStr\", \"Hello\").then { (s: String) in",
+                    "            print(s) // Expects a String, like \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello World\"",
+                "file": "../swift/example/reg-client.swift",
+                "lineEnd": 10,
+                "lineStart": 7
+            },
+            "register": {
+                "code": [
+                    "        register(\"regStrStr\") { (s: String) -> String in",
+                    "            print(s) // Expects a String, like \"Hello\"",
+                    "            return \"Hello World\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../swift/example/reg-backend.swift",
+                "lineEnd": 11,
+                "lineStart": 7
             }
         }
     },

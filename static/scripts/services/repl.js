@@ -38,7 +38,7 @@ angular.module('exisDocs')
     /**
      * How to execute a function and send it to the repler
      */
-    this.execute = function(name, lang, code, printer, scope) {
+    this.execute = function(name, lang, code, printer) {
         if(this.riffle === undefined) {
             console.log("No session found, cannot REPL yet");
             return undefined;
@@ -51,6 +51,24 @@ angular.module('exisDocs')
                 console.log("!! Error ", name, lang, code);
             },
             printer
+        );
+    }
+    
+    /**
+     * Send a message to stop this container to free up space
+     */
+    this.kill = function(name) {
+        if(this.riffle === undefined) {
+            console.log("No session found, cannot REPL yet");
+            return undefined;
+        }
+        this.riffle.call("xs.demo.repler/stopContainer", [name], {}).then(
+            function (res) {
+                console.log("Call completed ", name, lang);
+            },
+            function (err) {
+                console.log("!! Error ", name, lang, code);
+            }
         );
     }
   
