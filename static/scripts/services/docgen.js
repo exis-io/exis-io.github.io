@@ -207,7 +207,7 @@ angular.module('exisDocs')
         });
     }
   }])
-  .directive('exisCode', ['DocGen', '$compile', '$sce', 'Repl', function(DocGen, $compile, $sce, Repl) {
+  .directive('exisCode', ['DocGen', '$compile', '$sce', 'Repl', '$interval', function(DocGen, $compile, $sce, Repl, $interval) {
     /*
      * Directive exisCode (exis-code tags)
      *  This takes <exis-code> tags and turns it into actual code that was
@@ -236,6 +236,25 @@ angular.module('exisDocs')
             return;
         }
 
+        scope.activeHighlight = function() {
+          var docs = [scope.activeDoc, scope.activeDocRight, scope.activeDocLeft];
+          for(var doc in docs){
+            if(docs[doc]) {
+              if(docs[doc].lang && docs[doc].code) {
+                // We know the language, specify it
+                if(typeof(docs[doc].code) === 'string'){
+                  console.log(docs[doc].code);
+                  docs[doc].code = $sce.trustAsHtml(DocGen.highlight.highlight(docs[doc].lang, docs[doc].code).value);
+                }else{
+                  console.log(angular.element("<div>" + $sce.getTrustedHtml(docs[doc].code) + "</div>").text());
+                  docs[doc].code = $sce.trustAsHtml(DocGen.highlight.highlight(docs[doc].lang, angular.element("<div>" + $sce.getTrustedHtml(docs[doc].code) + "</div>").text()).value);
+                }
+                
+              }
+            }
+          }
+        }
+
         if(scope.thedoc.left === undefined) {
             scope.sideBySide = false;
             scope.activeDoc = scope.thedoc[0];
@@ -244,7 +263,23 @@ angular.module('exisDocs')
             scope.activeDocLeft = scope.thedoc.left[0];
             scope.activeDocRight = scope.thedoc.right[0];
         }
+
+        //scope.activeHighlight();
+        //$interval(scope.activeHighlight, 100);
+        $interval(function(){
+          var terms = element.find('#jj');
+          for(var term in terms){
+            console.log(element);
+          }
+        },1000);
+
         scope.alert = "";
+
+        if('editable' in attributes){
+          scope.editable = true;
+        }else{
+          scope.editable = false;
+        }
     };
     return {
         restrict: 'E',
@@ -297,6 +332,8 @@ angular.module('exisDocs')
             
             /* Execute the repl code provided */
             $scope.replClick = function(doc) {
+                console.log(doc.rawCode);
+                return;
                 doc.rawResults = "";
                 doc.replResults = "";
                 function printResults(prog) {

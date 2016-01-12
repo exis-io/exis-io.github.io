@@ -9,7 +9,7 @@ Here is a missing code name
 <exis-code lang="python" name="Missing" action="publish"></exis-code>
 
 What basic pub/sub looks like for all languages
-<exis-code name="Pub/Sub Basic" repl="true"></exis-code>
+<exis-code name="Pub/Sub Basic" repl="true" editable ></exis-code>
 
 Here is what the Python Racey code looks like
 <exis-code lang="python" name="Pub/Sub OOO Racey"></exis-code>
