@@ -2,8 +2,6 @@
 
 ## Lesson 1 - Basic usage
 
-This first lesson will explain what Exis is and why developers should use it in their apps.
-
 Any useful application written today requires networking to be functional (fetching data from databases, authenticating users, etc..). The code that enables this networking is repetitive, error-prone, and overall should be simplified if not completely eliminated.
 
 **Basic client-backend communication:** The code below shows how a developer can call a function in the backend.
@@ -20,3 +18,4 @@ This is the most generic type of communication, it falls under several categorie
 * **Authenticating users** - such as with this username/password combo can they login successfully?
 * **General backend functions** - requests like is this User friends with another User?
 
+**Up next:** Type enforcement of arguments and return values between client/backend functions in [Lesson 2](/pages/tour/regcall-lesson2.md).

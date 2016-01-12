@@ -7,9 +7,11 @@
 * [Exis Architecture](/pages/general/ExisArch.md)
 
 ### [Tour](/pages/tour/regcall-lesson1.md)
+* [Exis Basics](/pages/tour/basics.md)
 * [Registers and Calls](/pages/tour/regcall-lesson1.md)
-    * [Lesson 1](/pages/tour/regcall-lesson1.md)
-    * [Lesson 2](/pages/tour/regcall-lesson2.md)
+    * [1 - The Basics](/pages/tour/regcall-lesson1.md)
+    * [2 - Primitives](/pages/tour/regcall-lesson2.md)
+    * [3 - Collections](/pages/tour/regcall-lesson3.md)
 
 ### [Components](/pages/riffle/Riffle.md)
 
