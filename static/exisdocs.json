@@ -626,6 +626,57 @@
             }
         }
     },
+    "Tour Pub/Sub Lesson 1": {
+        "js": {
+            "publish": {
+                "code": [
+                    "    backend.Publish(\"myFirstSub\", \"Hello\");"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/tour-sub-client.js",
+                "lineEnd": 14,
+                "lineStart": 13
+            },
+            "subscribe": {
+                "code": [
+                    "    this.Subscribe(\"myFirstSub\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hello\"",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hello\"",
+                "file": "../js/example/tour-sub-backend.js",
+                "lineEnd": 16,
+                "lineStart": 13
+            }
+        },
+        "python": {
+            "publish": {
+                "code": [
+                    "        backend.publish(\"myFirstSub\", \"Hello\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/tour-sub-client.py",
+                "lineEnd": 16,
+                "lineStart": 15
+            },
+            "subscribe": {
+                "code": [
+                    "        @want(str)",
+                    "        def myFirstSub(s):",
+                    "            print(s)  # Expects a str, like \"Hello\"",
+                    "        self.subscribe(\"myFirstSub\", myFirstSub)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello\"",
+                "file": "../python/example/tour-sub-backend.py",
+                "lineEnd": 18,
+                "lineStart": 14
+            }
+        }
+    },
     "Tour Reg/Call Lesson 1": {
         "js": {
             "call": {
@@ -640,8 +691,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
                 "file": "../js/example/tour-reg-client.js",
-                "lineEnd": 18,
-                "lineStart": 12
+                "lineEnd": 19,
+                "lineStart": 13
             },
             "register": {
                 "code": [
@@ -653,29 +704,18 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 16,
-                "lineStart": 12
+                "lineEnd": 17,
+                "lineStart": 13
             }
         },
         "python": {
             "call": {
                 "code": [
-                    "        s = backend.call(\"myFirstCall\", \"Hello\").wait(str)",
-                    "        print s # Expects a str, like \"Hello World\""
-                ],
-                "expectType": "str",
-                "expectVal": "\"Hello World\"",
-                "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 17,
-                "lineStart": 15
-            },
-            "register": {
-                "code": [
                     "        @want(str)",
-                    "        def regStrStr(s):",
+                    "        def myFirstCall(s):",
                     "            print(s)  # Expects a str, like \"Hello\"",
                     "            return \"{} World\".format(s)",
-                    "        self.register(\"myFirstCall\", regStrStr)"
+                    "        self.register(\"myFirstCall\", myFirstCall)"
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
@@ -694,8 +734,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 10,
-                "lineStart": 7
+                "lineEnd": 11,
+                "lineStart": 8
             },
             "register": {
                 "code": [
@@ -707,8 +747,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 11,
-                "lineStart": 7
+                "lineEnd": 12,
+                "lineStart": 8
             }
         }
     },
@@ -726,8 +766,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for saying Hi\"",
                 "file": "../js/example/tour-reg-client.js",
-                "lineEnd": 36,
-                "lineStart": 30
+                "lineEnd": 38,
+                "lineStart": 32
             },
             "register": {
                 "code": [
@@ -739,8 +779,8 @@
                 "expectType": "Number",
                 "expectVal": "42",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 30,
-                "lineStart": 26
+                "lineEnd": 32,
+                "lineStart": 28
             }
         },
         "python": {
@@ -783,8 +823,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for sending int 42\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 22,
-                "lineStart": 19
+                "lineEnd": 24,
+                "lineStart": 21
             },
             "register": {
                 "code": [
@@ -796,8 +836,8 @@
                 "expectType": "Int",
                 "expectVal": "42",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 25,
-                "lineStart": 21
+                "lineEnd": 27,
+                "lineStart": 23
             }
         }
     },
@@ -815,8 +855,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../js/example/tour-reg-client.js",
-                "lineEnd": 45,
-                "lineStart": 39
+                "lineEnd": 47,
+                "lineStart": 41
             },
             "register": {
                 "code": [
@@ -828,8 +868,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 37,
-                "lineStart": 33
+                "lineEnd": 39,
+                "lineStart": 35
             }
         },
         "python": {
@@ -872,8 +912,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 28,
-                "lineStart": 25
+                "lineEnd": 30,
+                "lineStart": 27
             },
             "register": {
                 "code": [
@@ -885,8 +925,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 32,
-                "lineStart": 28
+                "lineEnd": 34,
+                "lineStart": 30
             }
         }
     },
@@ -904,8 +944,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for saying Hi\"",
                 "file": "../js/example/tour-reg-client.js",
-                "lineEnd": 27,
-                "lineStart": 21
+                "lineEnd": 29,
+                "lineStart": 23
             },
             "register": {
                 "code": [
@@ -917,8 +957,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 23,
-                "lineStart": 19
+                "lineEnd": 25,
+                "lineStart": 21
             }
         },
         "python": {
@@ -958,8 +998,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for saying Hi\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 16,
-                "lineStart": 13
+                "lineEnd": 18,
+                "lineStart": 15
             },
             "register": {
                 "code": [
@@ -971,8 +1011,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 18,
-                "lineStart": 14
+                "lineEnd": 20,
+                "lineStart": 16
             }
         }
     },
@@ -990,8 +1030,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 ints!\"",
                 "file": "../js/example/tour-reg-client.js",
-                "lineEnd": 63,
-                "lineStart": 57
+                "lineEnd": 66,
+                "lineStart": 60
             },
             "register": {
                 "code": [
@@ -1003,8 +1043,8 @@
                 "expectType": "new riffle.ArrayWithType(Number)",
                 "expectVal": "[0, 1, 2]",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 51,
-                "lineStart": 47
+                "lineEnd": 54,
+                "lineStart": 50
             }
         },
         "python": {
@@ -1048,8 +1088,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 ints!\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 41,
-                "lineStart": 37
+                "lineEnd": 44,
+                "lineStart": 40
             },
             "register": {
                 "code": [
@@ -1061,8 +1101,8 @@
                 "expectType": "[Int]",
                 "expectVal": "[0, 1, 2]",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 46,
-                "lineStart": 42
+                "lineEnd": 49,
+                "lineStart": 45
             }
         }
     },
@@ -1080,8 +1120,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 strings!\"",
                 "file": "../js/example/tour-reg-client.js",
-                "lineEnd": 54,
-                "lineStart": 48
+                "lineEnd": 57,
+                "lineStart": 51
             },
             "register": {
                 "code": [
@@ -1093,8 +1133,8 @@
                 "expectType": "new riffle.ArrayWithType(String)",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 44,
-                "lineStart": 40
+                "lineEnd": 47,
+                "lineStart": 43
             }
         },
         "python": {
@@ -1134,8 +1174,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 strings!\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 34,
-                "lineStart": 31
+                "lineEnd": 37,
+                "lineStart": 34
             },
             "register": {
                 "code": [
@@ -1147,12 +1187,57 @@
                 "expectType": "[String]",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 39,
-                "lineStart": 35
+                "lineEnd": 42,
+                "lineStart": 38
             }
         }
     },
     "Tour Reg/Call Lesson 4 Basic Student": {
+        "js": {
+            "call": {
+                "code": [
+                    "    function Student() {",
+                    "        this.name = \"Student Name\";",
+                    "        this.age = 20;",
+                    "        this.studentID = 0;",
+                    "    }",
+                    "    var s = new Student();",
+                    "    s.name = \"John Smith\"",
+                    "    s.age = 18",
+                    "    s.studentID = 1234",
+                    "    backend.Call(\"sendStudent\", s);"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/tour-reg-client.js",
+                "lineEnd": 80,
+                "lineStart": 70
+            },
+            "register": {
+                "code": [
+                    "    function Student() {",
+                    "        this.name = \"Student Name\";",
+                    "        this.age = 20;",
+                    "        this.studentID = 0;",
+                    "    }",
+                    "    Student.prototype.toString = function() {",
+                    "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
+                    "    }",
+                    "    var s = new Student();",
+                    "    s.name = \"John Smith\"",
+                    "    s.age = 18",
+                    "    s.studentID = 1234",
+                    "    this.Register(\"sendStudent\", riffle.want(function(s) {",
+                    "        console.log(s.toString()); // Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
+                    "    }, new riffle.ObjectToClass(Student, Object)));"
+                ],
+                "expectType": "Student",
+                "expectVal": "\"John Smith, Age: 18, ID: 1234\"",
+                "file": "../js/example/tour-reg-backend.js",
+                "lineEnd": 73,
+                "lineStart": 58
+            }
+        },
         "python": {
             "call": {
                 "code": [
