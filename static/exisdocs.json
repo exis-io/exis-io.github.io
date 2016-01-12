@@ -216,8 +216,8 @@
                 "expectType": null,
                 "expectVal": null,
                 "file": "../swift/example/repl-template.swift",
-                "lineEnd": 22,
-                "lineStart": 3
+                "lineEnd": 23,
+                "lineStart": 4
             }
         }
     },
@@ -641,13 +641,17 @@
             "subscribe": {
                 "code": [
                     "    this.Subscribe(\"myFirstSub\", riffle.want(function(s) {",
-                    "        console.log(s); // Expects a String, like \"Hello\"",
+                    "        console.log(\"I got \" + s); // Expects a String, like \"I got Hello\"",
+                    "    }, String));",
+                    "    // Somewhere in another file or program...",
+                    "    this.Subscribe(\"myFirstSub\", riffle.want(function(s) {",
+                    "        console.log(\"I got \" + s + \", too!\"); // Expects a String, like \"I got Hello, too!\"",
                     "    }, String));"
                 ],
                 "expectType": "String",
-                "expectVal": "\"Hello\"",
+                "expectVal": "\"I got Hello\"",
                 "file": "../js/example/tour-sub-backend.js",
-                "lineEnd": 16,
+                "lineEnd": 20,
                 "lineStart": 13
             }
         },
@@ -665,15 +669,75 @@
             "subscribe": {
                 "code": [
                     "        @want(str)",
-                    "        def myFirstSub(s):",
-                    "            print(s)  # Expects a str, like \"Hello\"",
-                    "        self.subscribe(\"myFirstSub\", myFirstSub)"
+                    "        def myFirstSub1(s):",
+                    "            print(\"I got {}\".format(s))  # Expects a str, like \"I got Hello\"",
+                    "        self.subscribe(\"myFirstSub\", myFirstSub1)",
+                    "        # Somewhere in another file or program...",
+                    "        @want(str)",
+                    "        def myFirstSub2(s):",
+                    "            print(\"I got {}, too!\".format(s))  # Expects a str, like \"I got Hello, too!\"",
+                    "        self.subscribe(\"myFirstSub\", myFirstSub2)"
                 ],
                 "expectType": "str",
-                "expectVal": "\"Hello\"",
+                "expectVal": "\"I got Hello\"",
                 "file": "../python/example/tour-sub-backend.py",
-                "lineEnd": 18,
+                "lineEnd": 23,
                 "lineStart": 14
+            }
+        }
+    },
+    "Tour Pub/Sub Lesson 2 Fails": {
+        "python": {
+            "publish": {
+                "code": [
+                    "        backend.publish(\"iWantInts\", \"Hi\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/tour-sub-client.py",
+                "lineEnd": 25,
+                "lineStart": 24
+            },
+            "subscribe": {
+                "code": [
+                    "        @want(int)",
+                    "        def iWantInts(i):",
+                    "            # This function isn't called",
+                    "            print(i)  # Expects an int, like 42",
+                    "        self.subscribe(\"iWantInts\", iWantInts)"
+                ],
+                "expectType": "int",
+                "expectVal": "42",
+                "file": "../python/example/tour-sub-backend.py",
+                "lineEnd": 39,
+                "lineStart": 34
+            }
+        }
+    },
+    "Tour Pub/Sub Lesson 2 Works": {
+        "python": {
+            "publish": {
+                "code": [
+                    "        backend.publish(\"iWantStrings\", \"Hi\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/tour-sub-client.py",
+                "lineEnd": 21,
+                "lineStart": 20
+            },
+            "subscribe": {
+                "code": [
+                    "        @want(str)",
+                    "        def iWantStrings(s):",
+                    "            print(s)  # Expects a str, like \"Hi\"",
+                    "        self.subscribe(\"iWantStrings\", iWantStrings)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hi\"",
+                "file": "../python/example/tour-sub-backend.py",
+                "lineEnd": 31,
+                "lineStart": 27
             }
         }
     },
@@ -747,8 +811,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 12,
-                "lineStart": 8
+                "lineEnd": 18,
+                "lineStart": 14
             }
         }
     },
@@ -836,8 +900,8 @@
                 "expectType": "Int",
                 "expectVal": "42",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 27,
-                "lineStart": 23
+                "lineEnd": 33,
+                "lineStart": 29
             }
         }
     },
@@ -925,8 +989,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 34,
-                "lineStart": 30
+                "lineEnd": 40,
+                "lineStart": 36
             }
         }
     },
@@ -1011,8 +1075,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 20,
-                "lineStart": 16
+                "lineEnd": 26,
+                "lineStart": 22
             }
         }
     },
@@ -1101,8 +1165,8 @@
                 "expectType": "[Int]",
                 "expectVal": "[0, 1, 2]",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 49,
-                "lineStart": 45
+                "lineEnd": 55,
+                "lineStart": 51
             }
         }
     },
@@ -1187,8 +1251,8 @@
                 "expectType": "[String]",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
                 "file": "../swift/example/tour-reg-backend.swift",
-                "lineEnd": 42,
-                "lineStart": 38
+                "lineEnd": 48,
+                "lineStart": 44
             }
         }
     },
@@ -1223,18 +1287,19 @@
                     "    Student.prototype.toString = function() {",
                     "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
                     "    }",
+                    "    var STU = new riffle.ObjectWithKeys({name: String, age: Number, studentID: Number});",
                     "    var s = new Student();",
                     "    s.name = \"John Smith\"",
                     "    s.age = 18",
                     "    s.studentID = 1234",
                     "    this.Register(\"sendStudent\", riffle.want(function(s) {",
                     "        console.log(s.toString()); // Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
-                    "    }, new riffle.ObjectToClass(Student, Object)));"
+                    "    }, new riffle.ObjectToClass(Student, STU)));"
                 ],
                 "expectType": "Student",
                 "expectVal": "\"John Smith, Age: 18, ID: 1234\"",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 73,
+                "lineEnd": 74,
                 "lineStart": 58
             }
         },
