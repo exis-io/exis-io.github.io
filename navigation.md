@@ -12,6 +12,7 @@
     * [1 - The Basics](/pages/tour/regcall-lesson1.md)
     * [2 - Primitives](/pages/tour/regcall-lesson2.md)
     * [3 - Collections](/pages/tour/regcall-lesson3.md)
+    * [4 - Classes](/pages/tour/regcall-lesson4.md)
 
 ### [Components](/pages/riffle/Riffle.md)
 

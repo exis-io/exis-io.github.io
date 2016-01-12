@@ -666,8 +666,8 @@
                 "expectType": "str",
                 "expectVal": "\"Hello World\"",
                 "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 16,
-                "lineStart": 14
+                "lineEnd": 17,
+                "lineStart": 15
             },
             "register": {
                 "code": [
@@ -680,8 +680,8 @@
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
                 "file": "../python/example/tour-reg-backend.py",
-                "lineEnd": 18,
-                "lineStart": 13
+                "lineEnd": 19,
+                "lineStart": 14
             }
         },
         "swift": {
@@ -755,8 +755,8 @@
                 "expectType": "str",
                 "expectVal": "\"Thanks for sending int 42\"",
                 "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 29,
-                "lineStart": 24
+                "lineEnd": 31,
+                "lineStart": 26
             },
             "register": {
                 "code": [
@@ -769,8 +769,8 @@
                 "expectType": "int",
                 "expectVal": "42",
                 "file": "../python/example/tour-reg-backend.py",
-                "lineEnd": 34,
-                "lineStart": 29
+                "lineEnd": 36,
+                "lineStart": 31
             }
         },
         "swift": {
@@ -844,8 +844,8 @@
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
                 "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 37,
-                "lineStart": 32
+                "lineEnd": 39,
+                "lineStart": 34
             },
             "register": {
                 "code": [
@@ -858,8 +858,8 @@
                 "expectType": "str",
                 "expectVal": "\"Hi\"",
                 "file": "../python/example/tour-reg-backend.py",
-                "lineEnd": 42,
-                "lineStart": 37
+                "lineEnd": 44,
+                "lineStart": 39
             }
         },
         "swift": {
@@ -930,8 +930,8 @@
                 "expectType": "str",
                 "expectVal": "\"Thanks for saying Hi\"",
                 "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 21,
-                "lineStart": 19
+                "lineEnd": 23,
+                "lineStart": 21
             },
             "register": {
                 "code": [
@@ -944,8 +944,8 @@
                 "expectType": "str",
                 "expectVal": "\"Hi\"",
                 "file": "../python/example/tour-reg-backend.py",
-                "lineEnd": 26,
-                "lineStart": 21
+                "lineEnd": 28,
+                "lineStart": 23
             }
         },
         "swift": {
@@ -1019,8 +1019,8 @@
                 "expectType": "str",
                 "expectVal": "\"Thanks for 3 ints!\"",
                 "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 50,
-                "lineStart": 45
+                "lineEnd": 53,
+                "lineStart": 48
             },
             "register": {
                 "code": [
@@ -1033,8 +1033,8 @@
                 "expectType": "[int]",
                 "expectVal": "[0, 1, 2]",
                 "file": "../python/example/tour-reg-backend.py",
-                "lineEnd": 58,
-                "lineStart": 53
+                "lineEnd": 61,
+                "lineStart": 56
             }
         },
         "swift": {
@@ -1106,8 +1106,8 @@
                 "expectType": "str",
                 "expectVal": "\"Thanks for 3 strings!\"",
                 "file": "../python/example/tour-reg-client.py",
-                "lineEnd": 42,
-                "lineStart": 40
+                "lineEnd": 45,
+                "lineStart": 43
             },
             "register": {
                 "code": [
@@ -1120,8 +1120,8 @@
                 "expectType": "[str]",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
                 "file": "../python/example/tour-reg-backend.py",
-                "lineEnd": 50,
-                "lineStart": 45
+                "lineEnd": 53,
+                "lineStart": 48
             }
         },
         "swift": {
@@ -1149,6 +1149,85 @@
                 "file": "../swift/example/tour-reg-backend.swift",
                 "lineEnd": 39,
                 "lineStart": 35
+            }
+        }
+    },
+    "Tour Reg/Call Lesson 4 Basic Student": {
+        "python": {
+            "call": {
+                "code": [
+                    "        class Student(riffle.Model):",
+                    "            name = \"Student Name\"",
+                    "            age = 20",
+                    "            studentID = 0",
+                    "        s = Student()",
+                    "        s.name = \"John Smith\"",
+                    "        s.age = 18",
+                    "        s.studentID = 1234",
+                    "        backend.call(\"sendStudent\", s).wait()"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../python/example/tour-reg-client.py",
+                "lineEnd": 66,
+                "lineStart": 57
+            },
+            "register": {
+                "code": [
+                    "        class Student(riffle.Model):",
+                    "            name = \"Student Name\"",
+                    "            age = 20",
+                    "            studentID = 0",
+                    "            def __str__(self):",
+                    "                return \"{}, Age: {}, ID: {}\".format(self.name, self.age, self.studentID)",
+                    "        @want(Student)",
+                    "        def sendStudent(s):",
+                    "            print s # Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
+                    "        self.register(\"sendStudent\", sendStudent)"
+                ],
+                "expectType": "Student",
+                "expectVal": "\"John Smith, Age: 18, ID: 1234\"",
+                "file": "../python/example/tour-reg-backend.py",
+                "lineEnd": 75,
+                "lineStart": 65
+            }
+        }
+    },
+    "Tour Reg/Call Lesson 4 Student Functions": {
+        "python": {
+            "call": {
+                "code": [
+                    "        class Student(riffle.Model):",
+                    "            name, age, studentID = \"Student Name\", 20, 0",
+                    "        s = Student()",
+                    "        s.name, s.age, s.studentID = \"John Smith\", 18, 1234",
+                    "        s = backend.call(\"changeStudentID\", s).wait(Student)",
+                    "        print s.studentID # Expects an int, like 5678"
+                ],
+                "expectType": "int",
+                "expectVal": "5678",
+                "file": "../python/example/tour-reg-client.py",
+                "lineEnd": 75,
+                "lineStart": 69
+            },
+            "register": {
+                "code": [
+                    "        class Student(riffle.Model):",
+                    "            name, age, studentID = \"Student Name\", 20, 0",
+                    "            def changeID(self, newID):",
+                    "                self.studentID = 5678",
+                    "        @want(Student)",
+                    "        def changeStudentID(s):",
+                    "            print s.studentID # Expects an int, like 1234",
+                    "            s.changeID(5678)",
+                    "            return s",
+                    "        self.register(\"changeStudentID\", changeStudentID)"
+                ],
+                "expectType": "int",
+                "expectVal": "1234",
+                "file": "../python/example/tour-reg-backend.py",
+                "lineEnd": 88,
+                "lineStart": 78
             }
         }
     },
