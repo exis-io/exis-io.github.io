@@ -155,7 +155,7 @@
                     "",
                     "};",
                     "",
-                    "backend.Join()"
+                    "backend.Join();"
                 ],
                 "expectType": null,
                 "expectVal": null,
@@ -1159,11 +1159,11 @@
             "register": {
                 "code": [
                     "    this.Register(\"iWantManyInts\", riffle.want(function(s) {",
-                    "        console.log(s); // Expects a new riffle.ArrayWithType(Number), like [0, 1, 2]",
-                    "        return \"Thanks for \" + s.length + \" ints!\"",
+                    "        console.log(s); // Expects an Array of Numbers, like [0, 1, 2]",
+                    "        return \"Thanks for \" + s.length + \" ints!\";",
                     "    }, [Number]));"
                 ],
-                "expectType": "new riffle.ArrayWithType(Number)",
+                "expectType": "Array of Numbers",
                 "expectVal": "[0, 1, 2]",
                 "file": "../js/example/tour-reg-backend.js",
                 "lineEnd": 54,
@@ -1249,11 +1249,11 @@
             "register": {
                 "code": [
                     "    this.Register(\"iWantManyStrings\", riffle.want(function(s) {",
-                    "        console.log(s); // Expects a new riffle.ArrayWithType(String), like [\"This\", \"is\", \"cool\"]",
-                    "        return \"Thanks for \" + s.length + \" strings!\"",
+                    "        console.log(s); // Expects an Array of Strings, like [\"This\", \"is\", \"cool\"]",
+                    "        return \"Thanks for \" + s.length + \" strings!\";",
                     "    }, [String]));"
                 ],
-                "expectType": "new riffle.ArrayWithType(String)",
+                "expectType": "Array of Strings",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
                 "file": "../js/example/tour-reg-backend.js",
                 "lineEnd": 47,
@@ -1325,9 +1325,9 @@
                     "        this.studentID = 0;",
                     "    }",
                     "    var s = new Student();",
-                    "    s.name = \"John Smith\"",
-                    "    s.age = 18",
-                    "    s.studentID = 1234",
+                    "    s.name = \"John Smith\";",
+                    "    s.age = 18;",
+                    "    s.studentID = 1234;",
                     "    backend.Call(\"sendStudent\", s);"
                 ],
                 "expectType": null,
@@ -1345,7 +1345,7 @@
                     "    }",
                     "    Student.prototype.toString = function() {",
                     "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
-                    "    }",
+                    "    };",
                     "    this.Register(\"sendStudent\", riffle.want(function(s) {",
                     "        console.log(s.toString()); // Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
                     "    }, riffle.ModelObject(Student)));"
