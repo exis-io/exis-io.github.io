@@ -16,7 +16,8 @@
                 <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDocLeft)"></span>
             </div>
           </div>
-          <div ng-repeat="d in thedoc.left" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDocLeft"></div>
+          <pre ng-if="hljs" class="xsCode" ng-bind-html="highlight(activeDocLeft.lang, activeDocLeft.code)"></pre>
+          <div ng-repeat="d in thedoc.left" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDocLeft && !hljs"></div>
           <div ng-if='activeDocLeft.replResults !== null'>
             <pre class="xsCode" ng-bind-html="activeDocLeft.replResults"></pre>
           </div>
@@ -35,7 +36,8 @@
                 <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDocRight)"></span>
             </div>
           </div>
-          <div ng-repeat="d in thedoc.right" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDocRight"></div>
+          <pre ng-if="hljs" class="xsCode" ng-bind-html="highlight(activeDocRight.lang, activeDocRight.code)"></pre>
+          <div ng-repeat="d in thedoc.right" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDocRight && !hljs"></div>
           <div ng-if='activeDocRight.replResults !== null'>
             <pre class="xsCode" ng-bind-html="activeDocRight.replResults"></pre>
           </div>
@@ -55,7 +57,8 @@
             <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDoc)"></span>
         </div>
       </div>
-      <div ng-repeat="d in thedoc" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDoc"></div>
+      <pre ng-if="hljs" class="xsCode" ng-bind-html="highlight(activeDoc.lang, activeDoc.code)"></pre>
+      <div ng-repeat="d in thedoc" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDoc && !hljs"></div>
       <div ng-if='activeDoc.replResults !== null'>
         <pre class="xsCode" ng-bind-html="activeDoc.replResults"></pre>
       </div>

@@ -247,6 +247,9 @@ angular.module('exisDocs')
         if('editable' in attributes){
           scope.editable = true;
         }
+        if('hljs' in attributes){
+          scope.hljs = true;
+        }
         scope.alert = "";
     };
     return {
