@@ -10,6 +10,14 @@
 
 *Exis makes distributed apps look like regular function calls*
 
+<exis-code name="Tour Reg/Call Lesson 2 Works"></exis-code>
+
+### Built in Publish/Subscribe messaging
+
+*Exis enables real-time style Pub/Subs as a default messaging pattern.*
+
+<exis-code name="Tour Pub/Sub Lesson 2 Works"></exis-code>
+
 ### Argument guarantees
 
 *Exis guarantees the format of your arguments so you don't have to check*
