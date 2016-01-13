@@ -687,6 +687,36 @@
         }
     },
     "Tour Pub/Sub Lesson 2 Fails": {
+        "js": {
+            "publish": {
+                "code": [
+                    "    backend.Publish(\"iWantInts\", \"Hi\").then(function () {",
+                    "        console.log(\"Publish to iWantInts complete\");",
+                    "    },",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/tour-sub-client.js",
+                "lineEnd": 33,
+                "lineStart": 27
+            },
+            "subscribe": {
+                "code": [
+                    "    this.Subscribe(\"iWantInts\", riffle.want(function(i) {",
+                    "        // This function won't execute",
+                    "        console.log(\"You won't see me :)\");",
+                    "    }, Number));"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/tour-sub-backend.js",
+                "lineEnd": 34,
+                "lineStart": 30
+            }
+        },
         "python": {
             "publish": {
                 "code": [
@@ -703,11 +733,11 @@
                     "        @want(int)",
                     "        def iWantInts(i):",
                     "            # This function isn't called",
-                    "            print(i)  # Expects an int, like 42",
+                    "            print(\"You won't see me :)\")",
                     "        self.subscribe(\"iWantInts\", iWantInts)"
                 ],
-                "expectType": "int",
-                "expectVal": "42",
+                "expectType": null,
+                "expectVal": null,
                 "file": "../python/example/tour-sub-backend.py",
                 "lineEnd": 39,
                 "lineStart": 34
@@ -715,6 +745,35 @@
         }
     },
     "Tour Pub/Sub Lesson 2 Works": {
+        "js": {
+            "publish": {
+                "code": [
+                    "    backend.Publish(\"iWantStrings\", \"Hi\").then(function() {",
+                    "        console.log(\"Publish to iWantStrings complete\");",
+                    "    },",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/tour-sub-client.js",
+                "lineEnd": 24,
+                "lineStart": 18
+            },
+            "subscribe": {
+                "code": [
+                    "    this.Subscribe(\"iWantStrings\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Hi\"",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hi\"",
+                "file": "../js/example/tour-sub-backend.js",
+                "lineEnd": 27,
+                "lineStart": 24
+            }
+        },
         "python": {
             "publish": {
                 "code": [
@@ -1102,7 +1161,7 @@
                     "    this.Register(\"iWantManyInts\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a new riffle.ArrayWithType(Number), like [0, 1, 2]",
                     "        return \"Thanks for \" + s.length + \" ints!\"",
-                    "    }, new riffle.ArrayWithType(Number)));"
+                    "    }, [Number]));"
                 ],
                 "expectType": "new riffle.ArrayWithType(Number)",
                 "expectVal": "[0, 1, 2]",
@@ -1192,7 +1251,7 @@
                     "    this.Register(\"iWantManyStrings\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a new riffle.ArrayWithType(String), like [\"This\", \"is\", \"cool\"]",
                     "        return \"Thanks for \" + s.length + \" strings!\"",
-                    "    }, new riffle.ArrayWithType(String)));"
+                    "    }, [String]));"
                 ],
                 "expectType": "new riffle.ArrayWithType(String)",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
@@ -1287,19 +1346,14 @@
                     "    Student.prototype.toString = function() {",
                     "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
                     "    }",
-                    "    var STU = new riffle.ObjectWithKeys({name: String, age: Number, studentID: Number});",
-                    "    var s = new Student();",
-                    "    s.name = \"John Smith\"",
-                    "    s.age = 18",
-                    "    s.studentID = 1234",
                     "    this.Register(\"sendStudent\", riffle.want(function(s) {",
                     "        console.log(s.toString()); // Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
-                    "    }, new riffle.ObjectToClass(Student, STU)));"
+                    "    }, riffle.ModelObject(Student)));"
                 ],
                 "expectType": "Student",
                 "expectVal": "\"John Smith, Age: 18, ID: 1234\"",
                 "file": "../js/example/tour-reg-backend.js",
-                "lineEnd": 74,
+                "lineEnd": 69,
                 "lineStart": 58
             }
         },
@@ -1382,6 +1436,79 @@
         }
     },
     "Want Definitions Models": {
+        "js": {
+            "defs": {
+                "code": [
+                    "",
+                    "// In NodeJS you must import jsriffle:",
+                    "var riffle = require('jsriffle');",
+                    "",
+                    "// Declare a User class",
+                    "function User() {",
+                    "    this.name = \"default\";",
+                    "}",
+                    "// define a function that is only called",
+                    "// if a User is passed:",
+                    "this.Register(\"endpoint\",",
+                    "    riffle.want(function(u) {...}, riffle.ModelObject(User))",
+                    ");",
+                    "// call a function, send a User, expect a User back",
+                    "var u = new User();",
+                    "u.name = \"This guy\";",
+                    "backend.Call(\"get_user\", u).then(",
+                    "    riffle.wait(function(otherU) {...}, riffle.ModelObject(User))",
+                    ");",
+                    "",
+                    "// A basic model of a Student",
+                    "function Student() {",
+                    "    this.first = \"firstName\";",
+                    "    this.last = \"lastName\";",
+                    "    this.grade = 0;",
+                    "}",
+                    "// Expect a Student",
+                    "riffle.want(function (s) {...}, riffle.ModelObject(Student));",
+                    "// Send a Student",
+                    "var s = new Student();",
+                    "s.first = \"John\";",
+                    "s.last = \"Smith\";",
+                    "s.grade = 90;",
+                    "backend.Call(\"send_student\", s);",
+                    "// Require a Student is returned",
+                    "riffle.wait(function (s) {...}, riffle.ModelObject(Student));",
+                    "",
+                    "// A model that contains a collection of models",
+                    "function Student() {",
+                    "    this.first = \"firstName\";",
+                    "    this.last = \"lastName\";",
+                    "    this.grade = 0;",
+                    "}",
+                    "function Classroom() {",
+                    "    this.students = [Student];",
+                    "    this.roomNumber = 0;",
+                    "}",
+                    "// Expect a Classroom",
+                    "riffle.want(function (s) {...}, riffle.ModelObject(Classroom));",
+                    "// Send a Classroom",
+                    "var s = new Student();",
+                    "s.first = \"John\";",
+                    "s.last = \"Smith\";",
+                    "s.grade = 90;",
+                    "var c = new Classroom();",
+                    "c.roomNumber = 100;",
+                    "c.students[c.students.length] = s;",
+                    "backend.Call(\"send_classroom\", c);",
+                    "// Require a Classroom is returned",
+                    "riffle.wait(function (c) {...}, riffle.ModelObject(Classroom));",
+                    "",
+                    ""
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/definitions-models.js",
+                "lineEnd": 65,
+                "lineStart": 3
+            }
+        },
         "python": {
             "defs": {
                 "code": [
@@ -1450,6 +1577,50 @@
         }
     },
     "Want Definitions Recv": {
+        "js": {
+            "defs": {
+                "code": [
+                    "",
+                    "// In NodeJS you must import jsriffle:",
+                    "var riffle = require('jsriffle');",
+                    "",
+                    "// After importing riffle, simply add types to",
+                    "// function declarations wrapped with riffle.want",
+                    "this.Register(\"endpoint\", riffle.want(function(s) {",
+                    "    console.log(s);",
+                    "}, String));",
+                    "// the registered endpoint will only execute",
+                    "// if it is provided a String",
+                    "",
+                    "// Nothing is returned",
+                    "riffle.want(function () { ... })",
+                    "",
+                    "// The primitives",
+                    "riffle.want(function (s) { ... }, String)",
+                    "riffle.want(function (i) { ... }, Number)",
+                    "riffle.want(function (f) { ... }, Number)",
+                    "riffle.want(function (b) { ... }, Boolean)",
+                    "",
+                    "// Collections",
+                    "// A list of anything",
+                    "riffle.want(function (l) { ... }, [])",
+                    "// A dict of anything",
+                    "riffle.want(function (d) { ... }, {})",
+                    "",
+                    "// Many arguments",
+                    "// This function requires a string and 2 numbers",
+                    "riffle.want(function (s, i, f) { ... }, String, Number, Number)",
+                    "// This function requires a string and a list of numbers",
+                    "riffle.want(function (s, l) { ... }, String, [Number])",
+                    ""
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/definitions-recv.js",
+                "lineEnd": 36,
+                "lineStart": 3
+            }
+        },
         "python": {
             "defs": {
                 "code": [
@@ -1499,6 +1670,72 @@
         }
     },
     "Want Definitions Send": {
+        "js": {
+            "defs": {
+                "code": [
+                    "",
+                    "// In NodeJS you must import jsriffle:",
+                    "var riffle = require('jsriffle');",
+                    "",
+                    "// First setup your domain",
+                    "var app = riffle.Domain(\"xs.demo.test\");",
+                    "// Now setup who you want to communicate with",
+                    "var backend = app.Subdomain(\"backend\");",
+                    "",
+                    "// Calls are asynchronous code, so they use",
+                    "// promises, like so:",
+                    "backend.Call(\"endpoint\", \"arg1\").then(",
+                    "    riffle.wait(function (s) {",
+                    "        console.log(\"I got a string: \" + s);",
+                    "    }, String), function (err) {",
+                    "        console.log(\"ERROR: \" + err);",
+                    "    });",
+                    "// The call above sends a string, and waits for",
+                    "// a string, if the backend doesn't return a string",
+                    "// then the error function will be called instead.",
+                    "",
+                    "// You can call without requiring anything in return",
+                    "backend.Call(\"hello\", \"hi\");",
+                    "",
+                    "// Waiting for primitives",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (s) {...}, String)",
+                    ");",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (n) {...}, Number)",
+                    ");",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (b) {...}, Boolean)",
+                    ");",
+                    "",
+                    "// Collections",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (stringList) {...}, [String])",
+                    ");",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (myDict) {...}, {name: String})",
+                    ");",
+                    "// The argument myDict above will require a dict with the key name",
+                    "// which is a String.",
+                    "",
+                    "// Many arguments",
+                    "// s is str, i is int, b is boolean",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (s, i, b) {...}, String, Number, Boolean)",
+                    ");",
+                    "// d is str, e is a list of int's",
+                    "backend.Call(\"hello\").then(",
+                    "    riffle.wait(function (d, e) {...}, String, [Number])",
+                    ");",
+                    ""
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "../js/example/definitions-send.js",
+                "lineEnd": 58,
+                "lineStart": 3
+            }
+        },
         "python": {
             "defs": {
                 "code": [

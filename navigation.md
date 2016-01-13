@@ -15,6 +15,7 @@
     * [4 - Classes](/pages/tour/regcall-lesson4.md)
 * [Publish and Subscribes](/pages/tour/pubsub-lesson1.md)
     * [1 - The Basics](/pages/tour/pubsub-lesson1.md)
+    * [2 - Primitives](/pages/tour/pubsub-lesson2.md)
 
 ### [Components](/pages/riffle/Riffle.md)
 
