@@ -43,6 +43,9 @@ angular.module('exisDocs')
             console.log("No session found, cannot REPL yet");
             return undefined;
         }
+        if(lang === "js"){
+          lang = "nodejs";
+        }
         this.riffle.call("xs.demo.repler/startContainer", [name, lang, code], {}, {receive_progress:true}).then(
             function (res) {
                 console.log("Call completed ", name, lang);

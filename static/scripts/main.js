@@ -51,7 +51,7 @@ function updateAnchorHref(links, route) {
 var GITHUB_EDIT_PAGE_LINK = 'https://github.com/exis-io/exis-io.github.io/edit/master/';
 
 angular
-  .module('exisDocs', [ 'ngRoute', 'ui.bootstrap' ])
+  .module('exisDocs', [ 'ngRoute', 'ui.bootstrap', 'ui.ace' ])
 
   .run(function($rootScope, MAIN_MENU, DocGen, Repl) {
     $rootScope.mainMenu = MAIN_MENU;

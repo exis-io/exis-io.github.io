@@ -16,7 +16,7 @@
                 <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDocLeft)"></span>
             </div>
           </div>
-          <pre id="jj" class="xsCode" contentEditable="{{editable}}">{{activeDocLeft.code}}</pre>
+          <div ng-repeat="d in thedoc.left" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDocLeft"></div>
           <div ng-if='activeDocLeft.replResults !== null'>
             <pre class="xsCode" ng-bind-html="activeDocLeft.replResults"></pre>
           </div>
@@ -35,7 +35,7 @@
                 <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDocRight)"></span>
             </div>
           </div>
-          <pre class="xsCode" contentEditable="{{editable}}" ng-model="activeDocRight.code"></pre>
+          <div ng-repeat="d in thedoc.right" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDocRight"></div>
           <div ng-if='activeDocRight.replResults !== null'>
             <pre class="xsCode" ng-bind-html="activeDocRight.replResults"></pre>
           </div>
@@ -55,7 +55,7 @@
             <span class="glyphicon glyphicon-play xsReplCtl" ng-click="replClick(activeDoc)"></span>
         </div>
       </div>
-      <pre class="xsCode" contentEditable="{{editable}}" ng-model="activeDoc.code"></pre>
+      <div ng-repeat="d in thedoc" ui-ace="{mode: '{{modeLang(d.lang)}}', theme: 'terminal', useWrapMode: true, onLoad: aceLoad}" ng-readonly="!editable" ng-model="d.code" ng-if="d === activeDoc"></div>
       <div ng-if='activeDoc.replResults !== null'>
         <pre class="xsCode" ng-bind-html="activeDoc.replResults"></pre>
       </div>

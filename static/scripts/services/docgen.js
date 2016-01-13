@@ -207,7 +207,7 @@ angular.module('exisDocs')
         });
     }
   }])
-  .directive('exisCode', ['DocGen', '$compile', '$sce', 'Repl', '$interval', function(DocGen, $compile, $sce, Repl, $interval) {
+  .directive('exisCode', ['DocGen', '$compile', '$sce', 'Repl', function(DocGen, $compile, $sce, Repl) {
     /*
      * Directive exisCode (exis-code tags)
      *  This takes <exis-code> tags and turns it into actual code that was
@@ -236,25 +236,6 @@ angular.module('exisDocs')
             return;
         }
 
-        scope.activeHighlight = function() {
-          var docs = [scope.activeDoc, scope.activeDocRight, scope.activeDocLeft];
-          for(var doc in docs){
-            if(docs[doc]) {
-              if(docs[doc].lang && docs[doc].code) {
-                // We know the language, specify it
-                if(typeof(docs[doc].code) === 'string'){
-                  console.log(docs[doc].code);
-                  docs[doc].code = $sce.trustAsHtml(DocGen.highlight.highlight(docs[doc].lang, docs[doc].code).value);
-                }else{
-                  console.log(angular.element("<div>" + $sce.getTrustedHtml(docs[doc].code) + "</div>").text());
-                  docs[doc].code = $sce.trustAsHtml(DocGen.highlight.highlight(docs[doc].lang, angular.element("<div>" + $sce.getTrustedHtml(docs[doc].code) + "</div>").text()).value);
-                }
-                
-              }
-            }
-          }
-        }
-
         if(scope.thedoc.left === undefined) {
             scope.sideBySide = false;
             scope.activeDoc = scope.thedoc[0];
@@ -263,23 +244,10 @@ angular.module('exisDocs')
             scope.activeDocLeft = scope.thedoc.left[0];
             scope.activeDocRight = scope.thedoc.right[0];
         }
-
-        //scope.activeHighlight();
-        //$interval(scope.activeHighlight, 100);
-        $interval(function(){
-          var terms = element.find('#jj');
-          for(var term in terms){
-            console.log(element);
-          }
-        },1000);
-
-        scope.alert = "";
-
         if('editable' in attributes){
           scope.editable = true;
-        }else{
-          scope.editable = false;
         }
+        scope.alert = "";
     };
     return {
         restrict: 'E',
@@ -329,11 +297,22 @@ angular.module('exisDocs')
             $scope.formatLang = function(lang) {
                 return lang.charAt(0).toUpperCase() + lang.slice(1);
             }
+
+            /* convert js to javascript for highlighting */
+            $scope.modeLang = function(lang) {
+              if(lang === 'js'){
+                return 'javascript';
+              }else{
+                return lang;
+              }
+            }
+
+            $scope.aceLoad = function(editor){
+              editor.$blockScrolling = Infinity;
+            };
             
             /* Execute the repl code provided */
             $scope.replClick = function(doc) {
-                console.log(doc.rawCode);
-                return;
                 doc.rawResults = "";
                 doc.replResults = "";
                 function printResults(prog) {
@@ -341,12 +320,13 @@ angular.module('exisDocs')
                     if(prog.indexOf("___BUILDCOMPLETE___") >= 0) {
                         prog = "Build complete...";
                     }
-                    console.log(prog);
                     $scope.$apply(function () {
                         doc.rawResults += prog + "\n";
                         doc.replResults = $scope.highlight(doc.lang, doc.rawResults);
                     });
                 }
+                doc.rawCode = doc.code.split('\n');
+                doc.rawCode.forEach(function(elem, ind, arr){arr[ind] = "        " + elem;});
                 Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults);
             }
 
