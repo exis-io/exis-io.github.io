@@ -2,9 +2,10 @@
 
 Exis helps developers write simpler code for their applications. We do this by removing the error-prone, boilerplate code that is required for any app written today - leaving behind only the application logic.
 
-* Check out our [Benefits](/pages/general/Benefits.md) page for a quick overview.
-* Take a minute and try out our [Tour of Exis](/pages/tour/basics.md) with live examples.
-* [Exis Architecture](/pages/general/ExisArch.md) has great details too.
+* Check out our [Benefits][benefits] page for a quick overview.
+* Take a minute and try out our [Tour of Exis][tour-basics] with live examples.
+* Developers should check out [Getting Started][getting-started] to help understand how to use Exis in their apps.
+* [Exis Architecture][exisarch] has great details too.
 
 
 ### A Quick Example
@@ -22,3 +23,6 @@ Interested in using Exis? Follow these steps:
 1. Make an account at [my.exis.io](https://my.exis.io/#/register).
 2. Check out our quick tutorial for [Swift](https://github.com/exis-io/iOSExample)
 3. Follow up with more advanced tutorials
+
+
+__TOCTAGS__

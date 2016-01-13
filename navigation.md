@@ -3,10 +3,11 @@
 
 * [Welcome](/pages/general/Home.md)
 * [Benefits](/pages/general/Benefits.md)
+* [Getting Started](/pages/general/GettingStarted.md)
 <!--* [Traditional Networking](/pages/general/OldSchool.md)-->
 * [Exis Architecture](/pages/general/ExisArch.md)
 
-### [Tour](/pages/tour/regcall-lesson1.md)
+### [Tour](/pages/tour/basics.md)
 * [Exis Basics](/pages/tour/basics.md)
 * [Registers and Calls](/pages/tour/regcall-lesson1.md)
     * [1 - The Basics](/pages/tour/regcall-lesson1.md)
@@ -17,19 +18,22 @@
     * [1 - The Basics](/pages/tour/pubsub-lesson1.md)
     * [2 - Primitives](/pages/tour/pubsub-lesson2.md)
 
-### [Components](/pages/riffle/Riffle.md)
+### [Exis Internals](/pages/riffle/Riffle.md)
 
 * [Riffle](/pages/riffle/Riffle.md)
-* [Domain](/pages/riffle/Domain.md)
-* [Message](/pages/riffle/Message.md)
-* [Action and Endpoint](/pages/riffle/Action.md)
-* [Permissions](/pages/security/Permission.md)
-* [Authentication](/pages/security/Authentication.md)
-* [Node](/pages/fabric/Node.md)
+    * [Cumin](/pages/riffle/Riffle.md#cumin)
+* [Fabric](/pages/fabric/Node.md)
 * [Appliances](/pages/appliances/Appliances.md)
-* [Core](/pages/appliances/Core-Appliances.md)
-* [Store](/pages/appliances/Store-Appliances.md)
-* [Container](/pages/appliances/Container-Appliances.md)
+
+<!--* [Domain](/pages/riffle/Domain.md)-->
+<!--* [Message](/pages/riffle/Message.md)-->
+<!--* [Action and Endpoint](/pages/riffle/Action.md)-->
+<!--* [Permissions](/pages/security/Permission.md)-->
+<!--* [Authentication](/pages/security/Authentication.md)-->
+<!--* [Appliances](/pages/appliances/Appliances.md)-->
+<!--* [Core](/pages/appliances/Core-Appliances.md)-->
+<!--* [Store](/pages/appliances/Store-Appliances.md)-->
+<!--* [Container](/pages/appliances/Container-Appliances.md)-->
 
 ### [Tutorials](/pages/samples/Samples.md)
 
