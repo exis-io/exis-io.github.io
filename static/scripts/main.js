@@ -88,6 +88,32 @@ angular
       "link": "http://exis.io/crashcourse.html"
     }
   ])
+  
+  .constant('TOCTAGS', [
+    /* General pages */
+    "[home]:/pages/general/Home.md",
+    "[benefits]:/pages/general/Benefits.md",
+    "[exisarch]:/pages/general/ExisArch.md",
+    "[getting-started]:/pages/general/GettingStarted.md",
+    /* Tour */
+    "[tour-basics]:/pages/tour/basics.md",
+    "[tour-basics-async]:/pages/tour/basics.md#exis-is-asynchronous",
+    "[tour-regcall-l1]:/pages/tour/regcall-lesson1.md",
+    "[tour-pubsub-l1]:/pages/tour/pubsub-lesson1.md",
+    /* Components */
+    "[riffle]:/pages/riffle/Riffle.md",
+    "[message]:/pages/riffle/Message.md",
+    "[agent]:/pages/riffle/Agent.md",
+    "[node]:/pages/fabric/Node.md",
+    "[fabric]:/pages/fabric/Fabric.md",
+    "[domain]:/pages/riffle/Domain.md",
+    "[action]:/pages/riffle/Agent.md",
+    "[endpoint]:/pages/riffle/Endpoint.md",
+    "[samples]:/pages/samples/Samples.md",
+    "[auth]:/pages/appliances/Auth-Appliance.md",
+    "[perm]:/pages/security/Permission.md"
+    ]
+  )
 
   // config
   .config(function($routeProvider) {
@@ -116,10 +142,13 @@ angular
   })
 
   // services
-  .service('PageRendererService', function($http) {
+  .service('PageRendererService', function($http, TOCTAGS) {
     this.getPageHtml = function(pageName) {
       return $http.get('/pages/' + pageName).then(function(resp) {
-        var preparedHtmlEl = angular.element('<div>' + marked(resp.data) + '</div>');
+        // For each page, search for TOC and replace it so we have access to the hyperlinks in each page
+        // in a standardized way
+        var thePage = resp.data.replace("__TOCTAGS__", TOCTAGS.join("\n"));
+        var preparedHtmlEl = angular.element('<div>' + marked(thePage) + '</div>');
 
         // add custom classess/directives
         preparedHtmlEl.find('table').addClass('table table-bordered');

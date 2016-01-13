@@ -28,15 +28,5 @@ When you call functions in the cloud, you can specify what the return values mus
 More complex objects can be created and sent between languages using *riffle.Model*:
 <exis-code name="Want Definitions Models" action="defs"></exis-code>
 
-[message]:/pages/riffle/Message.md
-[agent]:/pages/riffle/Agent.md
-[node]:/pages/fabric/Node.md
-[fabric]:/pages/fabric/Fabric.md
-[domain]:/pages/riffle/Domain.md
-[action]:/pages/riffle/Agent.md
-[endpoint]:/pages/riffle/Endpoint.md
-[samples]:/pages/samples/Samples.md
+__TOCTAGS__
 
-[auth]:/pages/appliances/Auth-Appliance.md
-
-[perm]:/pages/security/Permission.md
