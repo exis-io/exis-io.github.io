@@ -8,7 +8,7 @@ Any useful application written today requires networking to be functional (fetch
 
 <exis-code name="Tour Reg/Call Lesson 1"></exis-code>
 
-**Explanation:** The *client* (on the left) sends `"Hello"` by *calling* `myFirstCall`, which is a *registered* function that returns `"Hello World"` from the *backend* (on the right).
+**Explanation:** The *client* (on the left) sends `"Hello"` by *calling* `myFirstFunc`, which is a *registered* function that returns `"Hello World"` from the *backend* (on the right).
 
 ### Use cases
 

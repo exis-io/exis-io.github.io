@@ -4,9 +4,9 @@ Exis is a combination of three components that make writing next-generation apps
 
 
 The three components are:
-* A protocol for communication called [Riffle](/pages/riffle/Riffle.md)
-* A network [Fabric](/pages/fabric/Fabric.md) to route communication 
-* [Appliances](/pages/appliances/Appliances.md) to host developer's code.
+* A protocol for communication called [Riffle][riffle]
+* A network [Fabric][fabric] to route communication 
+* [Appliances][appliances] to host developer's code.
 
 Together these standardize networking best practices and simplify the design and implementation of distributed applications. 
 
@@ -49,7 +49,7 @@ A brief description of all the components that make up the Exis platform.
 
 ## Fabric
 
-A collection of [nodes][Node] and [appliances][Appliances] that act as a software platform for developing applciations. All programs connected to the fabric are called [domains][domain], which exchange [messages][message] between them through a protocol called [riffle][riffle]. Programs are said to *connect* to the fabric. 
+A collection of [nodes][node] and [appliances][appliances] that act as a software platform for developing applciations. All programs connected to the fabric are called [domains][domains], which exchange messages between them through a protocol called [riffle][riffle]. Programs are said to *connect* to the fabric. 
 
 Plainly speaking, the fabric gets messages from one place to another.
 
@@ -61,7 +61,7 @@ All domains connect to a node when they begin interacting with the fabric. There
 
 ### Domains
 
-The most important part of working with the fabric is understanding where things are and how to reach them. Remember that each piece of software, each application that communicates over the fabric is called an [domain][domain]. Each of those domains has a [*domain*][domain], or a name that anyone can use to find that domain. 
+The most important part of working with the fabric is understanding where things are and how to reach them. Remember that each piece of software, each application that communicates over the fabric is called an [domain][domains]. Each of those domains has a [*domain*][domains], or a name that anyone can use to find that domain. 
 
 Here are some quick and simple rules for dealing with domains:
 
@@ -74,21 +74,6 @@ Here are some quick and simple rules for dealing with domains:
 
 The top level domain is special. Since the node software is open source, anyone can run their own fabric. The top level domain is the name of the owner of the fabric, usually shortened to two letters. We, as Exis, run a primary version of the fabric. The top level domain is:
 
-```
-xs
-```
-
-If you decide to sign up as a user named *joebob* you get the subdomain:
-
-```
-xs.joebob
-```
-
-Go ahead and create a new app *thenextfacebook* and you'll get the name:
-
-```
-xs.joebob.thenextfacebook
-```
 
 ### Actions
 
@@ -240,7 +225,7 @@ Collections and Objects must be composed of the primitives above. These are:
 
 [Appliances][appliances] are like software libraries in a traditional software project. They're small services that solve common problems you can add to your fabric-aware applications. *Appliances* are very similar to modern day *cloud services*. This means the owner of the fabric runs and manages the appliance software. Developers don't have to know how to run or maintain these complicated services, they just have to understand how to use them.
 
-Appliances have to be **injected** to a developer's [domain][Domain]. The developer does not gain access to the code of the underlying appliance. Each appliance has specific publicized endpoints that developers may used to interact with the appliance. 
+Appliances have to be **injected** to a developer's [domain][domains]. The developer does not gain access to the code of the underlying appliance. Each appliance has specific publicized endpoints that developers may used to interact with the appliance. 
 
 An appliance should belong to the developer using it without giving that developer control of the appliance itself. Similarly, the creator of the appliance should not be able to access the developer's data in the appliance. 
 
@@ -262,7 +247,7 @@ One of the key tenants of Exis is its decentralized nature. While many existing 
 
 Unlike the internet, access to the Fabric is controlled. This enables developers to know they can only talk to things that have been authenticated to the network, thus simplifying their verification requirements. A secondary aspect is the idea that any agent communicating on the fabric has an associated identification, making it easier to target endpoints while writing apps (ie. every time you log onto the internet your IP address can change, but every time you access the fabric your ID will always be `xs.joebob`).
 
-[Domains][domain] all have to be authenticated by an application before they can use the fabric. They exchanve credentials, which can be usernames, passwords, or any other identifying information, with an [**Auth**][auth] appliance. Out of the box, *Auth* appliances handle the base cases for user authentication. They can also be customized by the developer to handle any odd cases. 
+[Domains][domains] all have to be authenticated by an application before they can use the fabric. They exchanve credentials, which can be usernames, passwords, or any other identifying information, with an [**Auth**][auth] appliance. Out of the box, *Auth* appliances handle the base cases for user authentication. They can also be customized by the developer to handle any odd cases. 
 
 ### Permissions
 
@@ -278,31 +263,4 @@ A base class for models that allows them to be transmitted. It does not expose a
 * `toString` override  -->
 
 
-
-[message]:/pages/riffle/Message.md
-[agent]:/pages/riffle/Agent.md
-[node]:/pages/fabric/Node.md
-[fabric]:/pages/fabric/Fabric.md
-[domain]:/pages/riffle/Domain.md
-[action]:/pages/riffle/Agent.md
-[endpoint]:/pages/riffle/Endpoint.md
-[samples]:/pages/samples/Samples.md
-
-[auth]:/pages/appliances/Auth-Appliance.md
-[perm]:/pages/security/Permission.md
-
-<!-- Reference for TOC -->
-
-[message]:/pages/riffle/Message.md
-[node]:/pages/fabric/Node.md
-[fabric]:/pages/fabric/Fabric.md
-[domain]:/pages/riffle/Domain.md
-[action]:/pages/riffle/Agent.md
-[endpoint]:/pages/riffle/Endpoint.md
-[Riffle]:/pages/riffle/Riffle.md
-
-[appliances]:/pages/appliances/Appliances.md
-[store]:/pages/appliances/Store-Appliances.md
-[core]:/pages/appliances/Core-Appliances.md
-[container]:/pages/appliances/Container-Appliances.md
-[gateway]:/pages/appliances/Gateway-Appliances.md
+__TOCTAGS__

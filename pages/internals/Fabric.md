@@ -1,8 +1,17 @@
-# Node
+# Fabric Overview
+
+A platform for handling riffle traffic. It connects all [domains][domain] together, exchanging [messages][message] between them.  
+
+Plainly speaking, the fabric gets messages from one place to another.
+
+The fabric is built from [nodes][Node]. They route messages from two [domains:][domain] the sender and the receiver. 
+
+[Appliances][Appliances] are discrete programs that expose some important functionality to developers and users on the fabric. The core appliances together with the routers make up the fabric itself. 
+
+
+## Node
 
 A Node is a router for [riffle][Riffle] messages. A set of nodes make up the [fabric.][Fabric] Individual nodes accept connections from domains, receive messages, and either deliver messages to their target or to another node for processing. 
-
-Routes [messages][Message] along the fabric towards their intended target, holds message pattern state, authenticates new [domains][domain], and checks authorization credentials for messages. 
 
 
 #### Meta Level Events
@@ -43,12 +52,6 @@ The interested party has to know when an interesting session connects, but shoul
 
 **EXIS_AUTHENTICATION**: Control how the node handles authentication.  By default the node enforces strong authentication via either tokens or challenge response.  Set this variable to "soft" to enable tiered authentication.  Under this mode, domains can still use tokens or challenge response, but it is not mandatory.
 
-<!-- Reference for TOC -->
 
-[message]:/pages/riffle/Message.md
-[node]:/pages/fabric/Node.md
-[fabric]:/pages/fabric/Fabric.md
-[domain]:/pages/riffle/Domain.md
-[action]:/pages/riffle/Agent.md
-[endpoint]:/pages/riffle/Endpoint.md
-[Riffle]:/pages/riffle/Riffle.md
+__TOCTAGS__
+

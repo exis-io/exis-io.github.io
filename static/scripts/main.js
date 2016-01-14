@@ -94,24 +94,26 @@ angular
     "[home]:/pages/general/Home.md",
     "[benefits]:/pages/general/Benefits.md",
     "[exisarch]:/pages/general/ExisArch.md",
-    "[getting-started]:/pages/general/GettingStarted.md",
     /* Tour */
     "[tour-basics]:/pages/tour/basics.md",
     "[tour-basics-async]:/pages/tour/basics.md#exis-is-asynchronous",
     "[tour-regcall-l1]:/pages/tour/regcall-lesson1.md",
     "[tour-pubsub-l1]:/pages/tour/pubsub-lesson1.md",
     /* Components */
-    "[riffle]:/pages/riffle/Riffle.md",
-    "[message]:/pages/riffle/Message.md",
-    "[agent]:/pages/riffle/Agent.md",
-    "[node]:/pages/fabric/Node.md",
-    "[fabric]:/pages/fabric/Fabric.md",
-    "[domain]:/pages/riffle/Domain.md",
-    "[action]:/pages/riffle/Agent.md",
-    "[endpoint]:/pages/riffle/Endpoint.md",
-    "[samples]:/pages/samples/Samples.md",
-    "[auth]:/pages/appliances/Auth-Appliance.md",
-    "[perm]:/pages/security/Permission.md"
+    "[internals]:/pages/internals/Overview.md",
+    "[domains]:/pages/internals/Overview.md#domains",
+    "[endpoints]:/pages/internals/Overview.md#endpoints",
+    /* Riffle */
+    "[riffle]:/pages/internals/Riffle.md",
+    "[cumin]:/pages/internals/Riffle.md#cumin",
+    /* Fabric */
+    "[fabric]:/pages/internals/Fabric.md",
+    "[node]:/pages/internals/Fabric.md#node",
+    /* Appliances */
+    "[appliances]:/pages/internals/Appliances.md",
+    "[auth]:/pages/internals/Appliances.md#auth",
+    "[storage]:/pages/internals/Appliances.md#storage",
+    "[container]:/pages/internals/Appliances.md#container",
     ]
   )
 
@@ -342,14 +344,24 @@ angular
       }
     }
   })
-  .directive('navigation', function($sce, $timeout, $routeParams, $rootScope, PageRendererService) {
+  .directive('navigation', function($sce, $timeout, $routeParams, $rootScope, PageRendererService, $location) {
     return {
       restrict: 'E',
       replace: true,
       templateUrl: '/static/templates/directives/navigation.html',
       link: function(scope, el, attrs) {
         function addActiveClass() {
-          var activeEl = angular.element('.site-navigation ul a[href="/#/pages/'+ $routeParams.pageName +'"]').parent()
+          // If they are looking at a tagged link (/page#header) try to activate that link in the side bar
+          var h = $location.hash();
+          var page = $routeParams.pageName;
+          if(h.length > 0) {
+            page += "#" + h;
+          }
+          var activeEl = angular.element('.site-navigation ul a[href="/#/pages/'+ page +'"]').parent()
+          // However, if that link doesn't exist, then fall back to the regular page
+          if(activeEl.length == 0) {
+            activeEl = angular.element('.site-navigation ul a[href="/#/pages/'+ $routeParams.pageName +'"]').parent()
+          }
 
           el.find('.expand').removeClass('expand');
           activeEl.addClass('active');

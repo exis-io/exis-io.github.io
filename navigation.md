@@ -3,7 +3,6 @@
 
 * [Welcome](/pages/general/Home.md)
 * [Benefits](/pages/general/Benefits.md)
-* [Getting Started](/pages/general/GettingStarted.md)
 <!--* [Traditional Networking](/pages/general/OldSchool.md)-->
 * [Exis Architecture](/pages/general/ExisArch.md)
 
@@ -18,12 +17,23 @@
     * [1 - The Basics](/pages/tour/pubsub-lesson1.md)
     * [2 - Primitives](/pages/tour/pubsub-lesson2.md)
 
-### [Exis Internals](/pages/riffle/Riffle.md)
+### [Exis Internals](/pages/internals/Overview.md)
 
-* [Riffle](/pages/riffle/Riffle.md)
-    * [Cumin](/pages/riffle/Riffle.md#cumin)
-* [Fabric](/pages/fabric/Node.md)
-* [Appliances](/pages/appliances/Appliances.md)
+* [Overview](/pages/internals/Overview.md)
+    * [Exis](/pages/internals/Overview.md)
+    * [Domains](/pages/internals/Overview.md#domains)
+    * [Endpoints](/pages/internals/Overview.md#endpoints)
+* [Riffle](/pages/internals/Riffle.md)
+    * [Overview](/pages/internals/Riffle.md)
+    * [Cumin](/pages/internals/Riffle.md#cumin)
+* [Fabric](/pages/internals/Fabric.md)
+    * [Overview](/pages/internals/Fabric.md)
+    * [Node](/pages/internals/Fabric.md#node)
+* [Appliances](/pages/internals/Appliances.md)
+    * [Overview](/pages/internals/Appliances.md)
+    * [Auth](/pages/internals/Appliances.md#auth)
+    * [Storage](/pages/internals/Appliances.md#storage)
+    * [Container](/pages/internals/Appliances.md#container)
 
 <!--* [Domain](/pages/riffle/Domain.md)-->
 <!--* [Message](/pages/riffle/Message.md)-->
@@ -49,7 +59,7 @@
 * [Replay](/pages/appliance_api/Replay.md)
 * [Storage](/pages/appliance_api/Storage.md)
 
-
+__TOCTAGS__
 
 <!-- Im starting to like the idea of nesting the subcontent for visibility. 
 Here's a working example of nesting that content. It would be better to extract this information and structure from page headers instead of having to write it in the nav, obviously. -->

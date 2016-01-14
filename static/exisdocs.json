@@ -155,7 +155,7 @@
                     "",
                     "};",
                     "",
-                    "backend.Join();"
+                    "backend.Join()"
                 ],
                 "expectType": null,
                 "expectVal": null,
@@ -551,7 +551,7 @@
             "publish": {
                 "code": [
                     "    for(var i = 0; i < 10; i++) {",
-                    "        this.Publish(\"async\", i);",
+                    "        backend.Publish(\"async\", i);",
                     "    }"
                 ],
                 "expectType": null,
@@ -804,7 +804,7 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"myFirstCall\", \"Hello\").then(riffle.wait(function (s) {",
+                    "    backend.Call(\"myFirstFunc\", \"Hello\").then(riffle.wait(function (s) {",
                     "        console.log(s); // Expects a String, like \"Hello World\"",
                     "    }, String),",
                     "    function (err) {",
@@ -819,7 +819,7 @@
             },
             "register": {
                 "code": [
-                    "    this.Register(\"myFirstCall\", riffle.want(function(s) {",
+                    "    this.Register(\"myFirstFunc\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hello\"",
                     "        return s + \" World\";",
                     "    }, String));"
@@ -834,11 +834,22 @@
         "python": {
             "call": {
                 "code": [
+                    "        s = backend.call(\"myFirstFunc\", \"Hello\").wait(str)",
+                    "        print s # Expects a str, like \"Hello World\""
+                ],
+                "expectType": "str",
+                "expectVal": "\"Hello World\"",
+                "file": "../python/example/tour-reg-client.py",
+                "lineEnd": 17,
+                "lineStart": 15
+            },
+            "register": {
+                "code": [
                     "        @want(str)",
-                    "        def myFirstCall(s):",
+                    "        def myFirstFunc(s):",
                     "            print(s)  # Expects a str, like \"Hello\"",
                     "            return \"{} World\".format(s)",
-                    "        self.register(\"myFirstCall\", myFirstCall)"
+                    "        self.register(\"myFirstFunc\", myFirstFunc)"
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
@@ -850,7 +861,7 @@
         "swift": {
             "call": {
                 "code": [
-                    "        call(\"myFirstCall\", \"Hello\").then { (s: String) in",
+                    "        call(\"myFirstFunc\", \"Hello\").then { (s: String) in",
                     "            print(s) // Expects a String, like \"Hello World\"",
                     "        }"
                 ],
@@ -862,7 +873,7 @@
             },
             "register": {
                 "code": [
-                    "        register(\"myFirstCall\") { (s: String) -> String in",
+                    "        register(\"myFirstFunc\") { (s: String) -> String in",
                     "            print(s) // Expects a String, like \"Hello\"",
                     "            return \"Hello World\"",
                     "        }"
@@ -883,7 +894,7 @@
                     "        console.log(s); // Expects a String, like \"Thanks for saying Hi\"",
                     "    }, String),",
                     "    function (err) {",
-                    "        console.log(\"ERROR: \", err); // Errors with \"Cumin: expecting primitive float, got string\"",
+                    "        console.log(\"ERROR due to bad argument type\") // Errors with \"ERROR due to bad argument type\"",
                     "    });"
                 ],
                 "expectType": "String",
@@ -913,7 +924,7 @@
                     "            s = backend.call(\"iWantInts\", \"Hi\").wait(str)",
                     "            print s # Expects a str, like \"Thanks for sending int 42\"",
                     "        except riffle.Error as e:",
-                    "            print e # Errors with \"Cumin: expecting primitive int, got string\""
+                    "            print \"ERROR due to bad argument type\" # Errors with \"ERROR due to bad argument type\""
                 ],
                 "expectType": "str",
                 "expectVal": "\"Thanks for sending int 42\"",
@@ -941,12 +952,14 @@
                 "code": [
                     "        call(\"iWantInts\", \"Hi\").then { (s: String) in",
                     "            print(s) // Expects a String, like \"Thanks for sending int 42\"",
+                    "        }.error { reason in",
+                    "            print(\"ERROR due to bad argument type\")",
                     "        }"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Thanks for sending int 42\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 24,
+                "lineEnd": 26,
                 "lineStart": 21
             },
             "register": {
@@ -1035,8 +1048,8 @@
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 30,
-                "lineStart": 27
+                "lineEnd": 32,
+                "lineStart": 29
             },
             "register": {
                 "code": [
@@ -1159,11 +1172,11 @@
             "register": {
                 "code": [
                     "    this.Register(\"iWantManyInts\", riffle.want(function(s) {",
-                    "        console.log(s); // Expects an Array of Numbers, like [0, 1, 2]",
-                    "        return \"Thanks for \" + s.length + \" ints!\";",
+                    "        console.log(s); // Expects a new riffle.ArrayWithType(Number), like [0, 1, 2]",
+                    "        return \"Thanks for \" + s.length + \" ints!\"",
                     "    }, [Number]));"
                 ],
-                "expectType": "Array of Numbers",
+                "expectType": "new riffle.ArrayWithType(Number)",
                 "expectVal": "[0, 1, 2]",
                 "file": "../js/example/tour-reg-backend.js",
                 "lineEnd": 54,
@@ -1211,8 +1224,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 ints!\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 44,
-                "lineStart": 40
+                "lineEnd": 46,
+                "lineStart": 42
             },
             "register": {
                 "code": [
@@ -1249,11 +1262,11 @@
             "register": {
                 "code": [
                     "    this.Register(\"iWantManyStrings\", riffle.want(function(s) {",
-                    "        console.log(s); // Expects an Array of Strings, like [\"This\", \"is\", \"cool\"]",
-                    "        return \"Thanks for \" + s.length + \" strings!\";",
+                    "        console.log(s); // Expects a new riffle.ArrayWithType(String), like [\"This\", \"is\", \"cool\"]",
+                    "        return \"Thanks for \" + s.length + \" strings!\"",
                     "    }, [String]));"
                 ],
-                "expectType": "Array of Strings",
+                "expectType": "new riffle.ArrayWithType(String)",
                 "expectVal": "[\"This\", \"is\", \"cool\"]",
                 "file": "../js/example/tour-reg-backend.js",
                 "lineEnd": 47,
@@ -1297,8 +1310,8 @@
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 strings!\"",
                 "file": "../swift/example/tour-reg-client.swift",
-                "lineEnd": 37,
-                "lineStart": 34
+                "lineEnd": 39,
+                "lineStart": 36
             },
             "register": {
                 "code": [
@@ -1325,9 +1338,9 @@
                     "        this.studentID = 0;",
                     "    }",
                     "    var s = new Student();",
-                    "    s.name = \"John Smith\";",
-                    "    s.age = 18;",
-                    "    s.studentID = 1234;",
+                    "    s.name = \"John Smith\"",
+                    "    s.age = 18",
+                    "    s.studentID = 1234",
                     "    backend.Call(\"sendStudent\", s);"
                 ],
                 "expectType": null,
@@ -1345,7 +1358,7 @@
                     "    }",
                     "    Student.prototype.toString = function() {",
                     "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
-                    "    };",
+                    "    }",
                     "    this.Register(\"sendStudent\", riffle.want(function(s) {",
                     "        console.log(s.toString()); // Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
                     "    }, riffle.ModelObject(Student)));"

@@ -4,9 +4,9 @@
 
 Here is a quick breakdown of the important aspects of Exis:
 
-## 1 - Developers use Exis through client-side libraries (Riffle)
+## 1 - Exis is used through client-side libraries
 
-In order to take advantage of Exis, developers need to add just one client-side library to their project, called [Riffle][riffle]. This library provides all of the core components of Exis: communication, type checking, serialization, database access, authentication, logging, and more.
+In order to take advantage of Exis, developers need to add one client-side library to their project, called [Riffle][riffle]. This library provides all of the core components of Exis: communication, type checking, serialization, database access, authentication, logging, and more.
 
 ## 2 - Exis is communication
 
@@ -27,7 +27,7 @@ We decided to follow several conventions provided by existing communication meth
 
 ### Domains
 
-**Domains** represent *unique entities* on the Fabric. They are defined by *reverse domain name notation*. For example, it is well accepted that `api` is a subdomain of `google.com`, when it is listed as `api.google.com`. Using reverse domain name notation, it looks like `com.google.api`.
+**Domains** represent *unique entities* on the Fabric. They are defined by *reverse domain name notation*. For example, it is well accepted that `api.google.com` means that `google.com` has a subdomain of `api`. Using reverse domain name notation, it looks like `com.google.api`.
 
 **Subdomains** If we look at `com.google.api`, we see that `api` is owned by `google`, which is owned by `com`. The same concept applies to Exis: all domains start with `xs` (because `xs` owns the Fabric) and all entities are subdomains of `xs`. 
 

@@ -4,7 +4,7 @@ Exis helps developers write simpler code for their applications. We do this by r
 
 * Check out our [Benefits][benefits] page for a quick overview.
 * Take a minute and try out our [Tour of Exis][tour-basics] with live examples.
-* Developers should check out [Getting Started][getting-started] to help understand how to use Exis in their apps.
+* Developers should check out the [Exis Overview][internals] to understand how to use Exis in their apps.
 * [Exis Architecture][exisarch] has great details too.
 
 
