@@ -261,7 +261,7 @@ angular.module('exisDocs')
             action: '@action',
             lang: '@lang'
         },
-        controller: ['$scope', '$sce', function($scope, $sce) {
+        controller: ['$scope', '$sce', '$timeout', function($scope, $sce, $timeout) {
             $scope.showRepl = function(c) {
                 if(c === true || c === false) {
                     return c;
@@ -323,10 +323,10 @@ angular.module('exisDocs')
                     if(prog.indexOf("___BUILDCOMPLETE___") >= 0) {
                         prog = "Build complete...";
                     }
-                    $scope.$apply(function () {
+                    $timeout(function () {
                         doc.rawResults += prog + "\n";
                         doc.replResults = $scope.highlight(doc.lang, doc.rawResults);
-                    });
+                    }, 0);
                 }
                 doc.rawCode = doc.code.split('\n');
                 doc.rawCode.forEach(function(elem, ind, arr){arr[ind] = "        " + elem;});

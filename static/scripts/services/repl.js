@@ -20,6 +20,8 @@ angular.module('exisDocs')
      */
     this.init = function(conn) {
         //TODO use conn if its real
+        //
+        /*
         var m = this.getMyId();
         console.log("Setting up conn: " + m);
         this.conn = new autobahn.Connection({
@@ -33,6 +35,8 @@ angular.module('exisDocs')
             self.riffle = session;
         }
         this.conn.open();
+        */
+
     }
 
     /**
@@ -44,7 +48,8 @@ angular.module('exisDocs')
             return undefined;
         }
         if(lang === "js"){
-          lang = "nodejs";
+          this.jsEval(code, printer);
+          return;
         }
         this.riffle.call("xs.demo.repler/startContainer", [name, lang, code], {}, {receive_progress:true}).then(
             function (res) {
@@ -56,6 +61,19 @@ angular.module('exisDocs')
             printer
         );
     }
+    
+    this.jsEval = function(code, printer){
+      var riffle = jsRiffle;
+      riffle.SetFabric("ws://sandbox.exis.io:8000/ws");
+      var app = riffle.Domain("xs.demo.asdfsadf");
+      var backend = app.Subdomain("backend");
+
+      backend.onJoin = function() {
+        console.log('here');
+      };
+      backend.Join();
+      backend.Leave();
+    };
     
     /**
      * Send a message to stop this container to free up space
