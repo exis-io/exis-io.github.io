@@ -8,20 +8,23 @@
  * Service in the exis*
  */
 angular.module('exisDocs')
-  .service('Repl',[ function () {
+  .service('Repl',[ '$http', function ($http) {
     this.DOMAIN = "xs.demo";
     this.myid = null;
     this.session = undefined;
 
     this.conn = null;
     this.riffle = null;
+    this.jsRiffleConn = {};
+    var self = this;
+    jsRiffle.SetFabric('ws://sandbox.exis.io:8000/ws');
+
     /**
      * Initialize with an existing connection or create a new one.
      */
     this.init = function(conn) {
         //TODO use conn if its real
         //
-        /*
         var m = this.getMyId();
         console.log("Setting up conn: " + m);
         this.conn = new autobahn.Connection({
@@ -35,21 +38,23 @@ angular.module('exisDocs')
             self.riffle = session;
         }
         this.conn.open();
-        */
 
     }
 
     /**
      * How to execute a function and send it to the repler
      */
-    this.execute = function(name, lang, code, printer) {
+    this.execute = function(name, lang, code, printer, client) {
+        if(lang === "js"){
+          this.kill(name);
+          var conn = this.setJsRiffleConn(name, client, code, printer);
+          conn.start();
+          return;
+        }
+        this.killJSRepl(name, client);
         if(this.riffle === undefined) {
             console.log("No session found, cannot REPL yet");
             return undefined;
-        }
-        if(lang === "js"){
-          this.jsEval(code, printer);
-          return;
         }
         this.riffle.call("xs.demo.repler/startContainer", [name, lang, code], {}, {receive_progress:true}).then(
             function (res) {
@@ -61,19 +66,31 @@ angular.module('exisDocs')
             printer
         );
     }
-    
-    this.jsEval = function(code, printer){
-      var riffle = jsRiffle;
-      riffle.SetFabric("ws://sandbox.exis.io:8000/ws");
-      var app = riffle.Domain("xs.demo.asdfsadf");
-      var backend = app.Subdomain("backend");
 
-      backend.onJoin = function() {
-        console.log('here');
-      };
-      backend.Join();
-      backend.Leave();
+    this.killJSRepl = function(name, client){
+      var side = client ? "client" : "backend";
+      if(this.jsRiffleConn[name]){
+        if(this.jsRiffleConn[name][side] && this.jsRiffleConn[name][side].running){
+          this.jsRiffleConn[name][side].stop();
+        }
+      }
     };
+
+    this.setJsRiffleConn = function(name, client, code, printer){
+      if(!this.jsRiffleConn[name]){
+        this.jsRiffleConn[name] = {};
+      }
+      var conn = new ReplJSConn(client);
+      conn.regCode(code, printer);
+      conn.setOtherside(this.jsRiffleConn[name][conn.otherside]);
+      if(this.jsRiffleConn[name][conn.myside]){
+        this.jsRiffleConn[name][conn.myside].stop();
+        delete this.jsRiffleConn[name][conn.myside];
+      }
+      this.jsRiffleConn[name][conn.myside] = conn;
+      return conn;
+    };
+
     
     /**
      * Send a message to stop this container to free up space
@@ -85,10 +102,10 @@ angular.module('exisDocs')
         }
         this.riffle.call("xs.demo.repler/stopContainer", [name], {}).then(
             function (res) {
-                console.log("Call completed ", name, lang);
+                console.log("Call completed ", name);
             },
             function (err) {
-                console.log("!! Error ", name, lang, code);
+                console.log("!! Error ", name);
             }
         );
     }
@@ -109,6 +126,69 @@ angular.module('exisDocs')
         this.myid = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyz');
         return this.myid;
     }
+
+    /**
+     * The RepJSConn represents a client or server container that user code will be run in
+     *
+     */
+
+    function ReplJSConn(client){
+      this.id = self.getMyId();
+      this.domain = 
+      this.connection = jsRiffle.Domain(this.id + ".example");
+      this.client = client;
+      if(client){
+        this.otherside = 'backend';
+        this.myside = 'client';
+      }else{
+        this.otherside = 'client';
+        this.myside = 'backend';
+      }
+    }
+
+    ReplJSConn.prototype.regCode = function(code, printer){
+      this.printer = printer;
+      var mockConsole = {};
+      mockConsole.log = printer;
+      var fnc = new Function('console', this.otherside, 'riffle', code);
+      var self = this;
+      this.connection.onJoin = function(){
+        try{
+          fnc.call(self.connection, mockConsole, self.connection, jsRiffle);
+          printer("Build Complete...");
+          self.running = true;
+        }catch(e){
+          printer("Error:\n" + e.message);
+          self.connection.Leave();
+          return;
+        }
+      }
+    };
+
+    ReplJSConn.prototype.start = function(){
+      if(this.client && (this.getOtherside() && !this.getOtherside().running)){
+        console.log(this.getOtherside());
+        this.printer("You must first start the server on the right before you are able to run the client code.");
+        return;
+      }
+      this.connection.Join();
+    };
+
+    ReplJSConn.prototype.stop = function(){
+      if(this.running){
+        this.connection.Leave();
+        this.running = false;
+      }
+    };
+
+    ReplJSConn.prototype.setOtherside = function(otherside){
+      this.myOtherside = otherside;
+    };
+
+    ReplJSConn.prototype.getOtherside = function(){
+      return this.myOtherside;
+    };
+
     
 
   }]);

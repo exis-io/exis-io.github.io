@@ -13,9 +13,9 @@
 }
 
 .xsCode {
-    word-wrap: normal;
     margin: 0;
     padding: 0;
+    overflow-x: auto;
 }
 
 .xsReplBox {
@@ -24,7 +24,7 @@
     color: #29292C;
     margin: 10px;
     height: 25px;
-    top: 0;
+    top: 160px;
     right: 0;
     border-radius: 4px;
     z-index: 999;
@@ -41,4 +41,5 @@
 
 .ace_editor {
     height: 200px;
+    width: 100%;
 }
