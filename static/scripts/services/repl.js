@@ -134,8 +134,8 @@ angular.module('exisDocs')
 
     function ReplJSConn(client){
       this.id = self.getMyId();
-      this.domain = 
       this.connection = jsRiffle.Domain(this.id + ".example");
+      console.log(this.connection)
       this.client = client;
       if(client){
         this.otherside = 'backend';
