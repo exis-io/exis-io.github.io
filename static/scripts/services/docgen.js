@@ -341,7 +341,15 @@ angular.module('exisDocs')
                 }
                 doc.rawCode = doc.code.split('\n');
                 doc.rawCode.forEach(function(elem, ind, arr){arr[ind] = "        " + elem;});
-                Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);
+                if(doc.client){
+                  if($scope.serverRunning){
+                    Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);
+                  }else{
+                    printResults("You must start the server side code on the right before you can run the client side code on the left.");
+                  }
+                }else{
+                  $scope.serverRunning = Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);
+                }
             }
 
         }],

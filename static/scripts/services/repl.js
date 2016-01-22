@@ -49,7 +49,7 @@ angular.module('exisDocs')
           this.kill(name);
           var conn = this.setJsRiffleConn(name, client, code, printer);
           conn.start();
-          return;
+          return true;
         }
         this.killJSRepl(name, client);
         if(this.riffle === undefined) {
@@ -65,6 +65,7 @@ angular.module('exisDocs')
             },
             printer
         );
+        return true;
     }
 
     this.killJSRepl = function(name, client){
@@ -82,7 +83,6 @@ angular.module('exisDocs')
       }
       var conn = new ReplJSConn(client);
       conn.regCode(code, printer);
-      conn.setOtherside(this.jsRiffleConn[name][conn.otherside]);
       if(this.jsRiffleConn[name][conn.myside]){
         this.jsRiffleConn[name][conn.myside].stop();
         delete this.jsRiffleConn[name][conn.myside];
@@ -135,7 +135,6 @@ angular.module('exisDocs')
     function ReplJSConn(client){
       this.id = self.getMyId();
       this.connection = jsRiffle.Domain(this.id + ".example");
-      console.log(this.connection)
       this.client = client;
       if(client){
         this.otherside = 'backend';
@@ -166,11 +165,6 @@ angular.module('exisDocs')
     };
 
     ReplJSConn.prototype.start = function(){
-      if(this.client && (this.getOtherside() && !this.getOtherside().running)){
-        console.log(this.getOtherside());
-        this.printer("You must first start the server on the right before you are able to run the client code.");
-        return;
-      }
       this.connection.Join();
     };
 
@@ -180,15 +174,5 @@ angular.module('exisDocs')
         this.running = false;
       }
     };
-
-    ReplJSConn.prototype.setOtherside = function(otherside){
-      this.myOtherside = otherside;
-    };
-
-    ReplJSConn.prototype.getOtherside = function(){
-      return this.myOtherside;
-    };
-
-    
 
   }]);
