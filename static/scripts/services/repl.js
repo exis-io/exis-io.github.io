@@ -170,8 +170,8 @@ angular.module('exisDocs')
 
     ReplJSConn.prototype.stop = function(){
       if(this.running){
-        this.connection.Leave();
         this.running = false;
+        this.connection.Leave();
       }
     };
 
