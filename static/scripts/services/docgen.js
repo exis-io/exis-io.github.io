@@ -225,12 +225,6 @@ angular.module('exisDocs')
      */
     var linkFunc = function(scope, element, attributes) {
         // First strip out all attrs and add them to scope for easy access
-        // repl is on by default
-        if(scope.repl === undefined) {
-            scope.repl = false; // TODO switch back to true;
-        } else {
-            scope.repl = (scope.repl === "true");
-        }
 
         // Does the requested name exist?
         scope.thedoc = DocGen.getDocs(scope.name, scope.lang, scope.action);
@@ -253,6 +247,7 @@ angular.module('exisDocs')
         if('hljs' in attributes){
           scope.hljs = true;
         }
+        scope.repl = true;
         if('norepl' in attributes){
           scope.repl = false;
         }
@@ -263,7 +258,6 @@ angular.module('exisDocs')
         templateUrl: "/static/scripts/services/docgen.html",
         scope: {
             name: '@name',
-            repl: '@repl',
             action: '@action',
             lang: '@lang'
         },
