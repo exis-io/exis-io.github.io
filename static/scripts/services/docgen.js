@@ -107,6 +107,7 @@ angular.module('exisDocs')
                     file: left[i].file,
                     lang: leftNames[i],
                     action: leftActions[i],
+                    client: true,
                     replResults: null,
                     rawResults: ""
                 };
@@ -124,6 +125,7 @@ angular.module('exisDocs')
                     file: right[i].file,
                     lang: rightNames[i],
                     action: rightActions[i],
+                    client: false,
                     replResults: null,
                     rawResults: ""
                 };
@@ -150,6 +152,7 @@ angular.module('exisDocs')
                     file: t.file,
                     lang: langNames[i],
                     action: action,
+                    client: false,
                     replResults: null,
                     rawResults: ""
                 };
@@ -250,6 +253,9 @@ angular.module('exisDocs')
         if('hljs' in attributes){
           scope.hljs = true;
         }
+        if('norepl' in attributes){
+          scope.repl = false;
+        }
         scope.alert = "";
     };
     return {
@@ -261,7 +267,7 @@ angular.module('exisDocs')
             action: '@action',
             lang: '@lang'
         },
-        controller: ['$scope', '$sce', function($scope, $sce) {
+        controller: ['$scope', '$sce', '$timeout', function($scope, $sce, $timeout) {
             $scope.showRepl = function(c) {
                 if(c === true || c === false) {
                     return c;
@@ -319,18 +325,31 @@ angular.module('exisDocs')
                 doc.rawResults = "";
                 doc.replResults = "";
                 function printResults(prog) {
+                    if(typeof(prog) === 'object'){
+                      prog = JSON.stringify(prog);
+                    }else{
+                      prog = String(prog);
+                    }
                     // Strip out known stuff that shouldn't get displayed
                     if(prog.indexOf("___BUILDCOMPLETE___") >= 0) {
                         prog = "Build complete...";
                     }
-                    $scope.$apply(function () {
+                    $timeout(function () {
                         doc.rawResults += prog + "\n";
                         doc.replResults = $scope.highlight(doc.lang, doc.rawResults);
-                    });
+                    }, 0);
                 }
                 doc.rawCode = doc.code.split('\n');
                 doc.rawCode.forEach(function(elem, ind, arr){arr[ind] = "        " + elem;});
-                Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults);
+                if(doc.client){
+                  if($scope.serverRunning){
+                    Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);
+                  }else{
+                    printResults("You must start the server side code on the right before you can run the client side code on the left.");
+                  }
+                }else{
+                  $scope.serverRunning = Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);
+                }
             }
 
         }],
