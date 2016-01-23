@@ -17,6 +17,16 @@
     * [1 - The Basics](/pages/tour/pubsub-lesson1.md)
     * [2 - Primitives](/pages/tour/pubsub-lesson2.md)
 
+### [Tutorials](/pages/tutorials/GettingStarted.md)
+
+* [Getting Started](/pages/tutorials/GettingStarted.md)
+* [Swift](/pages/tutorials/swift/HelloSwift.md)
+    * [HelloSwift](/pages/tutorials/swift/HelloSwift.md)
+* [Ionic](/pages/tutorials/ionic/HelloIonic.md)
+    * [HelloIonic](/pages/tutorials/ionic/HelloIonic.md)
+<!--* [Cards Against Humanity](/pages/samples/SwiftCardsTutorial.md)-->
+
+
 ### [Exis Internals](/pages/internals/Overview.md)
 
 * [Overview](/pages/internals/Overview.md)
@@ -44,11 +54,6 @@
 <!--* [Core](/pages/appliances/Core-Appliances.md)-->
 <!--* [Store](/pages/appliances/Store-Appliances.md)-->
 <!--* [Container](/pages/appliances/Container-Appliances.md)-->
-
-### [Tutorials](/pages/samples/Samples.md)
-
-* [Getting Started](/pages/samples/Samples.md)
-* [Cards Against Humanity](/pages/samples/SwiftCardsTutorial.md)
 
 ### [Appliance API](/pages/appliance_api/Auth.md)
 

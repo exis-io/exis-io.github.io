@@ -72,24 +72,27 @@ angular
 
   .constant('MAIN_MENU', [
     {
-      "title": "Team",
-      "link": "http://exis.io/about.html"
+      "title": "Swift",
+      "link": "http://www.exis.io/swift/"
     },
     {
-      "title": "Contact Us",
-      "link": "http://exis.io/about.html"
+      "title": "Tour",
+      "link": "http://docs.exis.io/#/pages/tour/basics.md"
+    },
+    {
+      "title": "Blog",
+      "link": "http://www.exis.io/blog/"
     },
     {
       "title": "About Us",
       "link": "http://exis.io/about.html"
-    },
-    {
-      "title": "Crash Course",
-      "link": "http://exis.io/crashcourse.html"
     }
   ])
   
   .constant('TOCTAGS', [
+    /* Other stuff */
+    "[register]:https://my.exis.io/#/register",
+    "[login]:https://my.exis.io/#/login",
     /* General pages */
     "[home]:/pages/general/Home.md",
     "[benefits]:/pages/general/Benefits.md",
@@ -114,6 +117,10 @@ angular
     "[auth]:/pages/internals/Appliances.md#auth",
     "[storage]:/pages/internals/Appliances.md#storage",
     "[container]:/pages/internals/Appliances.md#container",
+    /* Tutorials */
+    "[tutorial-gettingstarted]:/pages/tutorials/GettingStarted.md",
+    "[tutorial-helloswift]:/pages/tutorials/swift/HelloSwift.md",
+    "[tutorial-helloionic]:/pages/tutorials/ionic/HelloIonic.md",
     ]
   )
 

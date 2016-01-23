@@ -1,17 +1,4 @@
-# Tutorials
-
-Recipes for Exis development. 
-
-## Getting Started
-
-Applications that communicate over the fabric require the Riffle client libraries. They're all hosted together on [github](https://github.com/exis-io/Exis). You can also head straight to the language of your choice:
-
-* [iOS](https://github.com/exis-io/Exis/tree/master/ios)
-* [Python](https://github.com/exis-io/pyRiffle)
-* [Javascript](https://github.com/exis-io/Exis/tree/master/js)
-* [Go](https://github.com/exis-io/core)
-
-Each of the links above include instructions on how to install riffle into your own projects. For platforms that are a little more complicated you can download preconfigured projects.
+# Hello Swift!
 
 ## Creating a new App
 
@@ -218,19 +205,5 @@ Then you forgot to do this step.
 ![Missing Image!](/img/ios-cards-tutorial/app/2-hello/4.PNG)
 
 
-[message]:/pages/riffle/Message.md
-[agent]:/pages/riffle/Agent.md
-[node]:/pages/fabric/Node.md
-[fabric]:/pages/fabric/Fabric.md
-[domain]:/pages/riffle/Domain.md
-[action]:/pages/riffle/Agent.md
-[endpoint]:/pages/riffle/Endpoint.md
-[samples]:/pages/samples/Samples.md
 
-[auth]:/pages/appliances/Auth-Appliance.md
-[perm]:/pages/security/Permission.md
-
-[cards1]:/pages/samples/SwiftCardsTutorial.md
-[cards2]:/pages/samples/SwiftCardsTutorial2.md
-
-
+__TOCTAGS__
