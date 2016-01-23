@@ -298,7 +298,11 @@ angular.module('exisDocs')
 
             /* Capitalize the first letter of the lang */
             $scope.formatLang = function(lang) {
-                return lang.charAt(0).toUpperCase() + lang.slice(1);
+                if(lang == "js") {
+                    return lang.toUpperCase();
+                } else {
+                    return lang.charAt(0).toUpperCase() + lang.slice(1);
+                }
             }
 
             /* convert js to javascript for highlighting */
@@ -339,7 +343,7 @@ angular.module('exisDocs')
                   if($scope.serverRunning){
                     Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);
                   }else{
-                    printResults("You must start the server side code on the right before you can run the client side code on the left.");
+                    printResults("Please start the backend (right side) before executing the client (left side).");
                   }
                 }else{
                   $scope.serverRunning = Repl.execute(doc.action, doc.lang, DocGen.renderCode(doc.rawCode, true), printResults, doc.client);

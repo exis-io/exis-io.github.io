@@ -26,7 +26,7 @@ Here is the big leap developers have to make to use Exis: communication necessit
 
 The following tour will show you every example use case of Exis you could possibly want to see. To keep things simple we only show the "actionable" code, of course there is a bit of setup in Exis too. Each code example that we will show you is wrapped up in the following code snippets (just so you know we aren't hiding anything).
 
-<exis-code name="REPL Template" action="template" repl=false></exis-code>
+<exis-code name="REPL Template" action="template" norepl></exis-code>
 
 Now that you have the basic ideas, let's get started with [Registers and Calls](/pages/tour/regcall-lesson1.md).
 

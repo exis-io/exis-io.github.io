@@ -16,7 +16,7 @@ This code shows what happens if a client sends a `string` but the backend wanted
 
 This code shows what happens if the backend doesn't send the proper data type back to the client.
 
-<exis-code name="Tour Reg/Call Lesson 2 Wait Check"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 2 Wait Check" editable></exis-code>
 
 **Explanation:** The *client* (on the left) sends `"Hi"` to `iGiveInts`, which is a registered function in the backend (on the right). That function returns an `int` back to the client, however the client was waiting for a `string`. In this case the *client* will throw an error in the appropriate language.
 
