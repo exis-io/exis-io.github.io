@@ -2,6 +2,11 @@
 
 Following this tutorial will result in creating an app that enables client to backend API calls, between an Ionic app, and a Nodejs server.
 
+__NOTE__: Use **templates** to finish this tutorial in two clicks by following the image below. This template will launch an app and install all containers required for this tutorial. The only step you would need to complete is to copy your `me` token into the ionic app (found under [Auth Management](https://my.exis.io/#/auth_tokens/ionic) in the Ionic app) and place it in your app ([instructions](/pages/tutorials/ionic/HelloIonic.md#enter-the-me-token-for-credentials)).
+
+![Template](/img/tutorials/ionic/helloionic_template.png)
+
+**A step by step guide to what the template does is provided below.**
 
 ## Fork hello-nodejs
 
