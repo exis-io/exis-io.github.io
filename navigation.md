@@ -64,7 +64,6 @@
 * [Replay](/pages/appliance_api/Replay.md)
 * [Storage](/pages/appliance_api/Storage.md)
 
-__TOCTAGS__
 
 <!-- Im starting to like the idea of nesting the subcontent for visibility. 
 Here's a working example of nesting that content. It would be better to extract this information and structure from page headers instead of having to write it in the nav, obviously. -->
