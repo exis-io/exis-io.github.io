@@ -72,8 +72,8 @@ angular
 
   .constant('MAIN_MENU', [
     {
-      "title": "Swift",
-      "link": "http://www.exis.io/swift/"
+      "title": "About Us",
+      "link": "http://exis.io/about.html"
     },
     {
       "title": "Tour",
@@ -84,8 +84,8 @@ angular
       "link": "http://www.exis.io/blog/"
     },
     {
-      "title": "About Us",
-      "link": "http://exis.io/about.html"
+      "title": "Swift",
+      "link": "http://www.exis.io/swift/"
     }
   ])
   
