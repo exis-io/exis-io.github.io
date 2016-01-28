@@ -320,7 +320,8 @@ angular
 
         $rootScope.$on('active-link-added', function(event, data) {
           scope.pageTitle = data.el.text();
-          angular.element('.navbar-submenu .site-navigation').height(angular.element(window).height() - 190);
+          // FIXME: this breaks the background-coloring on mobile
+          //angular.element('.navbar-submenu .site-navigation').height(angular.element(window).height() - 190);
         });
 
         scope.$on('$routeChangeStart', function(next, current) {
