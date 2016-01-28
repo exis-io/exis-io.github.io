@@ -1,33 +1,44 @@
+<style>
+  #exis-navbar-container ul.navbar-nav img {
+    width: 2.5em;
+  }
+  #exis-navbar-container div.navbar.navbar-inverse {
+    /* change bg color through `background-color` directive attribute */
+  }
+</style>
 <!-- Fly-in navbar -->
-<div class="nav-wrapper" id="navcontainer">
- <div class="navbar navbar-inverse navbar-static-top" id="nav" data-spy="affix">
-     <div class="container">
-       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-       </div>
-       <div class="collapse navbar-collapse">
-         <ul class="nav navbar-nav">
-           <li><a href="#top"><img src="img/exislogowhite.png" /></a></li>
-           <li><a href="about.html">about us</a></li>
-           <li><a href="http://docs.exis.io">docs</a></li>
-           <li><a href="http://docs.exis.io/#/pages/tour/regcall-lesson1.md">tour</a></li>
-           <li><a href="/blog/">blog</a></li>
-           <li><a href="/swift/">swift</a></li>
-           <li>
-             <div class="btn-group">
-               <a id='sign-up-header-index' class='clickable' href="https://my.exis.io/">
-                 <button type="button" class="btn btn-primary">
-                   My Exis
-                 </button>
-               </a>
-             </div>
-           </li>
-         </ul>
-       </div><!--/.nav-collapse -->
-     </div><!--/.container -->
- </div><!--/.navbar -->
-</div><!--/.navcontainer -->
+<div id='exis-navbar-container'>
+  <div class="nav-wrapper" id="navcontainer">
+    <div class="navbar navbar-inverse navbar-static-top" id="nav" data-spy="affix"
+      style='background-color: {{ bgColor }}; background: {{ background }};'>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="http://exis.io/#top"><img src="img/exislogowhite.png" /></a></li>
+            <li><a href="http://exis.io/about.html">about us</a></li>
+            <li><a href="http://docs.exis.io">docs</a></li>
+            <li><a href="http://docs.exis.io/#/pages/tour/regcall-lesson1.md">tour</a></li>
+            <li><a href="http://exis.io/blog/">blog</a></li>
+            <li><a href="http://exis.io/swift/">swift</a></li>
+            <li>
+            <div class="btn-group">
+              <a id='sign-up-header-index' class='clickable' href="https://my.exis.io/">
+                <button type="button" class="btn btn-info">
+                  My Exis
+                </button>
+              </a>
+            </div>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container -->
+    </div><!--/.navbar -->
+  </div><!--/.navcontainer -->
+</div><!--/#exis-navbar-container -->
