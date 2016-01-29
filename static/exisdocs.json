@@ -1338,9 +1338,9 @@
                     "        this.studentID = 0;",
                     "    }",
                     "    var s = new Student();",
-                    "    s.name = \"John Smith\"",
-                    "    s.age = 18",
-                    "    s.studentID = 1234",
+                    "    s.name = \"John Smith\";",
+                    "    s.age = 18;",
+                    "    s.studentID = 1234;",
                     "    backend.Call(\"sendStudent\", s);"
                 ],
                 "expectType": null,
@@ -1352,13 +1352,13 @@
             "register": {
                 "code": [
                     "    function Student() {",
-                    "        this.name = \"Student Name\";",
-                    "        this.age = 20;",
-                    "        this.studentID = 0;",
+                    "        this.name = String;",
+                    "        this.age = Number;",
+                    "        this.studentID = Number;",
                     "    }",
                     "    Student.prototype.toString = function() {",
                     "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
-                    "    }",
+                    "    };",
                     "    this.Register(\"sendStudent\", riffle.want(function(s) {",
                     "        console.log(s.toString()); // Expects a Student, like \"John Smith, Age: 18, ID: 1234\"",
                     "    }, riffle.ModelObject(Student)));"
