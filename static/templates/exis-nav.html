@@ -3,14 +3,16 @@
     width: 2.5em;
   }
   #exis-navbar-container div.navbar.navbar-inverse {
-    /* change bg color through `background-color` directive attribute */
+    /* default color */
+    /* change bg through `background` directive attribute */
+    background: #282B35;
   }
 </style>
 <!-- Fly-in navbar -->
 <div id='exis-navbar-container'>
   <div class="nav-wrapper" id="navcontainer">
     <div class="navbar navbar-inverse navbar-static-top" id="nav" data-spy="affix"
-      style='background-color: {{ bgColor }}; background: {{ background }};'>
+      style='{{ backgroundString }}'>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

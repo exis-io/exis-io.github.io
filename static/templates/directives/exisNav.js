@@ -3,16 +3,13 @@ angular.module('exisNavModule', [])
   return {
     restrict: 'E',                  // must be an element
     scope: {
-      bgColor: '@backgroundColor',  // for basic coloring
       background: '@'               // for gradients (e.g. Swift)
     },
-    controller: function($scope) {  // set some default values
-      if (!$scope.bgColor && !$scope.background) {
-        $scope.bgColor = '#282B35';
-      }
+    controller: function($scope) {
+      $scope.backgroundString = '';
 
-      if (!$scope.background) {
-        $scope.background = $scope.bgColor;
+      if ($scope.background) {
+        $scope.backgroundString = 'background: ' + $scope.background + ';';
       }
     },
     templateUrl: '../static/templates/exis-nav.html'
