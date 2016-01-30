@@ -134,7 +134,6 @@ angular.module('exisDocs')
 
     function ReplJSConn(client){
       this.id = self.getMyId();
-      this.connection = jsRiffle.Domain(this.id + ".example");
       this.client = client;
       if(client){
         this.otherside = 'backend';
@@ -143,6 +142,8 @@ angular.module('exisDocs')
         this.otherside = 'client';
         this.myside = 'backend';
       }
+      this.connection = jsRiffle.Domain(this.id + "." + this.myside);
+      this.otherConnection = this.connection.LinkDomain(this.id + "." + this.otherside);
     }
 
     ReplJSConn.prototype.regCode = function(code, printer){
@@ -153,7 +154,7 @@ angular.module('exisDocs')
       var self = this;
       this.connection.onJoin = function(){
         try{
-          fnc.call(self.connection, mockConsole, self.connection, jsRiffle);
+          fnc.call(self.connection, mockConsole, self.otherConnection, jsRiffle);
           printer("Build Complete...");
           self.running = true;
         }catch(e){
