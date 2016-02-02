@@ -27,7 +27,7 @@
         "python": {
             "publish": {
                 "code": [
-                    "        self.publish(\"basicSub\", \"Hello\")"
+                    "        backend.publish(\"basicSub\", \"Hello\")"
                 ],
                 "expectType": null,
                 "expectVal": null,
@@ -53,7 +53,7 @@
         "swift": {
             "publish": {
                 "code": [
-                    "        publish(\"xs.test.example/basicSub\", \"Hello\")"
+                    "        backend.publish(\"basicSub\", \"Hello\")"
                 ],
                 "expectType": null,
                 "expectVal": null,
@@ -1386,12 +1386,12 @@
                 "code": [
                     "        @want([str])",
                     "        def iWantManyStrings(s):",
-                    "            print \":\".join(s) # Expects a str, like \"This:is:cool\"",
+                    "            print \" \".join(s) # Expects a str, like \"This is cool\"",
                     "            return \"Thanks for {} strings!\".format(len(s))",
                     "        self.register(\"iWantManyStrings\", iWantManyStrings)"
                 ],
                 "expectType": "str",
-                "expectVal": "\"This:is:cool\"",
+                "expectVal": "\"This is cool\"",
                 "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 53,
                 "lineStart": 48
