@@ -8,7 +8,7 @@ One of the incredibly powerful features of Exis is type enforcement. This means 
 
 This code shows what happens if a client sends a `string` but the backend wanted an `int` instead.
 
-<exis-code name="Tour Reg/Call Lesson 2 Fails"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 2 Fails" editable></exis-code>
 
 **Explanation:** The *client* (on the left) sends `"Hi"` to `iWantInts`, which is a registered function in the backend (on the right) that expects an `int` as an argument. Since the backend didn't receive the proper data, the function is never called and instead the error handler in the appropriate language is invoked in the client.
 
@@ -24,7 +24,7 @@ This code shows what happens if the backend doesn't send the proper data type ba
 
 This code shows what happens if a client sends the proper data type to the backend.
 
-<exis-code name="Tour Reg/Call Lesson 2 Works"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 2 Works" editable></exis-code>
 
 **Explanation:** The *client* (on the left) sends `"Hi"` to `iWantStrings`, which is a registered function in the backend (on the right) that expects a `string` as an argument. This is the common case - the backend got what it expected and so it responds with `"Thanks for saying Hi"`.
 

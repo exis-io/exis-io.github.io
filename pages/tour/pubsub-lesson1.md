@@ -6,7 +6,7 @@ There are many use cases in apps today where one user needs to send a message to
 
 **Basic one to many message:** The code below shows how a developer could setup chatroom-style communication where one user sends her message to many subscribers.
 
-<exis-code name="Tour Pub/Sub Lesson 1"></exis-code>
+<exis-code name="Tour Pub/Sub Lesson 1" editable></exis-code>
 
 **Explanation:** The *client* (on the left) publishes `"Hello"` to `myFirstSub`. The *backend* (on the right) has subscribed (in two different places) to the `myFirstSub` function - which results in both subscribed functions being called.
 

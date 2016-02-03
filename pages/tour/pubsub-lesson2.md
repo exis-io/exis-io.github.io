@@ -8,7 +8,7 @@ One of the incredibly powerful features of Exis is type enforcement. This means 
 
 This code shows what happens if a `string` is published to an `int` subscriber.
 
-<exis-code name="Tour Pub/Sub Lesson 2 Fails"></exis-code>
+<exis-code name="Tour Pub/Sub Lesson 2 Fails" editable></exis-code>
 
 **Explanation:** The *publisher* (on the left) sent `"Hi"` to the *subscriber* (on the right). However the subscriber function isn't called - this happens because the value passed in was a `String` and so the Exis type checking refused to call the function.
 
@@ -22,7 +22,7 @@ There ARE cases where a publish can fail (such as incorrect permissions), but fa
 
 This code shows what happens if a `string` is published properly to a `string` subscriber.
 
-<exis-code name="Tour Pub/Sub Lesson 2 Works"></exis-code>
+<exis-code name="Tour Pub/Sub Lesson 2 Works" editable></exis-code>
 
 **Explanation:** The *publisher* (on the left) sends `"Hi"` to `iWantStrings`, which is a *subscribed* function (on the right) that expects a `string` as an argument. This is the common case.
 

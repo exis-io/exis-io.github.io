@@ -14,7 +14,7 @@ Exis was designed for next-gen applications. All software developers of all spec
 
 *Chat Room Messages -* One to many communication is provided with the code snippet below. We should also point out that any language can send these messages to any other language. Our code literally can't get any shorter!!
 
-<exis-code name="Pub/Sub Basic"></exis-code>
+<exis-code name="Pub/Sub Basic" editable></exis-code>
 
 ## Getting Started
 

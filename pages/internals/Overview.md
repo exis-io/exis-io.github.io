@@ -17,7 +17,7 @@ At its core, Exis is a cloud-scale distributed message bus, we call the [Fabric]
 
 Exis uses *asynchronous code*. This is an advanced style of programming that can be confusing for many early developers, see the following example:
 
-<exis-code name="Tour Basics 2"></exis-code>
+<exis-code name="Tour Basics 2" editable></exis-code>
 
 When you run the above code you will notice that the output doesn't arrive in the same order, this is actually the expected result. You can see more about this in our [Tour Basics][tour-basics-async] page.
 

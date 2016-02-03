@@ -8,7 +8,7 @@ We can take type enforcement one step further. Using Exis you can also specify t
 
 If a client tries to send a list of data to a backend that isn't properly formatted, it will fail, like the following example:
 
-<exis-code name="Tour Reg/Call Lesson 3 Fails"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 3 Fails" editable></exis-code>
 
 **Explanation:** The *client* (on the left) sends `[0, 1, "two"]` to `iWantManyInts`, which is a registered function in the *backend* (on the right) that expects a list of `ints`. Since the backend didn't receive the proper data, the function is never called and instead the error handler in the appropriate language is invoked in the client.
 
@@ -16,7 +16,7 @@ If a client tries to send a list of data to a backend that isn't properly format
 
 This code shows what happens when the client sends the proper collection to the backend.
 
-<exis-code name="Tour Reg/Call Lesson 3 Works"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 3 Works" editable></exis-code>
 
 **Explanation:** The *client* (on the left) sends `["This", "is", "cool"]` to `iWantManyStrings`, which is a registered function in the *backend* (on the right). This is the common case - the backend got what it expected and so it responds with `"Thanks for 3 strings!"`.
 

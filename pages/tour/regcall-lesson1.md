@@ -6,7 +6,7 @@ Any useful application written today requires networking to be functional (fetch
 
 **Basic client-backend communication:** The code below shows how a developer can call a function in the backend.
 
-<exis-code name="Tour Reg/Call Lesson 1"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 1" editable></exis-code>
 
 **Explanation:** The *client* (on the left) sends `"Hello"` by *calling* `myFirstFunc`, which is a *registered* function that returns `"Hello World"` from the *backend* (on the right).
 

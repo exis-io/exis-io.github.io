@@ -4,19 +4,19 @@
 
 *iOS developers can write Swift backend code*
 
-<exis-code lang="swift" name="Reg/Call Basic 1"></exis-code>
+<exis-code lang="swift" name="Reg/Call Basic 1" editable></exis-code>
 
 ### Regular function calls
 
 *Exis makes distributed apps look like regular function calls*
 
-<exis-code name="Tour Reg/Call Lesson 2 Works"></exis-code>
+<exis-code name="Tour Reg/Call Lesson 2 Works" editable></exis-code>
 
 ### Built in Publish/Subscribe messaging
 
 *Exis enables real-time style Pub/Subs as a default messaging pattern.*
 
-<exis-code name="Tour Pub/Sub Lesson 2 Works"></exis-code>
+<exis-code name="Tour Pub/Sub Lesson 2 Works" editable></exis-code>
 
 ### Argument guarantees
 
