@@ -15,7 +15,7 @@ Together these standardize networking best practices and simplify the design and
 
 Modern apps are highly interwoven - between not only backend components like databases and authentication, but even between      users of the app.
 
-Any app written today contains two parts: the code you are interested and excited to write, and the boilerplate code that is required to make your app function. The interesting thing is that often times this boilerplate code can be more difficult and error-prone then your actual app itself! We take difficult, error-prone, and boilerplate code and   completely strip it away leaving only the application logic behind. This is possible by combining the best aspects of modern communication frameworks into one all-powerful solution that we call Exis.
+Any app written today contains two parts: the code you are interested and excited to write, and the boilerplate code that is required to make your app function. The interesting thing is that often times this boilerplate code can be more difficult and error-prone than your actual app itself! We take difficult, error-prone, and boilerplate code and   completely strip it away leaving only the application logic behind. This is possible by combining the best aspects of modern communication frameworks into one all-powerful solution that we call Exis.
 
 
 
@@ -49,7 +49,7 @@ A brief description of all the components that make up the Exis platform.
 
 ## Fabric
 
-A collection of [nodes][node] and [appliances][appliances] that act as a software platform for developing applciations. All programs connected to the fabric are called [domains][domains], which exchange messages between them through a protocol called [riffle][riffle]. Programs are said to *connect* to the fabric. 
+A collection of [nodes][node] and [appliances][appliances] that act as a software platform for developing applications. All programs connected to the fabric are called [domains][domains], which exchange messages between them through a protocol called [riffle][riffle]. Programs are said to *connect* to the fabric.
 
 Plainly speaking, the fabric gets messages from one place to another.
 
@@ -72,7 +72,7 @@ Here are some quick and simple rules for dealing with domains:
 * The top level domain is the owner of the fabric
 * A domain owns and generally has control over everything in their subdomains
 
-The top level domain is special. Since the node software is open source, anyone can run their own fabric. The top level domain is the name of the owner of the fabric, usually shortened to two letters. We, as Exis, run a primary version of the fabric. The top level domain is:
+The top level domain is special. Since the node software is open source, anyone can run their own fabric. The top level domain is the name of the owner of the fabric, usually shortened to two letters. We, as Exis, run a primary version of the fabric where the top-level domain is ```xs```.
 
 
 ### Actions
@@ -138,7 +138,7 @@ In order to keep all of our terms consistent and understandable we call any soft
 
 ### Register/Call
 
-[Register/Call](/pages/riffle/RegisterCall.md) is the first messaging pattern. Its the most similar to locally running code. The agent that hosts the function, or has it implemented in their program, can *register* it and expose it to other agents on the fabric. Those other agents then *call* the function, valid parameters and receiving the return value of the function.
+[Register/Call](/pages/riffle/RegisterCall.md) is the first messaging pattern. Its the most similar to locally running code. The agent that hosts the function, or has it implemented in their program, can *register* it and expose it to other agents on the fabric. Those other agents then *call* the function and receive the return value of the function.
 
 ```
 # App 1:
@@ -161,13 +161,13 @@ int x = call("add", 4, 5)
 print(x) # Writes out 9
 ```
 
-In the example above App 1 and App 2 can be anywhere in the world. Although the sample is written in pseudocode, as long as both apps use Riffle the languages they actually can be anything!
+In the example above App 1 and App 2 can be anywhere in the world. Although the sample is written in pseudocode, as long as both apps use Riffle, the languages can actually be anything!
 
 Only one program can register a function at a time. Anyone who's allowed to call the function may do so, but we'll get into exactly what *allowed* means in the security section.
 
 ### Publish/Subscribe
 
-Publish/Subscribe, or [*PubSub*](/pages/riffle/PubSub), is the second messaging pattern currently built into riffle. Like register/call, it allows a program to pass values into a method in some other piece of code somewhere in the world. Its not, however, limited to one caller and one callee. Any number of agents can *subscribe* to a topic with a string and receive all of the *publishes* produced by other agents.
+Publish/Subscribe, or [*PubSub*](/pages/riffle/PubSub), is the second messaging pattern currently built into riffle. Like register/call, it allows a program to pass values into a method in some other piece of code somewhere in the world. It's not, however, limited to one caller and one callee. Any number of agents can *subscribe* to a topic with a string and receive all of the *publishes* produced by other agents.
 
 ```
 # App 1, 2, and 3
@@ -198,7 +198,7 @@ publish("echo", "Hello!")
 
 Cumin is a communication pattern and library that provides type safety from any data passed into riffle domains. It guarantees that functions are only called with the right number and type of arguments, even if those arguments are objects. 
 
-To be fair to all the smart developers who came before us and tried to solve this problem, the messaging patterns are not novel, or new. Many other software libraries and platforms the focus on *RPC*, or remote procedure call, implement similar patterns. One of the interesting things riffle does give you is *type safety.* This means the following conditions hold for all messages passed over the fabric: 
+To be fair to all the smart developers who came before us and tried to solve this problem, the messaging patterns are not novel, or new. Many other software libraries and platforms that focus on *RPC*, or remote procedure call, implement similar patterns. One of the interesting things riffle does give you is *type safety.* This means the following conditions hold for all messages passed over the fabric:
 
 1. The number of arguments passed at the sender matches the number of arguments expected at the receiver. 
 2. Argument types are the same on both ends
@@ -247,7 +247,7 @@ One of the key tenants of Exis is its decentralized nature. While many existing 
 
 Unlike the internet, access to the Fabric is controlled. This enables developers to know they can only talk to things that have been authenticated to the network, thus simplifying their verification requirements. A secondary aspect is the idea that any agent communicating on the fabric has an associated identification, making it easier to target endpoints while writing apps (ie. every time you log onto the internet your IP address can change, but every time you access the fabric your ID will always be `xs.joebob`).
 
-[Domains][domains] all have to be authenticated by an application before they can use the fabric. They exchanve credentials, which can be usernames, passwords, or any other identifying information, with an [**Auth**][auth] appliance. Out of the box, *Auth* appliances handle the base cases for user authentication. They can also be customized by the developer to handle any odd cases. 
+[Domains][domains] all have to be authenticated by an application before they can use the fabric. They exchange credentials, which can be usernames, passwords, or any other identifying information, with an [**Auth**][auth] appliance. Out of the box, *Auth* appliances handle the base cases for user authentication. They can also be customized by the developer to handle any odd cases.
 
 ### Permissions
 
