@@ -13,9 +13,10 @@ endpoints which they control.
 Enable development mode for a domain so that permissions are ignored
 for messages within the domain.
 
-For example, if dev mode is enabled for xs.user.app, then xs.user.alice
-can call, publish, subscribe, or register xs.user.bob/ping without
-having been explicitly granted permission to that endpoint.
+For example, if dev mode is enabled for xs.user.app, then
+xs.user.app.alice can call, publish, subscribe, or register
+xs.user.app.bob/ping without having been explicitly granted permission
+to that endpoint.
 
 #### Parameters:
  - domain (string) -- domain under which all domains can call each other without needing explicit permissions
