@@ -240,7 +240,9 @@ Now when a user posts a status update anyone that is logged in and following the
 
 Let's start by looking at `www/js/services.js` **line: 8**
 ```
-  $riffle.subscribe("statusUpdate", update);
+  $rootScope.$on('$riffle.open', function(){
+    $riffle.subscribe("statusUpdate", update);
+  });
 
   function update(email){
     var following = $riffle.User.privateStorage.following || [];
@@ -249,7 +251,7 @@ Let's start by looking at `www/js/services.js` **line: 8**
     }
   }
 ```
-Here we can see our post service is simply subscribing to the `statusUpdate` channel on the top level domain of the app by using the `$riffle.subscribe()` function and passing in a handler.
+Here we can see our post service is subscribing to the `statusUpdate` channel whenever it receives an login broadcast event by using the `$riffle.subscribe()` function and passing in a handler.
 Whenever someone publishes to this channel the `update()` handler will be called which will automatically reload the status data if the email being passed is one the user is following.
 
 Now Let's see where the publishing happens by looking at `www/js/controllers` **line: 52**.
