@@ -24,6 +24,7 @@
     * [HelloSwift](/pages/tutorials/swift/HelloSwift.md)
 * [Ionic](/pages/tutorials/ionic/HelloIonic.md)
     * [HelloIonic](/pages/tutorials/ionic/HelloIonic.md)
+    * [UserStorage](/pages/tutorials/ionic/UserStorage.md)
 <!--* [Cards Against Humanity](/pages/samples/SwiftCardsTutorial.md)-->
 
 
