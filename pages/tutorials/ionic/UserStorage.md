@@ -19,6 +19,7 @@ This appliance controls who is allowed to communicate with your backend.
 Clone the Ionic App
 ```
 git clone https://github.com/exis-io/Ionic-UserStorageDemo.git
+bower install
 cd Ionic-UserStorageDemo
 ```
 ###Step 5
@@ -88,7 +89,7 @@ Let's start by looking at the apps Login Controller at `www/js/controllers.js` l
   function loggedIn(){
     $scope.user = {};
     $state.go('tab.feed');
-    $rootScope.me = $riffle.User;
+    $rootScope.me = $riffle.user;
     $rootScope.postService = Posts;
     Posts.load();
   }
@@ -129,20 +130,20 @@ login if registration was successful. Since Ionic uses AngularJS for 2-way data 
 ```
 $riffle.login()
 ```
-attempts to login and connect a user to Exis and loads any user data into the `$riffle.User` object if successful. 
-Read about the `$riffle.User` [here](/pages/tutorials/ionic/UserStorage.md#user-object-and-user-storage). 
+attempts to login and connect a user to Exis and loads any user data into the `$riffle.user` object if successful. 
+Read about the `$riffle.user` [here](/pages/tutorials/ionic/UserStorage.md#user-object-and-user-storage). 
 ```
 $riffle.login()
 ```
-returns a promise which on success is resolved with the `$riffle.User` object and rejected with an error string on failure. 
+returns a promise which on success is resolved with the `$riffle.user` object and rejected with an error string on failure. 
 In our app on successful login we call the **loggedIn** function and on error we again alert the user.
 In order to logout and disconnect the users session we can call:
 ```
-$riffle.User.leave()
+$riffle.user.leave()
 ```
 
 __NOTE__: On a successful login a `$riffle.open` message will also be broadcast throughout your entire app so that any services or controllers that might be listening can be notified
-of the login event. Similarly when the session is ended by calling `$riffle.User.leave()` a `$riffle.leave` message is broadcast. **See Example Below**
+of the login event. Similarly when the session is ended by calling `$riffle.user.leave()` a `$riffle.leave` message is broadcast. **See Example Below**
 ```
 $scope.$on('$riffle.open', function() {
     //We are now logged in so we can do something here...
@@ -153,46 +154,46 @@ $scope.$on('$riffle.leave', function() {
 ```
 
 ##User Object and User Storage
-Once a user has successfully logged in and established a connection with Exis the `$riffle.User` object will be created and available to be injected throughout the app.
-To make sure you are connected you can check `$riffle.User.connected` which will be either `true` or `false` depending on wheter the user is currently connected to Exis.
+Once a user has successfully logged in and established a connection with Exis the `$riffle.user` object will be created and available to be injected throughout the app.
+To make sure you are connected you can check `$riffle.user.connected` which will be either `true` or `false` depending on wheter the user is currently connected to Exis.
 
-If we are connected then the `$riffle.User` will have several fields and methods already available for use.
+If we are connected then the `$riffle.user` will have several fields and methods already available for use.
 
 ````
-$riffle.User.email    //The email address the user registered with.
+$riffle.user.email    //The email address the user registered with.
 
-$riffle.User.name     //The name the user registered with.
+$riffle.user.name     //The name the user registered with.
 
-$riffle.User.gravatar //An md5 hash of the users email provided for easy use if they have a gravatar account.
+$riffle.user.gravatar //An md5 hash of the users email provided for easy use if they have a gravatar account.
 
-$riffle.User.publicStorage //Set this to an object of your choosing to save any of the users data you'd like to make public to all users of your app
+$riffle.user.publicStorage //Set this to an object of your choosing to save any of the users data you'd like to make public to all users of your app
 
-$riffle.User.privateStorage //The same as publicStorage but this object will only be visible to the user
+$riffle.user.privateStorage //The same as publicStorage but this object will only be visible to the user
 
-$riffle.User.save() //This function saves the user's public and private storage objects to the cloud Note: This will not update the users email, name, or gravatar
+$riffle.user.save() //This function saves the user's public and private storage objects to the cloud Note: This will not update the users email, name, or gravatar
 
-$riffle.User.load() //Reloads the user's data saved in the cloud
+$riffle.user.load() //Reloads the user's data saved in the cloud
 
-$riffle.User.getPublicData() //This function returns a list of every user's public storage object if they have one saved.
+$riffle.user.getPublicData() //This function returns a list of every user's public storage object if they have one saved.
 ```
 
 Let's look in the code to see how these are used in this app. First lets look at the how a user writes a post. Let's look at the Posts service in `www/js/services.js`.
 This service was saved to `$rootScope.postService` on login so that it is automatically available in the scope of all our controllers. It handles the main logic of posting, following, and
-saving data in this application. Let's look at the post function at **line: 39** to see how we can save a post that all users can see publicly.
+saving data in this application. Let's look at the post function at **line: 51** to see how we can save a post that all users can see publicly.
 ```
   api.post = function(status){
-    $riffle.User.publicStorage.email = $riffle.User.email;
-    $riffle.User.publicStorage.name = $riffle.User.name;
-    $riffle.User.publicStorage.status = status.body;
-    $riffle.User.publicStorage.statusPhotoUrl = status.photoUrl || null;
-    return $riffle.User.save();
+    $riffle.user.publicStorage.email = $riffle.user.email;
+    $riffle.user.publicStorage.name = $riffle.user.name;
+    $riffle.user.publicStorage.status = status.body;
+    $riffle.user.publicStorage.statusPhotoUrl = status.photoUrl || null;
+    return $riffle.user.save();
   };
 ```
-It's that simple! Set the keys to be stored, in this case `email`, `name`, `status`, `statusPhotoUrl`, and then simply call `$riffle.User.save()` and the object
+It's that simple! Set the keys to be stored, in this case `email`, `name`, `status`, `statusPhotoUrl`, and then simply call `$riffle.user.save()` and the object
 is saved to the cloud and is now publicly available for other users to retrieve. Anytime save is called whatever is currently in the user's cloud public and private storage
-will be overwritten with whatever is currently in the `$riffle.User` public and private storage. To see how to retrieve user's publicly stored objects look at **line: 11**.
+will be overwritten with whatever is currently in the `$riffle.user` public and private storage. To see how to retrieve user's publicly stored objects look at **line: 24**.
 ```
-    $riffle.User.getPublicData().then(loadData);
+    $riffle.user.getPublicData().then(loadData);
 
     function loadData(posts){
         //The posts into the users feed here based on who they're following
@@ -204,12 +205,12 @@ case the `loadData()` function recieves the posts and then filters them into the
 the owner of the post or not.
 
 Not everything a user saves should be publicly available to all users of an app of course. This is what private storage is used for. In this app who a user chooses to follow is saved 
-in their private storage in the cloud and is only visible to them. Let's look at **line: 33**.
+in their private storage in the cloud and is only visible to them. Let's look at **line: 45**.
 ```
   api.follow = function(email){
-    $riffle.User.privateStorage.following = $riffle.User.privateStorage.following || [];
-    $riffle.User.privateStorage.following.push(email);
-    $riffle.User.save().then(api.load);
+    $riffle.user.privateStorage.following = $riffle.user.privateStorage.following || [];
+    $riffle.user.privateStorage.following.push(email);
+    $riffle.user.save().then(api.load);
   };
 ```
 Here the user's `privateStorage.following` key is loaded or initialized to an empty list if it is `undefined`. We then add the email of the person
@@ -225,13 +226,8 @@ Read about that [here](/pages/tutorials/ionic/UserStorage.md#public-data-queries
 __NOTE__: The below topics add some extra functionality to this app and demonstrate a few of the features that make Exis so powerful.
 
 ###Live Publishing
-**To see a version of this app with live publishes of status updates follow the steps above and checkout the live-publishing branch**
-```
-git checkout live-publishing
-ionic serve
-```
 
-Now you'll need to add permission for users of your app to publish and subscribe to the `statusUpdate` endpoint. Go to [permissions management](https://my.exis.io/#/permissions/userstorage)
+For live publishing to work you'll need to add permission for users of your app to publish and subscribe to the `statusUpdate` endpoint. Go to [permissions management](https://my.exis.io/#/permissions/userstorage)
 in you developer dashboard on [my.exis.io](https://my.exis.io/#/permissions/userstorage) and add a new endpoint `/statusUpdate` to the user role and give users publish and subscribe privilege. 
 ![Perms](/img/tutorials/ionic/userstorage-publish-perms.png)
 
@@ -245,7 +241,7 @@ Let's start by looking at `www/js/services.js` **line: 8**
   });
 
   function update(email){
-    var following = $riffle.User.privateStorage.following || [];
+    var following = $riffle.user.privateStorage.following || [];
     if(following.includes(email)){
       api.load();
     }
@@ -262,7 +258,7 @@ Now Let's see where the publishing happens by looking at `www/js/controllers` **
   };
 
   function publishUpdate(){
-    $riffle.publish('statusUpdate', $riffle.User.email);
+    $riffle.publish('statusUpdate', $riffle.user.email);
   }
 ```
 Here we can see that once the user posts their new status successfully the `publishUpdate` function is called which simply uses `$riffle.publish()` to publish the current users email to
@@ -278,10 +274,10 @@ ionic serve
 ```
 For all intents and purposes this version of the app functions exactly the same as the original version but it simply demonstrates that you can use query objects using the MongoDB query operators in order
 to filter what information you would like returned from the `$riffle.getPublicData()` method. You can read more about MongoDB queries [here](https://docs.mongodb.org/manual/tutorial/query-documents/) if you're interested. A basic example can be see in
-`www/js/services.js` **line: 19**
+`www/js/services.js` **line: 29**
 ```
 var feedQuery = {email: { $in: following } };
-$riffle.User.getPublicData(feedQuery).then(loadFeed);
+$riffle.user.getPublicData(feedQuery).then(loadFeed);
 ```
 The `feedQuery` is a MongoDB query which indicates that only objects that have an email that match an item in the `following` array should be returned. 
 This allows us to return only the posts that the current user is following and saves the developer from having to write a function to filter out the other posts in the application itself.
