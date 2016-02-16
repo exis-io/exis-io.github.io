@@ -19,8 +19,8 @@ This appliance controls who is allowed to communicate with your backend.
 Clone the Ionic App
 ```
 git clone https://github.com/exis-io/Ionic-UserStorageDemo.git
-bower install
 cd Ionic-UserStorageDemo
+bower install
 ```
 ###Step 5
 Link your Ionic App to the Exis App you just created
