@@ -8,6 +8,21 @@ action.
 Users may make calls to Bouncer to grant and revoke permissions for
 endpoints which they control.
 
+### addDevModeDomain(domain)
+
+Enable development mode for a domain so that permissions are ignored
+for messages within the domain.
+
+For example, if dev mode is enabled for xs.user.app, then
+xs.user.app.alice can call, publish, subscribe, or register
+xs.user.app.bob/ping without having been explicitly granted permission
+to that endpoint.
+
+#### Parameters:
+ - domain (string) -- domain under which all domains can call each other without needing explicit permissions
+
+**Return type:** boolean
+
 ### addDynamicRole(role, appname, perms=None)
 
 Add a dynamic role.
@@ -120,6 +135,15 @@ Returns: True if role was found and destroyed false otherwise
 
 **Return type:** boolean
 
+### inDevModeStatus(domain)
+
+Check if a specific domain is currently in dev mode.
+
+#### Parameters:
+ - domain (string) -- domain which we are checking if is in dev mode
+
+**Return type:** boolean
+
 ### listMembers(role, appname)
 
 List the members of a particular static role.
@@ -173,6 +197,15 @@ Returns: True if all data found was deleted false otherwise
 
 #### Parameters:
  - appname (string) -- the domain of the app to delete
+
+**Return type:** boolean
+
+### removeDevModeDomain(domain)
+
+Remove a domain from dev mode so we have to require permissions.
+
+#### Parameters:
+ - domain (string) -- domain under which all domains could call each other without needing explicit permissions
 
 **Return type:** boolean
 

@@ -41,6 +41,50 @@ contents should be kept secure.
 
 **Return type:** string
 
+### get_public_data(query)
+
+Get public data associated with user(s) in storage.
+
+If query is missing, None, or an empty dictionary, then all users'
+public data will be retrieved.
+
+#### Parameters:
+ - query (dictionary) -- filter for entries to return using MongoDB syntax
+
+**Return type:** list
+
+### get_user_data()
+
+Get public and private data stored for the logged in user.
+
+Returns a dictionary containing at least two entries ("public" and
+"private") which are dictionaries.
+
+**Return type:** dictionary
+
+### github_login(access_token, scope)
+
+Return either a session token or a json which specifies that a domain name is still needed if
+registration is not yet complete.
+
+#### Parameters:
+ - access_token (string) -- the github access_token
+ - scope (string) -- the scope for which the token is valid
+
+**Return type:** dict
+
+### github_verify(access_token, domain)
+
+Tries to validate domain/associate with a github_token.
+Return either a login token or raise an error if name is taken or
+account already verified or doesn't exist.
+
+#### Parameters:
+ - access_token
+ - domain (string) -- the domain to be associated with the account
+
+**Return type:** dict
+
 ### list_custom_tokens(appdomain)
 
 Return a list of the existing custom tokens under the app domain.  The
@@ -51,4 +95,12 @@ with get_custom_token.
  - appdomain (string) -- app domain under which the tokens were made
 
 **Return type:** dictionary
+
+### save_user_data(public_data, private_data)
+
+Save data associated with the logged in user in storage.
+
+#### Parameters:
+ - public_data (dictionary) -- public data visible to all app users
+ - private_data (dictionary) -- private data visible only to the user
 

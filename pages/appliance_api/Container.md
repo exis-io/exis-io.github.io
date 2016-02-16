@@ -10,7 +10,7 @@ containers.  The container can run code in any language in interpreted
 
 Currently, we support building an image from a public git repository.
 Pass the URL to the repository (http or https).  The repository must
-container a run file named "Run.yaml" that specifies how Container
+contain a run file named "Run.yaml" that specifies how Container
 should run the code.
 
 Example Run.yaml for a Python project:
@@ -79,6 +79,23 @@ removed before calling removeImage.
 
 #### Parameters:
  - imageName (string) -- name of the image to remove
+
+### updateImage(name, url)
+
+Update a container image. An image built from a public git repository
+should already exist. This command finds the existing image, extracts
+the git repo, and attempts to repull/rebuild the image.
+
+If updateContainers is set, all existing containers using the image name
+as a base will be restarted using new image.
+
+updateImage supports returning progressive results.
+
+#### Parameters:
+ - name (string) -- name of the image to update
+ - url
+
+**Return type:** list of strings
 
 
 * * *
