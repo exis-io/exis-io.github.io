@@ -182,11 +182,12 @@ This service was saved to `$rootScope.postService` on login so that it is automa
 saving data in this application. Let's look at the post function at **line: 51** to see how we can save a post that all users can see publicly.
 ```
   api.post = function(status){
-    $riffle.user.publicStorage.email = $riffle.user.email;
-    $riffle.user.publicStorage.name = $riffle.user.name;
-    $riffle.user.publicStorage.status = status.body;
-    $riffle.user.publicStorage.statusPhotoUrl = status.photoUrl || null;
-    return $riffle.user.save();
+    $riffle.User.publicStorage.email = $riffle.User.email;
+    $riffle.User.publicStorage.name = $riffle.User.name;
+    $riffle.User.publicStorage.status = status.body;
+    $riffle.User.publicStorage.statusPhotoUrl = status.photoUrl || null;
+    $riffle.User.publicStorage.timeStamp = new Date().toLocaleTimeString();
+    return $riffle.User.save();
   };
 ```
 It's that simple! Set the keys to be stored, in this case `email`, `name`, `status`, `statusPhotoUrl`, and then simply call `$riffle.user.save()` and the object
