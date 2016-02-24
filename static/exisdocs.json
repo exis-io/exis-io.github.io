@@ -3,23 +3,23 @@
         "js": {
             "publish": {
                 "code": [
-                    "    backend.Publish(\"basicSub\", \"Hello\");"
+                    "    backend.publish(\"basicSub\", \"Hello\");"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/sub-client.js",
+                "file": "/home/lance/Exis/js/example/sub-client.js",
                 "lineEnd": 14,
                 "lineStart": 13
             },
             "subscribe": {
                 "code": [
-                    "    this.Subscribe(\"basicSub\", riffle.want(function(s) {",
+                    "    this.subscribe(\"basicSub\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hello\"",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/sub-backend.js",
+                "file": "/home/lance/Exis/js/example/sub-backend.js",
                 "lineEnd": 26,
                 "lineStart": 23
             }
@@ -31,7 +31,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/sub-client.py",
+                "file": "/home/lance/Exis/python/example/sub-client.py",
                 "lineEnd": 14,
                 "lineStart": 13
             },
@@ -45,7 +45,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/sub-backend.py",
+                "file": "/home/lance/Exis/python/example/sub-backend.py",
                 "lineEnd": 18,
                 "lineStart": 13
             }
@@ -57,7 +57,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/sender.swift",
+                "file": "/home/lance/Exis/swift/example/sender.swift",
                 "lineEnd": 49,
                 "lineStart": 48
             },
@@ -73,7 +73,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/receiver.swift",
+                "file": "/home/lance/Exis/swift/example/receiver.swift",
                 "lineEnd": 162,
                 "lineStart": 155
             }
@@ -83,23 +83,23 @@
         "js": {
             "publish": {
                 "code": [
-                    "    backend.Publish(\"basicSubTwo\", \"Hello\", 3);"
+                    "    backend.publish(\"basicSubTwo\", \"Hello\", 3);"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/sub-client.js",
+                "file": "/home/lance/Exis/js/example/sub-client.js",
                 "lineEnd": 18,
                 "lineStart": 17
             },
             "subscribe": {
                 "code": [
-                    "    this.Subscribe(\"basicSubTwo\", riffle.want(function(s, i) {",
+                    "    this.subscribe(\"basicSubTwo\", riffle.want(function(s, i) {",
                     "        console.log(s, i); // Expects a String, like \"Hello 3\"",
                     "    }, String, Number));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello 3\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/sub-backend.js",
+                "file": "/home/lance/Exis/js/example/sub-backend.js",
                 "lineEnd": 32,
                 "lineStart": 29
             }
@@ -113,11 +113,11 @@
                     "            name = \"This guy\"",
                     "",
                     "        s = Stuff()",
-                    "        self.publish(\"objectSub\", s)"
+                    "        backend.publish(\"objectSub\", s)"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/sub-client.py",
+                "file": "/home/lance/Exis/python/example/sub-client.py",
                 "lineEnd": 22,
                 "lineStart": 17
             },
@@ -134,7 +134,7 @@
                 ],
                 "expectType": "object",
                 "expectVal": "Stuff",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/sub-backend.py",
+                "file": "/home/lance/Exis/python/example/sub-backend.py",
                 "lineEnd": 29,
                 "lineStart": 21
             }
@@ -147,10 +147,10 @@
                     "",
                     "var riffle = require('jsriffle');",
                     "",
-                    "riffle.SetFabricSandbox();",
+                    "riffle.setFabricSandbox();",
                     "",
                     "var app = riffle.Domain(\"xs.demo.test\");",
-                    "var backend = app.Subdomain(\"backend\");",
+                    "var backend = app.subdomain(\"backend\");",
                     "",
                     "backend.onJoin = function() {",
                     "",
@@ -158,11 +158,11 @@
                     "",
                     "};",
                     "",
-                    "backend.Join()"
+                    "backend.join()"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/repl-template.js",
+                "file": "/home/lance/Exis/js/example/repl-template.js",
                 "lineEnd": 18,
                 "lineStart": 3
             }
@@ -188,7 +188,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/repl-template.py",
+                "file": "/home/lance/Exis/python/example/repl-template.py",
                 "lineEnd": 18,
                 "lineStart": 3
             }
@@ -218,7 +218,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/repl-template.swift",
+                "file": "/home/lance/Exis/swift/example/repl-template.swift",
                 "lineEnd": 23,
                 "lineStart": 4
             }
@@ -228,13 +228,13 @@
         "swift": {
             "call": {
                 "code": [
-                    "        call(\"basicReg\", \"Hello\").then { (a: String) in",
+                    "        backend.call(\"basicReg\", \"Hello\").then { (a: String) in",
                     "            print(a) // Expects a String, like \"Hello World\"",
                     "        }"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/sender.swift",
+                "file": "/home/lance/Exis/swift/example/sender.swift",
                 "lineEnd": 57,
                 "lineStart": 54
             },
@@ -247,7 +247,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/receiver.swift",
+                "file": "/home/lance/Exis/swift/example/receiver.swift",
                 "lineEnd": 171,
                 "lineStart": 167
             }
@@ -257,29 +257,29 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"regIntStr\", 42).then(riffle.wait(function (s) {",
+                    "    backend.call(\"regIntStr\", 42).want(String).then(function (s) {",
                     "        console.log(s); // Expects a String, like \"Hello World\"",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err);",
                     "    });"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/reg-client.js",
+                "file": "/home/lance/Exis/js/example/reg-client.js",
                 "lineEnd": 37,
                 "lineStart": 31
             },
             "register": {
                 "code": [
-                    "    this.Register(\"regIntStr\", riffle.want(function(i) {",
+                    "    this.register(\"regIntStr\", riffle.want(function(i) {",
                     "        console.log(i); // Expects a Number, like 42",
                     "        return \"Hello World\";",
                     "    }, Number));"
                 ],
                 "expectType": "Number",
                 "expectVal": "42",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/reg-backend.js",
+                "file": "/home/lance/Exis/js/example/reg-backend.js",
                 "lineEnd": 30,
                 "lineStart": 26
             }
@@ -292,7 +292,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/reg-client.py",
+                "file": "/home/lance/Exis/python/example/reg-client.py",
                 "lineEnd": 26,
                 "lineStart": 24
             },
@@ -306,7 +306,7 @@
                 ],
                 "expectType": "int",
                 "expectVal": "42",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/reg-backend.py",
+                "file": "/home/lance/Exis/python/example/reg-backend.py",
                 "lineEnd": 34,
                 "lineStart": 29
             }
@@ -320,7 +320,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/reg-client.swift",
                 "lineEnd": 22,
                 "lineStart": 19
             },
@@ -333,7 +333,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"42\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/reg-backend.swift",
                 "lineEnd": 25,
                 "lineStart": 21
             }
@@ -343,29 +343,29 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"regStrInt\", \"Hello\").then(riffle.wait(function (i) {",
+                    "    backend.call(\"regStrInt\", \"Hello\").want(Number).then(function (i) {",
                     "        console.log(i); // Expects an int, like 42",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err);",
                     "    });"
                 ],
                 "expectType": "int",
                 "expectVal": "42",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/reg-client.js",
+                "file": "/home/lance/Exis/js/example/reg-client.js",
                 "lineEnd": 28,
                 "lineStart": 22
             },
             "register": {
                 "code": [
-                    "    this.Register(\"regStrInt\", riffle.want(function(s) {",
+                    "    this.register(\"regStrInt\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hello\"",
                     "        return 42;",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/reg-backend.js",
+                "file": "/home/lance/Exis/js/example/reg-backend.js",
                 "lineEnd": 23,
                 "lineStart": 19
             }
@@ -378,7 +378,7 @@
                 ],
                 "expectType": "int",
                 "expectVal": "42",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/reg-client.py",
+                "file": "/home/lance/Exis/python/example/reg-client.py",
                 "lineEnd": 21,
                 "lineStart": 19
             },
@@ -392,7 +392,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/reg-backend.py",
+                "file": "/home/lance/Exis/python/example/reg-backend.py",
                 "lineEnd": 26,
                 "lineStart": 21
             }
@@ -406,7 +406,7 @@
                 ],
                 "expectType": "Int",
                 "expectVal": "42",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/reg-client.swift",
                 "lineEnd": 16,
                 "lineStart": 13
             },
@@ -419,7 +419,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/reg-backend.swift",
                 "lineEnd": 18,
                 "lineStart": 14
             }
@@ -429,29 +429,29 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"regStrStr\", \"Hello\").then(riffle.wait(function (s) {",
+                    "    backend.call(\"regStrStr\", \"Hello\").want(String).then(function (s) {",
                     "        console.log(s); // Expects a String, like \"Hello World\"",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err);",
                     "    });"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/reg-client.js",
+                "file": "/home/lance/Exis/js/example/reg-client.js",
                 "lineEnd": 19,
                 "lineStart": 13
             },
             "register": {
                 "code": [
-                    "    this.Register(\"regStrStr\", riffle.want(function(s) {",
+                    "    this.register(\"regStrStr\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hello\"",
                     "        return \"Hello World\";",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/reg-backend.js",
+                "file": "/home/lance/Exis/js/example/reg-backend.js",
                 "lineEnd": 16,
                 "lineStart": 12
             }
@@ -464,7 +464,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/reg-client.py",
+                "file": "/home/lance/Exis/python/example/reg-client.py",
                 "lineEnd": 16,
                 "lineStart": 14
             },
@@ -478,7 +478,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/reg-backend.py",
+                "file": "/home/lance/Exis/python/example/reg-backend.py",
                 "lineEnd": 18,
                 "lineStart": 13
             }
@@ -492,7 +492,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/reg-client.swift",
                 "lineEnd": 10,
                 "lineStart": 7
             },
@@ -505,7 +505,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/reg-backend.swift",
                 "lineEnd": 11,
                 "lineStart": 7
             }
@@ -523,7 +523,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Call then\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/stub.js",
+                "file": "/home/lance/Exis/js/example/stub.js",
                 "lineEnd": 14,
                 "lineStart": 9
             },
@@ -533,55 +533,197 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Registering\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/stub.js",
+                "file": "/home/lance/Exis/js/example/stub.js",
                 "lineEnd": 5,
                 "lineStart": 4
             }
         }
     },
-    "Test Reg/Call Big Ints": {
-        "python": {
+    "Test Backend leave": {
+        "js": {
             "call": {
                 "code": [
-                    "        i = backend.call(\"sendBigInt\", 9223372036854775807).wait(int)",
-                    "        print(\"{:d}\".format(int(i))) # Expects a str, like \"9223372036854775807\""
+                    "    backend.call(\"testBackendLeave\", \"Leave\").want(String).then(function (s) {",
+                    "        console.log(\"GOT: \", s);",
+                    "    },",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
                 ],
-                "expectType": "str",
-                "expectVal": "\"9223372036854775807\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/test-numeric-client.py",
-                "lineEnd": 16,
-                "lineStart": 14
+                "expectType": null,
+                "expectVal": null,
+                "file": "/home/lance/Exis/js/example/test-client.js",
+                "lineEnd": 32,
+                "lineStart": 26
             },
             "register": {
                 "code": [
-                    "        @want(int)",
-                    "        def sendBigInt(i):",
-                    "            print(\"{:d}\".format(int(i))) # Expects a str, like \"9223372036854775807\"",
-                    "            return i",
-                    "        self.register(\"sendBigInt\", sendBigInt)"
+                    "    var self = this;",
+                    "    this.onLeave = function() {",
+                    "        console.log(\"On Leave Triggered\"); // Expects a String, like \"On Leave Triggered\"",
+                    "    };",
+                    "    this.register(\"testBackendLeave\", riffle.want(function(s) {",
+                    "        self.leave();",
+                    "        return \"Leaving\";",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"On Leave Triggered\"",
+                "file": "/home/lance/Exis/js/example/test-backend.js",
+                "lineEnd": 28,
+                "lineStart": 20
+            }
+        }
+    },
+    "Test Client leave": {
+        "js": {
+            "call": {
+                "code": [
+                    "    var self = this;",
+                    "    this.onLeave = function() {",
+                    "        console.log(\"On Leave Triggered\"); // Expects a String, like \"On Leave Triggered\"",
+                    "    };",
+                    "    backend.call(\"testClientLeave\", \"Leave\").want(String).then(function (s) {",
+                    "        self.leave();",
+                    "    },",
+                    "    function (err) {",
+                    "        console.log(\"ERROR: \", err);",
+                    "    });"
+                ],
+                "expectType": "String",
+                "expectVal": "\"On Leave Triggered\"",
+                "file": "/home/lance/Exis/js/example/test-client.js",
+                "lineEnd": 23,
+                "lineStart": 13
+            },
+            "register": {
+                "code": [
+                    "    this.register(\"testClientLeave\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Leave\"",
+                    "        return \"Leaving\";",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Leave\"",
+                "file": "/home/lance/Exis/js/example/test-backend.js",
+                "lineEnd": 17,
+                "lineStart": 13
+            }
+        }
+    },
+    "Test Restart after reg": {
+        "js": {
+            "call": {
+                "code": [
+                    "    setTimeout(function (){",
+                    "        backend.call(\"restartAfterR\", \"Restart after reg\").want(String).then(function(s) {",
+                    "            console.log(s); // Expects a String, like \"Restart after reg works\"",
+                    "        });",
+                    "    }, 4000);"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Restart after reg works\"",
+                "file": "/home/lance/Exis/js/example/test-restart-client.js",
+                "lineEnd": 30,
+                "lineStart": 25
+            },
+            "register": {
+                "code": [
+                    "    this.register(\"restartAfterR\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Restart after reg\"",
+                    "        return s + \" works\";",
+                    "    }, String));",
+                    "    setTimeout(function (){",
+                    "        console.log(\"___NODERESTART___\");",
+                    "    }, 1000);"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Restart after reg\"",
+                "file": "/home/lance/Exis/js/example/test-restart-backend.js",
+                "lineEnd": 28,
+                "lineStart": 21
+            }
+        },
+        "python": {
+            "call": {
+                "code": [
+                    "        import time",
+                    "        time.sleep(2.0)",
+                    "        s = backend.call(\"restartAfterR\", \"Restart after reg\").wait(str)",
+                    "        print(s) # Expects a str, like \"Restart after reg works\""
                 ],
                 "expectType": "str",
-                "expectVal": "\"9223372036854775807\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/test-numeric-backend.py",
-                "lineEnd": 19,
-                "lineStart": 14
+                "expectVal": "\"Restart after reg works\"",
+                "file": "/home/lance/Exis/python/example/test-restart-client.py",
+                "lineEnd": 27,
+                "lineStart": 23
+            },
+            "register": {
+                "code": [
+                    "        import time",
+                    "        @want(str)",
+                    "        def restartAfterR(s):",
+                    "            print(s) # Expects a str, like \"Restart after reg\"",
+                    "            return \"{} works\".format(s)",
+                    "        self.register(\"restartAfterR\", restartAfterR)",
+                    "        time.sleep(1.0)",
+                    "        print \"___NODERESTART___\"",
+                    "        time.sleep(2.0)"
+                ],
+                "expectType": "str",
+                "expectVal": "\"Restart after reg\"",
+                "file": "/home/lance/Exis/python/example/test-restart-backend.py",
+                "lineEnd": 31,
+                "lineStart": 22
             }
         }
     },
     "Test Restart before call": {
+        "js": {
+            "call": {
+                "code": [
+                    "    // Trying to restart the node before the call happens, but need to insert",
+                    "    // artificial delay to make this happen!",
+                    "    console.log(\"___NODERESTART___\");",
+                    "    setTimeout(function (){",
+                    "        backend.call(\"restartBeforeC\", \"Restart before call\").want(String).then(function(s) {",
+                    "            console.log(s); // Expects a String, like \"Restart before call works\"",
+                    "        });",
+                    "    }, 6000);"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Restart before call works\"",
+                "file": "/home/lance/Exis/js/example/test-restart-client.js",
+                "lineEnd": 21,
+                "lineStart": 13
+            },
+            "register": {
+                "code": [
+                    "    this.register(\"restartBeforeC\", riffle.want(function(s) {",
+                    "        console.log(s); // Expects a String, like \"Restart before call\"",
+                    "        return s + \" works\";",
+                    "    }, String));"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Restart before call\"",
+                "file": "/home/lance/Exis/js/example/test-restart-backend.js",
+                "lineEnd": 17,
+                "lineStart": 13
+            }
+        },
         "python": {
             "call": {
                 "code": [
                     "        import time",
                     "        # Trying to restart the node before the call happens, but need to insert artificial delay to make this happen!",
                     "        print \"___NODERESTART___\"",
-                    "        time.sleep(0.5)",
+                    "        time.sleep(4.0)",
                     "        s = backend.call(\"restartBeforeC\", \"Restart before call\").wait(str)",
                     "        print(s) # Expects a str, like \"Restart before call works\""
                 ],
                 "expectType": "str",
                 "expectVal": "\"Restart before call works\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/test-restart-client.py",
+                "file": "/home/lance/Exis/python/example/test-restart-client.py",
                 "lineEnd": 20,
                 "lineStart": 14
             },
@@ -595,7 +737,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Restart before call\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/test-restart-backend.py",
+                "file": "/home/lance/Exis/python/example/test-restart-backend.py",
                 "lineEnd": 19,
                 "lineStart": 14
             }
@@ -609,7 +751,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-basics.js",
+                "file": "/home/lance/Exis/js/example/tour-basics.js",
                 "lineEnd": 14,
                 "lineStart": 13
             }
@@ -621,7 +763,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-basics-client.py",
+                "file": "/home/lance/Exis/python/example/tour-basics-client.py",
                 "lineEnd": 16,
                 "lineStart": 15
             }
@@ -633,7 +775,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-basics.swift",
+                "file": "/home/lance/Exis/swift/example/tour-basics.swift",
                 "lineEnd": 9,
                 "lineStart": 8
             }
@@ -644,24 +786,24 @@
             "publish": {
                 "code": [
                     "    for(var i = 0; i < 10; i++) {",
-                    "        backend.Publish(\"async\", i);",
+                    "        backend.publish(\"async\", i);",
                     "    }"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-basics.js",
+                "file": "/home/lance/Exis/js/example/tour-basics.js",
                 "lineEnd": 26,
                 "lineStart": 23
             },
             "subscribe": {
                 "code": [
-                    "    this.Subscribe(\"async\", riffle.want(function(i) {",
+                    "    this.subscribe(\"async\", riffle.want(function(i) {",
                     "        console.log(i);",
                     "    }, Number));"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-basics.js",
+                "file": "/home/lance/Exis/js/example/tour-basics.js",
                 "lineEnd": 20,
                 "lineStart": 17
             }
@@ -674,7 +816,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-basics-client.py",
+                "file": "/home/lance/Exis/python/example/tour-basics-client.py",
                 "lineEnd": 21,
                 "lineStart": 19
             },
@@ -687,7 +829,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-basics-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-basics-backend.py",
                 "lineEnd": 18,
                 "lineStart": 14
             }
@@ -701,7 +843,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-basics.swift",
+                "file": "/home/lance/Exis/swift/example/tour-basics.swift",
                 "lineEnd": 21,
                 "lineStart": 18
             },
@@ -713,7 +855,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-basics.swift",
+                "file": "/home/lance/Exis/swift/example/tour-basics.swift",
                 "lineEnd": 15,
                 "lineStart": 12
             }
@@ -723,27 +865,27 @@
         "js": {
             "publish": {
                 "code": [
-                    "    backend.Publish(\"myFirstSub\", \"Hello\");"
+                    "    backend.publish(\"myFirstSub\", \"Hello\");"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-sub-client.js",
+                "file": "/home/lance/Exis/js/example/tour-sub-client.js",
                 "lineEnd": 14,
                 "lineStart": 13
             },
             "subscribe": {
                 "code": [
-                    "    this.Subscribe(\"myFirstSub\", riffle.want(function(s) {",
+                    "    this.subscribe(\"myFirstSub\", riffle.want(function(s) {",
                     "        console.log(\"I got \" + s); // Expects a String, like \"I got Hello\"",
                     "    }, String));",
                     "    // Somewhere in another file or program...",
-                    "    this.Subscribe(\"myFirstSub\", riffle.want(function(s) {",
+                    "    this.subscribe(\"myFirstSub\", riffle.want(function(s) {",
                     "        console.log(\"I got \" + s + \", too!\"); // Expects a String, like \"I got Hello, too!\"",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"I got Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-sub-backend.js",
+                "file": "/home/lance/Exis/js/example/tour-sub-backend.js",
                 "lineEnd": 20,
                 "lineStart": 13
             }
@@ -755,7 +897,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-sub-client.py",
+                "file": "/home/lance/Exis/python/example/tour-sub-client.py",
                 "lineEnd": 16,
                 "lineStart": 15
             },
@@ -773,9 +915,38 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"I got Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-sub-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-sub-backend.py",
                 "lineEnd": 23,
                 "lineStart": 14
+            }
+        },
+        "swift": {
+            "publish": {
+                "code": [
+                    "        backend.publish(\"myFirstSub\", \"Hello\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "/home/lance/Exis/swift/example/tour-sub-client.swift",
+                "lineEnd": 9,
+                "lineStart": 8
+            },
+            "subscribe": {
+                "code": [
+                    "        subscribe(\"myFirstSub\") { (s: String) in",
+                    "            print(\"I got \\(s)\") // Expects a String, like \"I got Hello\"",
+                    "        }",
+                    "",
+                    "        // Somewhere in another file or program...",
+                    "        subscribe(\"myFirstSub\") { (s: String) in",
+                    "            print(\"I got \\(s), too!\") // Expects a String, like \"I got Hello, too!\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"I got Hello\"",
+                "file": "/home/lance/Exis/swift/example/tour-sub-backend.swift",
+                "lineEnd": 16,
+                "lineStart": 8
             }
         }
     },
@@ -783,7 +954,7 @@
         "js": {
             "publish": {
                 "code": [
-                    "    backend.Publish(\"iWantInts\", \"Hi\").then(function () {",
+                    "    backend.publish(\"iWantInts\", \"Hi\").then(function () {",
                     "        console.log(\"Publish to iWantInts complete\");",
                     "    },",
                     "    function (err) {",
@@ -792,20 +963,20 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-sub-client.js",
+                "file": "/home/lance/Exis/js/example/tour-sub-client.js",
                 "lineEnd": 33,
                 "lineStart": 27
             },
             "subscribe": {
                 "code": [
-                    "    this.Subscribe(\"iWantInts\", riffle.want(function(i) {",
+                    "    this.subscribe(\"iWantInts\", riffle.want(function(i) {",
                     "        // This function won't execute",
                     "        console.log(\"You won't see me :)\");",
                     "    }, Number));"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-sub-backend.js",
+                "file": "/home/lance/Exis/js/example/tour-sub-backend.js",
                 "lineEnd": 34,
                 "lineStart": 30
             }
@@ -817,7 +988,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-sub-client.py",
+                "file": "/home/lance/Exis/python/example/tour-sub-client.py",
                 "lineEnd": 25,
                 "lineStart": 24
             },
@@ -831,9 +1002,33 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-sub-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-sub-backend.py",
                 "lineEnd": 39,
                 "lineStart": 34
+            }
+        },
+        "swift": {
+            "publish": {
+                "code": [
+                    "        backend.publish(\"iWantInts\", \"Hi\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "/home/lance/Exis/swift/example/tour-sub-client.swift",
+                "lineEnd": 18,
+                "lineStart": 17
+            },
+            "subscribe": {
+                "code": [
+                    "        subscribe(\"iWantInts\") { (i: Int) in",
+                    "            print(\"You won't see me :)\")",
+                    "        }"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "/home/lance/Exis/swift/example/tour-sub-backend.swift",
+                "lineEnd": 29,
+                "lineStart": 26
             }
         }
     },
@@ -841,7 +1036,7 @@
         "js": {
             "publish": {
                 "code": [
-                    "    backend.Publish(\"iWantStrings\", \"Hi\").then(function() {",
+                    "    backend.publish(\"iWantStrings\", \"Hi\").then(function() {",
                     "        console.log(\"Publish to iWantStrings complete\");",
                     "    },",
                     "    function (err) {",
@@ -850,19 +1045,19 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-sub-client.js",
+                "file": "/home/lance/Exis/js/example/tour-sub-client.js",
                 "lineEnd": 24,
                 "lineStart": 18
             },
             "subscribe": {
                 "code": [
-                    "    this.Subscribe(\"iWantStrings\", riffle.want(function(s) {",
+                    "    this.subscribe(\"iWantStrings\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hi\"",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-sub-backend.js",
+                "file": "/home/lance/Exis/js/example/tour-sub-backend.js",
                 "lineEnd": 27,
                 "lineStart": 24
             }
@@ -874,7 +1069,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-sub-client.py",
+                "file": "/home/lance/Exis/python/example/tour-sub-client.py",
                 "lineEnd": 21,
                 "lineStart": 20
             },
@@ -887,9 +1082,33 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-sub-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-sub-backend.py",
                 "lineEnd": 31,
                 "lineStart": 27
+            }
+        },
+        "swift": {
+            "publish": {
+                "code": [
+                    "        backend.publish(\"iWantStrings\", \"Hi\")"
+                ],
+                "expectType": null,
+                "expectVal": null,
+                "file": "/home/lance/Exis/swift/example/tour-sub-client.swift",
+                "lineEnd": 14,
+                "lineStart": 13
+            },
+            "subscribe": {
+                "code": [
+                    "        subscribe(\"iWantStrings\") { (s: String) in",
+                    "            print(s) // Expects a String, like \"Hi\"",
+                    "        }"
+                ],
+                "expectType": "String",
+                "expectVal": "\"Hi\"",
+                "file": "/home/lance/Exis/swift/example/tour-sub-backend.swift",
+                "lineEnd": 23,
+                "lineStart": 20
             }
         }
     },
@@ -897,31 +1116,31 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"myFirstFunc\", \"Hello\").then(riffle.wait(function (s) {",
+                    "    backend.call(\"myFirstFunc\", \"Hello\").want(String).then(function (s) {",
                     "        console.log(s); // Expects a String, like \"Hello World\"",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err);",
                     "    });"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 19,
                 "lineStart": 13
             },
             "register": {
                 "code": [
-                    "    this.Register(\"myFirstFunc\", riffle.want(function(s) {",
+                    "    this.register(\"myFirstFunc\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hello\"",
                     "        return s + \" World\";",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 17,
-                "lineStart": 13
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 18,
+                "lineStart": 14
             }
         },
         "python": {
@@ -932,7 +1151,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 17,
                 "lineStart": 15
             },
@@ -946,7 +1165,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 19,
                 "lineStart": 14
             }
@@ -960,7 +1179,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello World\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-client.swift",
                 "lineEnd": 11,
                 "lineStart": 8
             },
@@ -973,7 +1192,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hello\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-backend.swift",
                 "lineEnd": 18,
                 "lineStart": 14
             }
@@ -983,31 +1202,31 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"iWantInts\", \"Hi\").then(riffle.wait(function (s) {",
+                    "    backend.call(\"iWantInts\", \"Hi\").want(String).then(function (s) {",
                     "        console.log(s);",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
-                    "        console.log(err) // Expects a String, like \"ERROR due to bad argument type\"",
+                    "        console.log(err) // Expects a String, like \"wamp.error.invalid_argument: Cumin: expecting primitive float, got string\"",
                     "    });"
                 ],
                 "expectType": "String",
-                "expectVal": "\"ERROR due to bad argument type\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "expectVal": "\"wamp.error.invalid_argument: Cumin: expecting primitive float, got string\"",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 38,
                 "lineStart": 32
             },
             "register": {
                 "code": [
-                    "    this.Register(\"iWantInts\", riffle.want(function(i) {",
+                    "    this.register(\"iWantInts\", riffle.want(function(i) {",
                     "        console.log(i);",
                     "        return \"Thanks for sending int \" + i;",
                     "    }, Number));"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 32,
-                "lineStart": 28
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 33,
+                "lineStart": 29
             }
         },
         "python": {
@@ -1017,11 +1236,11 @@
                     "            s = backend.call(\"iWantInts\", \"Hi\").wait(str)",
                     "            print s",
                     "        except riffle.Error as e:",
-                    "            print e # Expects a str, like \"ERROR due to bad argument type\""
+                    "            print e # Expects a str, like \"wamp.error.invalid_argument: Cumin: expecting primitive int, got string\""
                 ],
                 "expectType": "str",
-                "expectVal": "\"ERROR due to bad argument type\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "expectVal": "\"wamp.error.invalid_argument: Cumin: expecting primitive int, got string\"",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 31,
                 "lineStart": 26
             },
@@ -1035,7 +1254,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 36,
                 "lineStart": 31
             }
@@ -1051,7 +1270,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Cumin: expecting primitive int, got str\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-client.swift",
                 "lineEnd": 26,
                 "lineStart": 21
             },
@@ -1064,7 +1283,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-backend.swift",
                 "lineEnd": 33,
                 "lineStart": 29
             }
@@ -1074,31 +1293,31 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"iGiveInts\", \"Hi\").then(riffle.wait(function (s) {",
+                    "    backend.call(\"iGiveInts\", \"Hi\").want(String).then(function (s) {",
                     "        console.log(s);",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
-                    "        console.log(\"ERROR: \", err); // Expects a String, like \"Cumin: expecting primitive float, got string\"",
+                    "        console.log(err); // Expects a String, like \"Cumin: expecting primitive str, got int\"",
                     "    });"
                 ],
                 "expectType": "String",
-                "expectVal": "\"Cumin: expecting primitive float, got string\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "expectVal": "\"Cumin: expecting primitive str, got int\"",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 47,
                 "lineStart": 41
             },
             "register": {
                 "code": [
-                    "    this.Register(\"iGiveInts\", riffle.want(function(s) {",
+                    "    this.register(\"iGiveInts\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hi\"",
                     "        return 42;",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 39,
-                "lineStart": 35
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 40,
+                "lineStart": 36
             }
         },
         "python": {
@@ -1112,7 +1331,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Cumin: expecting primitive str, got int\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 39,
                 "lineStart": 34
             },
@@ -1126,7 +1345,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 44,
                 "lineStart": 39
             }
@@ -1142,7 +1361,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Cumin: expecting primitive str, got int\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-client.swift",
                 "lineEnd": 34,
                 "lineStart": 29
             },
@@ -1155,7 +1374,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-backend.swift",
                 "lineEnd": 40,
                 "lineStart": 36
             }
@@ -1165,31 +1384,31 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"iWantStrings\", \"Hi\").then(riffle.wait(function (s) {",
+                    "    backend.call(\"iWantStrings\", \"Hi\").want(String).then(function (s) {",
                     "        console.log(s); // Expects a String, like \"Thanks for saying Hi\"",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err);",
                     "    });"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Thanks for saying Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 29,
                 "lineStart": 23
             },
             "register": {
                 "code": [
-                    "    this.Register(\"iWantStrings\", riffle.want(function(s) {",
+                    "    this.register(\"iWantStrings\", riffle.want(function(s) {",
                     "        console.log(s); // Expects a String, like \"Hi\"",
                     "        return \"Thanks for saying \" + s;",
                     "    }, String));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 25,
-                "lineStart": 21
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 26,
+                "lineStart": 22
             }
         },
         "python": {
@@ -1200,7 +1419,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Thanks for saying Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 23,
                 "lineStart": 21
             },
@@ -1214,7 +1433,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 28,
                 "lineStart": 23
             }
@@ -1228,7 +1447,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Thanks for saying Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-client.swift",
                 "lineEnd": 18,
                 "lineStart": 15
             },
@@ -1241,7 +1460,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Hi\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-backend.swift",
                 "lineEnd": 26,
                 "lineStart": 22
             }
@@ -1251,31 +1470,31 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"iWantManyInts\", [0, 1, \"two\"]).then(riffle.wait(function (s) {",
+                    "    backend.call(\"iWantManyInts\", [0, 1, \"two\"]).want(String).then(function (s) {",
                     "        console.log(s);",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err); // Expects a String, like \"Cumin: expecting primitive float, got string\"",
                     "    });"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Cumin: expecting primitive float, got string\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 66,
                 "lineStart": 60
             },
             "register": {
                 "code": [
-                    "    this.Register(\"iWantManyInts\", riffle.want(function(s) {",
+                    "    this.register(\"iWantManyInts\", riffle.want(function(s) {",
                     "        console.log(s);",
                     "        return \"Thanks for \" + s.length + \" ints!\"",
                     "    }, [Number]));"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 54,
-                "lineStart": 50
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 55,
+                "lineStart": 51
             }
         },
         "python": {
@@ -1283,13 +1502,13 @@
                 "code": [
                     "        try:",
                     "            s = backend.call(\"iWantManyInts\", [0, 1, \"two\"]).wait(str)",
-                    "            print s # Expects a str, like \"Thanks for 3 ints!\"",
+                    "            print s",
                     "        except riffle.Error as e:",
-                    "            print e # Errors with \"Cumin: expecting primitive int, got string\""
+                    "            print e # Expects a str, like \"wamp.error.invalid_argument: Cumin: expecting primitive int, got string\""
                 ],
                 "expectType": "str",
-                "expectVal": "\"Thanks for 3 ints!\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "expectVal": "\"wamp.error.invalid_argument: Cumin: expecting primitive int, got string\"",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 53,
                 "lineStart": 48
             },
@@ -1303,7 +1522,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 61,
                 "lineStart": 56
             }
@@ -1313,14 +1532,14 @@
                 "code": [
                     "        let notAllInts: [Any] = [0, 1, \"two\"]",
                     "        backend.call(\"iWantManyInts\", notAllInts).then { (s: String) in",
-                    "            print(s) // Expects a String, like \"Thanks for 3 ints!\"",
+                    "            print(s)",
                     "        }.error { reason in",
-                    "            print(reason) // Expects a String, like \"Cumin: expecting [int], got something else\"",
+                    "            print(reason) // Expects a String, like \"wamp.error.invalid_argument: Cumin: expecting primitive int, got string\"",
                     "        }"
                 ],
                 "expectType": "String",
-                "expectVal": "\"Thanks for 3 ints!\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-client.swift",
+                "expectVal": "\"wamp.error.invalid_argument: Cumin: expecting primitive int, got string\"",
+                "file": "/home/lance/Exis/swift/example/tour-reg-client.swift",
                 "lineEnd": 50,
                 "lineStart": 44
             },
@@ -1333,7 +1552,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-backend.swift",
                 "lineEnd": 55,
                 "lineStart": 51
             }
@@ -1343,31 +1562,31 @@
         "js": {
             "call": {
                 "code": [
-                    "    backend.Call(\"iWantManyStrings\", [\"This\", \"is\", \"cool\"]).then(riffle.wait(function (s) {",
+                    "    backend.call(\"iWantManyStrings\", [\"This\", \"is\", \"cool\"]).want(String).then(function (s) {",
                     "        console.log(s); // Expects a String, like \"Thanks for 3 strings!\"",
-                    "    }, String),",
+                    "    },",
                     "    function (err) {",
                     "        console.log(\"ERROR: \", err);",
                     "    });"
                 ],
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 strings!\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 57,
                 "lineStart": 51
             },
             "register": {
                 "code": [
-                    "    this.Register(\"iWantManyStrings\", riffle.want(function(s) {",
+                    "    this.register(\"iWantManyStrings\", riffle.want(function(s) {",
                     "        console.log(s.join(\" \")); // Expects a String, like \"This is cool\"",
                     "        return \"Thanks for \" + s.length + \" strings!\"",
                     "    }, [String]));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"This is cool\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 47,
-                "lineStart": 43
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 48,
+                "lineStart": 44
             }
         },
         "python": {
@@ -1378,7 +1597,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"Thanks for 3 strings!\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 45,
                 "lineStart": 43
             },
@@ -1386,13 +1605,13 @@
                 "code": [
                     "        @want([str])",
                     "        def iWantManyStrings(s):",
-                    "            print \" \".join(s) # Expects a str, like \"This is cool\"",
+                    "            print \":\".join(s) # Expects a str, like \"This:is:cool\"",
                     "            return \"Thanks for {} strings!\".format(len(s))",
                     "        self.register(\"iWantManyStrings\", iWantManyStrings)"
                 ],
                 "expectType": "str",
-                "expectVal": "\"This is cool\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "expectVal": "\"This:is:cool\"",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 53,
                 "lineStart": 48
             }
@@ -1406,7 +1625,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"Thanks for 3 strings!\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-client.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-client.swift",
                 "lineEnd": 41,
                 "lineStart": 38
             },
@@ -1419,7 +1638,7 @@
                 ],
                 "expectType": "String",
                 "expectVal": "\"This is cool\"",
-                "file": "/Users/dale/Projects/exis/Exis/swift/example/tour-reg-backend.swift",
+                "file": "/home/lance/Exis/swift/example/tour-reg-backend.swift",
                 "lineEnd": 48,
                 "lineStart": 44
             }
@@ -1438,11 +1657,11 @@
                     "    s.name = \"John Smith\";",
                     "    s.age = 18;",
                     "    s.studentID = 1234;",
-                    "    backend.Call(\"sendStudent\", s);"
+                    "    backend.call(\"sendStudent\", s);"
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-client.js",
+                "file": "/home/lance/Exis/js/example/tour-reg-client.js",
                 "lineEnd": 80,
                 "lineStart": 70
             },
@@ -1453,18 +1672,20 @@
                     "        this.age = Number;",
                     "        this.studentID = Number;",
                     "    }",
+                    "",
                     "    Student.prototype.toString = function() {",
                     "        return this.name + \", Age: \" + this.age + \", ID: \" + this.studentID;",
                     "    };",
-                    "    this.Register(\"sendStudent\", riffle.want(function(s) {",
+                    "",
+                    "    this.register(\"sendStudent\", riffle.want(function(s) {",
                     "        console.log(s.toString()); // Expects a String, like \"John Smith, Age: 18, ID: 1234\"",
-                    "    }, riffle.ModelObject(Student)));"
+                    "    }, riffle.modelObject(Student)));"
                 ],
                 "expectType": "String",
                 "expectVal": "\"John Smith, Age: 18, ID: 1234\"",
-                "file": "/Users/dale/Projects/exis/Exis/js/example/tour-reg-backend.js",
-                "lineEnd": 69,
-                "lineStart": 58
+                "file": "/home/lance/Exis/js/example/tour-reg-backend.js",
+                "lineEnd": 72,
+                "lineStart": 59
             }
         },
         "python": {
@@ -1482,7 +1703,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 66,
                 "lineStart": 57
             },
@@ -1501,7 +1722,7 @@
                 ],
                 "expectType": "str",
                 "expectVal": "\"John Smith, Age: 18, ID: 1234\"",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 75,
                 "lineStart": 65
             }
@@ -1520,7 +1741,7 @@
                 ],
                 "expectType": "int",
                 "expectVal": "5678",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-client.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-client.py",
                 "lineEnd": 75,
                 "lineStart": 69
             },
@@ -1539,7 +1760,7 @@
                 ],
                 "expectType": "int",
                 "expectVal": "1234",
-                "file": "/Users/dale/Projects/exis/Exis/python/example/tour-reg-backend.py",
+                "file": "/home/lance/Exis/python/example/tour-reg-backend.py",
                 "lineEnd": 88,
                 "lineStart": 78
             }
@@ -1559,14 +1780,14 @@
                     "}",
                     "// define a function that is only called",
                     "// if a User is passed:",
-                    "this.Register(\"endpoint\",",
-                    "    riffle.want(function(u) {...}, riffle.ModelObject(User))",
+                    "this.register(\"endpoint\",",
+                    "    riffle.want(function(u) {...}, riffle.modelObject(User))",
                     ");",
                     "// call a function, send a User, expect a User back",
                     "var u = new User();",
                     "u.name = \"This guy\";",
-                    "backend.Call(\"get_user\", u).then(",
-                    "    riffle.wait(function(otherU) {...}, riffle.ModelObject(User))",
+                    "backend.call(\"get_user\", u).want(riffle.modelObject(User)).then(",
+                    "    function(otherU) {...}",
                     ");",
                     "",
                     "// A basic model of a Student",
@@ -1576,15 +1797,15 @@
                     "    this.grade = 0;",
                     "}",
                     "// Expect a Student",
-                    "riffle.want(function (s) {...}, riffle.ModelObject(Student));",
+                    "riffle.want(function (s) {...}, riffle.modelObject(Student));",
                     "// Send a Student",
                     "var s = new Student();",
                     "s.first = \"John\";",
                     "s.last = \"Smith\";",
                     "s.grade = 90;",
-                    "backend.Call(\"send_student\", s);",
+                    "backend.call(\"send_student\", s);",
                     "// Require a Student is returned",
-                    "riffle.wait(function (s) {...}, riffle.ModelObject(Student));",
+                    "backend.call(\"send_student\", s).want(riffle.modelObject(Student)).then(function(s){ ...});",
                     "",
                     "// A model that contains a collection of models",
                     "function Student() {",
@@ -1597,7 +1818,7 @@
                     "    this.roomNumber = 0;",
                     "}",
                     "// Expect a Classroom",
-                    "riffle.want(function (s) {...}, riffle.ModelObject(Classroom));",
+                    "riffle.want(function (s) {...}, riffle.modelObject(Classroom));",
                     "// Send a Classroom",
                     "var s = new Student();",
                     "s.first = \"John\";",
@@ -1606,15 +1827,15 @@
                     "var c = new Classroom();",
                     "c.roomNumber = 100;",
                     "c.students[c.students.length] = s;",
-                    "backend.Call(\"send_classroom\", c);",
+                    "backend.call(\"send_classroom\", c);",
                     "// Require a Classroom is returned",
-                    "riffle.wait(function (c) {...}, riffle.ModelObject(Classroom));",
+                    "backend.call(\"send_classroom\", c).want(riffle.modelObject(Classroom)).then(function(c){ ...});",
                     "",
                     ""
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/definitions-models.js",
+                "file": "/home/lance/Exis/js/example/definitions-models.js",
                 "lineEnd": 65,
                 "lineStart": 3
             }
@@ -1680,7 +1901,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/definitions-models.py",
+                "file": "/home/lance/Exis/python/example/definitions-models.py",
                 "lineEnd": 58,
                 "lineStart": 3
             }
@@ -1696,7 +1917,7 @@
                     "",
                     "// After importing riffle, simply add types to",
                     "// function declarations wrapped with riffle.want",
-                    "this.Register(\"endpoint\", riffle.want(function(s) {",
+                    "this.register(\"endpoint\", riffle.want(function(s) {",
                     "    console.log(s);",
                     "}, String));",
                     "// the registered endpoint will only execute",
@@ -1726,7 +1947,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/definitions-recv.js",
+                "file": "/home/lance/Exis/js/example/definitions-recv.js",
                 "lineEnd": 36,
                 "lineStart": 3
             }
@@ -1773,7 +1994,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/definitions-recv.py",
+                "file": "/home/lance/Exis/python/example/definitions-recv.py",
                 "lineEnd": 39,
                 "lineStart": 3
             }
@@ -1790,58 +2011,58 @@
                     "// First setup your domain",
                     "var app = riffle.Domain(\"xs.demo.test\");",
                     "// Now setup who you want to communicate with",
-                    "var backend = app.Subdomain(\"backend\");",
+                    "var backend = app.subdomain(\"backend\");",
                     "",
                     "// Calls are asynchronous code, so they use",
                     "// promises, like so:",
-                    "backend.Call(\"endpoint\", \"arg1\").then(",
-                    "    riffle.wait(function (s) {",
+                    "backend.call(\"endpoint\", \"arg1\").want(String).then(",
+                    "    function (s) {",
                     "        console.log(\"I got a string: \" + s);",
-                    "    }, String), function (err) {",
+                    "    }, function (err) {",
                     "        console.log(\"ERROR: \" + err);",
                     "    });",
-                    "// The call above sends a string, and waits for",
+                    "// The call above sends a string, and asks for",
                     "// a string, if the backend doesn't return a string",
                     "// then the error function will be called instead.",
                     "",
                     "// You can call without requiring anything in return",
-                    "backend.Call(\"hello\", \"hi\");",
+                    "backend.call(\"hello\", \"hi\");",
                     "",
-                    "// Waiting for primitives",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (s) {...}, String)",
+                    "// Asking for primitives",
+                    "backend.call(\"hello\").want(String).then(",
+                    "    function (s) {...}",
                     ");",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (n) {...}, Number)",
+                    "backend.call(\"hello\").want(Number).then(",
+                    "    function (n) {...}",
                     ");",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (b) {...}, Boolean)",
+                    "backend.call(\"hello\").want(Boolean).then(",
+                    "   function (b) {...}",
                     ");",
                     "",
                     "// Collections",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (stringList) {...}, [String])",
+                    "backend.call(\"hello\").want([String]).then(",
+                    "    function (stringList) {...}",
                     ");",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (myDict) {...}, {name: String})",
+                    "backend.call(\"hello\").want({name: String}).then(",
+                    "    function (myDict) {...}",
                     ");",
                     "// The argument myDict above will require a dict with the key name",
                     "// which is a String.",
                     "",
                     "// Many arguments",
                     "// s is str, i is int, b is boolean",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (s, i, b) {...}, String, Number, Boolean)",
+                    "backend.call(\"hello\").want(String, Number, Boolean).then(",
+                    "    function (s, i, b) {...}",
                     ");",
                     "// d is str, e is a list of int's",
-                    "backend.Call(\"hello\").then(",
-                    "    riffle.wait(function (d, e) {...}, String, [Number])",
+                    "backend.call(\"hello\").want(String, [Number]).then(",
+                    "    function (d, e) {...}",
                     ");",
                     ""
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/js/example/definitions-send.js",
+                "file": "/home/lance/Exis/js/example/definitions-send.js",
                 "lineEnd": 58,
                 "lineStart": 3
             }
@@ -1893,7 +2114,7 @@
                 ],
                 "expectType": null,
                 "expectVal": null,
-                "file": "/Users/dale/Projects/exis/Exis/python/example/definitions-send.py",
+                "file": "/home/lance/Exis/python/example/definitions-send.py",
                 "lineEnd": 44,
                 "lineStart": 3
             }

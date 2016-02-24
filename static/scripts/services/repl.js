@@ -17,7 +17,7 @@ angular.module('exisDocs')
     this.riffle = null;
     this.jsRiffleConn = {};
     var self = this;
-    jsRiffle.SetFabric('ws://sandbox.exis.io:8000/ws');
+    jsRiffle.setFabric('ws://sandbox.exis.io:8000/ws');
 
     /**
      * Initialize with an existing connection or create a new one.
@@ -143,7 +143,7 @@ angular.module('exisDocs')
         this.myside = 'backend';
       }
       this.connection = jsRiffle.Domain(this.id + "." + this.myside);
-      this.otherConnection = this.connection.LinkDomain(this.id + "." + this.otherside);
+      this.otherConnection = this.connection.linkDomain(this.id + "." + this.otherside);
     }
 
     ReplJSConn.prototype.regCode = function(code, printer){
@@ -166,13 +166,13 @@ angular.module('exisDocs')
     };
 
     ReplJSConn.prototype.start = function(){
-      this.connection.Join();
+      this.connection.join();
     };
 
     ReplJSConn.prototype.stop = function(){
       if(this.running){
         this.running = false;
-        this.connection.Leave();
+        this.connection.leave();
       }
     };
 
