@@ -34,17 +34,6 @@ This appliance hosts your Nodejs backend code in the cloud.
 
 ![Container](/img/tutorials/templates/web_attach_container.png)
 
-### Go to [Permissions Management](https://my.exis.io/#/permissions/ionic)
-
-**Add a new endpoint**:
-![New endpoint](/img/tutorials/templates/web_perms_addendpoint.png)
-
-**Add a new member to the user role**:
-![New member](/img/tutorials/templates/web_perms_addmember.png)
-
-**Final product** should look like this:
-![User role permissions](/img/tutorials/ionic/helloionic_perms_userrole.png)
-
 ### Go to [Container Management](https://my.exis.io/#/containers/ionic)
 
 **Build the image** by passing in your *forked* repo URL of `hello-nodejs` from above, name it `hello`.
@@ -59,41 +48,21 @@ This appliance hosts your Nodejs backend code in the cloud.
 
 ![Start Image](/img/tutorials/templates/web_container_startimage.png)
 
-### Go to [Auth Management](https://my.exis.io/#/auth_tokens/ionic)
-
-**Add a key** called *me*, **you will need this key in the Ionic app below.**
-![Auth keys](/img/tutorials/templates/web_auth_addkey.png)
-
-
 ## Setup Ionic App
 
 ```
 git clone git@github.com:exis-io/hello-ionic.git
 cd hello-ionic
+bower install
 ```
-
-There are two required steps:
 
 ### Tell the Ionic app what **domain** to use
 
-Replace `REPLACEME` with `xs.demo.USERNAME.ionic` in `www/js/app.js` line 28:
+Replace `REPLACEME` with `xs.demo.USERNAME.ionic` in `www/js/app.js` line 27:
 ```
 .config(function($riffleProvider){
-    $riffleProvider.SetFabricProduction();
-    $riffleProvider.SetDomain("REPLACEME");
+    $riffleProvider.setDomain("REPLACEME");
 })
-```
-
-### Enter the **me** token for credentials
-
-Replace `REPLACEME` with your token create in **Auth Management** above in `www/js/controllers.js` line 12:
-```
-    // Setup the domain we want to send messages to
-    $scope.hello = $riffle.subdomain("Container.hello");
-    // Setup the domain we will connect with
-    $scope.me = $riffle.subdomain("me");
-    // Set our token from the Auth appliance from my.exis.io
-    $scope.me.setToken("REPLACEME");
 ```
 
 ## Run the Ionic App
